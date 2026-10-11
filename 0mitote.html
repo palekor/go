@@ -349,6 +349,38 @@ p,h1,h2,h3{margin:0}
 .final .h2{font-size:clamp(46px,6.4vw,92px);line-height:.98;letter-spacing:-.02em}
 .final .cta-row{justify-content:center;margin-top:52px}
 
+/* video */
+.video-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px 64px;margin-bottom:clamp(36px,5vw,64px)}
+.video-head>div{flex:1 1 520px;min-width:0}
+.video-head>p{flex:0 1 420px;font-size:18px;line-height:1.7;color:var(--ink-2)}
+.theater{position:relative;max-width:1040px;margin:0 auto;padding:clamp(8px,1.4vw,16px);border-radius:32px;border:1px solid rgba(201,165,90,.32);background:linear-gradient(160deg,rgba(201,165,90,.12),rgba(201,165,90,0) 45%),var(--bg-2);box-shadow:0 60px 140px rgba(0,0,0,.55)}
+.theater::before{content:"";position:absolute;left:20%;right:20%;top:-1px;height:1px;background:linear-gradient(90deg,transparent,rgba(227,201,138,.85),transparent);pointer-events:none}
+.screen-v{position:relative;aspect-ratio:16/9;border-radius:22px;overflow:hidden;background:#05080F}
+.screen-v iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.facade{position:absolute;inset:0;width:100%;height:100%;padding:0;border:0;cursor:pointer;color:var(--ink);font:inherit;background:radial-gradient(60% 80% at 50% 38%,rgba(201,165,90,.2),rgba(201,165,90,0) 70%),#05080F}
+.facade img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(.85) brightness(.7);transform:scale(1.02);transition:transform 1.2s var(--ease),filter .6s}
+.facade::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(10,16,32,.35) 0%,rgba(10,16,32,0) 32%,rgba(10,16,32,0) 52%,rgba(10,16,32,.88) 100%)}
+.facade:hover img{transform:scale(1.05);filter:saturate(.95) brightness(.8)}
+.facade:focus-visible{outline:2px solid var(--gold);outline-offset:-6px;border-radius:22px}
+.play{position:absolute;left:50%;top:50%;z-index:2;width:clamp(76px,11vw,118px);aspect-ratio:1;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center}
+.play i{position:absolute;border-radius:50%;border:1px solid rgba(227,201,138,.6)}
+.play i:nth-child(1){inset:-22%;animation:vpulse 3.4s var(--ease) infinite}
+.play i:nth-child(2){inset:-8%;opacity:.55}
+.play b{position:absolute;inset:0;border-radius:50%;background:var(--gold);box-shadow:0 18px 50px rgba(201,165,90,.35);transition:transform .4s var(--ease)}
+.facade:hover .play b{transform:scale(1.06)}
+.play svg{position:relative;width:32%;height:32%;margin-left:9%;color:var(--bg)}
+.v-tag{position:absolute;top:clamp(14px,2.4vw,26px);left:clamp(16px,3vw,32px);z-index:2;display:flex;align-items:center;gap:10px;font-family:var(--f-caps);font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink-2)}
+.v-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--gold)}
+.v-meta{position:absolute;left:clamp(16px,3vw,32px);right:clamp(16px,3vw,32px);bottom:clamp(14px,2.6vw,30px);z-index:2;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;text-align:left}
+.v-kicker{display:block;font-family:var(--f-caps);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.v-title{display:block;margin-top:6px;font-family:var(--f-display);font-weight:500;font-size:clamp(22px,3.2vw,40px);line-height:1.05;color:var(--ink)}
+.v-badge{flex:none;font-family:var(--f-caps);font-size:10px;letter-spacing:.26em;text-transform:uppercase;padding:8px 13px;border-radius:999px;border:1px solid rgba(241,234,219,.28);color:var(--ink-2);background:rgba(10,16,32,.55)}
+.video-foot{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 18px;margin-top:clamp(32px,4vw,48px)}
+.yt-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 6px;font-size:14px;color:var(--muted);text-decoration:none}
+.yt-link svg{flex:none}
+@keyframes vpulse{0%{transform:scale(.9);opacity:.6}70%{transform:scale(1.12);opacity:0}100%{transform:scale(1.12);opacity:0}}
+@media (max-width:560px){.v-badge,.v-tag{display:none}.v-title{font-size:20px}}
+
 /* footer */
 .footer{background:var(--deep);border-top:1px solid rgba(201,165,90,.14);padding:48px 0}
 .footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:24px}
@@ -376,6 +408,8 @@ p,h1,h2,h3{margin:0}
 .js .rv.in{opacity:1;transform:none}
 .js .d1{transition-delay:.12s}.js .d2{transition-delay:.24s}.js .d3{transition-delay:.36s}.js .d4{transition-delay:.48s}
 @media (prefers-reduced-motion:reduce){
+  .play i{animation:none}
+  .facade img{transition:none}
   html{scroll-behavior:auto}
   .fa,.fb,.fc,.spin,.track,.ex-body.swap{animation:none}
   .js .rv{opacity:1;transform:none;transition:none}
@@ -508,6 +542,37 @@ p,h1,h2,h3{margin:0}
       <li class="rv d1"><span class="r">II</span><span class="a" data-i18n="a2">Qué puede esperar.</span></li>
       <li class="rv d2"><span class="r">III</span><span class="a" data-i18n="a3">Qué hacer ahora.</span></li>
     </ol>
+  </div>
+</section>
+
+<!-- ================= VIDEO ================= -->
+<section class="section band" id="video">
+  <div class="wrap">
+    <div class="video-head">
+      <div>
+        <p class="eyebrow rv" data-i18n="vid.eyebrow">El método, en voz de su autor</p>
+        <h2 class="h2 rv d1" data-i18n="vid.h2">Declutter mental<br><em>en 6 pasos.</em></h2>
+      </div>
+      <p class="rv d2" data-i18n="vid.lead">Germandario explica MITOTE ZERO: cómo eliminar el ruido, las creencias limitantes y el estrés que nunca elegiste. Míralo antes de empezar tus siete días.</p>
+    </div>
+    <div class="theater rv">
+      <div class="screen-v" id="videoScreen">
+        <button type="button" class="facade" id="videoFacade" aria-label="Reproducir el video: Mitote Zero, declutter mental en 6 pasos" data-i18n-attr="aria-label:vid.play">
+          <img id="videoPoster" src="https://i.ytimg.com/vi/9xYiqVpHoxM/maxresdefault.jpg" alt="" loading="lazy" decoding="async">
+          <span class="v-tag" aria-hidden="true"><span class="dot"></span><span data-i18n="vid.tag">Video · ProfGermandario</span></span>
+          <span class="play" aria-hidden="true"><i></i><i></i><b></b><svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4.5v15l13-7.5z"/></svg></span>
+          <span class="v-meta" aria-hidden="true">
+            <span><span class="v-kicker">Mitote Zero</span><span class="v-title" data-i18n="vid.title">Declutter mental en 6 pasos</span></span>
+            <span class="v-badge" data-i18n="vid.badge">En español</span>
+          </span>
+        </button>
+      </div>
+    </div>
+    <div class="video-foot rv">
+      <a class="btn btn-gold" href="https://www.amazon.com/dp/B0HKGGH74B" target="_blank" rel="noopener"><span data-i18n="vid.cta1">Comprar el libro en Amazon</span></a>
+      <a class="btn btn-line" href="#formulario"><span data-i18n="vid.cta2">Empezar el Entrenamiento de 7 días</span></a>
+      <a class="yt-link" href="https://www.youtube.com/@ProfGermandario" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="4"/><path d="M10 9.2v5.6l4.8-2.8z" fill="currentColor"/></svg><span data-i18n="vid.yt">Más en el canal de YouTube</span></a>
+    </div>
   </div>
 </section>
 
@@ -907,6 +972,11 @@ p,h1,h2,h3{margin:0}
     'diag.eyebrow': 'The diagnosis', 'diag.h2': "You don't need another productivity app.",
     'diag.p': "Another app only gives the noise a new address. It doesn't remove it. Before you can organize your time, you need three clean answers.",
     'a1': 'What matters.', 'a2': 'What can wait.', 'a3': 'What to do next.',
+    'vid.eyebrow': "The method, in the author's voice", 'vid.h2': 'Mental declutter<br><em>in 6 steps.</em>',
+    'vid.lead': 'Germandario walks you through MITOTE ZERO: how to remove the noise, the limiting beliefs and the stress you never chose. Watch it before you start your seven days.',
+    'vid.play': 'Play the video: Mitote Zero, mental declutter in 6 steps', 'vid.tag': 'Video · ProfGermandario',
+    'vid.title': 'Mental declutter in 6 steps', 'vid.badge': 'In Spanish',
+    'vid.cta1': 'Get the book on Amazon', 'vid.cta2': 'Start the 7-Day Training', 'vid.yt': 'More on the YouTube channel',
     'tr.eyebrow': 'The 7-Day Training · Book + App + Practice',
     'tr.h2': 'Seven days.<br><em>Seven kinds of noise, removed.</em>',
     'tr.lead': 'A guided week that puts the book and the app to work. Each day takes one kind of mental noise off the table: you read it in MITOTE ZERO, practice it in TIME ORDER, and close the day with a visible result.',
@@ -1032,6 +1102,38 @@ p,h1,h2,h3{margin:0}
   langBtns.forEach(function (b) {
     b.addEventListener('click', function () { setLang(b.getAttribute('data-lang'), true); });
   });
+
+  /* ===== Video: fachada ligera; YouTube solo carga al tocar play ===== */
+  var VIDEO_ID = '9xYiqVpHoxM';
+  var VIDEO_START = 0; // segundos desde donde arranca (p. ej. 272 = 4:32)
+  var poster = $('#videoPoster');
+  if (poster) {
+    var hq = 'https://i.ytimg.com/vi/' + VIDEO_ID + '/hqdefault.jpg';
+    var checkPoster = function () {
+      // YouTube responde con una miniatura gris de 120 px cuando no existe la versión en alta
+      if (poster.naturalWidth && poster.naturalWidth < 200 && poster.src !== hq) poster.src = hq;
+    };
+    poster.addEventListener('load', checkPoster);
+    poster.addEventListener('error', function () {
+      if (poster.src !== hq) poster.src = hq; else poster.hidden = true;
+    });
+    if (poster.complete) checkPoster();
+  }
+  var facade = $('#videoFacade');
+  if (facade) {
+    facade.addEventListener('click', function () {
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + VIDEO_ID + '?autoplay=1&rel=0&modestbranding=1&playsinline=1' + (VIDEO_START ? '&start=' + VIDEO_START : '');
+      f.title = lang === 'en' ? 'Mitote Zero: mental declutter in 6 steps' : 'Mitote Zero: declutter mental en 6 pasos';
+      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('allowfullscreen', '');
+      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      var screen = $('#videoScreen');
+      screen.innerHTML = '';
+      screen.appendChild(f);
+      f.focus();
+    });
+  }
 
   /* ===== Explorador de 7 días ===== */
   var day = 0;
