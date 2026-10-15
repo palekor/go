@@ -1,0 +1,1494 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Connectors · Deictics · THERE()</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..700&family=Figtree:ital,wght@0,400..800;1,400..600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: a dark-navy "class route" of seven stations; each station pairs a concept column with an instrument column, then a practice bench; everything stacks on phones */
+:root{
+  --bg:#0A1224; --bg-2:#0D1730; --surface:#121D38; --surface-2:#1A2748; --line:#283862;
+  --ink:#EEF0F7; --ink-2:#BCC5DC; --muted:#8D99B9;
+  --gold:#E8BA5E; --on-gold:#1B1404;
+  --coral:#F4906F; --violet:#ADA1FF; --sky:#82C5FF; --teal:#5AD3C3;
+  --ok:#52D89F; --bad:#FF7A8B;
+  --font-display:"Fraunces", Georgia, "Times New Roman", serif;
+  --font-body:"Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:"JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#F2F4F9; --bg-2:#E8ECF5; --surface:#FFFFFF; --surface-2:#EDF0F7; --line:#D2D9E8;
+    --ink:#0E1730; --ink-2:#33405F; --muted:#5A6787;
+    --gold:#94660C; --on-gold:#FFFFFF;
+    --coral:#BB4C2B; --violet:#5545C6; --sky:#1B64B0; --teal:#0B7D70;
+    --ok:#0C8150; --bad:#C22E44;
+    color-scheme:light;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#F2F4F9; --bg-2:#E8ECF5; --surface:#FFFFFF; --surface-2:#EDF0F7; --line:#D2D9E8;
+  --ink:#0E1730; --ink-2:#33405F; --muted:#5A6787;
+  --gold:#94660C; --on-gold:#FFFFFF;
+  --coral:#BB4C2B; --violet:#5545C6; --sky:#1B64B0; --teal:#0B7D70;
+  --ok:#0C8150; --bad:#C22E44;
+  color-scheme:light;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:88px}
+body{background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:1.0625rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1140px;margin-inline:auto;padding-left:max(20px, env(safe-area-inset-left, 0px));padding-right:max(20px, env(safe-area-inset-right, 0px))}
+a{color:var(--gold)}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+b,strong{font-weight:700}
+p{margin:0 0 .8em}
+h1,h2,h3,h4{text-wrap:balance}
+
+/* ---------- top bar ---------- */
+.topbar{position:sticky;top:env(safe-area-inset-top, 0px);z-index:30;background:color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;gap:14px;min-height:62px}
+.brand{display:flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:700;white-space:nowrap;font-size:.95rem}
+.crest{width:30px;height:34px;display:grid;place-items:center;background:var(--gold);color:var(--on-gold);font-family:var(--font-display);font-style:italic;font-weight:700;font-size:.9rem;clip-path:polygon(0 0,100% 0,100% 66%,50% 100%,0 66%);padding-bottom:6px;flex:none}
+.route{display:flex;gap:2px;overflow-x:auto;flex:1;min-width:0;scrollbar-width:none}
+@media (max-width:980px){.route{-webkit-mask-image:linear-gradient(90deg,#000 86%,transparent);mask-image:linear-gradient(90deg,#000 86%,transparent)}}
+.route::-webkit-scrollbar{display:none}
+.route a{white-space:nowrap;padding:6px 10px;border-radius:999px;color:var(--ink-2);text-decoration:none;font-size:.86rem;font-weight:600}
+.route a:hover{background:var(--surface-2);color:var(--ink)}
+.route a span{font-family:var(--font-mono);color:var(--gold);margin-right:5px;font-size:.78rem}
+.tools{display:flex;gap:8px;align-items:center;flex:none}
+.xp{font-family:var(--font-mono);font-size:.82rem;font-weight:600;color:var(--on-gold);background:var(--gold);border-radius:999px;padding:5px 11px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.mini{background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.8rem;font-weight:600;color:var(--ink-2);white-space:nowrap}
+.mini[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
+@media (max-width:640px){.brand .bt{display:none}.mini .full{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero::before{content:"";position:absolute;right:-12%;top:-30%;width:68vw;height:68vw;max-width:760px;max-height:760px;background:radial-gradient(closest-side, color-mix(in srgb, var(--gold) 15%, transparent), transparent);pointer-events:none}
+.hero .wrap{position:relative;padding-block:64px 56px}
+.eyebrow{display:block;font-size:.74rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--gold);margin:0}
+h1{font-family:var(--font-display);font-weight:600;font-variation-settings:"opsz" 144;font-size:clamp(2.4rem, 6.6vw, 4.9rem);line-height:1.02;letter-spacing:-.02em;margin:.3em 0 .35em;max-width:16ch}
+h1 .fn{font-family:var(--font-mono);font-weight:600;color:var(--gold);font-size:.8em;letter-spacing:-.04em;white-space:nowrap}
+.lede{font-size:clamp(1.08rem,1.6vw,1.25rem);color:var(--ink-2);max-width:60ch;margin-bottom:1.1em}
+.motto{font-family:var(--font-display);font-style:italic;font-size:clamp(1.2rem,2vw,1.45rem);margin:0}
+.beam{display:flex;align-items:center;gap:12px;margin:34px 0 0;max-width:720px;font-family:var(--font-mono);font-size:.8rem;color:var(--muted)}
+.beam i{flex:1;height:2px;background:linear-gradient(90deg, var(--gold), color-mix(in srgb, var(--gold) 10%, transparent));position:relative}
+.beam i::before,.beam i::after{content:"";position:absolute;top:50%;width:10px;height:10px;border-radius:50%;transform:translateY(-50%)}
+.beam i::before{left:-2px;background:var(--gold)}
+.beam i::after{right:-2px;border:2px solid var(--muted);background:var(--bg)}
+.meta{margin-top:14px;font-size:.88rem;color:var(--muted)}
+.outcomes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:36px}
+.outcome{background:var(--surface);padding:18px 18px 20px;min-width:0}
+.outcome code{display:block;font-family:var(--font-mono);font-size:.8rem;color:var(--gold);margin-bottom:8px}
+.outcome p{margin:0;font-size:.95rem;color:var(--ink-2)}
+@media (max-width:900px){.outcomes{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:480px){.outcomes{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- stations ---------- */
+.station{border-bottom:1px solid var(--line)}
+.station:nth-of-type(even){background:var(--bg-2)}
+.station > .wrap{padding-block:76px}
+.st-head{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 22px;align-items:end;margin-bottom:18px}
+.st-num{font-family:var(--font-display);font-style:italic;font-weight:500;font-size:clamp(3.6rem,8vw,6.2rem);line-height:.78;color:var(--gold);grid-row:span 2}
+h2{font-family:var(--font-display);font-weight:600;font-variation-settings:"opsz" 96;font-size:clamp(1.85rem,4.2vw,3rem);line-height:1.06;letter-spacing:-.015em;margin:0}
+h2 .fn{font-family:var(--font-mono);color:var(--gold);font-size:.82em;letter-spacing:-.04em}
+.st-lede{max-width:64ch;color:var(--ink-2);margin:0 0 36px;font-size:1.12rem}
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:36px;align-items:start}
+@media (min-width:961px){.split > .sticky{position:sticky;top:calc(84px + env(safe-area-inset-top, 0px))}}
+@media (max-width:960px){.split{grid-template-columns:minmax(0,1fr)}}
+
+.idea{border-top:1px solid var(--line);padding-top:20px;margin-top:22px}
+.idea:first-child{border-top:0;padding-top:0;margin-top:0}
+.idea h3{font-family:var(--font-display);font-weight:600;font-size:1.32rem;line-height:1.2;margin:0 0 10px}
+.idea p:last-child{margin-bottom:0}
+.es{color:var(--muted);font-style:italic;font-size:.92em}
+.es::before{content:"ES";font-family:var(--font-mono);font-style:normal;font-size:.62rem;font-weight:600;border:1px solid var(--line);border-radius:4px;padding:1px 4px;margin-right:6px;vertical-align:2px;color:var(--muted)}
+.es.plain::before{display:none}
+.ex{display:flex;gap:10px;align-items:center;margin:8px 0}
+.ex span{min-width:0}
+.k{color:var(--gold);font-weight:700}
+.x{color:var(--bad);text-decoration:line-through;text-decoration-thickness:1.5px}
+.v{color:var(--ok);font-weight:600}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:22px}
+.panel > h3{font-family:var(--font-display);font-weight:600;font-size:1.3rem;margin:0 0 4px}
+.panel > .sub{color:var(--ink-2);font-size:.95rem;margin:0 0 14px}
+.note{background:color-mix(in srgb, var(--gold) 8%, var(--surface));border:1px solid color-mix(in srgb, var(--gold) 32%, var(--line));border-radius:14px;padding:16px 18px;margin-top:18px}
+.note .tag{display:inline-block;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--gold);margin-bottom:6px}
+.note ul{margin:0;padding-left:18px}
+.note li{margin:4px 0}
+
+/* buttons */
+.btn{background:var(--gold);color:var(--on-gold);border:0;border-radius:999px;padding:9px 16px;font-weight:700;font-size:.92rem}
+.btn:hover{filter:brightness(1.06)}
+.ghost{background:transparent;color:var(--ink);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-weight:600;font-size:.9rem}
+.ghost:hover{border-color:var(--gold);color:var(--gold)}
+.say{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);background:var(--surface-2);color:var(--gold);padding:0;flex:none}
+.say svg{width:16px;height:16px}
+.say:hover{border-color:var(--gold)}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:3px;background:var(--surface-2);gap:2px;flex-wrap:wrap}
+.seg button{border:0;background:transparent;border-radius:999px;padding:6px 13px;font-weight:600;font-size:.88rem;color:var(--ink-2)}
+.seg button[aria-pressed="true"]{background:var(--gold);color:var(--on-gold)}
+
+/* ---------- station 1: deixis ---------- */
+.matrix{width:calc(100% + 12px);border-collapse:separate;border-spacing:6px;margin:-6px}
+.matrix th{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;text-align:left;padding:2px 4px}
+.matrix th em{font-style:normal;color:var(--gold)}
+.matrix td{padding:0;width:44%}
+.mx{width:100%;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.mx b{font-family:var(--font-display);font-size:1.55rem;font-weight:600;line-height:1.1}
+.mx .es{font-size:.82rem}
+.mx[aria-pressed="true"]{border-color:var(--gold);background:color-mix(in srgb, var(--gold) 10%, var(--surface))}
+.mx[aria-pressed="true"] b{color:var(--gold)}
+.hint{font-size:.85rem;color:var(--muted);margin-top:10px}
+.map3{display:grid;grid-template-columns:auto repeat(3,minmax(0,1fr));gap:6px;align-items:center;margin:12px 0;font-weight:600}
+.map3 .lab{font-family:var(--font-mono);font-size:.72rem;color:var(--muted)}
+.map3 .c{border:1px solid var(--line);border-radius:10px;padding:7px 10px;text-align:center;background:var(--surface)}
+.map3 .en{border-color:color-mix(in srgb, var(--gold) 45%, var(--line));color:var(--gold);font-family:var(--font-display);font-size:1.15rem}
+.map3 .span2{grid-column:span 2}
+.ipa{font-family:var(--font-mono);font-size:.85rem;color:var(--sky)}
+.dx-svg{width:100%;height:auto;display:block;margin:6px 0 14px}
+.dx-svg .person{fill:var(--ink-2)}
+.dx-svg .arm{stroke:var(--ink-2);stroke-width:6;stroke-linecap:round;fill:none}
+.dx-svg .beamp{fill:color-mix(in srgb, var(--gold) 12%, transparent);stroke:color-mix(in srgb, var(--gold) 45%, transparent);stroke-width:1}
+.dx-svg .zone{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 5}
+.dx-svg .zone.on{stroke:var(--gold)}
+.dx-svg .zl{fill:var(--muted);font-family:var(--font-body);font-size:11px;font-weight:700;letter-spacing:.12em}
+.dx-svg .zl.on{fill:var(--gold)}
+.dx-svg .gem-f{fill:color-mix(in srgb, var(--teal) 28%, transparent);stroke:var(--teal);stroke-width:1.6;stroke-linejoin:round}
+.dx-svg .gem-l{fill:none;stroke:var(--teal);stroke-width:1;opacity:.7}
+.dx-svg .gw{fill:var(--gold);font-family:var(--font-display);font-style:italic;font-weight:600;font-size:24px}
+.dx-svg .gems{animation:fade .35s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.dx-controls{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:16px}
+.dx-out{border-top:1px solid var(--line);padding-top:16px}
+.dx-word{font-family:var(--font-display);font-weight:600;font-size:clamp(2.6rem,6vw,3.6rem);line-height:1;color:var(--gold);display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.dx-word .ipa{font-size:.95rem}
+
+/* ---------- station 2: THERE() ---------- */
+.code{font-family:var(--font-mono);font-size:.9rem;line-height:1.75;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin:12px 0;overflow-x:auto;white-space:pre;color:var(--ink)}
+.kw{color:var(--violet);font-weight:600}.arg{color:var(--sky)}.num{color:var(--coral)}.ret{color:var(--gold);font-weight:600}.cm{color:var(--muted)}.op{color:var(--muted)}
+.tbl-wrap{overflow-x:auto;margin:10px 0}
+.forms{border-collapse:collapse;width:100%;min-width:440px;font-size:.95rem}
+.forms th,.forms td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+.forms thead th{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.forms tbody th{font-family:var(--font-mono);color:var(--gold);width:36px}
+.forms small{display:block;color:var(--muted)}
+.traps{list-style:none;margin:0;padding:0;display:grid;gap:12px}
+.traps li{display:grid;gap:2px}
+.traps small{color:var(--ink-2);font-size:.88rem}
+.b-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:520px){.b-grid{grid-template-columns:minmax(0,1fr)}}
+.field label,.field .lbl{display:block;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:6px}
+select,textarea{background:var(--surface-2);color:var(--ink);border:1px solid var(--line);border-radius:10px;font:inherit}
+select{width:100%;padding:9px 10px;font-size:.95rem}
+select:disabled{opacity:.5}
+.stepper{display:flex;align-items:center;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--surface-2)}
+.stepper button{width:44px;height:41px;border:0;background:transparent;color:var(--gold);font-size:1.25rem;font-weight:700}
+.stepper button:disabled{opacity:.35;cursor:default}
+.stepper output{flex:1;text-align:center;font-family:var(--font-mono);font-weight:600;font-variant-numeric:tabular-nums}
+.b-mode{margin-top:12px}
+.b-code{font-family:var(--font-mono);font-size:.92rem;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:16px 0 12px;overflow-x:auto;white-space:nowrap}
+.b-out{display:flex;gap:12px;align-items:flex-start}
+.b-out .s{flex:1;min-width:0;font-family:var(--font-display);font-size:clamp(1.4rem,3.2vw,1.95rem);line-height:1.22;font-weight:500}
+.b-out .s em{font-style:normal;color:var(--gold);font-weight:700}
+.b-rules{margin:12px 0 0;padding-left:18px;color:var(--ink-2);font-size:.94rem}
+.b-rules li{margin:3px 0}
+.presets{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;align-items:center}
+.presets .lbl{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-right:4px}
+.preset{background:transparent;border:1px solid var(--line);border-radius:999px;padding:5px 11px;font-size:.84rem;font-weight:600;color:var(--ink-2)}
+.preset:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ---------- station 3: time lens ---------- */
+.lens-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-bottom:40px}
+@media (max-width:720px){.lens-grid{grid-template-columns:minmax(0,1fr)}}
+.lens .formula{font-family:var(--font-mono);font-size:.86rem;color:var(--ink-2);margin:6px 0 10px}
+.tline{width:100%;height:auto;display:block;margin:4px 0 10px}
+.tline text{font-family:var(--font-body)}
+.tl-axis{stroke:var(--muted);stroke-width:1.5}
+.tl-arrow{fill:var(--muted)}
+.tl-now{stroke:var(--gold);stroke-width:2;stroke-dasharray:3 3}
+.tl-lbl{fill:var(--gold);font-size:11px;font-weight:700;letter-spacing:.1em}
+.tl-sm{fill:var(--muted);font-size:10px}
+.tl-dot{fill:var(--sky)}
+.tl-band{fill:color-mix(in srgb, var(--violet) 30%, transparent);stroke:var(--violet);stroke-width:1.5}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.chip{border:1px solid var(--line);border-radius:999px;padding:3px 11px;font-size:.88rem;font-weight:600;background:var(--surface)}
+.hh{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px;margin:10px 0}
+.hh div{border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface)}
+.hh b{font-family:var(--font-display);font-size:1.5rem;color:var(--gold);display:block;line-height:1.1}
+.hh small{color:var(--ink-2)}
+.verbs{display:flex;flex-wrap:wrap;gap:6px;margin:4px 0 16px}
+.verbs button{border:1px solid var(--line);background:transparent;border-radius:999px;padding:5px 13px;font-weight:700;font-size:.9rem;color:var(--ink-2)}
+.verbs button[aria-pressed="true"]{background:var(--violet);color:var(--bg);border-color:var(--violet)}
+.lo{display:grid;grid-template-columns:minmax(0,1fr);gap:12px}
+.lo-card{border:1px solid var(--line);border-radius:12px;padding:14px;background:var(--surface-2)}
+.lo-card .lbl{font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.lo-s{font-family:var(--font-display);font-size:1.25rem;line-height:1.3;margin:6px 0}
+.lo-s.bad{color:var(--bad);text-decoration:line-through;text-decoration-thickness:1.5px}
+.lo-n{font-size:.9rem;color:var(--ink-2);margin:0}
+
+/* ---------- station 4: connectors ---------- */
+.f-add{--fc:var(--sky)} .f-contrast{--fc:var(--coral)} .f-logic{--fc:var(--gold)} .f-time{--fc:var(--violet)} .f-focus{--fc:var(--teal)}
+.fam{display:grid;grid-template-columns:150px minmax(0,1fr);gap:8px 16px;align-items:start;padding:14px 0;border-top:1px solid var(--line)}
+.fam:first-of-type{border-top:0;padding-top:4px}
+@media (max-width:560px){.fam{grid-template-columns:minmax(0,1fr)}}
+.fam-name{font-weight:800;font-size:.9rem;color:var(--fc);line-height:1.3}
+.fam-name small{display:block;color:var(--muted);font-weight:500;font-style:italic}
+.con{border:1px solid color-mix(in srgb, var(--fc) 45%, var(--line));background:color-mix(in srgb, var(--fc) 9%, transparent);color:var(--ink);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.95rem}
+.con[aria-pressed="true"]{background:var(--fc);color:var(--bg);border-color:var(--fc)}
+.cd-word{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.2rem);font-weight:600;line-height:1;color:var(--fc);margin:8px 0 6px}
+.cd-fam{display:inline-block;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;font-weight:800;color:var(--fc)}
+.cd-use{margin:10px 0 14px;color:var(--ink-2)}
+.cd-ex{display:flex;gap:10px;align-items:flex-start;font-size:1.08rem;background:var(--surface-2);border-radius:12px;padding:12px 14px}
+.cd-ex span{flex:1;min-width:0}
+.cd-ex mark{background:transparent;color:var(--fc);font-weight:800}
+.flip-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:16px 0}
+.blk{border-radius:12px;padding:8px 12px;font-weight:600;border:1px solid var(--line);min-width:0}
+.blk small{display:block;font-size:.66rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:800}
+.blk.cause{border-color:color-mix(in srgb, var(--sky) 55%, var(--line));background:color-mix(in srgb, var(--sky) 10%, transparent)}
+.blk.result{border-color:color-mix(in srgb, var(--violet) 55%, var(--line));background:color-mix(in srgb, var(--violet) 10%, transparent)}
+.lw{font-family:var(--font-display);font-style:italic;font-size:1.4rem;color:var(--gold);font-weight:600}
+.flip-s{display:flex;gap:10px;align-items:center;font-family:var(--font-display);font-size:1.25rem;line-height:1.3}
+.flip-s span{flex:1;min-width:0}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+
+/* ---------- station 5: adjectives ---------- */
+.adj-group{margin-bottom:16px}
+.adj-group:last-child{margin-bottom:0}
+.adj-group h4{margin:0 0 8px;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted)}
+.adjs{display:flex;flex-wrap:wrap;gap:6px}
+.adj{border:1px solid var(--line);background:var(--surface-2);border-radius:10px;padding:5px 10px;text-align:left;line-height:1.2}
+.adj b{display:block;font-size:.95rem}
+.adj i{font-size:.76rem;color:var(--muted)}
+.adj:hover{border-color:var(--teal)}
+
+/* ---------- station 6: clinic ---------- */
+.clinic{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media (max-width:780px){.clinic{grid-template-columns:minmax(0,1fr)}}
+.cl{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:16px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.cl-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.cl-n{font-family:var(--font-mono);font-size:.78rem;color:var(--gold)}
+.badge{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;border-radius:999px;padding:3px 9px;border:1px solid var(--line);color:var(--muted)}
+.badge.ok{color:var(--ok);border-color:color-mix(in srgb, var(--ok) 50%, var(--line))}
+.badge.up{color:var(--coral);border-color:color-mix(in srgb, var(--coral) 50%, var(--line))}
+.cl-src{margin:0;font-size:.9rem}
+.cl-orig{font-family:var(--font-mono);font-size:.88rem;color:var(--ink-2);background:var(--surface-2);border-radius:10px;padding:10px 12px;margin:0;overflow-wrap:anywhere}
+.cl-fix{display:flex;gap:10px;align-items:flex-start;font-size:1.06rem;font-weight:600}
+.cl-fix span{flex:1;min-width:0;color:var(--ok)}
+.cl-tags{list-style:none;padding:0;margin:0;display:grid;gap:5px;font-size:.9rem;color:var(--ink-2)}
+.cl-tags li{padding-left:18px;position:relative}
+.cl-tags li::before{content:"→";position:absolute;left:0;color:var(--gold)}
+.cl .reveal{align-self:flex-start}
+
+/* ---------- practice sets ---------- */
+.set{margin-top:40px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:22px}
+.set + .set{margin-top:20px}
+.set-head{display:flex;justify-content:space-between;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.set-head h3{font-family:var(--font-display);font-size:1.45rem;margin:4px 0 4px;font-weight:600}
+.set-sub{margin:0;color:var(--ink-2);font-size:.96rem}
+.set-meta{display:flex;gap:10px;align-items:center}
+.set-score{font-family:var(--font-mono);font-variant-numeric:tabular-nums;color:var(--ink-2);font-size:.92rem}
+.bar{height:4px;background:var(--surface-2);border-radius:4px;margin:16px 0 18px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--gold);transition:width .3s}
+.qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:760px){.qs{grid-template-columns:minmax(0,1fr)}}
+.q{border:1px solid var(--line);border-radius:14px;padding:14px;min-width:0;background:color-mix(in srgb, var(--surface-2) 55%, transparent)}
+.q.q-wide{grid-column:1/-1}
+.q.is-ok{border-color:color-mix(in srgb, var(--ok) 45%, var(--line))}
+.q.is-bad{border-color:color-mix(in srgb, var(--bad) 45%, var(--line))}
+.q-top{display:flex;gap:10px;align-items:baseline}
+.q-n{font-family:var(--font-mono);font-size:.76rem;color:var(--gold);flex:none}
+.q-body{min-width:0;flex:1}
+.q-ctx{font-size:.86rem;color:var(--muted);margin:0 0 3px}
+.q-p{margin:0 0 10px;font-size:1.05rem;font-weight:500}
+.blank{display:inline-block;min-width:3.4em;border-bottom:2px solid var(--muted);text-align:center;color:var(--muted);padding:0 3px;line-height:1.2}
+.blank.filled{color:var(--ok);border-color:var(--ok);font-weight:700}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.q-wide .opts{flex-direction:column;align-items:stretch}
+.opt{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:7px 14px;font-weight:600;color:var(--ink);text-align:left}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt:disabled{cursor:default}
+.opt:disabled:not(.ok):not(.bad){opacity:.5}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb, var(--ok) 15%, var(--surface))}
+.opt.bad{border-color:var(--bad);background:color-mix(in srgb, var(--bad) 14%, var(--surface));text-decoration:line-through}
+.q-why{margin:10px 0 0;font-size:.92rem;color:var(--ink-2)}
+.q-why .okt{color:var(--ok);font-weight:700}
+.q-why .badt{color:var(--bad);font-weight:700}
+.set-end{margin:16px 0 0;padding:14px 16px;border-radius:12px;background:color-mix(in srgb, var(--gold) 10%, transparent);border:1px solid color-mix(in srgb, var(--gold) 35%, var(--line))}
+
+/* tiles */
+.tl-top{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.tl-count{font-family:var(--font-mono);font-size:.84rem;color:var(--muted)}
+.dots{display:flex;gap:6px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.dot.on{background:var(--ok)}
+.dot.cur{outline:2px solid var(--gold);outline-offset:2px}
+.tl-es{font-size:1.18rem;margin:12px 0 14px;font-weight:500}
+.tl-ans{min-height:60px;border:1.5px dashed var(--line);border-radius:12px;padding:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.tl-ans.ok{border-color:var(--ok);border-style:solid}
+.tl-ans .ph{color:var(--muted);font-size:.92rem}
+.tl-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tile{background:var(--surface-2);border:1px solid var(--line);border-radius:9px;padding:6px 12px;font-weight:600;font-size:1rem;color:var(--ink)}
+.tile:hover{border-color:var(--gold)}
+.tile.placed{background:color-mix(in srgb, var(--gold) 14%, var(--surface));border-color:color-mix(in srgb, var(--gold) 50%, var(--line))}
+.tile.used{visibility:hidden}
+.tl-fb{margin:12px 0 0;font-size:.95rem;color:var(--ink-2)}
+.tl-fb .okt{color:var(--ok);font-weight:700}
+.tl-fb .badt{color:var(--bad);font-weight:700}
+
+/* ---------- station 7 ---------- */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:620px}
+.stat{background:var(--surface);padding:14px 16px}
+.stat b{display:block;font-family:var(--font-display);font-size:1.9rem;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.comp{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);gap:22px;margin-top:40px}
+@media (max-width:880px){.comp{grid-template-columns:minmax(0,1fr)}}
+.comp h3{font-family:var(--font-display);font-size:1.45rem;margin:4px 0 6px;font-weight:600}
+textarea{width:100%;min-height:250px;resize:vertical;background:var(--bg);padding:14px 16px;font-size:1.05rem;line-height:1.65}
+.comp-bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:10px}
+.wc{font-family:var(--font-mono);font-size:.84rem;color:var(--muted);margin-right:auto}
+.check-list,.alerts{list-style:none;padding:0;margin:0 0 18px;display:grid;gap:9px}
+.check-list li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:center;font-size:.94rem}
+.ck{width:20px;height:20px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:.7rem;font-weight:800;color:transparent}
+.check-list li.met .ck{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+.check-list small{display:block;color:var(--muted);font-size:.8rem}
+.cnt{font-family:var(--font-mono);color:var(--muted);font-variant-numeric:tabular-nums;font-size:.85rem}
+.alerts li{font-size:.9rem;border:1px solid color-mix(in srgb, var(--bad) 40%, var(--line));background:color-mix(in srgb, var(--bad) 8%, transparent);border-radius:10px;padding:8px 10px}
+.alerts li.clean{border-color:color-mix(in srgb, var(--ok) 40%, var(--line));background:color-mix(in srgb, var(--ok) 8%, transparent)}
+.comp-side h4{margin:0 0 10px;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.model{margin-top:16px;line-height:1.95;font-size:1.04rem}
+.h-there{background:color-mix(in srgb, var(--gold) 24%, transparent);border-radius:4px;padding:0 3px}
+.h-dx{background:color-mix(in srgb, var(--sky) 22%, transparent);border-radius:4px;padding:0 3px}
+.h-con{background:color-mix(in srgb, var(--violet) 24%, transparent);border-radius:4px;padding:0 3px}
+.h-adj{background:color-mix(in srgb, var(--teal) 22%, transparent);border-radius:4px;padding:0 3px}
+.h-place{background:color-mix(in srgb, var(--coral) 24%, transparent);border-radius:4px;padding:0 3px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;font-size:.82rem;margin-top:10px}
+
+footer{padding-block:40px;color:var(--muted);font-size:.9rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;align-items:center}
+footer .motto{font-size:1.1rem;color:var(--ink)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(18px + env(safe-area-inset-bottom, 0px));background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.9rem;font-weight:600;z-index:50;max-width:calc(100% - 32px);text-align:center}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+</style>
+
+<header class="topbar">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="crest">QK</span><span class="bt">ProfGermandario</span></a>
+    <nav class="route" aria-label="Class route">
+      <a href="#space"><span>1</span>Space</a>
+      <a href="#there"><span>2</span>THERE( )</a>
+      <a href="#time"><span>3</span>Time</a>
+      <a href="#connectors"><span>4</span>Connectors</a>
+      <a href="#adjectives"><span>5</span>Adjectives</a>
+      <a href="#clinic"><span>6</span>Clinic</a>
+      <a href="#challenge"><span>7</span>Challenge</a>
+    </nav>
+    <div class="tools">
+      <button type="button" class="mini" id="slowBtn" aria-pressed="false"><span class="full">Slow </span>voice</button>
+      <span class="xp" id="xp" title="Points for correct answers">0 XP</span>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <p class="eyebrow">ProfGermandario · Premium Masterclass · A2 → B1</p>
+    <h1>Connectors, Deictics &amp; <span class="fn">THERE( )</span></h1>
+    <p class="lede">Three tools to describe your world with clarity: point at things in space, declare what exists in a place, and connect your ideas with logic. Every example comes from real sentences in our Wednesday and Thursday classes.</p>
+    <p class="motto">Think in English. Not about English.</p>
+    <div class="beam" aria-hidden="true"><span>here · this</span><i></i><span>there · that</span></div>
+    <p class="meta">Class notes · Wednesday 14 &amp; Thursday 15 October 2026 · Tap any <span class="k">speaker</span> button to hear the sentence.</p>
+    <div class="outcomes">
+      <div class="outcome"><code>this · that · these · those</code><p>Point at anything near or far, one or many, without thinking about Spanish.</p></div>
+      <div class="outcome"><code>There is · There are</code><p>Say what exists in a place, with the right verb every time.</p></div>
+      <div class="outcome"><code>I learn · I am learning</code><p>Choose the time lens: a routine, or an action in progress.</p></div>
+      <div class="outcome"><code>because · so · but · even though</code><p>Link two ideas with logic, so you sound like an adult, not a list.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 1. SPACE =================== -->
+<section class="station" id="space">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">1</span><p class="eyebrow">Station 1 · Space</p><h2>Point from your body</h2></div>
+    <p class="st-lede">Deictic words point. Their meaning changes with your position: your body is the center of the map. Near you is <b>here</b>. Far from you is <b>there</b>.</p>
+
+    <div class="split">
+      <div>
+        <div class="idea">
+          <h3>The 2 × 2 map</h3>
+          <table class="matrix">
+            <thead><tr><th></th><th>Near · <em>here</em></th><th>Far · <em>there</em></th></tr></thead>
+            <tbody>
+              <tr><th>One</th>
+                <td><button type="button" class="mx" data-near="1" data-many="0" aria-pressed="true"><b>this</b><span class="es">este · esta · esto</span></button></td>
+                <td><button type="button" class="mx" data-near="0" data-many="0" aria-pressed="false"><b>that</b><span class="es">ese · eso · aquel</span></button></td></tr>
+              <tr><th>Many</th>
+                <td><button type="button" class="mx" data-near="1" data-many="1" aria-pressed="false"><b>these</b><span class="es">estos · estas</span></button></td>
+                <td><button type="button" class="mx" data-near="0" data-many="1" aria-pressed="false"><b>those</b><span class="es">esos · aquellos</span></button></td></tr>
+            </tbody>
+          </table>
+          <p class="hint">Tap a cell to see it on the pointing map.</p>
+        </div>
+
+        <div class="idea">
+          <h3>Spanish has three distances. English has two.</h3>
+          <div class="map3">
+            <span class="lab">ES</span><span class="c">este</span><span class="c">ese</span><span class="c">aquel</span>
+            <span class="lab">EN</span><span class="c en">this</span><span class="c en span2">that</span>
+          </div>
+          <p><i>Ese</i> and <i>aquel</i> both become <b>that</b>. Our rule from class: if it is <b>within reach of your fingers</b>, it is <b>this</b>. If you need to point with your arm, it is <b>that</b>.</p>
+        </div>
+
+        <div class="idea">
+          <h3>Hear the difference: this · these</h3>
+          <div class="ex">${SAY:This book.}<span><b>this</b> <span class="ipa">/ðɪs/</span> short <i>i</i>, soft <i>s</i></span></div>
+          <div class="ex">${SAY:These books.}<span><b>these</b> <span class="ipa">/ðiːz/</span> long <i>ee</i>, buzzing <i>z</i> like a bee</span></div>
+          <p class="es plain">Tip: if you say “these” short, the listener hears “this”. Stretch the vowel.</p>
+        </div>
+
+        <div class="idea">
+          <h3><span class="k">that</span> has a second job: <i>que</i></h3>
+          <p>In our notes: <i>that = eso, (que)</i>. That is correct. <b>that</b> also connects a noun with more information.</p>
+          <div class="ex">${SAY:The house that I love is in Armenia.}<span>The house <b>that</b> I love is in Armenia. <span class="es">La casa que amo…</span></span></div>
+          <div class="ex">${SAY:My mother thinks that this house is beautiful.}<span>My mother thinks <b>that</b> this house is beautiful.</span></div>
+        </div>
+
+        <div class="idea">
+          <h3>Place words and time words</h3>
+          <p><b>here</b> <span class="es">aquí · acá</span> &nbsp; <b>there</b> <span class="es">allí · allá · ahí</span></p>
+          <div class="ex">${SAY:Come here! Sit with me.}<span>Come <b>here</b>! Sit with me.</span></div>
+          <div class="ex">${SAY:Armenia is beautiful. I want to live there.}<span>Armenia is beautiful. I want to live <b>there</b>.</span></div>
+          <p>Deixis also works in time. Now is near: <b>this</b> week, <b>this</b> morning. A story in the past is far: <b>that</b> day, <b>that</b> night.</p>
+        </div>
+      </div>
+
+      <div class="sticky">
+        <div class="panel">
+          <h3>The pointing map</h3>
+          <p class="sub">Move the object near or far, one or many. Watch the word change.</p>
+          <svg class="dx-svg" viewBox="0 0 640 220" role="img" aria-label="A person points along a beam to objects near or far">
+            <path class="beamp" d="M118 104 L600 112 L600 120 L118 134 Z"/>
+            <circle id="zNear" class="zone on" cx="185" cy="119" r="54"/>
+            <circle id="zFar" class="zone" cx="540" cy="116" r="32"/>
+            <text id="lNear" class="zl on" x="185" y="56" text-anchor="middle">WITHIN REACH</text>
+            <text id="lFar" class="zl" x="540" y="74" text-anchor="middle">FAR</text>
+            <circle class="person" cx="70" cy="60" r="16"/>
+            <path class="person" d="M48 172 L53 102 Q70 82 87 102 L92 172 Z"/>
+            <path class="arm" d="M84 108 L116 119"/>
+            <text id="lHere" class="zl on" x="70" y="200" text-anchor="middle">HERE</text>
+            <text id="lThere" class="zl" x="540" y="200" text-anchor="middle">THERE</text>
+            <g id="dxGems"></g>
+          </svg>
+          <div class="dx-controls">
+            <div class="seg" role="group" aria-label="Distance">
+              <button type="button" data-dx="near" data-v="1" aria-pressed="true">Near · here</button>
+              <button type="button" data-dx="near" data-v="0" aria-pressed="false">Far · there</button>
+            </div>
+            <div class="seg" role="group" aria-label="Number">
+              <button type="button" data-dx="many" data-v="0" aria-pressed="true">One</button>
+              <button type="button" data-dx="many" data-v="1" aria-pressed="false">Many</button>
+            </div>
+          </div>
+          <div class="dx-out" aria-live="polite">
+            <div class="dx-word"><span id="dxWord">this</span><span class="ipa" id="dxIpa">/ðɪs/</span></div>
+            <p class="es" id="dxEs">este · esta · esto</p>
+            <div class="ex"><button type="button" class="say" data-say-from="dxEx1" aria-label="Listen"></button><span id="dxEx1">This diamond is beautiful.</span></div>
+            <div class="ex"><button type="button" class="say" data-say-from="dxEx2" aria-label="Listen"></button><span id="dxEx2">This diamond is here, in my hand.</span></div>
+            <p class="es" id="dxExEs">Este diamante es hermoso.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="set" id="set-dx">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 1A</span><h3>Point and choose</h3><p class="set-sub">Read the situation. Choose this, that, these or those.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+
+    <div class="set" id="set-here">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 1B</span><h3>Here or there?</h3><p class="set-sub">Where is the speaker? Where is the thing?</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 2. THERE() =================== -->
+<section class="station" id="there">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">2</span><p class="eyebrow">Station 2 · Existence</p><h2>Declare what exists: <span class="fn">THERE( )</span></h2></div>
+    <p class="st-lede">Spanish uses one small word: <i>hay</i>. English builds a small machine: <b>There + is / are</b>. Think of it as a function. You put a noun inside, and the noun decides the verb.</p>
+
+    <div class="split">
+      <div>
+        <div class="idea">
+          <h3>One word in Spanish, one machine in English</h3>
+<pre class="code" aria-label="The THERE function"><span class="kw">THERE</span>( <span class="arg">noun</span> ) {
+  <span class="cm">// one thing, or something you cannot count</span>
+  <span class="ret">There is</span>  a big dog · some water
+  <span class="cm">// two or more things</span>
+  <span class="ret">There are</span> three white cats
+}</pre>
+          <p class="es plain">Haber = hay. <b>There is</b> for singular, <b>There are</b> for plural. Uncountable nouns (water, music, information) always take <b>is</b>.</p>
+        </div>
+
+        <div class="idea">
+          <h3>Three forms</h3>
+          <div class="tbl-wrap">
+            <table class="forms">
+              <thead><tr><th></th><th>One / uncountable</th><th>Two or more</th></tr></thead>
+              <tbody>
+                <tr><th>+</th><td>There is a bathroom.<small>There’s a bathroom.</small></td><td>There are four bedrooms.</td></tr>
+                <tr><th>−</th><td>There isn’t a garage.<small>There is no garage.</small></td><td>There aren’t any cats.<small>There are no cats.</small></td></tr>
+                <tr><th>?</th><td>Is there a bathroom?<small>Yes, there is. / No, there isn’t.</small></td><td>Are there any cats?<small>Yes, there are. / No, there aren’t.</small></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="idea">
+          <h3>Four traps for Spanish speakers</h3>
+          <ul class="traps">
+            <li><span class="x">Have three cats in my house.</span><span class="v">There are three cats in my house.</span><small><i>hay</i> is not <i>have</i>. have = tener (I have three cats). There are = existir.</small></li>
+            <li><span class="x">There is three cats.</span><span class="v">There are three cats.</span><small>The noun decides. Three cats = plural → are.</small></li>
+            <li><span class="x">Is a dog in the park.</span><span class="v">There is a dog in the park.</span><small>Spanish can drop the subject. English never does. <b>There</b> is the subject.</small></li>
+            <li><span class="x">There house is big.</span><span class="v">Their house is big.</span><small>Same sound /ðer/: <b>there</b> (place, hay) · <b>their</b> (su, de ellos) · <b>they’re</b> (they are).</small></li>
+          </ul>
+        </div>
+
+        <div class="idea">
+          <h3>Two theres in one sentence</h3>
+          <div class="ex">${SAY:There is a café there.}<span><b>There is</b> a café <b>there</b>. <span class="es">Hay un café allá.</span></span></div>
+          <p>The first <b>there</b> declares existence. The second <b>there</b> is a place. This is where Station 1 and Station 2 meet.</p>
+        </div>
+      </div>
+
+      <div class="sticky">
+        <div class="panel">
+          <h3>The THERE( ) builder</h3>
+          <p class="sub">Change the number, the noun and the form. The machine writes the sentence.</p>
+          <div class="b-grid">
+            <div class="field"><span class="lbl" id="thNLbl">How many?</span>
+              <div class="stepper" role="group" aria-labelledby="thNLbl"><button type="button" id="thMinus" aria-label="Fewer">−</button><output id="thN">3</output><button type="button" id="thPlus" aria-label="More">+</button></div>
+            </div>
+            <div class="field"><label for="thNoun">Noun</label>
+              <select id="thNoun"></select>
+            </div>
+            <div class="field"><label for="thAdj">Adjective</label>
+              <select id="thAdj"><option value="">(none)</option><option>big</option><option>white</option><option>beautiful</option><option>interesting</option><option>old</option></select>
+            </div>
+            <div class="field"><label for="thPlace">Place</label>
+              <select id="thPlace"><option>in my house</option><option>in your house</option><option>in this house</option><option>in the kitchen</option><option>in the park</option><option>in Armenia</option><option>here</option><option>there</option></select>
+            </div>
+          </div>
+          <div class="b-mode seg" role="group" aria-label="Sentence form">
+            <button type="button" data-mode="+" aria-pressed="true">+ Statement</button>
+            <button type="button" data-mode="-" aria-pressed="false">− Negative</button>
+            <button type="button" data-mode="?" aria-pressed="false">? Question</button>
+          </div>
+          <div class="b-code" id="thCode" aria-hidden="true"></div>
+          <div class="b-out" aria-live="polite"><button type="button" class="say" data-say-from="thOut" aria-label="Listen"></button><div class="s" id="thOut"></div></div>
+          <ul class="b-rules" id="thRules"></ul>
+          <div class="presets"><span class="lbl">From class</span>
+            <button type="button" class="preset" data-p='{"n":3,"noun":"cat","adj":"white","place":"in my house","mode":"+"}'>3 white cats</button>
+            <button type="button" class="preset" data-p='{"n":1,"noun":"dog","adj":"big","place":"in your house","mode":"+"}'>1 big dog</button>
+            <button type="button" class="preset" data-p='{"n":4,"noun":"bedroom","adj":"","place":"in this house","mode":"+"}'>4 bedrooms</button>
+            <button type="button" class="preset" data-p='{"n":1,"noun":"bathroom","adj":"","place":"in this house","mode":"?"}'>a bathroom?</button>
+            <button type="button" class="preset" data-p='{"n":1,"noun":"water","adj":"","place":"in the kitchen","mode":"-"}'>no water</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="set" id="set-isare">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 2A</span><h3>is or are?</h3><p class="set-sub">Look at the noun after the blank. One or uncountable → is. Plural → are.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+
+    <div class="set" id="set-traps">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 2B</span><h3>Trap detector</h3><p class="set-sub">Read the Spanish. Choose the only correct English sentence.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+
+    <div class="set tl" id="tiles-there">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 2C</span><h3>Build it in English</h3><p class="set-sub">Tap the words in order. Some words are traps: you will not need them.</p></div>
+      </div>
+      <div class="tl-top"><span class="tl-count"></span><div class="dots"></div></div>
+      <p class="tl-es"><span class="es"></span></p>
+      <div class="tl-ans" aria-live="polite"></div>
+      <div class="tl-bank"></div>
+      <div class="actions">
+        <button type="button" class="btn tl-check">Check</button>
+        <button type="button" class="ghost tl-clear">Clear</button>
+        <button type="button" class="ghost tl-show">Show answer</button>
+        <button type="button" class="ghost tl-prev">Back</button>
+        <button type="button" class="ghost tl-next">Next</button>
+      </div>
+      <p class="tl-fb" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 3. TIME =================== -->
+<section class="station" id="time">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">3</span><p class="eyebrow">Station 3 · Time lens</p><h2>Choose your time lens</h2></div>
+    <p class="st-lede"><i>We learn English</i> and <i>We are learning English</i>. Both are correct. They show two different pictures of time, and you choose the picture.</p>
+
+    <div class="lens-grid">
+      <div class="panel lens">
+        <span class="eyebrow">Simple lens</span>
+        <h3>I learn English.</h3>
+        <p class="formula">I · you · we · they <b>learn</b> &nbsp;|&nbsp; he · she · it <b>learns</b></p>
+        <svg class="tline" viewBox="0 0 300 66" role="img" aria-label="Repeated actions across the timeline">
+          <line class="tl-axis" x1="8" y1="38" x2="284" y2="38"/><path class="tl-arrow" d="M284 33 L294 38 L284 43 Z"/>
+          <line class="tl-now" x1="150" y1="22" x2="150" y2="52"/><text class="tl-lbl" x="150" y="15" text-anchor="middle">NOW</text>
+          <circle class="tl-dot" cx="32" cy="38" r="5"/><circle class="tl-dot" cx="72" cy="38" r="5"/><circle class="tl-dot" cx="112" cy="38" r="5"/><circle class="tl-dot" cx="188" cy="38" r="5"/><circle class="tl-dot" cx="228" cy="38" r="5"/><circle class="tl-dot" cx="268" cy="38" r="5"/>
+          <text class="tl-sm" x="8" y="62">past</text><text class="tl-sm" x="292" y="62" text-anchor="end">future</text>
+        </svg>
+        <p>Routines, habits and facts. It happens again and again: <b>every</b> Wednesday, <b>always</b>, <b>often</b>, <b>sometimes</b>.</p>
+        <div class="ex">${SAY:I cook dinner with my family because I like it.}<span>I cook dinner with my family because I like it.</span></div>
+        <p class="es">aprendo · cocino</p>
+      </div>
+      <div class="panel lens">
+        <span class="eyebrow">Progressive lens</span>
+        <h3>I am learning English.</h3>
+        <p class="formula">am · is · are &nbsp;+&nbsp; verb<b>-ing</b> &nbsp;(two components)</p>
+        <svg class="tline" viewBox="0 0 300 66" role="img" aria-label="An action in progress around now">
+          <line class="tl-axis" x1="8" y1="38" x2="284" y2="38"/><path class="tl-arrow" d="M284 33 L294 38 L284 43 Z"/>
+          <rect class="tl-band" x="100" y="29" width="100" height="18" rx="9"/>
+          <line class="tl-now" x1="150" y1="22" x2="150" y2="52"/><text class="tl-lbl" x="150" y="15" text-anchor="middle">NOW</text>
+          <text class="tl-sm" x="8" y="62">past</text><text class="tl-sm" x="292" y="62" text-anchor="end">future</text>
+        </svg>
+        <p>An action in progress: <b>now</b>, <b>right now</b>, <b>this week</b>, <b>this month</b>. It started and it is not finished.</p>
+        <div class="ex">${SAY:We are learning connectors this week.}<span>We <b>are</b> learn<b>ing</b> connectors this week.</span></div>
+        <p class="es">estoy aprendiendo · estamos aprendiendo</p>
+      </div>
+    </div>
+
+    <div class="split">
+      <div>
+        <div class="idea">
+          <h3>State verbs stay simple</h3>
+          <p>Some verbs describe a state, not an action. We usually do not use them with <i>-ing</i>.</p>
+          <div class="chips"><span class="chip">like</span><span class="chip">love</span><span class="chip">hate</span><span class="chip">want</span><span class="chip">need</span><span class="chip">know</span><span class="chip">believe</span><span class="chip">have = tener</span><span class="chip">think = creer</span></div>
+          <p><span class="x">They are liking this house.</span><br><span class="v">They like this house.</span></p>
+          <p class="es plain">From our notes. In Spanish “les está gustando” is fine. In English, <b>like</b> is a state, so it stays simple.</p>
+        </div>
+        <div class="idea">
+          <h3>have or has?</h3>
+          <div class="hh">
+            <div><b>have</b><small>I · you · we · they</small></div>
+            <div><b>has</b><small>he · she · it · my mother · this house · Armenia</small></div>
+          </div>
+          <div class="ex">${SAY:They like this house because it has three bathrooms.}<span>They like this house because <b>it has</b> three bathrooms.</span></div>
+          <p>The same <b>-s</b> appears in the simple lens: my mother <b>thinks</b>, she <b>learns</b>, it <b>makes</b> me happy.</p>
+        </div>
+      </div>
+      <div class="sticky">
+        <div class="panel">
+          <h3>Same verb, two lenses</h3>
+          <p class="sub">Choose a verb from our class. Compare the two pictures of time.</p>
+          <div class="verbs" id="verbs" role="group" aria-label="Verb"></div>
+          <div class="lo" id="lensOut" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="set" id="set-time">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 3A</span><h3>Routine or in progress?</h3><p class="set-sub">Look for the time signal: every day, now, this week. Watch the state verbs.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+
+    <div class="set" id="set-has">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 3B</span><h3>have or has?</h3><p class="set-sub">Who is the subject? Replace it with I, you, we, they, he, she or it.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 4. CONNECTORS =================== -->
+<section class="station" id="connectors">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">4</span><p class="eyebrow">Station 4 · Logic</p><h2>Connect ideas with logic</h2></div>
+    <p class="st-lede">Short sentences in a row sound like a list. Connectors show the relation between two ideas: addition, contrast, cause, result, time. These are the fourteen super connectors from our chart, organized by the job they do.</p>
+
+    <div class="split">
+      <div class="panel" id="atlas">
+        <h3>The connector atlas</h3>
+        <p class="sub">Tap a connector to see its job, its Spanish and an example.</p>
+        <div id="fams"></div>
+      </div>
+      <div class="sticky">
+        <div class="panel" id="conDetail" aria-live="polite"></div>
+      </div>
+    </div>
+
+    <div class="split" style="margin-top:36px">
+      <div class="panel" id="flip">
+        <h3>because ↔ so</h3>
+        <p class="sub">One idea, two directions. <b>because</b> introduces the cause. <b>so</b> introduces the result.</p>
+        <div class="flip-row" id="flipRow"></div>
+        <div class="flip-s"><button type="button" class="say" data-say-from="flipS" aria-label="Listen"></button><span id="flipS"></span></div>
+        <div class="actions">
+          <button type="button" class="btn" id="flipBtn">Flip direction</button>
+          <button type="button" class="ghost" id="flipNext">Next idea</button>
+          <span class="tl-count" id="flipCount"></span>
+        </div>
+      </div>
+      <div>
+        <div class="idea">
+          <h3>Small fixes to our printed chart</h3>
+          <ul class="traps">
+            <li><span><b>because</b> = <span class="v">porque</span> (one word)</span><small><i>por qué</i> with a space is a question: why.</small></li>
+            <li><span><b>often</b> = <span class="v">a menudo · con frecuencia</span></span><small><i>seguido</i> is informal Spanish. It works in conversation.</small></li>
+            <li><span><b>then</b> = <span class="v">luego · después</span> &nbsp; <b>so</b> = <span class="v">así que · entonces</span></span><small><i>then</i> orders time. <i>so</i> gives a result.</small></li>
+            <li><span><b>about</b> = <span class="v">sobre · acerca de</span></span><small>I think about my future = pienso en mi futuro. Never “think in”.</small></li>
+            <li><span><b>for</b> = <span class="v">para · por · durante</span></span><small>for my family (para) · for two hours (durante).</small></li>
+          </ul>
+        </div>
+        <div class="idea">
+          <h3>Where does <span class="k">also</span> go?</h3>
+          <p>Before the main verb, or after <b>am / is / are</b>.</p>
+          <p><span class="x">and also I think about my future</span><br><span class="v">and I also think about my future</span></p>
+          <p class="es plain">Spanish says “y también pienso”. English moves <b>also</b> next to the verb.</p>
+        </div>
+        <div class="idea">
+          <h3>Spanish <i>y</i> can hide a <span class="k">but</span></h3>
+          <p>En esta casa hay 4 cuartos <b>y</b> 1 solo baño. The two ideas are in contrast, so English needs <b>but</b>:</p>
+          <div class="ex">${SAY:There are four bedrooms in this house, but there is only one bathroom.}<span>There are four bedrooms in this house, <b>but</b> there is only one bathroom.</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="set" id="set-con">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 4A</span><h3>Choose the connector</h3><p class="set-sub">Ask: is it addition, contrast, cause, result, time or an example?</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+
+    <div class="set tl" id="tiles-con">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 4B</span><h3>Connect two ideas</h3><p class="set-sub">Our class sentences. Tap the words in order. Watch the traps.</p></div>
+      </div>
+      <div class="tl-top"><span class="tl-count"></span><div class="dots"></div></div>
+      <p class="tl-es"><span class="es"></span></p>
+      <div class="tl-ans" aria-live="polite"></div>
+      <div class="tl-bank"></div>
+      <div class="actions">
+        <button type="button" class="btn tl-check">Check</button>
+        <button type="button" class="ghost tl-clear">Clear</button>
+        <button type="button" class="ghost tl-show">Show answer</button>
+        <button type="button" class="ghost tl-prev">Back</button>
+        <button type="button" class="ghost tl-next">Next</button>
+      </div>
+      <p class="tl-fb" aria-live="polite"></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 5. ADJECTIVES =================== -->
+<section class="station" id="adjectives">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">5</span><p class="eyebrow">Station 5 · Precision</p><h2>Paint the noun</h2></div>
+    <p class="st-lede">Adjectives give color and precision to your descriptions. In English they are simpler than in Spanish: one position, one form.</p>
+
+    <div class="split">
+      <div>
+        <div class="idea">
+          <h3>Before the noun</h3>
+          <p><span class="x">a house big</span> → <span class="v">a big house</span> <span class="es">una casa grande</span></p>
+          <p>After <b>be</b>, the adjective goes alone: The house <b>is big</b>.</p>
+        </div>
+        <div class="idea">
+          <h3>Never plural</h3>
+          <div class="ex">${SAY:There are three white cats in my house.}<span>There are three <b>white</b> cats. <span class="x">whites cats</span></span></div>
+          <p class="es plain">Spanish: gatos blanco<b>s</b>. English: only the noun takes <b>-s</b>.</p>
+        </div>
+        <div class="idea">
+          <h3>a or an?</h3>
+          <p>The next sound decides: <b>a</b> big dog · <b>an</b> interesting book · <b>an</b> old house.</p>
+        </div>
+        <div class="idea">
+          <h3>Premium order: opinion before facts</h3>
+          <div class="ex">${SAY:It is a beautiful big white house.}<span>a <b>beautiful</b> (opinion) <b>big</b> (size) <b>white</b> (color) house</span></div>
+        </div>
+        <div class="note">
+          <span class="tag">Fixes to our printed chart</span>
+          <ul>
+            <li><b>fun</b> = divertido (a party, a game). <b>funny</b> = gracioso, chistoso (it makes you laugh).</li>
+            <li><b>acid</b> is for chemistry. For taste we say <b>sour</b>: Lemons are sour.</li>
+            <li><b>educative</b> is rare. Natural English: <b>educational</b>.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sticky">
+        <div class="panel">
+          <h3>The adjective palette</h3>
+          <p class="sub">Our chart, organized by use. Tap a word to hear it.</p>
+          <div id="adjPalette"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="set" id="set-adj">
+      <div class="set-head">
+        <div><span class="eyebrow">Practice 5A</span><h3>Paint it right</h3><p class="set-sub">Read the Spanish. Choose the natural English sentence.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+  </div>
+</section>
+
+<!-- =================== 6. CLINIC =================== -->
+<section class="station" id="clinic">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">6</span><p class="eyebrow">Station 6 · Class clinic</p><h2>Our class sentences, upgraded</h2></div>
+    <p class="st-lede">Real sentences from Wednesday and Thursday. Read the original. Find the problem in your head first. Then reveal the upgrade.</p>
+    <div class="clinic" id="clinicGrid"></div>
+  </div>
+</section>
+
+<!-- =================== 7. CHALLENGE =================== -->
+<section class="station" id="challenge">
+  <div class="wrap">
+    <div class="st-head"><span class="st-num">7</span><p class="eyebrow">Station 7 · Performance</p><h2>Show it: the mastery challenge</h2></div>
+    <p class="st-lede">Twelve mixed questions from every station. Then write your own description with a live coach that checks your structures as you type.</p>
+
+    <div class="stats" aria-live="polite">
+      <div class="stat"><b id="stXP">0</b><span>XP</span></div>
+      <div class="stat"><b id="stAns">0</b><span>Answered</span></div>
+      <div class="stat"><b id="stAcc">–</b><span>Accuracy</span></div>
+    </div>
+
+    <div class="set" id="set-final">
+      <div class="set-head">
+        <div><span class="eyebrow">Mastery</span><h3>Twelve mixed questions</h3><p class="set-sub">Space, existence, time, logic and precision, all together.</p></div>
+        <div class="set-meta"><span class="set-score">0 / 0</span><button type="button" class="ghost new-set">New set</button></div>
+      </div>
+      <div class="bar"><i></i></div>
+      <ol class="qs"></ol>
+      <p class="set-end" hidden></p>
+    </div>
+
+    <div class="comp">
+      <div class="panel">
+        <span class="eyebrow">Composition lab</span>
+        <h3>Describe your home</h3>
+        <p class="sub" style="color:var(--ink-2)">Write 6 to 8 sentences about your home, your street or your city. Use the structures from today. The checklist updates as you write.</p>
+        <label for="compText" class="es plain" style="display:block;margin-bottom:8px">Your text stays in this browser.</label>
+        <textarea id="compText" spellcheck="false" placeholder="I live in a … house in … There are … bedrooms in this house, but …"></textarea>
+        <div class="comp-bar">
+          <span class="wc" id="compWc">0 words</span>
+          <button type="button" class="ghost" id="compModelBtn">See a model</button>
+          <button type="button" class="btn" id="compCopy">Copy my text</button>
+        </div>
+        <div id="compModel" hidden>
+          <div class="model">
+            I live in a <span class="h-adj">small</span> house in Armenia. <span class="h-there">There are</span> three bedrooms in <span class="h-dx">this</span> house, <span class="h-con">but</span> <span class="h-there">there is</span> only one bathroom. <span class="h-there">There is</span> a <span class="h-adj">beautiful</span> garden, <span class="h-con">and</span> <span class="h-there">there are</span> two <span class="h-adj">white</span> cats <span class="h-place">there</span>. I love <span class="h-dx">this</span> house <span class="h-con">because</span> it is <span class="h-adj">quiet</span> and <span class="h-adj">comfortable</span>. <span class="h-con">Sometimes</span> I cook dinner <span class="h-con">with</span> my family, <span class="h-con">then</span> we talk <span class="h-con">about</span> our day. <span class="h-dx">That</span> park across the street is <span class="h-adj">wonderful</span>, <span class="h-con">so</span> I <span class="h-con">often</span> walk <span class="h-place">there</span> in the morning. <span class="h-con">Even though</span> my house is <span class="h-adj">small</span>, it is <span class="h-adj">perfect</span> <span class="h-con">for</span> us.
+          </div>
+          <div class="legend"><span class="h-there">There is / are</span><span class="h-dx">this · that</span><span class="h-place">place</span><span class="h-con">connector</span><span class="h-adj">adjective</span></div>
+          <div class="actions"><button type="button" class="say" data-say-from="compModelText" aria-label="Listen to the model"></button><span class="tl-count">Listen to the model</span></div>
+          <span id="compModelText" hidden>I live in a small house in Armenia. There are three bedrooms in this house, but there is only one bathroom. There is a beautiful garden, and there are two white cats there. I love this house because it is quiet and comfortable. Sometimes I cook dinner with my family, then we talk about our day. That park across the street is wonderful, so I often walk there in the morning. Even though my house is small, it is perfect for us.</span>
+        </div>
+      </div>
+      <aside class="panel comp-side">
+        <h4>Live checklist</h4>
+        <ul class="check-list" id="compChecks"></ul>
+        <h4>Coach alerts</h4>
+        <ul class="alerts" id="compAlerts"></ul>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="motto">Think in English. Not about English.</p>
+    <span>ProfGermandario · <a href="https://www.profgermandario.com" target="_blank" rel="noopener">profgermandario.com</a></span>
+    <button type="button" class="ghost" id="resetBtn">Reset my progress</button>
+  </div>
+</footer>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,r){return (r||document).querySelector(s)}, $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
+var KEY="pg-connectors-deictics-there-v1";
+function load(){try{var v=localStorage.getItem(KEY);return v?JSON.parse(v):{}}catch(e){return {}}}
+var S=Object.assign({xp:0,ans:0,ok:0,slow:false,comp:""},load());
+function save(){try{localStorage.setItem(KEY,JSON.stringify(S))}catch(e){}}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function cap(s){return s.charAt(0).toUpperCase()+s.slice(1)}
+
+/* ---------- audio ---------- */
+var ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a4.5 4.5 0 0 1 0 7M18.5 6a8 8 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+var voice=null, hasTTS=("speechSynthesis" in window);
+function pickVoice(){try{var vs=speechSynthesis.getVoices();voice=vs.find(function(v){return /en[-_]US/i.test(v.lang)&&/Google|Samantha|Natural|Aria|Jenny|Ava/i.test(v.name)})||vs.find(function(v){return /en[-_]US/i.test(v.lang)})||vs.find(function(v){return /^en/i.test(v.lang)})||null}catch(e){}}
+if(hasTTS){pickVoice();try{speechSynthesis.onvoiceschanged=pickVoice}catch(e){}}
+function speak(t){
+  if(!hasTTS){toast("Audio is not available in this browser.");return}
+  try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(String(t).replace(/_{2,}/g,"blank"));u.lang="en-US";u.rate=S.slow?0.7:0.95;if(voice)u.voice=voice;speechSynthesis.speak(u)}catch(e){toast("Audio could not start.")}
+}
+function sayBtn(text){return '<button type="button" class="say" data-say="'+esc(text)+'" aria-label="Listen: '+esc(text)+'">'+ICON+'</button>'}
+document.addEventListener("click",function(e){
+  var b=e.target.closest(".say");if(!b)return;
+  var t=b.getAttribute("data-say");
+  if(!t&&b.dataset.sayFrom){var el=document.getElementById(b.dataset.sayFrom);t=el?el.textContent:""}
+  if(t)speak(t.trim());
+});
+/* inline ${SAY:...} tokens in static markup */
+$$(".ex").forEach(function(ex){
+  ex.innerHTML=ex.innerHTML.replace(/\$\{SAY:([^}]+)\}/g,function(_,t){return sayBtn(t)});
+});
+function fillIcons(){$$(".say").forEach(function(b){if(!b.innerHTML.trim())b.innerHTML=ICON})}
+fillIcons();
+
+var toastT;
+function toast(m){var t=$("#toast");t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(function(){t.hidden=true},2400)}
+
+/* ---------- XP ---------- */
+function renderXP(){
+  $("#xp").textContent=S.xp+" XP";
+  $("#stXP").textContent=S.xp;$("#stAns").textContent=S.ans;
+  $("#stAcc").textContent=S.ans?Math.round(S.ok/S.ans*100)+"%":"–";
+}
+function addXP(ok){S.ans++;if(ok){S.ok++;S.xp+=10}save();renderXP()}
+var slowBtn=$("#slowBtn");
+function renderSlow(){slowBtn.setAttribute("aria-pressed",S.slow?"true":"false")}
+slowBtn.addEventListener("click",function(){S.slow=!S.slow;save();renderSlow();toast(S.slow?"Slow voice on":"Natural voice on")});
+renderSlow();renderXP();
+
+/* ---------- MCQ engine ---------- */
+function mcq(id,bank,count){
+  var root=document.getElementById(id);if(!root)return;
+  var list=$(".qs",root),scoreEl=$(".set-score",root),endEl=$(".set-end",root),bar=$(".bar i",root);
+  var items=[],done=0,right=0;
+  function upd(){scoreEl.textContent=right+" / "+items.length+" correct";bar.style.width=(items.length?done/items.length*100:0)+"%"}
+  function render(){
+    done=0;right=0;endEl.hidden=true;
+    items=shuffle(bank).slice(0,Math.min(count||bank.length,bank.length));
+    list.innerHTML=items.map(function(it,i){
+      var starts=/(^|[.!?]\s)___/.test(it.p);
+      var opts=it.o.map(function(x){return starts?cap(x):x});
+      var ans=starts?cap(it.a):it.a;
+      if(it.sh)opts=shuffle(opts);
+      var wide=opts.some(function(x){return x.length>22});
+      var pHtml=esc(it.p).replace("___",'<span class="blank">___</span>');
+      return '<li class="q'+(wide?" q-wide":"")+'" data-i="'+i+'" data-a="'+esc(ans)+'"><div class="q-top"><span class="q-n">'+String(i+1).padStart(2,"0")+'</span><div class="q-body">'+
+        (it.c?'<p class="q-ctx">'+esc(it.c)+'</p>':'')+
+        '<p class="q-p">'+(it.es?'<span class="es">'+pHtml+'</span>':pHtml)+'</p>'+
+        '<div class="opts">'+opts.map(function(x){return '<button type="button" class="opt" data-v="'+esc(x)+'">'+esc(x)+'</button>'}).join("")+'</div>'+
+        '<p class="q-why" hidden></p></div></div></li>';
+    }).join("");
+    upd();
+  }
+  list.addEventListener("click",function(e){
+    var b=e.target.closest(".opt");if(!b)return;
+    var li=b.closest(".q");if(li.classList.contains("done"))return;
+    var it=items[+li.dataset.i],ans=li.getAttribute("data-a"),ok=b.getAttribute("data-v")===ans;
+    li.classList.add("done",ok?"is-ok":"is-bad");
+    $$(".opt",li).forEach(function(x){x.disabled=true;if(x.getAttribute("data-v")===ans)x.classList.add("ok")});
+    if(!ok)b.classList.add("bad");
+    var bl=$(".blank",li);if(bl){bl.textContent=ans;bl.classList.add("filled")}
+    var w=$(".q-why",li);w.hidden=false;
+    w.innerHTML=(ok?'<span class="okt">Correct.</span> ':'<span class="badt">Answer: '+esc(ans)+'.</span> ')+esc(it.w||"");
+    done++;if(ok)right++;addXP(ok);upd();
+    if(done===items.length){
+      var pct=right/items.length;
+      endEl.hidden=false;
+      endEl.innerHTML="<b>"+right+" of "+items.length+".</b> "+(pct>=.9?"Mastery. This structure is automatic for you now.":pct>=.7?"Strong. Read the explanations of your mistakes, then try a new set.":"Good start. Read the station again, then try a new set. The questions change every time.");
+    }
+  });
+  $(".new-set",root).addEventListener("click",render);
+  render();
+}
+
+/* ---------- tile engine ---------- */
+function tiles(id,items){
+  var root=document.getElementById(id);if(!root)return;
+  var idx=0,placed=[],pool=[],tried=false,solved={};
+  var ansEl=$(".tl-ans",root),bankEl=$(".tl-bank",root),fb=$(".tl-fb",root),esEl=$(".tl-es .es",root),cnt=$(".tl-count",root),dots=$(".dots",root);
+  function loadItem(i){
+    idx=(i+items.length)%items.length;var it=items[idx];
+    var toks=it.en[0].split(" ").concat(it.x||[]);
+    pool=shuffle(toks.map(function(t,k){return {t:t,k:k}}));placed=[];tried=false;fb.innerHTML="";ansEl.classList.remove("ok");draw();
+  }
+  function draw(){
+    var it=items[idx];
+    esEl.textContent=it.es;
+    cnt.textContent="Sentence "+(idx+1)+" of "+items.length;
+    dots.innerHTML=items.map(function(_,j){return '<span class="dot'+(solved[j]?" on":"")+(j===idx?" cur":"")+'"></span>'}).join("");
+    ansEl.innerHTML=placed.length?placed.map(function(p,j){return '<button type="button" class="tile placed" data-j="'+j+'">'+esc(p.t)+'</button>'}).join(""):'<span class="ph">Tap the words below in order…</span>';
+    var used={};placed.forEach(function(p){used[p.k]=1});
+    bankEl.innerHTML=pool.map(function(p){return '<button type="button" class="tile'+(used[p.k]?" used":"")+'" data-k="'+p.k+'"'+(used[p.k]?' disabled aria-hidden="true"':'')+'>'+esc(p.t)+'</button>'}).join("");
+  }
+  bankEl.addEventListener("click",function(e){var b=e.target.closest(".tile");if(!b||b.disabled)return;var k=+b.dataset.k;var p=pool.find(function(x){return x.k===k});placed.push(p);fb.innerHTML="";draw()});
+  ansEl.addEventListener("click",function(e){var b=e.target.closest(".tile");if(!b)return;placed.splice(+b.dataset.j,1);fb.innerHTML="";ansEl.classList.remove("ok");draw()});
+  $(".tl-clear",root).addEventListener("click",function(){placed=[];fb.innerHTML="";ansEl.classList.remove("ok");draw()});
+  $(".tl-check",root).addEventListener("click",function(){
+    var it=items[idx];if(!placed.length){fb.innerHTML="Tap some words first.";return}
+    var s=placed.map(function(p){return p.t}).join(" ");
+    var ok=it.en.indexOf(s)>-1;
+    if(!tried){tried=true;addXP(ok)}
+    if(ok){solved[idx]=true;ansEl.classList.add("ok");draw();ansEl.classList.add("ok");fb.innerHTML='<span class="okt">Perfect.</span> '+esc(it.n||"");speak(s)}
+    else{
+      var target=it.en[0].split(" "),n=0;
+      while(n<placed.length&&n<target.length&&placed[n].t===target[n])n++;
+      fb.innerHTML='<span class="badt">Not yet.</span> '+(n>0?"The first "+n+" word"+(n>1?"s are":" is")+" right. Check word "+(n+1)+".":"Check the first word.")+(placed.length<target.length&&n===placed.length?" The sentence is incomplete.":"");
+    }
+  });
+  $(".tl-show",root).addEventListener("click",function(){var it=items[idx];if(!tried){tried=true;addXP(false)}fb.innerHTML="<b>"+esc(it.en[0])+"</b> "+esc(it.n||"");speak(it.en[0])});
+  $(".tl-next",root).addEventListener("click",function(){loadItem(idx+1)});
+  $(".tl-prev",root).addEventListener("click",function(){loadItem(idx-1)});
+  loadItem(0);
+}
+
+/* ---------- STATION 1: explorer ---------- */
+var DX={
+  no:{w:"this",ipa:"/ðɪs/",es:"este · esta · esto",e1:"This diamond is beautiful.",e2:"This diamond is here, in my hand.",ees:"Este diamante es hermoso."},
+  nm:{w:"these",ipa:"/ðiːz/",es:"estos · estas",e1:"These diamonds are beautiful.",e2:"These diamonds are here, next to me.",ees:"Estos diamantes son hermosos."},
+  fo:{w:"that",ipa:"/ðæt/",es:"ese · esa · eso · aquel · aquella",e1:"That diamond is beautiful.",e2:"That diamond is over there, far from me.",ees:"Ese (aquel) diamante es hermoso."},
+  fm:{w:"those",ipa:"/ðoʊz/",es:"esos · esas · aquellos · aquellas",e1:"Those diamonds are beautiful.",e2:"Those diamonds are over there.",ees:"Esos (aquellos) diamantes son hermosos."}
+};
+var dx={near:true,many:false};
+function gem(x,y,s){return '<g transform="translate('+x+' '+y+') scale('+s+')"><path class="gem-f" d="M-14 -5 L-8 -13 L8 -13 L14 -5 L0 14 Z"/><path class="gem-l" d="M-14 -5 L14 -5 M-8 -13 L-3 -5 L0 14 M8 -13 L3 -5 L0 14 M-3 -5 L0 -13 L3 -5"/></g>'}
+function drawDx(){
+  var key=(dx.near?"n":"f")+(dx.many?"m":"o"),d=DX[key];
+  var g;
+  if(dx.near)g=dx.many?[[155,126,1],[185,108,1],[215,126,1]]:[[185,119,1.25]];
+  else g=dx.many?[[522,119,.55],[540,109,.55],[558,119,.55]]:[[540,116,.65]];
+  var wx=dx.near?185:540,wy=dx.near?(dx.many?86:88):176;
+  $("#dxGems").innerHTML='<g class="gems">'+g.map(function(p){return gem(p[0],p[1],p[2])}).join("")+'<text class="gw" x="'+wx+'" y="'+wy+'" text-anchor="middle">'+d.w+'</text></g>';
+  $("#zNear").setAttribute("class","zone"+(dx.near?" on":""));$("#zFar").setAttribute("class","zone"+(dx.near?"":" on"));
+  $("#lNear").setAttribute("class","zl"+(dx.near?" on":""));$("#lFar").setAttribute("class","zl"+(dx.near?"":" on"));
+  $("#lHere").setAttribute("class","zl"+(dx.near?" on":""));$("#lThere").setAttribute("class","zl"+(dx.near?"":" on"));
+  $("#dxWord").textContent=d.w;$("#dxIpa").textContent=d.ipa;$("#dxEs").textContent=d.es;
+  $("#dxEx1").textContent=d.e1;$("#dxEx2").textContent=d.e2;$("#dxExEs").textContent=d.ees;
+  $$("[data-dx]").forEach(function(b){var v=b.dataset.v==="1";b.setAttribute("aria-pressed",(dx[b.dataset.dx]===v)?"true":"false")});
+  $$(".mx").forEach(function(b){b.setAttribute("aria-pressed",((b.dataset.near==="1")===dx.near&&(b.dataset.many==="1")===dx.many)?"true":"false")});
+}
+$$("[data-dx]").forEach(function(b){b.addEventListener("click",function(){dx[b.dataset.dx]=b.dataset.v==="1";drawDx()})});
+$$(".mx").forEach(function(b){b.addEventListener("click",function(){dx.near=b.dataset.near==="1";dx.many=b.dataset.many==="1";drawDx();speak(DX[(dx.near?"n":"f")+(dx.many?"m":"o")].e1)})});
+drawDx();
+
+/* ---------- banks ---------- */
+var DXO=["this","that","these","those"];
+var B_DX=[
+  {c:"The book is in your hand.",p:"___ book is interesting.",a:"this",w:"Near you (in your hand) + one book → this."},
+  {c:"The house is across the street.",p:"___ house is very big.",a:"that",w:"Far from you + one house → that."},
+  {c:"The cookies are on your table, next to you.",p:"___ cookies are delicious.",a:"these",w:"Near + many cookies → these."},
+  {c:"The trees are on the mountain, far away.",p:"___ trees are beautiful.",a:"those",w:"Far + many trees → those."},
+  {c:"You see three dogs at the end of the park.",p:"Look at ___ dogs!",a:"those",w:"Far + plural → those."},
+  {c:"You are wearing the shoes.",p:"___ shoes are comfortable.",a:"these",w:"On your body = near. Plural → these."},
+  {c:"You are telling a story about last year.",p:"I remember ___ day. It was fantastic.",a:"that",w:"A day in the past is far in time → that."},
+  {c:"You talk about the current week.",p:"___ week I am learning connectors.",a:"this",w:"The present is near in time → this week."},
+  {c:"“that” has a second job: que.",p:"The house ___ I love is in Armenia.",a:"that",w:"Here that = que. It connects the house with “I love”."},
+  {c:"Two cups of coffee are on your desk.",p:"___ coffees are for my family.",a:"these",w:"Near + two cups → these."},
+  {c:"A red car is at the end of the street.",p:"Is ___ your car?",a:"that",w:"Far + one car → that."},
+  {c:"You are eating the soup now.",p:"___ soup is tasty!",a:"this",w:"Near + one soup → this."},
+  {c:"You see many stars in the sky.",p:"___ stars are very far.",a:"those",w:"Far + many → those."},
+  {c:"Your friend shows you photos on her phone, close to you.",p:"Wow! ___ photos are wonderful.",a:"these",w:"Near + many → these."}
+].map(function(x){x.o=DXO;return x});
+var B_HERE=[
+  {c:"You want your friend next to you.",p:"Come ___! Sit with me.",o:["here","there"],a:"here",w:"Next to me = here."},
+  {c:"You live in Bogotá. You talk about Armenia.",p:"Armenia is beautiful. I want to live ___.",o:["here","there"],a:"there",w:"You are not in Armenia → there."},
+  {c:"Your keys are in your hand.",p:"My keys are ___, in my hand.",o:["here","there"],a:"here",w:"In my hand = here."},
+  {c:"Your dog is near a tree, far from you.",p:"Look! Your dog is over ___.",o:["here","there"],a:"there",w:"Far from you → over there."},
+  {c:"You give a coffee to your friend.",p:"___ is your coffee.",o:["here","there"],a:"here",w:"When you give something: Here is… / Here you are."},
+  {c:"You point at a café far away.",p:"There is a café over ___.",o:["here","there"],a:"there",w:"Two theres: existence (There is) + place (there)."}
+];
+var B_IS=[
+  {p:"There ___ three white cats in my house.",a:"are",w:"three cats = plural → are."},
+  {p:"There ___ a big dog in your house.",a:"is",w:"a dog = one → is."},
+  {p:"There ___ four bedrooms in this house.",a:"are",w:"four bedrooms = plural → are."},
+  {p:"There ___ only one bathroom.",a:"is",w:"one bathroom → is."},
+  {p:"There ___ some water in the kitchen.",a:"is",w:"water is uncountable → is."},
+  {p:"There ___ many people in the park.",a:"are",w:"people is plural (one person, two people) → are."},
+  {p:"There ___ a lot of information online.",a:"is",w:"information is uncountable → is."},
+  {p:"___ there a supermarket near here?",a:"is",w:"Question, one supermarket → Is there…?"},
+  {p:"___ there any children in the house?",a:"are",w:"children is plural (one child) → Are there…?"},
+  {p:"There ___ two children and a dog.",a:"are",w:"The first noun is plural → are."},
+  {p:"There ___ an interesting book on the table.",a:"is",w:"an interesting book = one → is."},
+  {p:"There ___ no bathrooms on the second floor.",a:"are",w:"no + plural noun → are."},
+  {p:"There ___ some music in the restaurant.",a:"is",w:"music is uncountable → is."},
+  {p:"There ___ ten students in the class.",a:"are",w:"ten students → are."}
+].map(function(x){x.o=["is","are"];return x});
+var B_TRAP=[
+  {es:1,p:"Hay tres gatos en mi casa.",o:["There are three cats in my house.","Have three cats in my house.","There is three cats in my house."],a:"There are three cats in my house.",w:"hay = There is / There are. Three cats is plural → are. have = tener."},
+  {es:1,p:"Hay un parque cerca de aquí.",o:["There is a park near here.","Is a park near here.","Has a park near here."],a:"There is a park near here.",w:"English always needs a subject. Here the subject is there."},
+  {es:1,p:"Su casa (de ellos) es grande.",o:["Their house is big.","There house is big.","They’re house is big."],a:"Their house is big.",w:"Possession of they → their. Same sound as there and they’re."},
+  {es:1,p:"Ellos son de Colombia.",o:["They’re from Colombia.","There from Colombia.","Their from Colombia."],a:"They’re from Colombia.",w:"they’re = they are."},
+  {es:1,p:"Tengo un perro grande.",o:["I have a big dog.","I has a big dog.","Have a big dog."],a:"I have a big dog.",w:"tener = have. I → have. has is only for he, she, it."},
+  {es:1,p:"¿Hay leche en la nevera?",o:["Is there any milk in the fridge?","Are there any milk in the fridge?","Have milk in the fridge?"],a:"Is there any milk in the fridge?",w:"milk is uncountable → is. Question: Is there…?"},
+  {es:1,p:"Hay mucha gente en el parque.",o:["There are a lot of people in the park.","There is a lot of peoples in the park.","Have many people in the park."],a:"There are a lot of people in the park.",w:"people is already plural → are. Never peoples."},
+  {es:1,p:"Hay un café allá.",o:["There is a café there.","There is a café their.","Is a café there."],a:"There is a café there.",w:"Existence (There is) + place (there)."}
+].map(function(x){x.sh=1;return x});
+var B_TIME=[
+  {p:"I ___ English every Wednesday and Thursday.",o:["learn","am learning"],a:"learn",w:"every Wednesday = routine → simple."},
+  {p:"Look! It ___ right now.",o:["rains","is raining"],a:"is raining",w:"right now = in progress → is + -ing."},
+  {p:"They ___ this house because it has three bathrooms.",o:["like","are liking"],a:"like",w:"like is a state verb. It stays simple."},
+  {p:"Right now I ___ for information online.",o:["search","am searching"],a:"am searching",w:"right now → progressive."},
+  {p:"I ___ dinner with my family every night.",o:["cook","am cooking"],a:"cook",w:"every night = routine → simple."},
+  {p:"Shh! My mother ___ on the phone.",o:["talks","is talking"],a:"is talking",w:"Shh! = it is happening now."},
+  {p:"My mother ___ that this house is beautiful.",o:["thinks","is thinking"],a:"thinks",w:"think = opinion (creer) → simple."},
+  {p:"This month we ___ connectors and deictics.",o:["learn","are learning"],a:"are learning",w:"this month = a period in progress."},
+  {p:"She ___ coffee. She drinks it every morning.",o:["loves","is loving"],a:"loves",w:"love is a state verb → simple."},
+  {p:"I ___ to music now because it makes me feel happy.",o:["listen","am listening"],a:"am listening",w:"now → progressive."},
+  {p:"We ___ a big house in Armenia.",o:["have","are having"],a:"have",w:"have = tener (possession) → simple."},
+  {p:"They ___ dinner now. Call them later.",o:["have","are having"],a:"are having",w:"have = comer (an action) → progressive is OK."},
+  {p:"The sun ___ in the east.",o:["rises","is rising"],a:"rises",w:"A fact that is always true → simple."}
+];
+var B_HAS=[
+  {p:"This house ___ three bathrooms.",a:"has",w:"this house = it → has."},
+  {p:"They ___ a big house in Armenia.",a:"have",w:"they → have."},
+  {p:"My mother ___ a beautiful garden.",a:"has",w:"my mother = she → has."},
+  {p:"I ___ three white cats.",a:"have",w:"I → have."},
+  {p:"The park ___ many trees.",a:"has",w:"the park = it → has."},
+  {p:"You ___ an interesting job.",a:"have",w:"you → have."},
+  {p:"Armenia ___ a nice climate.",a:"has",w:"a city = it → has."},
+  {p:"My family and I ___ dinner together.",a:"have",w:"my family and I = we → have."},
+  {p:"My brother ___ two children.",a:"has",w:"my brother = he → has."},
+  {p:"We ___ class on Wednesday and Thursday.",a:"have",w:"we → have."}
+].map(function(x){x.o=["have","has"];return x});
+var B_CON=[
+  {p:"I like this house, ___ it is very small.",o:["but","because","so"],a:"but",w:"Two opposite ideas → but."},
+  {p:"I walk to the park ___ I like to exercise.",o:["because","so","but"],a:"because",w:"“I like to exercise” is the reason → because."},
+  {p:"It is raining, ___ I stay at home.",o:["so","because","also"],a:"so",w:"“I stay at home” is the result → so."},
+  {p:"I go to the park ___ my dog. We walk together.",o:["with","about","such as"],a:"with",w:"con = with."},
+  {p:"I love fruits ___ mango, lulo and pineapple.",o:["such as","about","then"],a:"such as",w:"Examples → such as."},
+  {p:"___ it is late, I study English.",o:["even though","because","so"],a:"even though",w:"Late + studying = a surprising contrast → Even though."},
+  {p:"I eat breakfast, ___ I go to work.",o:["then","but","about"],a:"then",w:"The next step in time → then."},
+  {p:"I ___ listen to music in the morning. Almost every day!",o:["often","then","therefore"],a:"often",w:"Many times → often, before the verb."},
+  {p:"We talk ___ our future.",o:["about","with","for"],a:"about",w:"The topic → about."},
+  {p:"There are four bedrooms, ___ there is only one bathroom.",o:["but","because","so"],a:"but",w:"Contrast → but."},
+  {p:"I need to travel tomorrow. ___, I search for information online.",o:["therefore","even though","such as"],a:"therefore",w:"A result, in formal style, at the start + comma → Therefore."},
+  {p:"I like coffee, and I ___ like tea.",o:["also","so","then"],a:"also",w:"Addition → also, before the verb."},
+  {p:"This gift is ___ you. Happy birthday!",o:["for","about","with"],a:"for",w:"The receiver → for (para)."},
+  {p:"___ I cook, but usually my mother cooks.",o:["sometimes","therefore","such as"],a:"sometimes",w:"Not always → Sometimes."}
+].map(function(x){x.sh=1;return x});
+var B_ADJ=[
+  {es:1,p:"Hay tres gatos blancos.",o:["There are three white cats.","There are three cats white.","There are three whites cats."],a:"There are three white cats.",w:"The adjective goes before the noun, and it is never plural."},
+  {es:1,p:"Es una casa grande y hermosa.",o:["It’s a beautiful big house.","It’s a house big and beautiful.","It’s a beautifuls big house."],a:"It’s a beautiful big house.",w:"Opinion (beautiful) before size (big), both before the noun."},
+  {es:1,p:"La fiesta fue divertida.",o:["The party was fun.","The party was funny.","The party was funs."],a:"The party was fun.",w:"fun = divertido. funny = gracioso (it makes you laugh)."},
+  {es:1,p:"El chiste es muy gracioso.",o:["The joke is very funny.","The joke is very fun.","The joke is very funnies."],a:"The joke is very funny.",w:"A joke makes you laugh → funny."},
+  {es:1,p:"Los limones son ácidos.",o:["Lemons are sour.","Lemons are acids.","Lemons are sweets."],a:"Lemons are sour.",w:"For taste we say sour. acid is for chemistry."},
+  {es:1,p:"Estas frutas son deliciosas.",o:["These fruits are delicious.","This fruits are deliciouses.","These fruits are deliciouses."],a:"These fruits are delicious.",w:"Plural + near → these. The adjective has no -s."},
+  {es:1,p:"Aquellos perros son leales.",o:["Those dogs are loyal.","That dogs are loyal.","Those dogs are loyals."],a:"Those dogs are loyal.",w:"Plural + far → those. loyal never takes -s."},
+  {es:1,p:"Es un libro interesante.",o:["It’s an interesting book.","It’s a interesting book.","It’s a book interesting."],a:"It’s an interesting book.",w:"an before a vowel sound, and the adjective before the noun."}
+].map(function(x){x.sh=1;return x});
+
+mcq("set-dx",B_DX,8);
+mcq("set-here",B_HERE,6);
+mcq("set-isare",B_IS,8);
+mcq("set-traps",B_TRAP,6);
+mcq("set-time",B_TIME,8);
+mcq("set-has",B_HAS,8);
+mcq("set-con",B_CON,10);
+mcq("set-adj",B_ADJ,8);
+mcq("set-final",[].concat(B_DX,B_HERE,B_IS,B_TRAP,B_TIME,B_HAS,B_CON,B_ADJ),12);
+
+tiles("tiles-there",[
+  {es:"Hay 3 gatos blancos en mi casa.",en:["There are three white cats in my house."],x:["is","whites","have"],n:"Plural → are. Adjectives never take -s."},
+  {es:"En su casa (de ella) hay un perro grande.",en:["There is a big dog in her house."],x:["are","his","has"],n:"su casa = his / her / your / their house. English must choose. Here: her."},
+  {es:"En esta casa hay 4 cuartos, pero solo 1 baño.",en:["There are four bedrooms in this house, but there is only one bathroom."],x:["and","these","have"],n:"Two ideas in contrast → but. Two sentences need a connector."},
+  {es:"¿Hay un parque cerca de aquí?",en:["Is there a park near here?"],x:["Are","Has","in"],n:"In questions, is/are goes first: Is there…?"},
+  {es:"No hay agua en la cocina.",en:["There is no water in the kitchen."],x:["are","waters","a"],n:"water is uncountable → is, and no a/an."},
+  {es:"Hay un café allá.",en:["There is a café there."],x:["their","Have","here"],n:"Two theres: existence (There is) + place (there)."}
+]);
+tiles("tiles-con",[
+  {es:"A ellos les gusta esta casa porque tiene tres baños.",en:["They like this house because it has three bathrooms."],x:["are","liking","have"],n:"like is a state verb → simple. it → has."},
+  {es:"Necesito viajar mañana, así que busco información en internet.",en:["I need to travel tomorrow, so I search for information online."],x:["because","informations"],n:"so introduces the result. information has no -s."},
+  {es:"Camino al parque y también pienso en mi futuro.",en:["I walk to the park, and I also think about my future."],x:["in","on"],n:"also goes before the verb. pensar en = think about."},
+  {es:"Aunque está lloviendo, camino al parque.",en:["Even though it is raining, I walk to the park."],x:["because","rains"],n:"Even though + a complete sentence, then a comma."},
+  {es:"Escucho música porque me hace sentir feliz.",en:["I listen to music because it makes me feel happy."],x:["to","so"],n:"make + person + verb, without to: makes me feel."},
+  {es:"Cocino la cena con mi familia, luego comemos juntos.",en:["I cook dinner with my family, then we eat together."],x:["the","for"],n:"then = luego. We say cook dinner, without the."}
+]);
+
+/* ---------- STATION 2: builder ---------- */
+var NUM=["no","one","two","three","four","five","six","seven","eight","nine","ten"];
+var NOUNS=[
+  {s:"cat",p:"cats"},{s:"dog",p:"dogs"},{s:"bedroom",p:"bedrooms"},{s:"bathroom",p:"bathrooms"},{s:"tree",p:"trees"},{s:"book",p:"books"},
+  {s:"person",p:"people",irr:1},{s:"child",p:"children",irr:1},
+  {s:"water",u:1},{s:"music",u:1},{s:"information",u:1}
+];
+var th={n:3,noun:"cat",adj:"white",place:"in my house",mode:"+"};
+var nounSel=$("#thNoun");
+nounSel.innerHTML=NOUNS.map(function(n){return '<option value="'+n.s+'">'+(n.u?n.s+" (uncountable)":n.s+" / "+n.p)+'</option>'}).join("");
+function art(w){return /^[aeiou]/i.test(w)?"an":"a"}
+function buildThere(t){
+  var N=NOUNS.find(function(x){return x.s===t.noun}),a=(!N.u&&t.adj)?t.adj+" ":"",pl=t.place,lead,rest,ret,arg,rules=[];
+  if(N.u){
+    if(t.mode==="+"){lead="There is";rest="some "+N.s+" "+pl+"."}
+    else if(t.mode==="-"){lead="There isn’t";rest="any "+N.s+" "+pl+"."}
+    else{lead="Is there";rest="any "+N.s+" "+pl+"?"}
+    ret="is";arg=(t.mode==="+"?"some":"any")+" × "+N.s;
+    rules.push("<b>"+N.s+"</b> is uncountable → always <b>is</b>, never a/an, never -s.");
+    rules.push(t.mode==="+"?"Use <b>some</b> in statements.":"Use <b>any</b> in negatives and questions.");
+  }else if(t.mode==="+"){
+    if(t.n===0){lead="There are";rest="no "+a+N.p+" "+pl+".";ret="are";rules.push("Zero → <b>no</b> + plural noun → <b>are</b>.")}
+    else if(t.n===1){var w=(a||N.s);lead="There is";rest=art(w)+" "+a+N.s+" "+pl+".";ret="is";rules.push("One → singular → <b>is</b> + a / an.");rules.push("Say <b>one</b> instead of a/an to stress the number: There is only one bathroom.")}
+    else{lead="There are";rest=NUM[t.n]+" "+a+N.p+" "+pl+".";ret="are";rules.push(t.n+" → plural → <b>are</b>.")}
+    arg=t.n+" × "+a+N.s;
+  }else if(t.mode==="-"){
+    if(t.n===1){var w2=(a||N.s);lead="There isn’t";rest=art(w2)+" "+a+N.s+" "+pl+".";ret="is";rules.push("One → <b>isn’t</b> + a / an.")}
+    else{lead="There aren’t";rest="any "+a+N.p+" "+pl+".";ret="are";rules.push("Plural → <b>aren’t any</b>. Same meaning: There are no "+N.p+".")}
+    arg=(t.n===1?1:"any")+" × "+a+N.s;
+  }else{
+    if(t.n===1){var w3=(a||N.s);lead="Is there";rest=art(w3)+" "+a+N.s+" "+pl+"?";ret="is";rules.push("Question: <b>Is there</b> + a / an…? Short answers: Yes, there is. / No, there isn’t.")}
+    else{lead="Are there";rest="any "+a+N.p+" "+pl+"?";ret="are";rules.push("Question: <b>Are there any</b> + plural…? Short answers: Yes, there are. / No, there aren’t.");rules.push("To ask the number: How many "+N.p+" are there?")}
+    arg=(t.n===1?1:"any")+" × "+a+N.s;
+  }
+  if(N.irr&&!(t.mode==="+"&&t.n===1)&&!(t.mode!=="+"&&t.n===1))rules.push("Irregular plural: "+N.s+" → <b>"+N.p+"</b>. No -s.");
+  if(a&&!N.u)rules.push("Adjective before the noun, no -s: "+a.trim()+" "+(t.n===1?N.s:N.p)+".");
+  if(pl==="there")rules.push("Two theres: the first declares existence, the second is a place (allá).");
+  return {lead:lead,rest:rest,ret:ret,arg:arg,rules:rules,u:!!N.u};
+}
+function drawThere(){
+  var r=buildThere(th);
+  $("#thN").textContent=r.u?"some":th.n;
+  $("#thMinus").disabled=r.u||th.n<=0;$("#thPlus").disabled=r.u||th.n>=10;
+  $("#thAdj").disabled=r.u;nounSel.value=th.noun;$("#thAdj").value=r.u?"":th.adj;$("#thPlace").value=th.place;
+  $$("[data-mode]").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.mode===th.mode?"true":"false")});
+  $("#thCode").innerHTML='<span class="kw">THERE</span>(<span class="num">'+esc(r.arg.split(" × ")[0])+'</span> <span class="op">×</span> <span class="arg">'+esc(r.arg.split(" × ")[1])+'</span>) <span class="op">→</span> <span class="ret">'+r.ret+'</span>';
+  $("#thOut").innerHTML="<em>"+r.lead+"</em> "+esc(r.rest);
+  $("#thRules").innerHTML=r.rules.map(function(x){return "<li>"+x+"</li>"}).join("");
+}
+$("#thMinus").addEventListener("click",function(){if(th.n>0){th.n--;drawThere()}});
+$("#thPlus").addEventListener("click",function(){if(th.n<10){th.n++;drawThere()}});
+nounSel.addEventListener("change",function(){th.noun=nounSel.value;drawThere()});
+$("#thAdj").addEventListener("change",function(e){th.adj=e.target.value;drawThere()});
+$("#thPlace").addEventListener("change",function(e){th.place=e.target.value;drawThere()});
+$$("[data-mode]").forEach(function(b){b.addEventListener("click",function(){th.mode=b.dataset.mode;drawThere()})});
+$$(".preset").forEach(function(b){b.addEventListener("click",function(){try{Object.assign(th,JSON.parse(b.dataset.p))}catch(e){}drawThere();speak($("#thOut").textContent)})});
+drawThere();
+
+/* ---------- STATION 3: lens ---------- */
+var LENS={
+  learn:{s:"I learn English every Wednesday and Thursday.",sn:"Routine: it happens again and again.",p:"I am learning connectors this week.",pn:"A process in progress in this period."},
+  cook:{s:"I cook dinner with my family every night.",sn:"Routine.",p:"Shh! I am cooking dinner right now.",pn:"Happening at this moment."},
+  walk:{s:"I walk to the park because I like to exercise.",sn:"A habit.",p:"I am walking to the park now. Call me later!",pn:"In progress now."},
+  listen:{s:"I listen to music every morning.",sn:"Routine.",p:"I am listening to music now because it makes me feel happy.",pn:"In progress now."},
+  search:{s:"I search for information online every day.",sn:"Routine.",p:"I am searching for information online because I need to travel tomorrow.",pn:"In progress now, with a reason."},
+  live:{s:"I live in a big house in Armenia.",sn:"A permanent situation.",p:"I am living with my sister this month.",pn:"A temporary situation."},
+  have:{s:"They have a big house in Armenia.",sn:"have = tener (possession). A state → simple.",p:"They are having dinner now.",pn:"have = comer / tomar. An action → progressive is OK."},
+  think:{s:"My mother thinks it’s beautiful.",sn:"think = creer (opinion). A state → simple.",p:"I am thinking about my future.",pn:"think = pensar (mental activity). Progressive is OK."},
+  like:{s:"They like this house because it has three bathrooms.",sn:"like is a state verb. It stays simple.",p:"They are liking this house.",pbad:1,pn:"Not natural English. like, love, want, need and know describe states, not actions."}
+};
+var lensV="learn";
+$("#verbs").innerHTML=Object.keys(LENS).map(function(k){return '<button type="button" data-verb="'+k+'" aria-pressed="false">'+k+'</button>'}).join("");
+function drawLens(){
+  var L=LENS[lensV];
+  $$("#verbs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.verb===lensV?"true":"false")});
+  $("#lensOut").innerHTML=
+    '<div class="lo-card"><span class="lbl">Simple lens</span><div class="ex">'+sayBtn(L.s)+'<span class="lo-s">'+esc(L.s)+'</span></div><p class="lo-n">'+esc(L.sn)+'</p></div>'+
+    '<div class="lo-card"><span class="lbl">Progressive lens</span><div class="ex">'+(L.pbad?"":sayBtn(L.p))+'<span class="lo-s'+(L.pbad?" bad":"")+'">'+esc(L.p)+'</span></div><p class="lo-n">'+esc(L.pn)+'</p></div>';
+}
+$("#verbs").addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;lensV=b.dataset.verb;drawLens()});
+drawLens();
+
+/* ---------- STATION 4: connectors ---------- */
+var FAM=[
+  {k:"add",n:"Add",es:"sumar ideas"},
+  {k:"contrast",n:"Contrast",es:"oponer ideas"},
+  {k:"logic",n:"Cause, result, purpose",es:"razonar"},
+  {k:"time",n:"Time & frequency",es:"ordenar en el tiempo"},
+  {k:"focus",n:"Precision",es:"precisar"}
+];
+var CON=[
+  {w:"and",f:"add",es:"y",use:"Joins two ideas of the same type. Before a second full sentence, add a comma.",ex:"I live in a big house, and my mother thinks it’s beautiful."},
+  {w:"also",f:"add",es:"también",use:"Adds one more idea. It goes before the main verb, or after am / is / are.",ex:"I walk to the park, and I also think about my future."},
+  {w:"with",f:"add",es:"con",use:"Adds a person or a thing that is part of the action.",ex:"I cook dinner with my family."},
+  {w:"but",f:"contrast",es:"pero",use:"Shows a difference or a surprise between two ideas.",ex:"There are four bedrooms in this house, but there is only one bathroom."},
+  {w:"even though",f:"contrast",es:"aunque",use:"Contrast + a complete sentence. The ideas look opposite, but both are true.",ex:"Even though it is raining, I walk to the park."},
+  {w:"because",f:"logic",es:"porque",use:"Introduces the cause, the reason.",ex:"I listen to music because it makes me feel happy."},
+  {w:"so",f:"logic",es:"así que · entonces",use:"Introduces the result. Usually after a comma.",ex:"I need to travel tomorrow, so I search for information online."},
+  {w:"therefore",f:"logic",es:"por eso · por lo tanto",use:"A result, in formal style. Start a new sentence and add a comma.",ex:"They love Quindío. Therefore, they have a big house in Armenia."},
+  {w:"for",f:"logic",es:"para · por · durante",use:"Purpose or receiver (para). Also duration (durante).",ex:"I cook dinner for my family. I study English for two hours."},
+  {w:"sometimes",f:"time",es:"a veces · algunas veces",use:"Frequency: not always, not never. At the start, or before the verb.",ex:"Sometimes I walk to the park after class."},
+  {w:"often",f:"time",es:"a menudo · con frecuencia",use:"Frequency: many times. Before the main verb.",ex:"I often listen to music in the morning."},
+  {w:"then",f:"time",es:"luego · después",use:"Sequence: the next step.",ex:"I cook dinner, then I eat with my family."},
+  {w:"such as",f:"focus",es:"tal como · como por ejemplo",use:"Introduces examples.",ex:"I love Colombian fruits such as mango, lulo and pineapple."},
+  {w:"about",f:"focus",es:"sobre · acerca de",use:"Introduces the topic.",ex:"I think about my future."}
+];
+var conSel="because";
+$("#fams").innerHTML=FAM.map(function(f){
+  return '<div class="fam f-'+f.k+'"><div class="fam-name">'+esc(f.n)+'<small>'+esc(f.es)+'</small></div><div class="chips">'+
+    CON.filter(function(c){return c.f===f.k}).map(function(c){return '<button type="button" class="con" data-con="'+c.w+'" aria-pressed="false">'+c.w+'</button>'}).join("")+'</div></div>';
+}).join("");
+function drawCon(){
+  var c=CON.find(function(x){return x.w===conSel}),f=FAM.find(function(x){return x.k===c.f});
+  $$(".con").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.con===conSel?"true":"false")});
+  var re=new RegExp("\\b("+c.w.replace(" ","\\s+")+")\\b","gi");
+  var d=$("#conDetail");d.className="panel f-"+c.f;
+  d.innerHTML='<span class="cd-fam">'+f.n+'</span><div class="cd-word">'+c.w+'</div><p class="es">'+esc(c.es)+'</p><p class="cd-use">'+esc(c.use)+'</p><div class="cd-ex">'+sayBtn(c.ex)+'<span>'+esc(c.ex).replace(re,"<mark>$1</mark>")+'</span></div>';
+}
+$("#fams").addEventListener("click",function(e){var b=e.target.closest(".con");if(!b)return;conSel=b.dataset.con;drawCon()});
+drawCon();
+
+var PAIRS=[
+  {cause:"music makes me feel happy",result:"I listen to music",b:"I listen to music because music makes me feel happy.",s:"Music makes me feel happy, so I listen to music."},
+  {cause:"I need to travel tomorrow",result:"I search for information online",b:"I search for information online because I need to travel tomorrow.",s:"I need to travel tomorrow, so I search for information online."},
+  {cause:"they love Quindío",result:"they have a big house in Armenia",b:"They have a big house in Armenia because they love Quindío.",s:"They love Quindío, so they have a big house in Armenia."},
+  {cause:"I like to exercise",result:"I walk to the park",b:"I walk to the park because I like to exercise.",s:"I like to exercise, so I walk to the park."},
+  {cause:"this house has three bathrooms",result:"they like it",b:"They like this house because it has three bathrooms.",s:"This house has three bathrooms, so they like it."}
+];
+var fp={i:0,dir:"because"};
+function blk(type,txt){return '<div class="blk '+type+'"><small>'+(type==="cause"?"Cause":"Result")+'</small>'+esc(txt)+'</div>'}
+function drawFlip(){
+  var p=PAIRS[fp.i];
+  $("#flipRow").innerHTML=fp.dir==="because"?blk("result",p.result)+'<span class="lw">because</span>'+blk("cause",p.cause):blk("cause",p.cause)+'<span class="lw">so</span>'+blk("result",p.result);
+  $("#flipS").textContent=fp.dir==="because"?p.b:p.s;
+  $("#flipCount").textContent="Idea "+(fp.i+1)+" of "+PAIRS.length;
+}
+$("#flipBtn").addEventListener("click",function(){fp.dir=fp.dir==="because"?"so":"because";drawFlip();speak($("#flipS").textContent)});
+$("#flipNext").addEventListener("click",function(){fp.i=(fp.i+1)%PAIRS.length;fp.dir="because";drawFlip()});
+drawFlip();
+
+/* ---------- STATION 5: adjectives ---------- */
+var ADJG=[
+  {n:"Opinion",l:[["nice","agradable · chévere"],["pretty","bonito · lindo"],["beautiful","hermoso"],["wonderful","maravilloso"],["awesome","impresionante"],["fantastic","fantástico"],["cool","genial"],["elegant","elegante"]]},
+  {n:"Taste & texture",l:[["delicious","delicioso"],["tasty","sabroso"],["sweet","dulce"],["sour","ácido (sabor)"],["juicy","jugoso"],["refreshing","refrescante"],["exquisite","exquisito"],["smooth","suave"],["tender","tierno"]]},
+  {n:"People & animals",l:[["loyal","leal"],["faithful","fiel"],["intelligent","inteligente"],["cute","lindo · tierno"],["funny","gracioso"],["happy","feliz · alegre"],["flexible","flexible"]]},
+  {n:"Things & experiences",l:[["big","grande"],["interesting","interesante"],["fun","divertido"],["entertaining","entretenido"],["energizing","energizante"],["educational","educativo"],["functional","funcional"],["harmful","dañino"],["precise","preciso"],["traditional","tradicional"],["exotic","exótico"],["unique","único"]]}
+];
+$("#adjPalette").innerHTML=ADJG.map(function(g){return '<div class="adj-group"><h4>'+g.n+'</h4><div class="adjs">'+g.l.map(function(a){return '<button type="button" class="adj" data-say="'+a[0]+'"><b>'+a[0]+'</b><i>'+esc(a[1])+'</i></button>'}).join("")+'</div></div>'}).join("");
+$("#adjPalette").addEventListener("click",function(e){var b=e.target.closest(".adj");if(b)speak(b.dataset.say)});
+
+/* ---------- STATION 6: clinic ---------- */
+var CLINIC=[
+  {o:"They are liking this house because this house has(have) 3 bathrooms.",f:"They like this house because it has three bathrooms.",st:"up",t:["like is a state verb → simple, not -ing.","this house = it → has.","Use it to avoid repeating the noun.","In writing, small numbers go in words: three."]},
+  {o:"They have a big House in armenia because they love the quindio.",f:"They have a big house in Armenia because they love Quindío.",st:"up",t:["Capital letters for places: Armenia, Quindío.","No capital for common nouns: house.","Region names usually take no “the” in English."]},
+  {o:"I search for information online because I need to travel tomorrow.",f:"I am searching for information online because I need to travel tomorrow.",st:"ok",t:["Already correct as a habit.","information is uncountable: never informations.","If you are doing it right now, use the progressive lens."]},
+  {o:"I cook dinner with my family because I like it. AND ALSO",f:"I cook dinner with my family because I like it, and I also enjoy our conversations.",st:"up",t:["“and also” needs a complete idea after it.","also goes before the main verb: I also enjoy.","The ending is an example. Complete it with your own idea."]},
+  {o:"I live in a big house AND my Mother thinks it’s beautiful",f:"I live in a big house, and my mother thinks it’s beautiful.",st:"up",t:["mother is not a name → lowercase.","thinks with -s for she: correct.","Comma before and when it joins two full sentences.","End with a period."]},
+  {o:"I walk to the park because I like to exercise and also I think about my future",f:"I walk to the park because I like to exercise, and I also think about my future.",st:"up",t:["also goes before the verb: and I also think.","think about = pensar en. Correct."]},
+  {o:"I listen to music because music makes me feel happy.",f:"I listen to music because it makes me feel happy.",st:"ok",t:["Correct. makes me feel: no “to” after make.","Upgrade: it replaces music, so you don’t repeat it."]},
+  {src:"Hay 3 gatos blancos en mi casa y en su casa hay 1 perro grande.",o:"There are three white cats in my house and there is a big dog in your house",f:"There are three white cats in my house, and there is a big dog in your house.",st:"ok",t:["are for plural, is for singular: correct.","white, not whites: correct.","su casa = his / her / your / their house. English must choose one.","Add a comma and a period."]},
+  {src:"En esta casa hay 4 cuartos y 1 solo baño.",o:"There are four bedrooms  in this house there is only one Bathroom",f:"There are four bedrooms in this house, but there is only one bathroom.",st:"up",t:["Two sentences need a connector.","Spanish y with contrast → but.","bathroom is not a name → lowercase."]},
+  {o:"We are learning english / we learn english",f:"We are learning English. / We learn English.",st:"ok",t:["Both correct. Two different time lenses.","English, the language, always has a capital E.","Start every sentence with a capital: We."]}
+];
+$("#clinicGrid").innerHTML=CLINIC.map(function(c,i){
+  return '<article class="cl"><div class="cl-top"><span class="cl-n">Note '+String(i+1).padStart(2,"0")+'</span><span class="badge '+(c.st==="ok"?"ok":"up")+'">'+(c.st==="ok"?"Solid · polish":"Upgrade")+'</span></div>'+
+    (c.src?'<p class="cl-src es">'+esc(c.src)+'</p>':'')+
+    '<p class="cl-orig">'+esc(c.o)+'</p>'+
+    '<button type="button" class="ghost reveal" aria-expanded="false">Reveal the upgrade</button>'+
+    '<div class="cl-more" hidden><div class="cl-fix">'+sayBtn(c.f)+'<span>'+esc(c.f)+'</span></div><ul class="cl-tags">'+c.t.map(function(t){return "<li>"+esc(t)+"</li>"}).join("")+'</ul></div></article>';
+}).join("");
+$("#clinicGrid").addEventListener("click",function(e){
+  var b=e.target.closest(".reveal");if(!b)return;
+  var more=b.nextElementSibling,open=more.hidden;more.hidden=!open;
+  b.setAttribute("aria-expanded",open?"true":"false");b.textContent=open?"Hide the upgrade":"Reveal the upgrade";
+});
+
+/* ---------- STATION 7: composition ---------- */
+var ta=$("#compText");
+ta.value=S.comp||"";
+var CONLIST=["but","also","for","sometimes","with","because","so","therefore","such as","often","then","about","even though"];
+var ADJLIST=[];ADJG.forEach(function(g){g.l.forEach(function(a){ADJLIST.push(a[0])})});
+ADJLIST=ADJLIST.concat(["small","white","black","old","new","quiet","comfortable","perfect","green","modern","clean","large","sunny","warm","cold","tall","long","red","blue","famous","calm"]);
+function cnt(re,t){return (t.match(re)||[]).length}
+var ALERTS=[
+  [/\b(?:am|is|are|'m|'re|'s)\s+(?:liking|loving|wanting|needing|knowing|hating|preferring)\b/g,"like, love, want, need and know stay simple. Example: They like this house."],
+  [/\bthere\s+is\s+(?:two|three|four|five|six|seven|eight|nine|ten|many|several|\d+)\b/g,"Plural after there is → use There are."],
+  [/\bthere\s+are\s+(?:a|an|one)\b/g,"One thing after there are → use There is."],
+  [/\b(?:informations|peoples|furnitures)\b/g,"No -s: information and furniture are uncountable, people is already plural."],
+  [/(?:^|[.!?]\s+)have\s+(?:a|an|one|two|three|four|five|many|some)\b/g,"For hay, use There is / There are. have = tener."],
+  [/\b(?:he|she|it|my mother|my father|my sister|my brother|this house|the house)\s+have\b/g,"he / she / it → has."],
+  [/\band also i\b/g,"Put also before the verb: and I also …"],
+  [/\bthink in\b/g,"pensar en = think about."],
+  [/\bmakes?\s+me\s+to\b/g,"make + person + verb, without to: makes me feel."],
+  [/\b(?:whites|bigs|beautifuls|smalls|interestings|deliciouses|loyals|olds|news\s+(?:cats|houses))\b/g,"Adjectives never take -s."],
+  [/\bthis\s+(?:cats|dogs|houses|bedrooms|bathrooms|books|trees|people|fruits|things|rooms)\b/g,"Plural and near → these."],
+  [/\bthat\s+(?:cats|dogs|houses|bedrooms|bathrooms|books|trees|fruits|rooms)\b/g,"If you mean esos / aquellos → those."],
+  [/\bfunny\s+(?:party|game|trip|class|day|weekend)\b/g,"For an activity, divertido = fun. funny = it makes you laugh."]
+];
+function analyze(){
+  var raw=ta.value,t=raw.toLowerCase().replace(/[’‘]/g,"'");
+  var words=(t.match(/[a-záéíóúñü']+/g)||[]).length;
+  $("#compWc").textContent=words+" word"+(words===1?"":"s");
+  var ex=cnt(/\bthere\s*(?:is|are|isn't|aren't|was|were)\b|\bthere's\b|\b(?:is|are|isn't|aren't)\s+there\b/g,t);
+  var place=Math.max(0,cnt(/\bthere\b/g,t)-ex)+cnt(/\bhere\b/g,t);
+  var dxc=cnt(/\b(?:this|that|these|those)\b/g,t);
+  var cons=CONLIST.filter(function(c){return new RegExp("\\b"+c.replace(" ","\\s+")+"\\b").test(t)});
+  var adjs=ADJLIST.filter(function(a){return new RegExp("\\b"+a+"\\b").test(t)});
+  var sents=t.split(/[.!?]+/).filter(function(s){return s.trim().split(/\s+/).length>=3}).length;
+  var C=[
+    {l:"There is / There are",d:"Declare what exists",need:2,have:ex},
+    {l:"this · that · these · those",d:"Point near and far",need:2,have:dxc},
+    {l:"here or there as a place",d:"aquí · allá",need:1,have:place},
+    {l:"Different connectors",d:cons.length?cons.join(" · "):"besides and",need:3,have:cons.length},
+    {l:"Adjectives",d:adjs.length?adjs.slice(0,6).join(" · "):"from the palette",need:3,have:adjs.length},
+    {l:"Complete sentences",d:"6 to 8",need:6,have:sents}
+  ];
+  $("#compChecks").innerHTML=C.map(function(c){var met=c.have>=c.need;return '<li class="'+(met?"met":"")+'"><span class="ck">✓</span><span>'+esc(c.l)+'<small>'+esc(c.d)+'</small></span><span class="cnt">'+Math.min(c.have,99)+' / '+c.need+'</span></li>'}).join("");
+  var out=[],seen={};
+  ALERTS.forEach(function(a){var m=t.match(a[0]);if(m){var shown=m[0].replace(/^[.!?\s]+/,"").trim();if(!seen[a[1]]){seen[a[1]]=1;out.push("<b>“"+esc(shown)+"”</b> "+esc(a[1]))}}});
+  $("#compAlerts").innerHTML=words<4?'<li class="clean">Start writing. Alerts appear here when the coach sees a classic trap.</li>':(out.length?out.map(function(x){return "<li>"+x+"</li>"}).join(""):'<li class="clean">No classic traps found. Clean structure.</li>');
+}
+var saveT;
+ta.addEventListener("input",function(){analyze();clearTimeout(saveT);saveT=setTimeout(function(){S.comp=ta.value;save()},400)});
+analyze();
+$("#compModelBtn").addEventListener("click",function(){var m=$("#compModel");m.hidden=!m.hidden;this.textContent=m.hidden?"See a model":"Hide the model";fillIcons()});
+$("#compCopy").addEventListener("click",function(){
+  var txt=ta.value.trim();if(!txt){toast("Write something first.");return}
+  try{navigator.clipboard.writeText(txt).then(function(){toast("Copied. Paste it in your journal or send it to your coach.")},function(){ta.focus();ta.select();toast("Select all and copy with your keyboard.")})}
+  catch(e){ta.focus();ta.select();toast("Select all and copy with your keyboard.")}
+});
+
+/* ---------- reset ---------- */
+var rb=$("#resetBtn"),armed=false,rbT;
+rb.addEventListener("click",function(){
+  if(!armed){armed=true;rb.textContent="Tap again to reset";clearTimeout(rbT);rbT=setTimeout(function(){armed=false;rb.textContent="Reset my progress"},3000);return}
+  armed=false;S.xp=0;S.ans=0;S.ok=0;save();renderXP();rb.textContent="Reset my progress";toast("Progress reset.");
+});
+fillIcons();
+})();
+</script>
+
+</body></html>
