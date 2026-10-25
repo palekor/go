@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Phrasal Verbs — Lección 5 · ProfGermandario</title>
+<meta name="description" content="Master Class de Phrasal Verbs: la lógica de las partículas, sintaxis separable e inseparable, del cognado al inglés nativo y un laboratorio de práctica con audio.">
+<meta name="theme-color" content="#07080E">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Phrasal Verbs">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07080E;--card:#0E1120;--card2:#131729;--ink:#F3EEE3;--ink2:#C3BEB2;--muted:#85859A;
+  --line:rgba(243,238,227,.08);--line2:rgba(243,238,227,.16);
+  --gold:#D8B46A;--gold2:#F1D9A0;--gold-soft:rgba(216,180,106,.11);--gold-mark:rgba(216,180,106,.22);
+  --violet:#A797FF;--coral:#FF8A6B;--mint:#66D7BE;--err:#FF7070;
+  --serif:'Cormorant Garamond',Georgia,'Times New Roman',serif;
+  --cinzel:'Cinzel','Cormorant Garamond',Georgia,serif;
+  --sans:'Figtree',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:70px;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:96px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(48% 38% at 12% 0%,rgba(216,180,106,.11),transparent 70%),
+             radial-gradient(42% 42% at 100% 28%,rgba(167,151,255,.08),transparent 70%),
+             radial-gradient(40% 40% at 0% 100%,rgba(255,138,107,.06),transparent 70%)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:10px}
+a{color:inherit}
+.shell{max-width:1000px;margin:0 auto;padding:0 20px;position:relative;z-index:1}
+mark{background:linear-gradient(transparent 58%,var(--gold-mark) 58%);color:var(--gold2);font-weight:600;padding:0 1px}
+.blank{display:inline-block;min-width:74px;border-bottom:2px solid var(--gold);color:var(--gold);text-align:center;font-weight:700;letter-spacing:.1em}
+
+/* ---------- top bar ---------- */
+.top{position:sticky;top:0;z-index:40;background:rgba(7,8,14,.8);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid var(--line)}
+.top-in{max-width:1000px;margin:0 auto;padding:9px 20px;display:flex;align-items:center;gap:12px}
+.brand{font-family:var(--cinzel);font-size:13px;letter-spacing:.22em;color:var(--gold);white-space:nowrap;text-decoration:none}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0;scroll-behavior:smooth}
+.nav::-webkit-scrollbar{display:none}
+.nav a{flex:none;font-size:13px;color:var(--ink2);text-decoration:none;padding:7px 12px;border-radius:999px;transition:background .2s,color .2s;white-space:nowrap}
+.nav a:hover{color:var(--ink)}
+.nav a.on{background:var(--gold-soft);color:var(--gold)}
+.pts{flex:none;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line2);border-radius:999px;padding:6px 12px;font-size:12.5px;white-space:nowrap}
+.pts b{color:var(--gold);font-variant-numeric:tabular-nums;font-weight:700}
+.pts i{font-style:normal;color:var(--muted);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase}
+.rate{flex:none;font-size:11px;letter-spacing:.08em;border:1px solid var(--line2);border-radius:999px;padding:6px 10px;color:var(--ink2);font-variant-numeric:tabular-nums}
+.rate.slow{color:var(--gold);border-color:var(--gold)}
+
+/* ---------- hero ---------- */
+.hero{padding:76px 0 30px;text-align:center}
+.eyebrow{font-family:var(--cinzel);font-size:12px;letter-spacing:.36em;color:var(--gold)}
+.hero h1{font-family:var(--serif);font-weight:600;font-size:clamp(62px,14vw,138px);line-height:.86;letter-spacing:-.01em;margin-top:22px}
+.hero h1 em{display:block;font-style:italic;font-weight:500;color:var(--gold)}
+.lede{font-family:var(--serif);font-style:italic;font-size:clamp(20px,3.6vw,26px);color:var(--ink2);max-width:640px;margin:24px auto 0;line-height:1.35}
+.formula{display:inline-flex;align-items:center;justify-content:center;gap:clamp(10px,2.4vw,20px);flex-wrap:wrap;margin:40px auto 0;padding:20px 28px;border:1px solid var(--line2);border-radius:999px;background:rgba(14,17,32,.6);min-height:78px;transition:opacity .35s}
+.formula .f-v{font-family:var(--serif);font-size:clamp(28px,6vw,38px);font-weight:600}
+.formula .f-p{font-family:var(--cinzel);font-size:clamp(20px,4.4vw,28px);color:var(--gold);letter-spacing:.08em}
+.formula .f-op{color:var(--muted);font-size:20px}
+.formula .f-m{font-family:var(--serif);font-style:italic;font-size:clamp(24px,5vw,32px);color:var(--gold2)}
+.formula.fade{opacity:0}
+.stats{display:flex;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:680px;margin:44px auto 0}
+.stat{flex:1;padding:16px 6px}
+.stat+.stat{border-left:1px solid var(--line)}
+.stat b{display:block;font-family:var(--serif);font-size:clamp(30px,6vw,40px);font-weight:500;line-height:1}
+.stat span{display:block;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:6px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 24px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .15s,background .2s,border-color .2s,color .2s;text-decoration:none;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn-gold{background:var(--gold);color:#140F05}
+.btn-gold:hover{background:var(--gold2)}
+.btn-gold:disabled{opacity:.45;cursor:not-allowed}
+.btn-ghost{border:1px solid var(--line2);color:var(--ink2)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:9px 16px;font-size:13.5px}
+
+/* ---------- sections ---------- */
+.sec{padding-top:110px}
+.sec-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:22px;align-items:end;margin-bottom:34px}
+.sec-num{font-family:var(--cinzel);font-size:clamp(48px,10vw,80px);color:var(--gold);line-height:.82;opacity:.92}
+.sec-kicker{font-family:var(--cinzel);font-size:11px;letter-spacing:.32em;color:var(--muted);margin-bottom:6px}
+.sec-title{font-family:var(--serif);font-size:clamp(36px,6.4vw,56px);font-weight:600;line-height:1}
+.sec-title em{font-style:italic;font-weight:500;color:var(--gold)}
+.sec-lede{grid-column:1/-1;color:var(--ink2);max-width:700px;font-size:16.5px;margin-top:18px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px}
+.lbl{font-family:var(--cinzel);font-size:11px;letter-spacing:.26em;color:var(--gold)}
+.muted{color:var(--muted)}
+
+/* anatomy */
+.anat{display:grid;grid-template-columns:1fr auto 1fr auto 1.3fr;align-items:center;gap:16px;text-align:center}
+.anat .blk{padding:22px 10px;border:1px solid var(--line2);border-radius:18px;background:var(--card2)}
+.anat .blk small{display:block;font-family:var(--cinzel);font-size:10.5px;letter-spacing:.24em;color:var(--muted);margin-bottom:8px}
+.anat .blk b{font-family:var(--serif);font-size:clamp(30px,6vw,44px);font-weight:600;line-height:1}
+.anat .blk.p b{font-family:var(--cinzel);color:var(--gold);letter-spacing:.06em}
+.anat .blk.m b{font-style:italic;color:var(--gold2);font-weight:500}
+.anat .blk em{display:block;font-size:13px;color:var(--muted);font-style:normal;margin-top:6px}
+.anat .op{font-size:26px;color:var(--muted)}
+.levels{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
+.level{padding:22px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.level h4{font-family:var(--serif);font-size:26px;font-weight:600;line-height:1.1;margin:8px 0 6px}
+.level p{font-size:14.5px;color:var(--ink2)}
+.level .ex{margin-top:12px;display:flex;flex-wrap:wrap;gap:6px}
+.pillw{font-size:13px;border:1px solid var(--line2);border-radius:999px;padding:4px 11px;color:var(--ink)}
+.vlab{margin-top:18px}
+.vlab-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.roots,.parts{display:flex;gap:8px;flex-wrap:wrap}
+.root{font-family:var(--cinzel);font-size:13px;letter-spacing:.14em;padding:8px 15px;border:1px solid var(--line2);border-radius:999px;color:var(--ink2);transition:.2s}
+.root.on{background:var(--gold);border-color:var(--gold);color:#140F05}
+.parts{margin-top:18px}
+.part{font-size:14px;padding:8px 14px;border:1px solid var(--line2);border-radius:12px;color:var(--ink2);transition:.2s}
+.part:hover{border-color:var(--gold)}
+.part.on{border-color:var(--gold);color:var(--gold);background:var(--gold-soft)}
+.vshow{margin-top:20px;padding-top:20px;border-top:1px solid var(--line);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:20px;align-items:center}
+.vshow .big{font-family:var(--serif);font-size:clamp(40px,8vw,60px);font-weight:600;line-height:1}
+.vshow .big span{color:var(--gold);font-style:italic}
+.vshow .es{font-family:var(--serif);font-style:italic;font-size:24px;color:var(--gold2);margin-top:6px}
+.golden{margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:18px;align-items:center;padding:22px 24px;border-radius:18px;border:1px solid rgba(216,180,106,.35);background:linear-gradient(120deg,rgba(216,180,106,.12),rgba(216,180,106,.02))}
+.golden .g{font-family:var(--cinzel);font-size:34px;color:var(--gold);line-height:1}
+.golden h4{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.15}
+.golden p{font-size:14.5px;color:var(--ink2);margin-top:4px}
+
+/* sentence rows */
+.say{display:flex;gap:12px;align-items:flex-start}
+.say .t{font-family:var(--serif);font-size:20px;line-height:1.35}
+.say .tr{font-size:13.5px;color:var(--muted);font-style:italic;margin-top:2px}
+.play{flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--line2);display:grid;place-items:center;color:var(--gold);transition:background .2s,border-color .2s,color .2s}
+.play:hover{border-color:var(--gold);background:var(--gold-soft)}
+.play.sm{width:28px;height:28px}
+.play.playing{background:var(--gold);border-color:var(--gold);color:#140F05;animation:pulse 1.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 var(--gold-mark)}50%{box-shadow:0 0 0 8px transparent}}
+
+/* particles atlas */
+.atlas{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.pc{position:relative;text-align:left;padding:20px 18px 18px;border:1px solid var(--line);border-radius:18px;background:var(--card);transition:border-color .25s,transform .25s,background .25s;overflow:hidden}
+.pc::before{content:"";position:absolute;inset:0 0 auto;height:2px;background:var(--ac,var(--gold));opacity:.7}
+.pc:hover{border-color:var(--line2);transform:translateY(-2px)}
+.pc.on{border-color:var(--ac,var(--gold));background:var(--card2)}
+.pc .g{position:absolute;right:16px;top:16px;font-family:var(--sans);font-size:18px;line-height:1;color:var(--ac,var(--gold));opacity:.85}
+.pc .n{padding-right:26px;font-family:var(--cinzel);font-size:clamp(21px,4.2vw,30px);font-weight:600;letter-spacing:.06em;line-height:1.05;color:var(--ink)}
+.pc .c{font-size:12.5px;color:var(--ink2);margin-top:8px;line-height:1.4}
+.pc .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:10px}
+.pdetail{margin-top:16px;border:1px solid var(--line2);border-radius:22px;background:var(--card);padding:26px;display:none}
+.pdetail.open{display:block;animation:rise .35s ease}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pd-head{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap}
+.pd-head h3{font-family:var(--cinzel);font-size:clamp(34px,7vw,52px);letter-spacing:.06em;line-height:1;color:var(--ac,var(--gold))}
+.pd-head p{font-family:var(--serif);font-size:21px;font-style:italic;color:var(--ink2);max-width:560px;line-height:1.35;margin-top:10px}
+.vrows{margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.vrow{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;padding:14px 0;border-top:1px solid var(--line);align-items:start}
+.vrow .v{font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.1}
+.vrow .m{font-size:14px;color:var(--gold2)}
+.vrow .x{font-size:13.5px;color:var(--ink2);margin-top:3px}
+
+/* syntax */
+.types{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.type{padding:24px;border:1px solid var(--line);border-radius:20px;background:var(--card)}
+.type .tag{display:inline-block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:4px 10px;border-radius:999px;border:1px solid currentColor}
+.type h4{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.1;margin:12px 0 6px}
+.type p{font-size:14.5px;color:var(--ink2)}
+.ln{display:flex;align-items:center;gap:12px;margin-top:10px;font-family:var(--serif);font-size:20px}
+.ln .ic{flex:none;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:var(--sans);font-size:13px;font-weight:700}
+.ln.ok .ic{background:rgba(102,215,190,.14);color:var(--mint)}
+.ln.no .ic{background:rgba(255,112,112,.12);color:var(--err)}
+.ln.no .s{text-decoration:line-through;text-decoration-color:rgba(255,112,112,.6);color:var(--muted)}
+.ln .play{margin-left:auto}
+.rules2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+
+/* cognado → nativo */
+.pairs{display:grid;grid-template-columns:1fr 1fr;gap:0 28px}
+.pair{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1.15fr) auto;gap:12px;align-items:center;padding:16px 0;border-top:1px solid var(--line)}
+.pair .f{font-size:15px;color:var(--muted)}
+.pair .f small{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);opacity:.7}
+.pair .ar{color:var(--gold);font-size:16px}
+.pair .n{font-family:var(--serif);font-size:23px;font-weight:600;color:var(--gold2);line-height:1.1}
+
+/* dictionary */
+.filters{position:sticky;top:53px;z-index:20;background:rgba(7,8,14,.86);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);padding:12px 0;margin:0 -20px;padding-left:20px;padding-right:20px;border-bottom:1px solid var(--line)}
+.search{display:flex;align-items:center;gap:8px;border:1px solid var(--line2);border-radius:999px;padding:0 16px;height:44px;background:var(--card)}
+.search:focus-within{border-color:var(--gold)}
+.search svg{color:var(--muted);flex:none}
+.search input{flex:1;min-width:0;border:0;background:none;color:var(--ink);font:inherit;outline:none}
+.search input::placeholder{color:var(--muted)}
+.chips{display:flex;gap:7px;overflow-x:auto;scrollbar-width:none;padding-top:10px}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;font-size:12.5px;padding:6px 13px;border:1px solid var(--line2);border-radius:999px;color:var(--ink2);white-space:nowrap;transition:.2s}
+.chip:hover{border-color:var(--gold)}
+.chip.on{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:600}
+.chip.t.on{background:var(--gold);border-color:var(--gold);color:#140F05}
+.dmeta{display:flex;justify-content:space-between;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);padding:18px 0 4px}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.dc{padding:20px 20px 18px;border:1px solid var(--line);border-radius:18px;background:var(--card);display:flex;flex-direction:column;gap:6px}
+.dc-top{display:flex;align-items:center;gap:10px}
+.dc .v{font-family:var(--serif);font-size:28px;font-weight:600;line-height:1.05;text-align:left;display:inline-flex;align-items:center;gap:9px}
+.dc .v svg{color:var(--muted)}
+.dc .v:hover,.dc .v:hover svg,.dc .v.playing,.dc .v.playing svg{color:var(--gold)}
+.badges{margin-left:auto;display:flex;gap:6px;flex:none}
+.bdg{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line2);border-radius:6px;padding:3px 7px;color:var(--muted);white-space:nowrap}
+.bdg.p{color:var(--ac,var(--gold));border-color:currentColor}
+.dc .m{font-size:15px;color:var(--gold2)}
+.dc .say{margin-top:8px}
+.dc .say .t{font-size:19px}
+.empty{text-align:center;padding:60px 10px;color:var(--muted);grid-column:1/-1}
+
+/* lab */
+.tabs{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:none;padding:10px 16px;border-radius:14px;border:1px solid var(--line2);font-size:14px;color:var(--ink2);transition:.2s;display:inline-flex;align-items:center;gap:8px}
+.tab .d{font-family:var(--cinzel);font-size:11px;color:var(--muted)}
+.tab.on{background:var(--gold-soft);border-color:var(--gold);color:var(--gold)}
+.tab.on .d{color:var(--gold)}
+.labbar{display:flex;justify-content:flex-end;align-items:center;gap:12px;flex-wrap:wrap;margin:16px 0}
+.labbar .chips{padding-top:0;flex:1;min-width:0}
+.streak{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.streak b{color:var(--coral);font-size:14px}
+.stage{min-height:420px;border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,var(--card2),var(--card));padding:34px 28px;position:relative;overflow:hidden}
+.stage::before{content:"";position:absolute;inset:-40% -20% auto;height:70%;background:radial-gradient(50% 50% at 50% 50%,rgba(216,180,106,.08),transparent 70%);pointer-events:none}
+.stage>*{position:relative}
+.q-meta{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:18px}
+.q-meta .cnt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+.q-big{font-family:var(--serif);font-size:clamp(40px,8vw,64px);font-weight:600;line-height:1;text-align:center;display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+.q-sent{font-family:var(--serif);font-size:clamp(22px,4.2vw,30px);line-height:1.35;text-align:center;max-width:700px;margin:0 auto}
+.q-hint{text-align:center;color:var(--muted);font-size:14px;font-style:italic;margin-top:10px}
+.q-ask{text-align:center;font-family:var(--cinzel);font-size:11px;letter-spacing:.26em;color:var(--gold);margin:26px 0 14px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:700px;margin:0 auto}
+.opts.one{grid-template-columns:1fr}
+.opts.two{grid-template-columns:1fr 1fr!important}
+.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:15px 18px;border-radius:16px;border:1px solid var(--line2);background:rgba(7,8,14,.4);font-size:16px;line-height:1.35;transition:border-color .18s,background .18s,color .18s}
+.opt:hover:not(:disabled){border-color:var(--gold)}
+.opt .k{flex:none;width:26px;height:26px;border-radius:8px;border:1px solid var(--line2);display:grid;place-items:center;font-family:var(--cinzel);font-size:12px;color:var(--muted)}
+.opt.serif{font-family:var(--serif);font-size:21px}
+.opt.cin{font-family:var(--cinzel);letter-spacing:.1em;justify-content:center;font-size:18px}
+.opt.ok{border-color:var(--mint);background:rgba(102,215,190,.10);color:var(--mint)}
+.opt.ok .k{border-color:var(--mint);color:var(--mint)}
+.opt.bad{border-color:var(--err);background:rgba(255,112,112,.08);color:var(--err)}
+.opt.bad .k{border-color:var(--err);color:var(--err)}
+.opt:disabled{cursor:default}
+.fb{max-width:700px;margin:18px auto 0;padding:18px 20px;border-radius:16px;border:1px solid var(--line2);background:rgba(7,8,14,.45);display:none}
+.fb.show{display:block;animation:rise .3s ease}
+.fb h5{font-family:var(--serif);font-size:24px;font-weight:600;line-height:1.1}
+.fb h5.ok{color:var(--mint)}
+.fb h5.bad{color:var(--err)}
+.fb p{font-size:14.5px;color:var(--ink2);margin-top:6px}
+.fb .say{margin-top:12px}
+.acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+
+/* flashcard */
+.card3d{perspective:1600px;height:clamp(300px,52vh,380px);max-width:600px;margin:0 auto}
+.c3-in{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .6s cubic-bezier(.4,0,.2,1);cursor:pointer}
+.card3d.flip .c3-in{transform:rotateY(180deg)}
+.c3-f{position:absolute;inset:0;-webkit-backface-visibility:hidden;backface-visibility:hidden;border-radius:22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:28px;text-align:center;border:1px solid var(--line2);overflow:auto}
+.c3-front{background:radial-gradient(120% 120% at 50% 0%,#1A1E36,#0E1120)}
+.c3-back{transform:rotateY(180deg);background:radial-gradient(120% 120% at 50% 0%,#2A2416,#120F0A);border-color:rgba(216,180,106,.4)}
+.c3-front .w{font-family:var(--serif);font-size:clamp(46px,10vw,72px);font-weight:600;line-height:1}
+.c3-front .tap{font-family:var(--cinzel);font-size:10.5px;letter-spacing:.3em;color:var(--muted)}
+.c3-back .m{font-family:var(--serif);font-style:italic;font-size:clamp(30px,6vw,42px);color:var(--gold2);line-height:1.1}
+.c3-back .t{font-family:var(--serif);font-size:21px;line-height:1.35}
+.c3-back .tr{font-size:14px;color:var(--ink2);font-style:italic}
+
+/* builder */
+.build{min-height:70px;max-width:700px;margin:0 auto;border:1px dashed rgba(216,180,106,.45);border-radius:16px;padding:12px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;background:rgba(216,180,106,.04)}
+.build .ph{color:var(--muted);font-style:italic;font-size:14px;padding:0 6px}
+.bank{max-width:700px;margin:14px auto 0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.tok{padding:9px 15px;border-radius:12px;font-size:16px;font-weight:500;border:1px solid var(--line2);background:rgba(7,8,14,.5);transition:transform .12s,border-color .2s}
+.tok:active{transform:scale(.95)}
+.tok:hover{border-color:var(--gold)}
+.tok.sel{background:var(--gold-soft);border-color:rgba(216,180,106,.55);color:var(--gold2)}
+.pattern{display:inline-block;margin-top:10px;font-size:13px;color:var(--gold);border:1px solid rgba(216,180,106,.35);border-radius:999px;padding:5px 14px}
+
+/* ritual + footer */
+.ritual{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.step{padding:22px 20px;border:1px solid var(--line);border-radius:18px;background:var(--card)}
+.step .n{font-family:var(--cinzel);font-size:28px;color:var(--gold);line-height:1}
+.step h4{font-family:var(--serif);font-size:22px;font-weight:600;margin:10px 0 4px;line-height:1.15}
+.step p{font-size:14px;color:var(--ink2)}
+footer{text-align:center;padding:110px 20px 40px;position:relative;z-index:1}
+footer .sig{font-family:var(--serif);font-style:italic;font-size:clamp(32px,6vw,46px);line-height:1.1}
+footer .sig em{color:var(--gold)}
+footer p{color:var(--muted);font-size:13px;margin-top:14px}
+footer .cin{font-family:var(--cinzel);font-size:11px;letter-spacing:.3em;color:var(--muted);margin-top:26px}
+
+.wa-fab{position:fixed;z-index:70;right:1.1rem;bottom:calc(1.1rem + env(safe-area-inset-bottom));display:flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-weight:700;text-decoration:none;border-radius:999px;box-shadow:0 10px 30px rgba(37,211,102,.35);padding:13px 18px;transition:transform .2s}
+.wa-fab:active{transform:scale(.95)}
+.toast{position:fixed;left:16px;right:16px;bottom:88px;margin:0 auto;width:fit-content;max-width:480px;transform:translateY(16px);opacity:0;z-index:80;background:var(--gold);color:#140F05;font-size:13.5px;font-weight:600;padding:10px 18px;border-radius:14px;transition:.3s;pointer-events:none;text-align:center}
+.toast.show{opacity:1;transform:none}
+
+@media (max-width:860px){
+  .atlas{grid-template-columns:repeat(3,1fr)}
+  .ritual{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  .anat{grid-template-columns:1fr auto 1fr;row-gap:12px}
+  .anat .op.eq{grid-column:1/-1;line-height:1}
+  .anat .blk.m{grid-column:1/-1}
+  .levels,.types,.rules2,.pairs,.dgrid,.vrows{grid-template-columns:1fr}
+  .vshow{grid-template-columns:1fr}
+  .atlas{grid-template-columns:1fr 1fr}
+  .opts{grid-template-columns:1fr}
+  .stage{padding:28px 18px}
+  .panel,.pdetail,.type{padding:22px 18px}
+  .sec{padding-top:90px}
+  .pair{grid-template-columns:minmax(0,.9fr) auto minmax(0,1.1fr) auto;gap:10px}
+}
+@media (max-width:480px){
+  .shell,.top-in{padding-left:16px;padding-right:16px}
+  .filters{margin:0 -16px;padding-left:16px;padding-right:16px}
+  .brand,.pts i{display:none}
+  .wa-label{display:none}
+  .ritual{grid-template-columns:1fr}
+  .golden{grid-template-columns:1fr;gap:8px}
+  .hero{padding-top:56px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="top-in">
+    <a class="brand" href="#inicio">PV · 05</a>
+    <nav class="nav" id="nav">
+      <a href="#anatomia">I · Anatomía</a>
+      <a href="#particulas">II · Partículas</a>
+      <a href="#sintaxis">III · Sintaxis</a>
+      <a href="#nativo">IV · Del cognado al nativo</a>
+      <a href="#diccionario">V · Diccionario</a>
+      <a href="#laboratorio">VI · Laboratorio</a>
+    </nav>
+    <button class="rate" id="rate" type="button" aria-label="Velocidad de la voz">1×</button>
+    <div class="pts" title="Tus puntos"><b id="pts">0</b><i id="lvl">Aprendiz</i></div>
+  </div>
+</div>
+
+<main class="shell">
+
+<header class="hero" id="inicio">
+  <div class="eyebrow">LECCIÓN 05 · MASTER CLASS</div>
+  <h1>Phrasal <em>Verbs</em></h1>
+  <p class="lede">El código secreto del inglés nativo. Un verbo simple más una partícula crean un significado nuevo, y esa partícula sigue una lógica que puedes dominar.</p>
+  <div class="formula" id="formula" aria-live="polite"></div>
+  <div class="stats">
+    <div class="stat"><b id="st-v">120</b><span>Phrasal verbs</span></div>
+    <div class="stat"><b id="st-p">11</b><span>Partículas</span></div>
+    <div class="stat"><b>6</b><span>Laboratorios</span></div>
+  </div>
+  <div class="cta">
+    <a class="btn btn-gold" href="#anatomia">Comenzar la clase</a>
+    <a class="btn btn-ghost" href="#laboratorio">Ir al laboratorio</a>
+  </div>
+</header>
+
+<!-- I · ANATOMÍA -->
+<section class="sec" id="anatomia">
+  <div class="sec-head">
+    <div class="sec-num">I</div>
+    <div><div class="sec-kicker">ANATOMÍA</div><h2 class="sec-title">Verbo + partícula = <em>idea nueva</em></h2></div>
+    <p class="sec-lede">Un phrasal verb no se traduce palabra por palabra. Se entiende como una sola unidad de significado: el verbo aporta la acción y la partícula aporta la dirección, la intensidad o el resultado.</p>
+  </div>
+
+  <div class="anat">
+    <div class="blk"><small>VERBO</small><b>give</b><em>dar</em></div>
+    <div class="op">+</div>
+    <div class="blk p"><small>PARTÍCULA</small><b>UP</b><em>arriba · completar</em></div>
+    <div class="op eq">=</div>
+    <div class="blk m"><small>SIGNIFICADO NUEVO</small><b>rendirse</b><em>«Never give up.»</em></div>
+  </div>
+
+  <div class="levels">
+    <div class="level"><div class="lbl">NIVEL 1 · LITERAL</div><h4>Se ve la dirección</h4><p>La partícula conserva su sentido físico. Los entiendes al primer intento.</p><div class="ex"><span class="pillw">sit down</span><span class="pillw">come back</span><span class="pillw">get up</span></div></div>
+    <div class="level"><div class="lbl">NIVEL 2 · LÓGICO</div><h4>La partícula da el matiz</h4><p>La partícula añade una idea constante: completar, cancelar, registrar, aumentar.</p><div class="ex"><span class="pillw">write down</span><span class="pillw">call off</span><span class="pillw">speed up</span></div></div>
+    <div class="level"><div class="lbl">NIVEL 3 · IDIOMÁTICO</div><h4>Un significado propio</h4><p>El conjunto crea un sentido que no se deduce de las partes. Se dominan por uso y contexto.</p><div class="ex"><span class="pillw">give up</span><span class="pillw">figure out</span><span class="pillw">put up with</span></div></div>
+  </div>
+
+  <div class="panel vlab">
+    <div class="vlab-top">
+      <div><div class="lbl">EL MISMO VERBO, OTRO MUNDO</div><p class="muted" style="font-size:14px;margin-top:4px">Elige un verbo y cambia la partícula. Observa cómo cambia todo.</p></div>
+      <div class="roots" id="roots"></div>
+    </div>
+    <div class="parts" id="vparts"></div>
+    <div class="vshow" id="vshow"></div>
+  </div>
+
+  <div class="golden">
+    <div class="g">⚜</div>
+    <div><h4>Regla de oro: conjuga el verbo, nunca la partícula.</h4><p>She <b>gave</b> up · He is <b>giving</b> up · They have <b>given</b> up. La partícula queda intacta en todos los tiempos.</p></div>
+  </div>
+</section>
+
+<!-- II · PARTÍCULAS -->
+<section class="sec" id="particulas">
+  <div class="sec-head">
+    <div class="sec-num">II</div>
+    <div><div class="sec-kicker">EL ATLAS</div><h2 class="sec-title">Cada partícula tiene <em>una lógica</em></h2></div>
+    <p class="sec-lede">Memorizar listas no funciona. Entender la imagen que hay detrás de cada partícula, sí: <b>UP</b> completa, <b>OFF</b> desconecta, <b>OUT</b> saca a la luz. Toca una partícula para abrir su familia.</p>
+  </div>
+  <div class="atlas" id="atlas"></div>
+  <div class="pdetail" id="pdetail"></div>
+</section>
+
+<!-- III · SINTAXIS -->
+<section class="sec" id="sintaxis">
+  <div class="sec-head">
+    <div class="sec-num">III</div>
+    <div><div class="sec-kicker">SINTAXIS</div><h2 class="sec-title">¿Dónde va <em>el objeto</em>?</h2></div>
+    <p class="sec-lede">Aquí se equivocan incluso los estudiantes avanzados. Todo depende del tipo de phrasal verb, y sobre todo de si el objeto es un sustantivo o un pronombre.</p>
+  </div>
+  <div class="types" id="types"></div>
+  <div class="rules2">
+    <div class="golden" style="margin-top:0"><div class="g">it</div><div><h4>El test del pronombre</h4><p>Si el verbo es separable, el pronombre (it, them, me, him, her) va <b>siempre en medio</b>: turn it off, pick me up, call them back.</p></div></div>
+    <div class="golden" style="margin-top:0"><div class="g">to</div><div><h4>Cuando «to» es preposición</h4><p>En look forward to, «to» no es infinitivo: va seguido de <b>-ing</b> o de un sustantivo. I look forward to <b>meeting</b> you, no «to meet».</p></div></div>
+  </div>
+  <div class="cta" style="justify-content:flex-start"><button class="btn btn-gold btn-sm" data-golab="syntax" type="button">Haz la prueba del pronombre →</button></div>
+</section>
+
+<!-- IV · DEL COGNADO AL NATIVO -->
+<section class="sec" id="nativo">
+  <div class="sec-head">
+    <div class="sec-num">IV</div>
+    <div><div class="sec-kicker">REGISTRO</div><h2 class="sec-title">Del cognado <em>al nativo</em></h2></div>
+    <p class="sec-lede">El hispanohablante suena formal porque elige la palabra latina que ya conoce: postpone, cancel, tolerate. El nativo, en una conversación o una reunión, elige el phrasal verb. Ambas son correctas; la segunda suena a inglés real.</p>
+  </div>
+  <div class="pairs" id="pairs"></div>
+  <div class="cta" style="justify-content:flex-start"><button class="btn btn-gold btn-sm" data-golab="formal" type="button">Ponte a prueba →</button></div>
+</section>
+
+<!-- V · DICCIONARIO -->
+<section class="sec" id="diccionario">
+  <div class="sec-head">
+    <div class="sec-num">V</div>
+    <div><div class="sec-kicker">DICCIONARIO</div><h2 class="sec-title">Los <em id="dcount">120</em> esenciales</h2></div>
+    <p class="sec-lede">Cada phrasal verb con su significado, su tipo sintáctico y una frase real con audio. Filtra por partícula o por tipo, o busca en inglés o en español.</p>
+  </div>
+  <div class="filters">
+    <label class="search">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <input id="dq" type="search" placeholder="Busca: give up, cancelar, rendirse…" autocomplete="off" spellcheck="false" aria-label="Buscar phrasal verb">
+    </label>
+    <div class="chips" id="dparts"></div>
+    <div class="chips" id="dtypes"></div>
+  </div>
+  <div class="dmeta"><span id="dlabel">Todos</span><span id="dnum"></span></div>
+  <div class="dgrid" id="dgrid"></div>
+</section>
+
+<!-- VI · LABORATORIO -->
+<section class="sec" id="laboratorio">
+  <div class="sec-head">
+    <div class="sec-num">VI</div>
+    <div><div class="sec-kicker">LABORATORIO</div><h2 class="sec-title">Entrena <em>hasta que salga solo</em></h2></div>
+    <p class="sec-lede">Seis ejercicios, de reconocer a producir. Cada acierto suma puntos y tu progreso queda guardado en este dispositivo.</p>
+  </div>
+  <div class="tabs" id="tabs"></div>
+  <div class="labbar">
+    <div class="chips" id="lparts"></div>
+    <div class="streak">Racha <b id="streak">0</b></div>
+  </div>
+  <div class="stage" id="stage"></div>
+</section>
+
+<!-- RITUAL -->
+<section class="sec" id="ritual">
+  <div class="sec-head">
+    <div class="sec-num">✦</div>
+    <div><div class="sec-kicker">RITUAL DIARIO</div><h2 class="sec-title">Diez minutos, <em>una partícula</em></h2></div>
+  </div>
+  <div class="ritual">
+    <div class="step"><div class="n">i</div><h4>Elige una partícula</h4><p>Un día UP, otro OFF. Abre su familia en el atlas y lee su lógica.</p></div>
+    <div class="step"><div class="n">ii</div><h4>Escucha y repite</h4><p>Reproduce cada frase y repítela en voz alta tres veces, imitando el ritmo.</p></div>
+    <div class="step"><div class="n">iii</div><h4>Hazlo tuyo</h4><p>Escribe tres frases sobre tu vida real usando tres verbos de la familia.</p></div>
+    <div class="step"><div class="n">iv</div><h4>Ponte a prueba</h4><p>Cierra con una ronda de Partícula y otra de Sintaxis en el laboratorio.</p></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="sig">Don't just learn them. <em>Use them.</em></div>
+  <p>Un phrasal verb dominado vale más que diez memorizados.</p>
+  <div class="cin">PROF. GERMANDARIO · LECCIÓN 05</div>
+</footer>
+
+<a class="wa-fab" href="https://wa.me/573197894038?text=%C2%A1Hola%20Prof.%20Germandario!%20Estoy%20en%20la%20Lecci%C3%B3n%205%20(phrasal%20verbs)%20y%20quiero%20m%C3%A1s%20info%20%F0%9F%99%8C" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 32 32" fill="currentColor" aria-hidden="true"><path d="M16.04 4C9.96 4 5 8.95 5 15.02c0 2.4.77 4.62 2.08 6.43L5 28l6.74-2.03a11 11 0 0 0 4.3.87h.01C22.12 26.84 27 21.9 27 15.83 27 9.76 22.04 4 16.04 4Zm0 20.4h-.01a9.1 9.1 0 0 1-4.64-1.27l-.33-.2-3.86 1.16 1.18-3.76-.22-.35a9.06 9.06 0 0 1-1.38-4.81c0-5.02 4.1-9.1 9.13-9.1 2.44 0 4.73.95 6.45 2.67a9.06 9.06 0 0 1 2.68 6.44c0 5.02-4.1 9.1-9.13 9.1Zm5.01-6.81c-.27-.14-1.62-.8-1.87-.89-.25-.09-.43-.14-.62.14-.18.27-.71.89-.87 1.07-.16.18-.32.2-.59.07-.27-.14-1.16-.43-2.2-1.36-.81-.72-1.36-1.62-1.52-1.89-.16-.27-.02-.42.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.46.09-.18.05-.34-.02-.48-.07-.14-.62-1.49-.85-2.04-.22-.53-.45-.46-.62-.47l-.53-.01c-.18 0-.48.07-.73.34-.25.27-.96.94-.96 2.29s.98 2.66 1.12 2.84c.14.18 1.93 2.95 4.68 4.13.65.28 1.16.45 1.56.58.66.21 1.25.18 1.72.11.52-.08 1.62-.66 1.85-1.3.23-.64.23-1.18.16-1.3-.07-.12-.25-.18-.52-.32Z"/></svg>
+  <span class="wa-label">WhatsApp</span>
+</a>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+
+/* ================= DATA ================= */
+const P = {
+  up:{n:"UP",g:"↑",ac:"var(--gold)",core:"Completar · aumentar · aparecer",
+     d:"UP sube: lo que estaba abajo se levanta (get up), lo incompleto se completa (clean up, speed up) y lo oculto aparece (show up, come up)."},
+  down:{n:"DOWN",g:"↓",ac:"var(--violet)",core:"Disminuir · detener · fijar",
+     d:"DOWN baja la intensidad (slow down, calm down), detiene algo (break down, shut down) y lo fija por escrito (write down)."},
+  out:{n:"OUT",g:"→",ac:"var(--coral)",core:"Descubrir · terminar del todo",
+     d:"OUT saca a la luz lo que estaba oculto (find out, figure out), lleva una acción hasta el final (carry out, burn out) y hace sobresalir (stand out)."},
+  off:{n:"OFF",g:"⊘",ac:"var(--mint)",core:"Cortar · cancelar · separar",
+     d:"OFF corta la conexión: apaga (turn off), cancela (call off), separa del suelo (take off) o saca algo del calendario (put off)."},
+  on:{n:"ON",g:"●",ac:"var(--gold2)",core:"Activar · continuar · apoyarse",
+     d:"ON enciende (turn on), mantiene la marcha (carry on, go on), pone encima (put on) y sirve de apoyo (count on, focus on)."},
+  in:{n:"IN · INTO",g:"⇥",ac:"var(--violet)",core:"Entrar · participar · investigar",
+     d:"IN te mete en un espacio o sistema (check in, sign in, hand in). INTO entra en profundidad o en contacto (look into, run into)."},
+  over:{n:"OVER",g:"⟳",ac:"var(--coral)",core:"Repasar · superar · traspasar",
+     d:"OVER pasa por encima de algo: revisarlo (go over), superarlo (get over) o transferir su control (take over, hand over)."},
+  back:{n:"BACK",g:"↩",ac:"var(--mint)",core:"Regresar · devolver",
+     d:"BACK vuelve al origen: regresar (come back), devolver algo (give back, call back) o retroceder (cut back, set back)."},
+  away:{n:"AWAY",g:"⇢",ac:"var(--gold)",core:"Alejar · eliminar · desvanecer",
+     d:"AWAY aleja algo de ti: lo regalas (give away), lo botas (throw away), huyes (run away) o se desvanece (fade away)."},
+  through:{n:"THROUGH",g:"⇉",ac:"var(--violet)",core:"De principio a fin",
+     d:"THROUGH atraviesa algo completo, casi siempre difícil, hasta salir del otro lado: get through, go through, follow through."},
+  three:{n:"+ PREP",g:"⧉",ac:"var(--coral)",core:"Verbo + partícula + preposición",
+     d:"Tres piezas que viajan juntas. Nunca se separan y el objeto va siempre al final: put up with it, run out of time."}
+};
+const PORDER = ["up","down","out","off","on","in","over","back","away","through","three"];
+
+const TYPES = {
+  sep:{n:"Separable",short:"Separable",c:"var(--gold)"},
+  insep:{n:"Inseparable",short:"Insep.",c:"var(--violet)"},
+  intr:{n:"Sin objeto",short:"Sin objeto",c:"var(--mint)"},
+  "3":{n:"Tres palabras",short:"3 palabras",c:"var(--coral)"}
+};
+
+// [phrasal, particle, meaning, type, example EN, example ES]
+const V = [
+["get up","up","levantarse (de la cama)","intr","I *get up* at six every morning.","Me levanto a las seis todas las mañanas."],
+["wake up","up","despertar(se)","sep","The alarm *woke me up* at five.","La alarma me despertó a las cinco."],
+["give up","up","rendirse; dejar (un hábito)","sep","Never *give up* on your goals.","Nunca renuncies a tus metas."],
+["set up","up","montar, configurar, organizar","sep","We *set up* a new office in Medellín.","Montamos una nueva oficina en Medellín."],
+["show up","up","aparecer, llegar","intr","He *showed up* late to the interview.","Llegó tarde a la entrevista."],
+["bring up","up","mencionar (un tema); criar","sep","Don't *bring up* politics at dinner.","No saques el tema de la política en la cena."],
+["pick up","up","recoger; aprender de oído","sep","I'll *pick you up* at the airport.","Te recojo en el aeropuerto."],
+["make up","up","inventar; reconciliarse","sep","He *made up* an excuse.","Se inventó una excusa."],
+["look up","up","buscar (información)","sep","*Look up* the word in the dictionary.","Busca la palabra en el diccionario."],
+["end up","up","terminar (en), acabar","intr","We *ended up* staying until midnight.","Terminamos quedándonos hasta la medianoche."],
+["catch up","up","ponerse al día","intr","Let's *catch up* over coffee.","Pongámonos al día con un café."],
+["speed up","up","acelerar","sep","Daily practice *speeds up* your progress.","La práctica diaria acelera tu progreso."],
+["turn up","up","subir (el volumen); aparecer","sep","Can you *turn up* the volume?","¿Puedes subir el volumen?"],
+["grow up","up","crecer, criarse","intr","I *grew up* in Cali.","Crecí en Cali."],
+["come up","up","surgir","intr","Something *came up* at work.","Surgió algo en el trabajo."],
+
+["slow down","down","ir más despacio","sep","*Slow down* and breathe.","Ve más despacio y respira."],
+["turn down","down","rechazar; bajar (el volumen)","sep","She *turned down* the job offer.","Ella rechazó la oferta de trabajo."],
+["break down","down","averiarse; quebrarse emocionalmente","intr","The car *broke down* on the highway.","El carro se varó en la autopista."],
+["calm down","down","calmarse","sep","*Calm down*, we have time.","Cálmate, tenemos tiempo."],
+["write down","down","anotar","sep","*Write down* every new word.","Anota cada palabra nueva."],
+["let down","down","decepcionar, fallarle a alguien","sep","I won't *let you down*.","No te voy a fallar."],
+["shut down","down","apagar, cerrar del todo","sep","*Shut down* your computer before you leave.","Apaga tu computador antes de irte."],
+["settle down","down","establecerse; calmarse","intr","They *settled down* in Bogotá.","Se establecieron en Bogotá."],
+["sit down","down","sentarse","intr","Please *sit down*.","Por favor, siéntate."],
+["narrow down","down","reducir (opciones)","sep","We *narrowed down* the list to three candidates.","Redujimos la lista a tres candidatos."],
+
+["find out","out","averiguar, descubrir","sep","I *found out* the truth.","Descubrí la verdad."],
+["figure out","out","resolver, entender","sep","We need to *figure out* a solution.","Necesitamos encontrar una solución."],
+["work out","out","hacer ejercicio; salir bien","intr","I *work out* three times a week.","Hago ejercicio tres veces por semana."],
+["point out","out","señalar, hacer notar","sep","She *pointed out* a mistake in the report.","Ella señaló un error en el informe."],
+["carry out","out","llevar a cabo, ejecutar","sep","The team *carried out* the plan perfectly.","El equipo llevó a cabo el plan a la perfección."],
+["check out","out","revisar, mirar","sep","*Check out* this new app.","Mira esta aplicación nueva."],
+["stand out","out","destacar, sobresalir","intr","Your résumé really *stands out*.","Tu hoja de vida realmente se destaca."],
+["hang out","out","pasar el rato","intr","We *hang out* on Fridays.","Pasamos el rato juntos los viernes."],
+["sort out","out","resolver, organizar","sep","Let me *sort out* the problem.","Déjame resolver el problema."],
+["burn out","out","agotarse, quemarse","intr","Take breaks or you will *burn out*.","Toma pausas o te vas a quemar."],
+["fill out","out","llenar (un formulario)","sep","*Fill out* this form, please.","Llena este formulario, por favor."],
+["pass out","out","desmayarse","intr","He *passed out* from the heat.","Se desmayó por el calor."],
+
+["turn off","off","apagar","sep","*Turn off* your phone during class.","Apaga tu teléfono durante la clase."],
+["call off","off","cancelar","sep","They *called off* the meeting.","Cancelaron la reunión."],
+["take off","off","despegar; quitarse (ropa)","sep","The plane *takes off* at noon.","El avión despega al mediodía."],
+["put off","off","posponer, aplazar","sep","Don't *put off* your dreams.","No aplaces tus sueños."],
+["show off","off","presumir, alardear","sep","He loves to *show off* his car.","A él le encanta presumir su carro."],
+["drop off","off","dejar (a alguien en un lugar)","sep","I'll *drop you off* at the hotel.","Te dejo en el hotel."],
+["lay off","off","despedir (por recorte)","sep","The company *laid off* fifty workers.","La empresa despidió a cincuenta trabajadores."],
+["pay off","off","dar fruto; saldar","intr","All your practice will *pay off*.","Toda tu práctica va a dar fruto."],
+["set off","off","partir (de viaje)","intr","We *set off* at dawn.","Partimos al amanecer."],
+["kick off","off","dar inicio, arrancar","sep","Let's *kick off* the meeting.","Demos inicio a la reunión."],
+["log off","off","cerrar sesión","intr","Remember to *log off* after work.","Recuerda cerrar sesión después del trabajo."],
+
+["turn on","on","encender","sep","*Turn on* the lights, please.","Enciende las luces, por favor."],
+["carry on","on","continuar, seguir","intr","*Carry on*, you're doing great.","Sigue, lo estás haciendo genial."],
+["go on","on","continuar; suceder","intr","What's *going on*?","¿Qué está pasando?"],
+["hold on","on","esperar un momento","intr","*Hold on*, I'll check.","Espera, ya reviso."],
+["put on","on","ponerse (ropa)","sep","*Put on* your jacket; it's cold.","Ponte la chaqueta; hace frío."],
+["take on","on","asumir (una responsabilidad)","sep","She *took on* a new project.","Ella asumió un nuevo proyecto."],
+["move on","on","seguir adelante","intr","It's time to *move on*.","Es hora de seguir adelante."],
+["count on","on","contar con","insep","You can *count on* me.","Puedes contar conmigo."],
+["focus on","on","concentrarse en","insep","*Focus on* one task at a time.","Concéntrate en una tarea a la vez."],
+["catch on","on","ponerse de moda; entender","intr","The idea quickly *caught on*.","La idea se puso de moda rápidamente."],
+
+["check in","in","registrarse (hotel, vuelo)","intr","We *checked in* at three.","Hicimos el check-in a las tres."],
+["fill in","in","rellenar (espacios)","sep","*Fill in* the blanks.","Rellena los espacios en blanco."],
+["give in","in","ceder, rendirse","intr","Don't *give in* to fear.","No cedas ante el miedo."],
+["drop in","in","pasar de visita (sin avisar)","intr","*Drop in* anytime.","Pasa cuando quieras."],
+["hand in","in","entregar (un trabajo)","sep","*Hand in* your essay on Friday.","Entrega tu ensayo el viernes."],
+["sign in","in","iniciar sesión","intr","*Sign in* with your email.","Inicia sesión con tu correo."],
+["settle in","in","adaptarse (a un lugar nuevo)","intr","Have you *settled in* yet?","¿Ya te adaptaste?"],
+["plug in","in","enchufar, conectar","sep","*Plug in* your laptop.","Conecta tu portátil."],
+["run into","in","encontrarse (por casualidad)","insep","I *ran into* my old teacher.","Me encontré con mi antiguo profesor."],
+["look into","in","investigar, examinar","insep","We will *look into* the issue.","Vamos a investigar el asunto."],
+
+["get over","over","superar (algo difícil)","insep","She *got over* her fear of speaking.","Ella superó su miedo a hablar."],
+["think over","over","pensarlo bien","sep","Let me *think it over*.","Déjame pensarlo."],
+["go over","over","repasar, revisar","insep","Let's *go over* the main points.","Repasemos los puntos principales."],
+["take over","over","tomar el control, asumir","sep","She *took over* the company at thirty.","Ella tomó el control de la empresa a los treinta."],
+["hand over","over","entregar, traspasar","sep","*Hand over* the keys, please.","Entrega las llaves, por favor."],
+["look over","over","revisar (por encima)","sep","Can you *look over* my presentation?","¿Puedes revisar mi presentación?"],
+["turn over","over","voltear; traspasar","sep","*Turn over* the page.","Voltea la página."],
+["start over","over","empezar de nuevo","intr","If you make a mistake, *start over*.","Si te equivocas, empieza de nuevo."],
+["come over","over","venir (a casa de alguien)","intr","*Come over* for dinner tonight.","Ven a cenar esta noche."],
+["pull over","over","orillarse (en un vehículo)","intr","The police told him to *pull over*.","La policía le dijo que se orillara."],
+
+["call back","back","devolver la llamada","sep","I'll *call you back* in five minutes.","Te devuelvo la llamada en cinco minutos."],
+["come back","back","regresar, volver","intr","*Come back* soon!","¡Vuelve pronto!"],
+["give back","back","devolver; retribuir","sep","Please *give back* the book.","Por favor, devuelve el libro."],
+["pay back","back","devolver (dinero)","sep","I'll *pay you back* tomorrow.","Te pago mañana."],
+["hold back","back","contenerse; retener","sep","Don't *hold back*; say what you think.","No te contengas; di lo que piensas."],
+["cut back","back","recortar, reducir","intr","We need to *cut back* on expenses.","Necesitamos recortar gastos."],
+["look back","back","mirar atrás, recordar","intr","*Look back* and see how far you've come.","Mira atrás y ve cuánto has avanzado."],
+["get back to","back","responderle a alguien (más tarde)","3","I'll *get back to* you tomorrow.","Te respondo mañana."],
+["set back","back","retrasar","sep","The storm *set us back* two days.","La tormenta nos retrasó dos días."],
+["bounce back","back","recuperarse","intr","She always *bounces back*.","Ella siempre se recupera."],
+
+["give away","away","regalar; revelar","sep","They *gave away* free samples.","Regalaron muestras gratis."],
+["throw away","away","tirar (a la basura)","sep","Don't *throw away* your notes.","No botes tus apuntes."],
+["put away","away","guardar","sep","*Put away* your phone.","Guarda tu teléfono."],
+["run away","away","huir, escaparse","intr","The dog *ran away*.","El perro se escapó."],
+["pass away","away","fallecer","intr","His grandfather *passed away* last year.","Su abuelo falleció el año pasado."],
+["get away","away","escaparse; irse de descanso","intr","We need to *get away* for a weekend.","Necesitamos escaparnos un fin de semana."],
+["take away","away","quitar; llevarse","sep","Nobody can *take away* your knowledge.","Nadie puede quitarte tu conocimiento."],
+["walk away","away","alejarse, retirarse","intr","Know when to *walk away* from a deal.","Sabe cuándo retirarte de un negocio."],
+["fade away","away","desvanecerse","intr","The fear will *fade away*.","El miedo se va a desvanecer."],
+
+["get through","through","sobrellevar; terminar (algo difícil)","insep","We'll *get through* this together.","Vamos a superar esto juntos."],
+["go through","through","pasar por; revisar a fondo","insep","She *went through* a difficult year.","Ella pasó por un año difícil."],
+["follow through","through","cumplir hasta el final","intr","Leaders *follow through* on their promises.","Los líderes cumplen sus promesas hasta el final."],
+["look through","through","hojear, revisar","insep","*Look through* these documents.","Revisa estos documentos."],
+["break through","through","abrirse paso, lograr un avance","intr","After months of practice, she *broke through*.","Tras meses de práctica, logró el gran avance."],
+["think through","through","analizar a fondo","sep","*Think through* the plan before you start.","Analiza el plan a fondo antes de empezar."],
+["pull through","through","salir adelante","intr","The patient *pulled through*.","El paciente salió adelante."],
+["talk through","through","explicar paso a paso","sep","Let me *talk you through* the process.","Déjame explicarte el proceso paso a paso."],
+
+["get along with","three","llevarse bien con","3","I *get along with* my coworkers.","Me llevo bien con mis compañeros."],
+["look forward to","three","esperar con ilusión (+ -ing)","3","I *look forward to* meeting you.","Espero con ilusión conocerte."],
+["come up with","three","idear, proponer","3","She *came up with* a brilliant idea.","Ella propuso una idea brillante."],
+["run out of","three","quedarse sin","3","We *ran out of* time.","Nos quedamos sin tiempo."],
+["put up with","three","tolerar, aguantar","3","I can't *put up with* this noise.","No soporto este ruido."],
+["keep up with","three","mantener el ritmo de","3","It's hard to *keep up with* native speakers.","Es difícil seguirles el ritmo a los nativos."],
+["catch up on","three","ponerse al día con","3","I need to *catch up on* my emails.","Necesito ponerme al día con mis correos."],
+["get rid of","three","deshacerse de","3","*Get rid of* old habits.","Deshazte de los viejos hábitos."],
+["look up to","three","admirar","3","I *look up to* my mentor.","Admiro a mi mentor."],
+["cut down on","three","reducir (el consumo de)","3","I'm *cutting down on* sugar.","Estoy reduciendo el azúcar."],
+["get away with","three","salirse con la suya","3","He won't *get away with* it.","No se va a salir con la suya."],
+["stand up for","three","defender (una idea o persona)","3","*Stand up for* what you believe in.","Defiende aquello en lo que crees."],
+["follow up on","three","dar seguimiento a","3","I'll *follow up on* your request.","Le daré seguimiento a tu solicitud."],
+["come down with","three","enfermarse de","3","She *came down with* the flu.","Ella se enfermó de gripa."],
+["go through with","three","llevar a cabo (a pesar de dudas)","3","He decided to *go through with* the plan.","Decidió llevar a cabo el plan."]
+];
+
+const SYN = [
+  {t:"sep",n:"Please turn off the lights.",ok:"Please turn them off.",bad:"Please turn off them."},
+  {t:"sep",n:"I'll pick up the kids at five.",ok:"I'll pick them up at five.",bad:"I'll pick up them at five."},
+  {t:"sep",n:"They called off the meeting.",ok:"They called it off.",bad:"They called off it."},
+  {t:"sep",n:"Don't put off the decision.",ok:"Don't put it off.",bad:"Don't put off it."},
+  {t:"sep",n:"We figured out the problem.",ok:"We figured it out.",bad:"We figured out it."},
+  {t:"sep",n:"Write down the number.",ok:"Write it down.",bad:"Write down it."},
+  {t:"sep",n:"She gave back the keys.",ok:"She gave them back.",bad:"She gave back them."},
+  {t:"sep",n:"Look up the word.",ok:"Look it up.",bad:"Look up it."},
+  {t:"sep",n:"Can you turn down the music?",ok:"Can you turn it down?",bad:"Can you turn down it?"},
+  {t:"sep",n:"Take off your shoes.",ok:"Take them off.",bad:"Take off them."},
+  {t:"insep",n:"We need to go through the documents.",ok:"We need to go through them.",bad:"We need to go them through."},
+  {t:"insep",n:"He got over the breakup.",ok:"He got over it.",bad:"He got it over."},
+  {t:"insep",n:"Let's go over the report.",ok:"Let's go over it.",bad:"Let's go it over."},
+  {t:"insep",n:"You can count on your team.",ok:"You can count on them.",bad:"You can count them on."},
+  {t:"insep",n:"We'll look into the problem.",ok:"We'll look into it.",bad:"We'll look it into."},
+  {t:"insep",n:"I ran into my old teacher.",ok:"I ran into her.",bad:"I ran her into."},
+  {t:"3",n:"I can't put up with the noise.",ok:"I can't put up with it.",bad:"I can't put it up with."},
+  {t:"3",n:"Get rid of the clutter.",ok:"Get rid of it.",bad:"Get it rid of."},
+  {t:"3",n:"I look forward to the trip.",ok:"I look forward to it.",bad:"I look it forward to."},
+  {t:"3",n:"She gets along with her boss.",ok:"She gets along with him.",bad:"She gets him along with."}
+];
+
+// [formal (cognado), español, phrasal, frase formal, frase natural]
+const F = [
+["postpone","posponer","put off","We must postpone the meeting.","We have to *put off* the meeting."],
+["cancel","cancelar","call off","They canceled the event.","They *called off* the event."],
+["tolerate","tolerar","put up with","I can't tolerate this noise.","I can't *put up with* this noise."],
+["discover","descubrir","find out","I discovered the truth.","I *found out* the truth."],
+["investigate","investigar","look into","We will investigate the problem.","We'll *look into* the problem."],
+["continue","continuar","carry on","Please continue.","Please *carry on*."],
+["eliminate","eliminar","get rid of","Eliminate bad habits.","*Get rid of* bad habits."],
+["invent","inventar","make up","He invented an excuse.","He *made up* an excuse."],
+["return","retornar","give back","Return the keys.","*Give back* the keys."],
+["review","revisar","go over","Let's review the contract.","Let's *go over* the contract."],
+["resolve","resolver","sort out","We resolved the issue.","We *sorted out* the issue."],
+["recover","recuperarse","get over","She recovered from the flu.","She *got over* the flu."],
+["reduce","reducir","cut down on","Reduce your screen time.","*Cut down on* your screen time."],
+["abandon","abandonar","give up","Don't abandon your plan.","Don't *give up* on your plan."],
+["appear","aparecer","show up","He appeared late.","He *showed up* late."],
+["mention","mencionar","bring up","She mentioned the budget.","She *brought up* the budget."],
+["establish","establecer","set up","They established a company.","They *set up* a company."],
+["complete","completar","fill out","Complete the form.","*Fill out* the form."],
+["escape","escapar","get away","The thief escaped.","The thief *got away*."],
+["accelerate","acelerar","speed up","We need to accelerate production.","We need to *speed up* production."],
+["comprehend","comprender","figure out","I can't comprehend this problem.","I can't *figure out* this problem."],
+["execute","ejecutar","carry out","We executed the plan.","We *carried out* the plan."],
+["initiate","iniciar","kick off","Let's initiate the meeting.","Let's *kick off* the meeting."],
+["reject","rechazar","turn down","She rejected the offer.","She *turned down* the offer."],
+["visit","visitar","come over","Visit us tonight.","*Come over* tonight."],
+["admire","admirar","look up to","I admire my mentor.","I *look up to* my mentor."]
+];
+
+const BUILD = [
+  {p:"WANT + TO + phrasal verb",parts:["I","want","to","get","up","early."],ok:["I want to get up early."]},
+  {p:"Pronombre en medio (separable)",parts:["Turn","it","off,","please."],ok:["Turn it off, please."]},
+  {p:"DECIDE + TO + phrasal verb",parts:["She","decided","to","take","over","the","company."],ok:["She decided to take over the company.","She decided to take the company over."]},
+  {p:"Pronombre en medio (separable)",parts:["Can","you","pick","me","up","at","six?"],ok:["Can you pick me up at six?"]},
+  {p:"LOOK FORWARD TO + -ing",parts:["I","look","forward","to","meeting","meet","you."],ok:["I look forward to meeting you."]},
+  {p:"Tres palabras: nunca se separan",parts:["We","ran","out","of","time."],ok:["We ran out of time."]},
+  {p:"TRY + TO + phrasal verb",parts:["He","is","trying","to","give","up","sugar."],ok:["He is trying to give up sugar."]},
+  {p:"Separable con sustantivo",parts:["Let's","call","the","meeting","off."],ok:["Let's call the meeting off.","Let's call off the meeting."]},
+  {p:"Inseparable: el objeto va al final",parts:["She","looks","into","every","detail."],ok:["She looks into every detail."]},
+  {p:"Tres palabras + objeto",parts:["She","came","up","with","a","brilliant","idea."],ok:["She came up with a brilliant idea."]},
+  {p:"Pronombre en medio + tiempo",parts:["Don't","put","it","off","until","tomorrow."],ok:["Don't put it off until tomorrow."]},
+  {p:"NEED + TO + phrasal verb",parts:["We","need","to","get","along","with","them."],ok:["We need to get along with them."]}
+];
+
+const ROOTS = ["get","look","take","put","give","turn","come"];
+const PTOK = ["up","down","out","off","on","in","into","over","back","away","through"];
+
+/* ================= HELPERS ================= */
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const hl = s => esc(s).replace(/\*(.+?)\*/g,"<mark>$1</mark>");
+const plain = s => s.replace(/\*/g,"");
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const shuffle = a => { const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; };
+const pick = (a,n) => shuffle(a).slice(0,n);
+const rand = a => a[Math.floor(Math.random()*a.length)];
+function load(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}}
+function save(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}
+
+const ENTRIES = V.map((r,i) => ({i, v:r[0], p:r[1], m:r[2], t:r[3], ex:r[4], es:r[5], k:norm(r[0]+" "+r[2])}));
+$("#st-v").textContent = ENTRIES.length;
+$("#dcount").textContent = ENTRIES.length;
+$("#st-p").textContent = PORDER.length;
+
+const IC = {
+  play:'<svg viewBox="0 0 24 24" width="12" height="12" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>',
+  spk:'<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M11 5 6 9H3v6h3l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>'
+};
+const playBtn = (text, sm) => `<button class="play${sm?" sm":""}" data-say="${esc(text)}" aria-label="Escuchar">${IC.play}</button>`;
+
+/* ================= SPEECH ================= */
+const synth = window.speechSynthesis;
+let voices = [], rate = load("pv05-rate", 0.92), active = null;
+function loadVoices(){ if(synth) voices = synth.getVoices() || []; }
+if(synth){ loadVoices(); if("onvoiceschanged" in synth) synth.onvoiceschanged = loadVoices; }
+function voice(){
+  const en = voices.filter(v => /^en[-_]/i.test(v.lang||""));
+  const pref = ["Google US English","Samantha","Ava","Allison","Aria","Jenny","Joanna","Zira"];
+  for(const p of pref){ const v = en.find(x => x.name.includes(p)); if(v) return v; }
+  return en.find(v => /en[-_]US/i.test(v.lang)) || en[0] || null;
+}
+function stop(){ if(synth) synth.cancel(); if(active){ active.classList.remove("playing"); active = null; } }
+function speak(text, btn){
+  if(!synth || typeof SpeechSynthesisUtterance === "undefined"){ toast("Tu navegador no tiene voz integrada. Prueba Chrome o Safari."); return; }
+  const same = active && active === btn && synth.speaking;
+  stop(); if(same) return;
+  active = btn || null; if(btn) btn.classList.add("playing");
+  setTimeout(() => {
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = "en-US"; const v = voice(); if(v) u.voice = v; u.rate = rate;
+    u.onend = u.onerror = () => { if(btn && active === btn){ btn.classList.remove("playing"); active = null; } };
+    synth.speak(u);
+  }, 40);
+}
+const rateBtn = $("#rate");
+function paintRate(){ rateBtn.textContent = rate < .9 ? "0.75×" : "1×"; rateBtn.classList.toggle("slow", rate < .9); }
+rateBtn.addEventListener("click", () => { rate = rate < .9 ? 0.92 : 0.72; save("pv05-rate", rate); paintRate(); toast(rate < .9 ? "Voz lenta activada" : "Voz a velocidad normal"); });
+paintRate();
+
+/* ================= SCORE ================= */
+let score = load("pv05-score", 0), streak = 0;
+const LEVELS = [[0,"Aprendiz"],[100,"Practicante"],[300,"Fluido"],[700,"Nativo"],[1200,"Maestro"]];
+function level(s){ let n = LEVELS[0][1]; for(const [min,name] of LEVELS) if(s >= min) n = name; return n; }
+function paintScore(){ $("#pts").textContent = score; $("#lvl").textContent = level(score); $("#streak").textContent = streak; }
+function hit(ok, pts){
+  if(ok){
+    const before = level(score);
+    score += pts + (streak >= 4 ? 5 : 0); streak++;
+    save("pv05-score", score);
+    const after = level(score);
+    if(after !== before) toast(`Nuevo nivel: ${after} ✦`);
+    else if(streak > 0 && streak % 5 === 0) toast(`Racha de ${streak} · +5 por respuesta`);
+  } else streak = 0;
+  paintScore();
+}
+paintScore();
+
+let toastT;
+function toast(m){ const t = $("#toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove("show"), 2200); }
+
+/* ================= HERO FORMULA ================= */
+const FORM = [["give","up","rendirse"],["find","out","descubrir"],["call","off","cancelar"],["look","into","investigar"],["get","over","superar"],["put up","with","tolerar"],["carry","on","continuar"],["turn","down","rechazar"]];
+let fi = 0; const formula = $("#formula");
+function paintFormula(){ const [v,p,m] = FORM[fi % FORM.length];
+  formula.innerHTML = `<span class="f-v">${v}</span><span class="f-op">+</span><span class="f-p">${p.toUpperCase()}</span><span class="f-op">=</span><span class="f-m">${m}</span>`; }
+paintFormula();
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  setInterval(() => { formula.classList.add("fade"); setTimeout(() => { fi++; paintFormula(); formula.classList.remove("fade"); }, 350); }, 3000);
+}
+
+/* ================= I · VERB LAB ================= */
+let root = "get", vsel = null;
+function paintRoots(){
+  $("#roots").innerHTML = ROOTS.map(r => `<button class="root${r===root?" on":""}" data-root="${r}">${r.toUpperCase()}</button>`).join("");
+  const list = ENTRIES.filter(e => e.v.split(" ")[0] === root);
+  if(!vsel || !list.includes(vsel)) vsel = list[0];
+  $("#vparts").innerHTML = list.map(e => `<button class="part${e===vsel?" on":""}" data-vsel="${e.i}">${esc(e.v)}</button>`).join("");
+  const rest = esc(vsel.v.split(" ").slice(1).join(" "));
+  $("#vshow").innerHTML = `<div><div class="big">${esc(root)} <span>${rest}</span></div><div class="es">${esc(vsel.m)}</div></div>
+    <div class="say">${playBtn(plain(vsel.ex))}<div><div class="t">${hl(vsel.ex)}</div><div class="tr">${esc(vsel.es)}</div></div></div>`;
+}
+paintRoots();
+
+/* ================= II · ATLAS ================= */
+let openP = null;
+$("#atlas").innerHTML = PORDER.map(k => { const p = P[k], n = ENTRIES.filter(e => e.p === k).length;
+  return `<button class="pc" data-pk="${k}" style="--ac:${p.ac}"><span class="g">${p.g}</span><div class="n">${p.n}</div><div class="c">${p.core}</div><div class="k">${n} verbos</div></button>`; }).join("");
+function paintDetail(){
+  const box = $("#pdetail");
+  document.querySelectorAll(".pc").forEach(b => b.classList.toggle("on", b.dataset.pk === openP));
+  if(!openP){ box.classList.remove("open"); box.innerHTML = ""; return; }
+  const p = P[openP], list = ENTRIES.filter(e => e.p === openP);
+  box.style.setProperty("--ac", p.ac);
+  box.innerHTML = `<div class="pd-head"><div><div class="lbl">LA LÓGICA DE</div><h3>${p.n}</h3><p>${p.d}</p></div>
+    <button class="btn btn-ghost btn-sm" data-golab="particle" data-lp="${openP}">Practicar ${p.n} →</button></div>
+    <div class="vrows">${list.map(e => `<div class="vrow">${playBtn(plain(e.ex),1)}<div><div class="v">${esc(e.v)}</div><div class="m">${esc(e.m)}</div><div class="x">${hl(e.ex)}</div></div></div>`).join("")}</div>`;
+  box.classList.add("open");
+}
+
+/* ================= III · TYPES ================= */
+const TYPE_CARDS = [
+  {t:"sep",h:"Separables",p:"El objeto puede ir en medio o al final. Si es un pronombre, va obligatoriamente en medio.",
+    l:[[1,"Turn off the lights."],[1,"Turn the lights off."],[1,"Turn them off."],[0,"Turn off them."]]},
+  {t:"insep",h:"Inseparables",p:"La partícula funciona como preposición: el objeto, sea cual sea, va siempre después.",
+    l:[[1,"Look into the problem."],[1,"Look into it."],[0,"Look it into."]]},
+  {t:"intr",h:"Sin objeto",p:"La acción se completa en la partícula. No reciben objeto directo.",
+    l:[[1,"The car broke down."],[1,"I get up at six."],[0,"I get up the alarm."]]},
+  {t:"3",h:"Tres palabras",p:"Verbo + partícula + preposición. Bloque fijo: el objeto va al final, siempre.",
+    l:[[1,"I can't put up with the noise."],[1,"I can't put up with it."],[0,"I can't put it up with."]]}
+];
+$("#types").innerHTML = TYPE_CARDS.map(c => `<div class="type"><span class="tag" style="color:${TYPES[c.t].c}">${TYPES[c.t].n}</span><h4>${c.h}</h4><p>${c.p}</p>
+  ${c.l.map(([ok,s]) => `<div class="ln ${ok?"ok":"no"}"><span class="ic">${ok?"✓":"✕"}</span><span class="s">${esc(s)}</span>${ok?playBtn(s,1):""}</div>`).join("")}</div>`).join("");
+
+/* ================= IV · PAIRS ================= */
+$("#pairs").innerHTML = F.map(r => `<div class="pair"><div class="f"><small>${esc(r[1])}</small>${esc(r[0])}</div><span class="ar">→</span><div class="n">${esc(r[2])}</div>${playBtn(plain(r[4]),1)}</div>`).join("");
+
+/* ================= V · DICTIONARY ================= */
+let dP = "all", dT = "all", dQ = "";
+$("#dparts").innerHTML = `<button class="chip on" data-dp="all">Todas</button>` + PORDER.map(k => `<button class="chip" data-dp="${k}">${P[k].n}</button>`).join("");
+$("#dtypes").innerHTML = `<button class="chip t on" data-dt="all">Todos los tipos</button>` + ["sep","insep","intr","3"].map(k => `<button class="chip t" data-dt="${k}">${TYPES[k].n}</button>`).join("");
+function paintDict(){
+  document.querySelectorAll("[data-dp]").forEach(b => b.classList.toggle("on", b.dataset.dp === dP));
+  document.querySelectorAll("[data-dt]").forEach(b => b.classList.toggle("on", b.dataset.dt === dT));
+  const q = norm(dQ.trim());
+  const list = ENTRIES.filter(e => (dP === "all" || e.p === dP) && (dT === "all" || e.t === dT) && (!q || e.k.includes(q)));
+  $("#dlabel").textContent = q ? `Búsqueda · «${dQ.trim()}»` : (dP === "all" ? "Todas las partículas" : P[dP].n) + (dT === "all" ? "" : " · " + TYPES[dT].n);
+  $("#dnum").textContent = `${list.length} verbo${list.length===1?"":"s"}`;
+  $("#dgrid").innerHTML = list.length ? list.map(e => `<article class="dc">
+    <div class="dc-top"><button class="v" data-say="${esc(e.v)}" aria-label="Escuchar ${esc(e.v)}">${esc(e.v)}${IC.spk}</button>
+      <div class="badges"><span class="bdg p" style="--ac:${P[e.p].ac}">${P[e.p].n.split(" ")[0]}</span><span class="bdg" style="color:${TYPES[e.t].c}">${TYPES[e.t].short}</span></div></div>
+    <div class="m">${esc(e.m)}</div>
+    <div class="say">${playBtn(plain(e.ex),1)}<div><div class="t">${hl(e.ex)}</div><div class="tr">${esc(e.es)}</div></div></div>
+  </article>`).join("") : `<div class="empty">Sin coincidencias. Prueba con «up», «cancelar» o «rendirse».</div>`;
+}
+let dTimer; $("#dq").addEventListener("input", ev => { clearTimeout(dTimer); dTimer = setTimeout(() => { dQ = ev.target.value; paintDict(); }, 120); });
+paintDict();
+
+/* ================= VI · LAB ================= */
+const MODES = [
+  {id:"flash",n:"Flashcards",d:"I"},
+  {id:"meaning",n:"Significado",d:"II"},
+  {id:"particle",n:"Partícula",d:"III"},
+  {id:"syntax",n:"Sintaxis",d:"IV"},
+  {id:"formal",n:"Cognado → Nativo",d:"V"},
+  {id:"build",n:"Armar frases",d:"VI"}
+];
+const L = {mode:"flash", lp:"all", fi:0, flip:false, q:null, sOrder:shuffle(SYN), sI:0, bOrder:shuffle(BUILD), bI:0, sel:[], bank:[], res:null};
+const usesP = () => ["flash","meaning","particle"].includes(L.mode);
+function poolLab(){ return ENTRIES.filter(e => L.lp === "all" || e.p === L.lp); }
+function tok(e){ return e.v.split(" ")[1]; }
+function particlePool(){ return poolLab().filter(e => PTOK.includes(tok(e)) && blanked(e)); }
+function blanked(e){
+  const t = tok(e); let done = false;
+  const out = esc(e.ex).replace(/\*(.+?)\*/g, (m, inner) => {
+    const r = inner.replace(new RegExp("\\b"+t+"\\b","i"), () => { done = true; return '<span class="blank">?</span>'; });
+    return r;
+  });
+  return done ? out : null;
+}
+function paintTabs(){
+  $("#tabs").innerHTML = MODES.map(m => `<button class="tab${m.id===L.mode?" on":""}" data-mode="${m.id}"><span class="d">${m.d}</span>${m.n}</button>`).join("");
+  const lp = $("#lparts");
+  lp.style.display = usesP() ? "flex" : "none";
+  lp.innerHTML = `<button class="chip${L.lp==="all"?" on":""}" data-lp="all">Todas</button>` + PORDER.map(k => `<button class="chip${L.lp===k?" on":""}" data-lp="${k}">${P[k].n}</button>`).join("");
+}
+const KEYS = ["A","B","C","D"];
+function optHTML(opts, cls, correctIdx, chosen){
+  return opts.map((o,i) => { let c = "opt " + (cls||"");
+    if(chosen !== null && chosen !== undefined){ if(i === correctIdx) c += " ok"; else if(i === chosen) c += " bad"; }
+    return `<button class="${c}" data-ans="${i}" ${chosen!==null&&chosen!==undefined?"disabled":""}><span class="k">${KEYS[i]}</span><span>${o}</span></button>`; }).join("");
+}
+function newQ(){
+  if(L.mode === "meaning"){
+    const pool = poolLab(); const e = rand(pool);
+    const others = pick(ENTRIES.filter(x => x.m !== e.m), 3).map(x => x.m);
+    const opts = shuffle([e.m, ...others]);
+    L.q = {e, opts, c:opts.indexOf(e.m), ch:null};
+  } else if(L.mode === "particle"){
+    const pool = particlePool(); const e = rand(pool); const t = tok(e).toLowerCase();
+    const others = pick(PTOK.filter(x => x !== t && !(t==="in"&&x==="into") && !(t==="into"&&x==="in")), 3);
+    const opts = shuffle([t, ...others]);
+    L.q = {e, s:blanked(e), opts, c:opts.indexOf(t), ch:null};
+  } else if(L.mode === "syntax"){
+    const it = L.sOrder[L.sI % L.sOrder.length]; const opts = shuffle([it.ok, it.bad]);
+    L.q = {it, opts, c:opts.indexOf(it.ok), ch:null};
+  } else if(L.mode === "formal"){
+    const r = rand(F); const others = pick(F.filter(x => x[2] !== r[2]), 3).map(x => x[2]);
+    const opts = shuffle([r[2], ...others]);
+    L.q = {r, opts, c:opts.indexOf(r[2]), ch:null};
+  }
+}
+function paintStage(){
+  const st = $("#stage"); stop();
+  if(L.mode === "flash"){
+    const pool = poolLab(); const i = ((L.fi % pool.length) + pool.length) % pool.length; const e = pool[i];
+    st.innerHTML = `<div class="q-meta"><span class="cnt">Tarjeta ${i+1} de ${pool.length}</span><span class="bdg" style="color:${TYPES[e.t].c}">${TYPES[e.t].n}</span></div>
+      <div class="card3d${L.flip?" flip":""}" data-act="flip" role="button" tabindex="0" aria-label="Voltear tarjeta">
+        <div class="c3-in">
+          <div class="c3-f c3-front"><div class="lbl">${P[e.p].n}</div><div class="w">${esc(e.v)}</div><div class="tap">TOCA PARA REVELAR</div></div>
+          <div class="c3-f c3-back"><div class="m">${esc(e.m)}</div><div class="t">${hl(e.ex)}</div><div class="tr">${esc(e.es)}</div></div>
+        </div></div>
+      <div class="acts"><button class="btn btn-ghost btn-sm" data-act="prev">← Anterior</button>
+        <button class="btn btn-ghost btn-sm" data-say="${esc(plain(e.ex))}">${IC.play} Escuchar</button>
+        <button class="btn btn-gold btn-sm" data-act="next">Siguiente →</button></div>`;
+    return;
+  }
+  if(L.mode === "build"){ paintBuild(st); return; }
+  if(!L.q) newQ();
+  const q = L.q, done = q.ch !== null, right = done && q.ch === q.c;
+  let head = "", opts = "", fb = "";
+  if(L.mode === "meaning"){
+    head = `<div class="q-big">${esc(q.e.v)} ${playBtn(q.e.v)}</div><p class="q-hint">${hl(q.e.ex)}</p><div class="q-ask">¿QUÉ SIGNIFICA?</div>`;
+    opts = optHTML(q.opts.map(esc), "", q.c, q.ch);
+    fb = `<p>${esc(q.e.v)} = <b>${esc(q.e.m)}</b>. ${esc(q.e.es)}</p>`;
+  } else if(L.mode === "particle"){
+    head = `<div class="q-sent">${q.s}</div><p class="q-hint">${esc(q.e.es)}</p><div class="q-ask">ELIGE LA PARTÍCULA</div>`;
+    opts = optHTML(q.opts.map(o => o.toUpperCase()), "cin", q.c, q.ch);
+    const pk = P[q.e.p];
+    fb = `<p><b>${esc(q.e.v)}</b>: ${esc(q.e.m)}. ${pk ? `Lógica de ${pk.n}: ${esc(pk.core.toLowerCase())}.` : ""}</p>`;
+  } else if(L.mode === "syntax"){
+    const it = q.it;
+    head = `<div class="q-meta" style="justify-content:center"><span class="bdg" style="color:${TYPES[it.t].c}">${TYPES[it.t].n}</span></div>
+      <div class="q-sent">${esc(it.n)}</div><div class="q-ask">AHORA CON PRONOMBRE: ¿CUÁL ES CORRECTA?</div>`;
+    opts = optHTML(q.opts.map(esc), "serif", q.c, q.ch);
+    const why = it.t === "sep" ? "Separable: el pronombre va siempre entre el verbo y la partícula."
+      : it.t === "insep" ? "Inseparable: el objeto, incluso si es pronombre, va después de la partícula."
+      : "Tres palabras: el bloque nunca se rompe; el objeto va al final.";
+    fb = `<p>${why}</p><div class="say">${playBtn(it.ok)}<div class="t">${esc(it.ok)}</div></div>`;
+  } else if(L.mode === "formal"){
+    head = `<div class="q-sent" style="color:var(--ink2)">${esc(q.r[3])}</div><p class="q-hint">«${esc(q.r[0])}» es correcto, pero suena a documento. ¿Qué diría un nativo?</p><div class="q-ask">EL PHRASAL VERB EQUIVALENTE</div>`;
+    opts = optHTML(q.opts.map(esc), "serif", q.c, q.ch);
+    fb = `<div class="say">${playBtn(plain(q.r[4]))}<div class="t">${hl(q.r[4])}</div></div>`;
+  }
+  const cnt = L.mode === "syntax" ? `Reto ${(L.sI % L.sOrder.length)+1} de ${L.sOrder.length}` : (MODES.find(m => m.id===L.mode).n);
+  st.innerHTML = `<div class="q-meta"><span class="cnt">${cnt}</span><span class="cnt">${L.lp!=="all"&&usesP()?P[L.lp].n:""}</span></div>
+    ${head}<div class="opts${L.mode==="syntax"?" one":L.mode==="particle"?" two":""}">${opts}</div>
+    <div class="fb${done?" show":""}">${done?`<h5 class="${right?"ok":"bad"}">${right?"Exacto.":"Casi."}</h5>${fb}`:""}</div>
+    ${done?`<div class="acts"><button class="btn btn-gold btn-sm" data-act="nextq">Siguiente →</button></div>`:""}`;
+}
+function paintBuild(st){
+  const ch = L.bOrder[L.bI % L.bOrder.length];
+  if(!L.sel.length && !L.bank.length && !L.res) L.bank = shuffle(ch.parts);
+  const ans = L.sel.join(" ");
+  st.innerHTML = `<div class="q-meta"><span class="cnt">Reto ${(L.bI % L.bOrder.length)+1} de ${L.bOrder.length}</span></div>
+    <div style="text-align:center;margin-bottom:18px"><div class="q-sent">Ordena las palabras</div><span class="pattern">${esc(ch.p)}</span></div>
+    <div class="build">${L.sel.length ? L.sel.map((w,i) => `<button class="tok sel" data-drop="${i}">${esc(w)}</button>`).join("") : '<span class="ph">Toca las palabras en orden. Puede sobrar una.</span>'}</div>
+    <div class="bank">${L.bank.map((w,i) => `<button class="tok" data-take="${i}">${esc(w)}</button>`).join("")}</div>
+    <div class="fb${L.res?" show":""}">${L.res ? (L.res==="ok" ? `<h5 class="ok">Frase perfecta.</h5><div class="say">${playBtn(ans)}<div class="t">${esc(ans)}</div></div>`
+      : `<h5 class="bad">Casi.</h5><p>Respuesta correcta:</p><div class="say">${playBtn(ch.ok[0])}<div class="t">${esc(ch.ok[0])}</div></div>`) : ""}</div>
+    <div class="acts">${!L.res ? `<button class="btn btn-ghost btn-sm" data-act="breset">Reiniciar</button><button class="btn btn-gold btn-sm" data-act="bcheck" ${L.sel.length?"":"disabled"}>Revisar ✓</button>`
+      : `${L.res==="bad"?'<button class="btn btn-ghost btn-sm" data-act="breset">Reintentar</button>':""}<button class="btn btn-gold btn-sm" data-act="bnext">Siguiente →</button>`}</div>`;
+}
+function setMode(m){ L.mode = m; L.q = null; L.flip = false; L.fi = 0; if(m==="build"){ L.sel=[]; L.bank=[]; L.res=null; } paintTabs(); paintStage(); }
+paintTabs(); paintStage();
+
+/* ================= EVENTS ================= */
+document.addEventListener("click", ev => {
+  const t = ev.target;
+  const s = t.closest("[data-say]"); if(s){ ev.stopPropagation(); speak(s.dataset.say, s.classList.contains("play")||s.classList.contains("v")?s:null); return; }
+  const r = t.closest("[data-root]"); if(r){ root = r.dataset.root; vsel = null; paintRoots(); return; }
+  const vs = t.closest("[data-vsel]"); if(vs){ vsel = ENTRIES[+vs.dataset.vsel]; paintRoots(); speak(vsel.v); return; }
+  const pk = t.closest("[data-pk]"); if(pk){ openP = openP === pk.dataset.pk ? null : pk.dataset.pk; paintDetail(); if(openP) setTimeout(() => $("#pdetail").scrollIntoView({behavior:"smooth",block:"nearest"}), 60); return; }
+  const gl = t.closest("[data-golab]"); if(gl){ if(gl.dataset.lp) L.lp = gl.dataset.lp; setMode(gl.dataset.golab); $("#laboratorio").scrollIntoView({behavior:"smooth"}); return; }
+  const dp = t.closest("[data-dp]"); if(dp){ dP = dp.dataset.dp; paintDict(); return; }
+  const dt = t.closest("[data-dt]"); if(dt){ dT = dt.dataset.dt; paintDict(); return; }
+  const md = t.closest("[data-mode]"); if(md){ setMode(md.dataset.mode); return; }
+  const lp = t.closest("[data-lp]"); if(lp){ L.lp = lp.dataset.lp; L.q = null; L.fi = 0; L.flip = false; paintTabs(); paintStage(); return; }
+  const an = t.closest("[data-ans]"); if(an && L.q && L.q.ch === null){
+    L.q.ch = +an.dataset.ans; const ok = L.q.ch === L.q.c; hit(ok, 10); paintStage();
+    if(ok){ const say = L.mode==="meaning"?plain(L.q.e.ex):L.mode==="particle"?plain(L.q.e.ex):L.mode==="syntax"?L.q.it.ok:plain(L.q.r[4]); speak(say); }
+    return; }
+  const tk = t.closest("[data-take]"); if(tk && !L.res){ const i = +tk.dataset.take; L.sel.push(L.bank[i]); L.bank.splice(i,1); paintStage(); return; }
+  const dr = t.closest("[data-drop]"); if(dr && !L.res){ const i = +dr.dataset.drop; L.bank.push(L.sel[i]); L.sel.splice(i,1); paintStage(); return; }
+  const a = t.closest("[data-act]"); if(!a) return;
+  const act = a.dataset.act, pool = poolLab();
+  if(act === "flip"){ L.flip = !L.flip; a.classList.toggle("flip", L.flip); return; }
+  if(act === "prev"){ L.fi = (L.fi - 1 + pool.length) % pool.length; L.flip = false; paintStage(); return; }
+  if(act === "next"){ L.fi = (L.fi + 1) % pool.length; L.flip = false; paintStage(); return; }
+  if(act === "nextq"){ if(L.mode === "syntax") L.sI++; L.q = null; paintStage(); return; }
+  if(act === "bcheck"){ const ch = L.bOrder[L.bI % L.bOrder.length]; const ok = ch.ok.includes(L.sel.join(" ")); L.res = ok ? "ok" : "bad"; hit(ok, 20); paintStage(); if(ok) speak(L.sel.join(" ")); return; }
+  if(act === "breset"){ const ch = L.bOrder[L.bI % L.bOrder.length]; L.sel = []; L.bank = shuffle(ch.parts); L.res = null; paintStage(); return; }
+  if(act === "bnext"){ L.bI++; L.sel = []; L.bank = []; L.res = null; paintStage(); return; }
+});
+document.addEventListener("keydown", ev => {
+  const c = ev.target.closest && ev.target.closest('[data-act="flip"]');
+  if(c && (ev.key === "Enter" || ev.key === " ")){ ev.preventDefault(); L.flip = !L.flip; c.classList.toggle("flip", L.flip); }
+});
+
+/* nav highlight */
+const links = [...document.querySelectorAll(".nav a")];
+const io = new IntersectionObserver(ents => {
+  ents.forEach(en => { if(en.isIntersecting){
+    links.forEach(l => { const on = l.getAttribute("href") === "#" + en.target.id; l.classList.toggle("on", on);
+      if(on){ const nav = $("#nav"); nav.scrollTo({left: l.offsetLeft - nav.clientWidth/2 + l.clientWidth/2, behavior:"smooth"}); } });
+  } });
+}, {rootMargin:"-45% 0px -50% 0px"});
+["anatomia","particulas","sintaxis","nativo","diccionario","laboratorio"].forEach(id => io.observe(document.getElementById(id)));
+})();
+</script>
+</body>
+</html>
