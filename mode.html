@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0D0B14">
+<title>Simple vs Progresivo — Lección 7 · ProfGermandario</title>
+<meta name="description" content="Domina la diferencia entre el modo Simple y el Progresivo en presente, pasado y futuro. Lección esencial de ProfGermandario.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0D0B14;--ink-2:#13101D;--panel:#181424;--panel-2:#1E192D;
+  --line:rgba(214,178,110,.15);--line-2:rgba(214,178,110,.34);
+  --gold:#D6B26E;--gold-2:#F2DCA8;--gold-3:#9C7C43;
+  --pearl:#9DB9D9;--pearl-2:#D2E2F3;
+  --text:#EEE7D8;--muted:#A9A091;--dim:#6F6879;
+  --ok:#8DCBA1;--bad:#E5917F;
+  --r:20px;--serif:'Cormorant Garamond',Georgia,serif;--sans:'Manrope',system-ui,-apple-system,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ink);color:var(--text);font-family:var(--sans);font-size:16px;line-height:1.65;min-height:100vh;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:
+  radial-gradient(900px 520px at 85% -10%,rgba(214,178,110,.13),transparent 60%),
+  radial-gradient(700px 480px at -10% 30%,rgba(157,185,217,.08),transparent 60%),
+  radial-gradient(800px 600px at 50% 110%,rgba(214,178,110,.07),transparent 60%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.06;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+::selection{background:rgba(214,178,110,.35)}
+b,strong{font-weight:700;color:var(--gold-2)}
+.wrap{max-width:900px;margin:0 auto;padding:0 18px}
+button{font-family:inherit;cursor:pointer;border:0;background:none;color:inherit}
+button:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* top */
+.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0 0;font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.top .brand{display:flex;align-items:center;gap:10px}
+.top .brand i{width:22px;height:22px;border:1px solid var(--line-2);border-radius:50%;display:grid;place-items:center;font-style:normal;font-family:var(--serif);font-size:13px;letter-spacing:0}
+.top span:last-child{color:var(--muted)}
+
+/* hero */
+.hero{padding:64px 0 34px;text-align:center}
+.eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.eyebrow::before,.eyebrow::after{content:"";width:28px;height:1px;background:var(--line-2)}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(50px,11vw,104px);line-height:.92;letter-spacing:-.01em;margin:22px 0 22px}
+h1 .s{color:var(--gold-2);background:linear-gradient(180deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+h1 .vs{display:block;font-style:italic;font-size:.42em;color:var(--muted);margin:8px 0 6px;letter-spacing:.04em}
+h1 .p{background:linear-gradient(180deg,var(--pearl-2),var(--pearl));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{max-width:560px;margin:0 auto;color:var(--muted);font-size:17px}
+.steps{display:flex;justify-content:center;flex-wrap:wrap;gap:8px 22px;margin-top:28px;font-size:12.5px;color:var(--muted)}
+.steps span{display:flex;align-items:center;gap:8px}
+.steps em{font-style:normal;font-family:var(--serif);color:var(--gold);font-size:17px}
+
+/* chapter track */
+.trackwrap{position:sticky;top:0;z-index:20;padding:10px 0;background:linear-gradient(180deg,rgba(13,11,20,.94),rgba(13,11,20,.82));backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.track{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.chap{position:relative;text-align:left;padding:10px 12px 10px;border:1px solid var(--line);border-radius:14px;background:rgba(24,20,36,.6);transition:.25s}
+.chap .n{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:15px;line-height:1}
+.chap .t{display:block;font-weight:700;font-size:14px;margin-top:3px}
+.chap .st{display:block;font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-top:2px}
+.chap.on{border-color:var(--gold);background:linear-gradient(180deg,rgba(214,178,110,.14),rgba(214,178,110,.03));box-shadow:0 8px 30px -12px rgba(214,178,110,.45)}
+.chap.done .st{color:var(--ok)}
+.chap.lock{opacity:.5}
+.chap.lock .t::after{content:" 🔒";font-size:11px}
+.meter{height:2px;background:rgba(255,255,255,.06);border-radius:2px;margin-top:10px;overflow:hidden}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-3),var(--gold-2));transition:width .8s cubic-bezier(.2,.8,.2,1)}
+
+/* sections */
+.chtitle{padding:46px 0 6px;text-align:center}
+.chtitle .k{font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold)}
+.chtitle h2{font-family:var(--serif);font-weight:500;font-size:clamp(38px,8vw,60px);line-height:1.05;margin-top:8px}
+.chtitle h2 em{color:var(--muted)}
+.sec{padding:44px 0 4px}
+.sh{display:flex;align-items:baseline;gap:14px;margin-bottom:20px}
+.sh .num{font-family:var(--serif);font-style:italic;font-size:30px;color:var(--gold);min-width:34px}
+.sh h3{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,34px);line-height:1.1}
+.sh p{color:var(--muted);font-size:14px;margin-top:4px}
+.duo{display:grid;gap:14px}
+@media(min-width:720px){.duo{grid-template-columns:1fr 1fr}}
+.card{position:relative;background:linear-gradient(180deg,var(--panel),var(--ink-2));border:1px solid var(--line);border-radius:var(--r);padding:22px 20px;overflow:hidden}
+.card.s{border-top:2px solid var(--gold)}
+.card.p{border-top:2px solid var(--pearl)}
+.card h4{font-family:var(--serif);font-weight:600;font-size:26px;line-height:1.1}
+.card.s h4{color:var(--gold-2)} .card.p h4{color:var(--pearl-2)}
+.pill{display:inline-block;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;padding:4px 10px;border-radius:99px;border:1px solid var(--line-2);color:var(--gold);margin-bottom:12px}
+.card.p .pill{border-color:rgba(157,185,217,.35);color:var(--pearl)}
+.card p{color:#D9D1C1;font-size:15px;margin-top:8px}
+.card.p b{color:var(--pearl-2)}
+.tl{width:100%;height:auto;margin-top:14px;display:block}
+.tl .tlt{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;fill:var(--dim);font-family:var(--sans)}
+.tl .tll{font-size:12px;font-family:var(--serif);font-style:italic}
+.key{margin-top:14px;padding:16px 18px;border-radius:16px;border:1px dashed var(--line-2);color:#DCD3C2;font-size:15px;background:rgba(214,178,110,.04)}
+.key::before{content:"✦ ";color:var(--gold)}
+
+/* formula */
+.frow{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:15px}
+.frow:last-child{border-bottom:0}
+.sign{flex:0 0 26px;height:26px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:14px;border:1px solid var(--line-2);color:var(--gold)}
+.card.p .sign{border-color:rgba(157,185,217,.35);color:var(--pearl)}
+.frow small{display:block;color:var(--muted);font-size:12.5px}
+.note{margin-top:12px;font-size:13.5px;color:var(--muted);padding-left:12px;border-left:2px solid var(--gold-3)}
+
+/* uses */
+.uses{list-style:none;margin-top:6px}
+.uses li{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.uses li:last-child{border-bottom:0}
+.uses .ut{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.card.p .uses .ut{color:var(--pearl)}
+.ex{display:flex;align-items:center;gap:8px;margin-top:4px;font-family:var(--serif);font-size:20px;line-height:1.25;color:var(--text)}
+.gl{display:block;color:var(--muted);font-size:13px;font-style:italic;margin-top:2px}
+.say{flex:0 0 28px;height:28px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;font-size:12px;color:var(--gold);transition:.2s}
+.say:hover{border-color:var(--gold);background:rgba(214,178,110,.1)}
+.card.p .say{color:var(--pearl)}
+
+/* chips */
+.chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font-size:13.5px;padding:6px 12px;border-radius:99px;background:rgba(214,178,110,.08);border:1px solid var(--line);color:var(--gold-2)}
+.card.p .chip{background:rgba(157,185,217,.07);border-color:rgba(157,185,217,.2);color:var(--pearl-2)}
+
+/* spelling / stative / pairs / errors */
+.grid3{display:grid;gap:10px}
+@media(min-width:720px){.grid3{grid-template-columns:repeat(3,1fr)}}
+.mini{padding:16px;border-radius:16px;border:1px solid var(--line);background:rgba(24,20,36,.55)}
+.mini .r{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.mini .e{font-family:var(--serif);font-size:19px;margin-top:4px}
+.mini .e i{color:var(--muted);font-style:normal;font-family:var(--sans);font-size:13px}
+.irr{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.irr span{font-size:13px;padding:5px 10px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.06)}
+.irr span b{font-weight:600}
+.alert{padding:20px;border-radius:var(--r);border:1px solid var(--line-2);background:linear-gradient(135deg,rgba(214,178,110,.1),rgba(214,178,110,.02))}
+.alert h4{font-family:var(--serif);font-size:24px;font-weight:600;color:var(--gold-2)}
+.alert p{color:#D9D1C1;font-size:15px;margin-top:6px}
+.vs2{display:grid;gap:8px;margin-top:12px}
+.vs2 div{display:flex;flex-wrap:wrap;gap:4px 14px;font-size:15px;padding:10px 12px;border-radius:12px;background:rgba(13,11,20,.5)}
+.no{color:var(--bad);text-decoration:line-through;text-decoration-color:rgba(229,145,127,.6)}
+.yes{color:var(--ok)}
+.pair{display:grid;gap:10px;padding:16px 0;border-bottom:1px solid var(--line)}
+.pair:last-child{border-bottom:0}
+@media(min-width:720px){.pair{grid-template-columns:1fr 1fr;gap:18px}}
+.pair .side{padding-left:14px;border-left:2px solid var(--gold)}
+.pair .side.p{border-color:var(--pearl)}
+.errs{display:grid;gap:10px}
+.err{padding:14px 16px;border-radius:16px;background:rgba(24,20,36,.6);border:1px solid rgba(255,255,255,.05)}
+.err .l{display:flex;flex-wrap:wrap;gap:4px 16px;font-family:var(--serif);font-size:19px}
+.err .w{color:var(--muted);font-size:13.5px;margin-top:4px}
+
+/* story */
+.card .story{font-family:var(--serif);font-size:clamp(20px,4.2vw,25px);line-height:1.6;color:#E6DFCF}
+.story mark{background:none;color:inherit;transition:all .5s;border-radius:3px;padding:0}
+.reveal .story mark.ms{color:var(--gold-2);background:rgba(214,178,110,.13);box-shadow:inset 0 -2px 0 var(--gold)}
+.reveal .story mark.mp{color:var(--pearl-2);background:rgba(157,185,217,.12);box-shadow:inset 0 -2px 0 var(--pearl)}
+.legend{display:none;gap:16px;margin-top:14px;font-size:12.5px;color:var(--muted)}
+.reveal .legend{display:flex}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.storybar{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:13px 22px;border-radius:99px;font-weight:700;font-size:14.5px;letter-spacing:.02em;transition:.25s}
+.btn.gold{color:#1A1407;background:linear-gradient(180deg,var(--gold-2),var(--gold));box-shadow:0 10px 30px -10px rgba(214,178,110,.6)}
+.btn.gold:hover{transform:translateY(-1px);box-shadow:0 14px 34px -10px rgba(214,178,110,.75)}
+.btn.ghost{border:1px solid var(--line-2);color:var(--gold-2)}
+.btn.ghost:hover{background:rgba(214,178,110,.08)}
+.btn:disabled{opacity:.4;cursor:not-allowed;transform:none}
+
+/* practice */
+.seg{display:flex;gap:6px;padding:5px;border-radius:99px;border:1px solid var(--line);background:rgba(24,20,36,.7);overflow-x:auto;scrollbar-width:none;margin-bottom:14px}
+.seg::-webkit-scrollbar{display:none}
+.seg button{flex:1;white-space:nowrap;padding:9px 14px;border-radius:99px;font-size:13px;font-weight:600;color:var(--muted);transition:.2s}
+.seg button.on{background:linear-gradient(180deg,var(--gold-2),var(--gold));color:#1A1407}
+.drill{background:linear-gradient(180deg,var(--panel-2),var(--ink-2));border:1px solid var(--line-2);border-radius:24px;padding:22px 20px;min-height:300px}
+.dp{display:flex;align-items:center;gap:12px;font-size:12px;color:var(--muted);letter-spacing:.08em}
+.dbar{flex:1;height:3px;background:rgba(255,255,255,.07);border-radius:3px;overflow:hidden}
+.dbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold-3),var(--gold-2));transition:width .5s}
+.dscore{color:var(--gold)}
+.dk{margin-top:20px;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+.dq{font-family:var(--serif);font-size:clamp(23px,5vw,30px);line-height:1.3;margin-top:8px}
+.gap{display:inline-block;min-width:70px;border-bottom:2px solid var(--gold);color:var(--gold);text-align:center}
+.hint{color:var(--muted);font-style:italic}
+.opts{display:grid;gap:9px;margin-top:20px}
+.opts.two{grid-template-columns:1fr 1fr}
+.opt{padding:15px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(13,11,20,.55);font-size:16px;font-weight:600;text-align:left;transition:.2s}
+.opts.err .opt{font-family:var(--serif);font-size:19px;font-weight:500}
+.opt:hover:not(:disabled){border-color:var(--gold);background:rgba(214,178,110,.07)}
+.opt.ok{border-color:var(--ok);background:rgba(141,203,161,.12);color:#CFEBD8}
+.opt.bad{border-color:var(--bad);background:rgba(229,145,127,.1);color:#F2C8BE}
+.opt:disabled{cursor:default}
+.tin{display:flex;gap:8px;margin-top:20px}
+.tin input{flex:1;min-width:0;font:inherit;font-size:17px;color:var(--text);background:rgba(13,11,20,.7);border:1px solid var(--line-2);border-radius:14px;padding:13px 15px}
+.tin input.ok{border-color:var(--ok)} .tin input.bad{border-color:var(--bad)}
+.zone{min-height:58px;margin-top:20px;padding:10px;border-radius:16px;border:1px dashed var(--line-2);display:flex;flex-wrap:wrap;gap:7px;align-content:flex-start}
+.zone.ok{border-color:var(--ok);border-style:solid} .zone.bad{border-color:var(--bad);border-style:solid}
+.bank{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.tile{padding:9px 13px;border-radius:12px;background:rgba(214,178,110,.1);border:1px solid var(--line-2);font-weight:600;font-size:15px;color:var(--gold-2);transition:.15s}
+.tile:hover{transform:translateY(-1px)}
+.zone .tile{background:rgba(157,185,217,.1);border-color:rgba(157,185,217,.3);color:var(--pearl-2)}
+.fb{margin-top:16px;padding:14px 16px;border-radius:14px;font-size:14.5px;animation:rise .35s ease}
+.fb.ok{background:rgba(141,203,161,.08);border:1px solid rgba(141,203,161,.3)}
+.fb.bad{background:rgba(229,145,127,.07);border:1px solid rgba(229,145,127,.28)}
+.fb .h{font-weight:700;display:block;margin-bottom:3px}
+.fb.ok .h{color:var(--ok)} .fb.bad .h{color:var(--bad)}
+.fb .ans{font-family:var(--serif);font-size:18px;color:var(--text)}
+.dnav{display:flex;justify-content:flex-end;margin-top:16px}
+.end{text-align:center;padding:24px 0 6px}
+.end .big{font-family:var(--serif);font-size:72px;line-height:1;background:linear-gradient(180deg,var(--gold-2),var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+.end p{color:var(--muted);margin:10px auto 18px;max-width:420px}
+.end .row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* challenge */
+.chal{position:relative;border-radius:26px;padding:30px 22px;text-align:center;border:1px solid var(--gold);background:radial-gradient(600px 260px at 50% 0%,rgba(214,178,110,.16),transparent 70%),linear-gradient(180deg,var(--panel-2),var(--ink-2));overflow:hidden}
+.chal h4{font-family:var(--serif);font-size:clamp(30px,6vw,40px);font-weight:500;line-height:1.1}
+.chal p{color:var(--muted);max-width:460px;margin:10px auto 20px}
+.chal .best{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+.chal .drill{text-align:left;margin-top:6px;border:0;background:none;padding:0}
+.seal{display:inline-grid;place-items:center;width:64px;height:64px;border-radius:50%;border:1px solid var(--gold);color:var(--gold);font-family:var(--serif);font-size:28px;margin-bottom:14px;box-shadow:0 0 0 6px rgba(214,178,110,.07)}
+
+/* map */
+.map{display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;font-size:14px}
+.map .h{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);padding:4px 6px}
+.map .h.s{color:var(--gold)} .map .h.p{color:var(--pearl)}
+.map .rl{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold-2);display:flex;align-items:center;padding-right:6px}
+.cell{padding:12px;border-radius:14px;border:1px solid var(--line);background:rgba(24,20,36,.6);transition:.4s}
+.cell .f{font-size:12px;color:var(--muted)}
+.cell .x{font-family:var(--serif);font-size:18px;margin-top:2px}
+.cell.s .x{color:var(--gold-2)} .cell.p .x{color:var(--pearl-2)}
+.cell.locked{filter:blur(4px);opacity:.45}
+
+/* footer & toast */
+footer{margin-top:70px;padding:40px 0 60px;border-top:1px solid var(--line);text-align:center}
+footer .sig{font-family:var(--serif);font-size:26px;font-style:italic;color:var(--gold-2)}
+footer p{color:var(--muted);font-size:13.5px;margin:6px 0 20px}
+footer .small{margin-top:22px;font-size:11.5px;color:var(--dim)}
+footer .small button{text-decoration:underline;color:var(--dim);font-size:11.5px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:50;max-width:calc(100% - 32px);padding:13px 18px;border-radius:14px;background:#221C31;border:1px solid var(--line-2);font-size:14px;transition:.35s;box-shadow:0 20px 50px -20px #000}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+#chapter{animation:rise .5s ease;scroll-margin-top:96px}
+.sec,.chal,.drill{scroll-margin-top:110px}
+@media(max-width:420px){.opts.two{grid-template-columns:1fr}.map{font-size:13px}.cell{padding:10px}.cell .x{font-size:16px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="top">
+    <span class="brand"><i>G</i>ProfGermandario</span>
+    <span>Lección 07</span>
+  </div>
+
+  <header class="hero">
+    <span class="eyebrow">Gramática esencial</span>
+    <h1><span class="s">Simple</span><span class="vs">versus</span><span class="p">Progresivo</span></h1>
+    <p class="lead">Dos maneras de mirar una acción: como parte de tu vida o como algo que está ocurriendo. Domínalas en el presente y desbloquea el pasado y el futuro.</p>
+    <div class="steps">
+      <span><em>i</em> Entiende la idea</span>
+      <span><em>ii</em> Practica sin miedo</span>
+      <span><em>iii</em> Supera el reto 8/10</span>
+    </div>
+  </header>
+</div>
+
+<div class="trackwrap">
+  <div class="wrap">
+    <nav class="track" id="track" aria-label="Capítulos"></nav>
+    <div class="meter"><i id="meter" style="width:0"></i></div>
+  </div>
+</div>
+
+<main class="wrap">
+  <div id="chapter"></div>
+
+  <section class="sec">
+    <div class="sh"><span class="num">✦</span><div><h3>El mapa completo</h3><p>Las seis formas en un vistazo. Cada fila se revela cuando la dominas.</p></div></div>
+    <div class="map" id="map"></div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="sig">ProfGermandario</div>
+    <p>Inglés para comunicar con autoridad. Si quieres acompañamiento personalizado, escríbeme.</p>
+    <a class="btn gold" href="https://wa.me/573197894038?text=%C2%A1Hola%20Prof.%20Germandario%21%20Estoy%20en%20la%20Lecci%C3%B3n%207%20%28simple%20vs%20progresivo%29%20y%20quiero%20m%C3%A1s%20info%20%F0%9F%99%8C" target="_blank" rel="noopener">Escríbeme por WhatsApp</a>
+    <div class="small">Tu progreso se guarda en este dispositivo · <button id="reset">Reiniciar progreso</button></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+/* =========================================================
+   CONTENIDO
+   ========================================================= */
+const CH = [
+{
+  id:"presente", name:"Presente", num:"I", unlockMsg:"",
+  title:'El <em>Presente</em>',
+  idea:{
+    s:{tag:"La película completa", text:"Describe lo que <b>siempre</b> es así: rutinas, hábitos, hechos, gustos y verdades. No importa si lo estás haciendo ahora; importa que forma parte de tu vida.", tl:{dots:[36,72,108,144,180,216,252], label:"siempre · rutina · hecho"}},
+    p:{tag:"La transmisión en vivo", text:"Hace zoom a una acción <b>en desarrollo</b>: está pasando ahora mismo o durante esta temporada. Empezó, sigue en curso y todavía no termina.", tl:{wave:[118,182], label:"en este momento"}},
+    key:"Pregunta clave: ¿es parte de tu vida (Simple) o está ocurriendo en este momento o temporada (Progresivo)?"
+  },
+  formula:{
+    s:[["+","I / you / we / they <b>work</b> · he / she / it <b>works</b>"],["−","I <b>don't work</b> · she <b>doesn't work</b>"],["?","<b>Do</b> you <b>work</b>? · <b>Does</b> she <b>work</b>?"]],
+    p:[["+","I <b>am working</b> · she <b>is working</b> · they <b>are working</b>"],["−","I'm <b>not working</b> · she <b>isn't working</b> · they <b>aren't working</b>"],["?","<b>Are</b> you <b>working</b>? · <b>Is</b> she <b>working</b>?"]],
+    ns:"Con <b>does / doesn't</b> el verbo vuelve a su forma base: <i>She doesn't work</i>, nunca <i>doesn't works</i>.",
+    np:"El verbo <b>to be</b> es obligatorio. <i>She working</i> no existe; es <i>She <b>is</b> working</i>."
+  },
+  uses:{
+    s:[["Rutinas y hábitos","I drink coffee every morning.","Tomo café todas las mañanas."],["Hechos y verdades","Water boils at 100 degrees.","El agua hierve a 100 grados."],["Situaciones permanentes","She lives in Bogotá.","Ella vive en Bogotá."],["Horarios fijos","The class starts at seven.","La clase empieza a las siete."],["Profesión e identidad","What do you do? — I'm a lawyer.","¿A qué te dedicas? — Soy abogado."]],
+    p:[["Acción en este momento","I'm reading right now.","Estoy leyendo ahora mismo."],["Situación temporal","I'm living with my parents this month.","Este mes estoy viviendo con mis papás."],["Cambios y tendencias","Prices are going up.","Los precios están subiendo."],["Planes ya acordados","I'm meeting Ana tomorrow.","Mañana me reúno con Ana (ya está cuadrado)."],["Hábito molesto + always","He's always interrupting me!","¡Siempre me está interrumpiendo!"]]
+  },
+  signals:{s:["always","usually","often","sometimes","never","every day","on Mondays","once a week"], p:["now","right now","at the moment","today","this week","currently","Look!","Listen!"]},
+  spelling:{
+    title:"Ortografía: -s y -ing",
+    items:[["+s / +es","works · watches · goes","después de ch, sh, s, x, o → -es"],["consonante + y","study → studies","la y cambia a -ies"],["irregular","have → has","solo con he / she / it"],["-e final","make → making","se elimina la e"],["consonante-vocal-consonante","run → running","se duplica la consonante"],["-ie final","lie → lying","ie cambia a y"]]
+  },
+  stative:{
+    text:"Algunos verbos describen <b>estados</b> (mente, emociones, posesión), no acciones. Casi nunca van en progresivo, aunque hables de ahora mismo.",
+    list:"know · believe · understand · want · need · like · love · hate · prefer · own · belong · seem · mean · remember",
+    vs:[["I'm knowing the answer.","I know the answer."],["I'm wanting a coffee.","I want a coffee."]],
+    extra:"Matiz de experto: <b>think</b> y <b>have</b> cambian de sentido. <i>I think it's good</i> (opinión) / <i>I'm thinking about it</i> (proceso). <i>I have a car</i> (posesión) / <i>I'm having lunch</i> (acción)."
+  },
+  pairs:[["I work from home.","Siempre trabajo desde casa.","I'm working from home this week.","Solo esta semana: es temporal."],["He plays the guitar.","Sabe tocar / lo hace habitualmente.","He's playing the guitar.","En este momento la está tocando."],["What do you do?","¿A qué te dedicas?","What are you doing?","¿Qué estás haciendo ahora?"]],
+  story:"Every morning, Laura [s:wakes up] at six. She [s:works] as a designer and usually [s:takes] the bus to the office. But this week is different. She [p:is working] from home because the company [p:is renovating] the building. Right now, she [p:is drinking] coffee on her balcony and her dog [p:is sleeping] next to her. She [s:loves] these quiet mornings.",
+  errors:[["I am agree with you.","I agree with you.","Agree es un verbo, no un adjetivo. No necesita am."],["She work in a bank.","She works in a bank.","Con he / she / it, el verbo lleva -s."],["I am live in Medellín.","I live in Medellín.","No mezcles am con el verbo base."],["Do she like coffee?","Does she like coffee?","Con he / she / it la pregunta usa does."],["I'm wanting a coffee.","I want a coffee.","Want es un verbo de estado."]],
+  drills:{
+    mc:[
+      {q:"Listen! The baby ___.",o:["is crying","cries"],a:0,w:"<b>Listen!</b> indica que está pasando ahora mismo."},
+      {q:"My father ___ coffee every morning.",o:["drinks","is drinking"],a:0,w:"<b>Every morning</b> = rutina → Simple."},
+      {q:"Water ___ at 100 degrees.",o:["boils","is boiling"],a:0,w:"Hecho científico, siempre es verdad → Simple."},
+      {q:"Please be quiet. I ___ for my exam.",o:["am studying","study"],a:0,w:"Pide silencio porque la acción ocurre ahora → Progresivo."},
+      {q:"She ___ the answer.",o:["knows","is knowing"],a:0,w:"<b>Know</b> es verbo de estado: no va en progresivo."},
+      {q:"They ___ in Cali, but this month they ___ in Bogotá.",o:["live / are staying","are living / stay"],a:0,w:"Vivir en Cali es permanente (Simple); este mes es temporal (Progresivo)."},
+      {q:"What ___ you ___? — I'm an engineer.",o:["do / do","are / doing"],a:0,w:"<b>What do you do?</b> pregunta por la profesión."},
+      {q:"Look! It ___.",o:["is snowing","snows"],a:0,w:"<b>Look!</b> = lo estás viendo ahora mismo."},
+      {q:"The train ___ at 8:15 every day.",o:["leaves","is leaving"],a:0,w:"Horario fijo → Simple."},
+      {q:"Prices ___ up these days.",o:["are going","go"],a:0,w:"Tendencia en curso (<b>these days</b>) → Progresivo."},
+      {q:"I ___ this song. It's amazing!",o:["love","am loving"],a:0,w:"<b>Love</b> es un verbo de emoción (estado) → Simple."},
+      {q:"He usually ___ to work, but today he ___ the bus.",o:["walks / is taking","is walking / takes"],a:0,w:"<b>Usually</b> = hábito (Simple); <b>today</b> = excepción temporal (Progresivo)."}
+    ],
+    type:[
+      {q:"She ___ (work) at a bank.",a:["works"],w:"He / she / it + verbo con -s."},
+      {q:"Right now, they ___ (play) football.",a:["are playing"],w:"<b>Right now</b> → am / is / are + -ing."},
+      {q:"He ___ (not / like) spicy food.",a:["does not like"],w:"Negativo con he: <b>doesn't</b> + verbo base."},
+      {q:"___ (you / watch) TV at the moment?",a:["are you watching"],w:"Pregunta en progresivo: Are + sujeto + -ing."},
+      {q:"My sister ___ (study) every night.",a:["studies"],w:"Rutina + consonante + y → <b>-ies</b>."},
+      {q:"I ___ (not / understand) this word.",a:["do not understand"],w:"<b>Understand</b> es verbo de estado → Simple negativo."},
+      {q:"Look! The dog ___ (run) in the park.",a:["is running"],w:"Run → <b>running</b> (se duplica la n)."},
+      {q:"___ (she / speak) French?",a:["does she speak"],w:"Pregunta en Simple con she → <b>Does</b> + verbo base."},
+      {q:"We ___ (have) dinner now. Call me later.",a:["are having"],w:"<b>Have dinner</b> es una acción, así que sí va en progresivo."},
+      {q:"The sun ___ (rise) in the east.",a:["rises"],w:"Verdad universal → Simple."}
+    ],
+    order:[
+      {t:["She","is reading","a book","right now"],a:["She is reading a book right now","Right now she is reading a book"],w:"Sujeto + is + -ing + complemento + señal."},
+      {t:["I","usually","drink","tea","in the morning"],a:["I usually drink tea in the morning","In the morning I usually drink tea"],w:"Los adverbios de frecuencia van antes del verbo principal."},
+      {t:["Are","they","working","from home","this week"],a:["Are they working from home this week"],w:"Pregunta: Are + sujeto + -ing. <b>This week</b> = temporal."},
+      {t:["He","doesn't","play","video games"],a:["He doesn't play video games"],w:"Doesn't + verbo base, sin -s."},
+      {t:["What","are","you","doing","right now"],a:["What are you doing right now","Right now what are you doing"],w:"Wh- + are + sujeto + -ing."}
+    ],
+    err:[
+      {o:["I am agree with you.","I agree with you.","I agreeing with you."],a:1,w:"Agree es verbo: <b>I agree</b>."},
+      {o:["She don't like coffee.","She doesn't likes coffee.","She doesn't like coffee."],a:2,w:"Doesn't + verbo base."},
+      {o:["I'm knowing the answer.","I know the answer.","I knows the answer."],a:1,w:"Know = verbo de estado."},
+      {o:["Does he works here?","Is he work here?","Does he work here?"],a:2,w:"Does + sujeto + verbo base."},
+      {o:["They are play now.","They are playing now.","They playing now."],a:1,w:"Are + verbo-ing."}
+    ]
+  }
+},
+{
+  id:"pasado", name:"Pasado", num:"II",
+  title:'El <em>Pasado</em>',
+  idea:{
+    s:{tag:"La foto terminada", text:"Una acción <b>completa y cerrada</b> en el pasado: empezó y terminó. Es el tiempo de los hechos y de la narración: primero pasó esto, luego aquello.", tl:{dots:[70], tags:[[70,"ayer","s"]], label:"acción terminada"}},
+    p:{tag:"El fondo de la escena", text:"Una acción que <b>estaba en curso</b> en un momento del pasado. No importa si terminó; describimos lo que estaba pasando cuando algo más ocurrió.", tl:{wave:[34,112], hit:86, tags:[[86,"when…","s"]], label:"en progreso en el pasado"}},
+    key:"Truco maestro: la acción <b>larga</b> va en progresivo; la <b>corta</b> que la interrumpe va en simple. <i>I was cooking</i> (larga) <i>when the phone rang</i> (corta)."
+  },
+  formula:{
+    s:[["+","I / she / they <b>worked</b> · <b>went</b> · <b>saw</b>"],["−","I <b>didn't work</b> · she <b>didn't go</b>"],["?","<b>Did</b> you <b>work</b>? · <b>Did</b> she <b>go</b>?"]],
+    p:[["+","I / he / she / it <b>was working</b> · you / we / they <b>were working</b>"],["−","she <b>wasn't working</b> · they <b>weren't working</b>"],["?","<b>Was</b> she <b>working</b>? · <b>Were</b> they <b>working</b>?"]],
+    ns:"Con <b>did / didn't</b> el verbo vuelve a la forma base: <i>She didn't go</i>, nunca <i>didn't went</i>.",
+    np:"<b>Was</b> para I / he / she / it. <b>Were</b> para you / we / they."
+  },
+  uses:{
+    s:[["Acción terminada","I visited Cartagena last year.","Visité Cartagena el año pasado."],["Secuencia de acciones","I got up, had a shower and left.","Me levanté, me duché y salí."],["La acción que interrumpe","…when the phone rang.","…cuando sonó el teléfono."],["Hábitos del pasado","We played outside every afternoon.","Jugábamos afuera todas las tardes."],["Estados en el pasado","I knew him very well.","Lo conocía muy bien."]],
+    p:[["En curso a una hora exacta","At 8 p.m. I was having dinner.","A las 8 p.m. estaba cenando."],["Acción interrumpida","I was cooking when the phone rang.","Estaba cocinando cuando sonó el teléfono."],["Acciones simultáneas","While I was studying, she was watching TV.","Mientras yo estudiaba, ella veía TV."],["Ambiente de una historia","The sun was shining and birds were singing.","Brillaba el sol y cantaban los pájaros."]]
+  },
+  signals:{s:["yesterday","last night","last week","two days ago","in 2019","then","when + acción corta"], p:["while","at that moment","at 9 p.m. yesterday","this time last year","all morning"]},
+  spelling:{
+    title:"Ortografía: -ed e irregulares",
+    items:[["regla general","work → worked","se agrega -ed"],["-e final","live → lived","solo se agrega -d"],["consonante + y","study → studied","la y cambia a -ied"],["vocal + y","play → played","la y se queda"],["consonante-vocal-consonante","stop → stopped","se duplica la consonante"],["-ing (progresivo)","swim → swimming","mismas reglas del presente"]],
+    irr:[["go","went"],["have","had"],["see","saw"],["make","made"],["take","took"],["get","got"],["come","came"],["eat","ate"],["buy","bought"],["think","thought"],["say","said"],["know","knew"]]
+  },
+  stative:{
+    text:"La regla de los verbos de estado también vive en el pasado. Si no hay acción, no hay progresivo.",
+    list:"know · want · need · like · love · believe · understand · own",
+    vs:[["I was knowing the truth.","I knew the truth."],["She was wanting a new phone.","She wanted a new phone."]],
+    extra:"Combinación de oro: <b>pasado progresivo + when + pasado simple</b>, o <b>While + pasado progresivo, pasado simple</b>."
+  },
+  pairs:[["I read a book yesterday.","Lo leí completo: acción cerrada.","I was reading a book when you called.","Estaba en medio de la lectura."],["She cooked dinner at 7.","A las 7 empezó a cocinar.","She was cooking dinner at 7.","A las 7 ya estaba cocinando."],["When he arrived, we had lunch.","Llegó y luego almorzamos.","When he arrived, we were having lunch.","Ya estábamos almorzando cuando llegó."]],
+  story:"Last Saturday, Carlos [s:woke up] early and [s:went] to the beach. The sun [p:was shining] and some kids [p:were playing] volleyball near the water. While he [p:was swimming], a big wave [s:hit] him. He [s:laughed], [s:got] out of the water and [s:ordered] a fresh mango juice.",
+  errors:[["Yesterday I was go to the gym.","Yesterday I went to the gym.","Acción terminada → pasado simple, sin was."],["She didn't went to work.","She didn't go to work.","Después de didn't, verbo base."],["They was playing football.","They were playing football.","They → were."],["Did you saw the game?","Did you see the game?","Después de did, verbo base."],["I was watching TV when she was calling.","I was watching TV when she called.","La interrupción es corta → simple."]],
+  drills:{
+    mc:[
+      {q:"I ___ TV when the lights went out.",o:["was watching","watched"],a:0,w:"Acción larga interrumpida → Progresivo."},
+      {q:"We ___ to Cartagena last summer.",o:["went","were going"],a:0,w:"Acción terminada con <b>last summer</b> → Simple."},
+      {q:"While she ___, her phone rang.",o:["was driving","drove"],a:0,w:"<b>While</b> introduce la acción en curso."},
+      {q:"At 9 p.m. yesterday, I ___ dinner.",o:["was having","had"],a:0,w:"Hora exacta del pasado y acción en curso → Progresivo."},
+      {q:"He ___ his keys, so he couldn't open the door.",o:["lost","was losing"],a:0,w:"Acción puntual y completa → Simple."},
+      {q:"The sun ___ and the birds were singing.",o:["was shining","shone"],a:0,w:"Ambiente de fondo de la escena → Progresivo."},
+      {q:"I ___ her three years ago.",o:["met","was meeting"],a:0,w:"<b>Ago</b> marca un punto terminado → Simple."},
+      {q:"What ___ you doing at 10 last night?",o:["were","did"],a:0,w:"Doing exige were: <b>What were you doing?</b>"},
+      {q:"She ___ the answer, but she didn't say it.",o:["knew","was knowing"],a:0,w:"Know = verbo de estado."},
+      {q:"They ___ football when it started to rain.",o:["were playing","played"],a:0,w:"El juego estaba en curso; la lluvia lo interrumpe."},
+      {q:"First I ___ a shower, then I ___ breakfast.",o:["had / ate","was having / was eating"],a:0,w:"Secuencia de acciones completas → Simple."},
+      {q:"When I arrived, they ___ dinner, so I joined them.",o:["were having","had"],a:0,w:"Ya estaban cenando cuando llegaste → Progresivo."}
+    ],
+    type:[
+      {q:"She ___ (call) me yesterday.",a:["called"],w:"Regular → -ed."},
+      {q:"I ___ (sleep) when you called.",a:["was sleeping"],w:"Acción larga interrumpida."},
+      {q:"They ___ (not / see) the movie.",a:["did not see"],w:"Didn't + verbo base."},
+      {q:"___ (you / go) to the party last night?",a:["did you go"],w:"Pregunta en pasado simple: Did + sujeto + base."},
+      {q:"While we ___ (walk), it started to rain.",a:["were walking"],w:"While + pasado progresivo."},
+      {q:"He ___ (buy) a new phone last week.",a:["bought"],w:"Buy es irregular: <b>bought</b>."},
+      {q:"What ___ (she / do) at 8 o'clock last night?",a:["was she doing"],w:"Hora exacta en curso → was + -ing."},
+      {q:"We ___ (not / work) at that moment.",a:["were not working"],w:"We → weren't + -ing."},
+      {q:"I ___ (eat) breakfast and then left for work.",a:["ate"],w:"Secuencia → Simple. Eat → <b>ate</b>."},
+      {q:"The children ___ (play) in the garden when it got dark.",a:["were playing"],w:"Fondo de la escena interrumpido."}
+    ],
+    order:[
+      {t:["I","was reading","when","you","called"],a:["I was reading when you called","When you called I was reading"],w:"Acción larga (progresivo) + when + acción corta (simple)."},
+      {t:["Did","you","finish","your homework"],a:["Did you finish your homework"],w:"Did + sujeto + verbo base."},
+      {t:["While","she","was cooking","he","was cleaning"],a:["While she was cooking he was cleaning","He was cleaning while she was cooking","She was cooking while he was cleaning","While he was cleaning she was cooking"],w:"Dos acciones simultáneas → ambas en progresivo."},
+      {t:["They","didn't go","to school","yesterday"],a:["They didn't go to school yesterday","Yesterday they didn't go to school"],w:"Didn't + verbo base."}
+    ],
+    err:[
+      {o:["Yesterday I was go to the gym.","Yesterday I went to the gym.","Yesterday I go to the gym."],a:1,w:"Acción terminada → <b>went</b>."},
+      {o:["She didn't went to work.","She didn't go to work.","She not went to work."],a:1,w:"Didn't + verbo base."},
+      {o:["They was playing football.","They were play football.","They were playing football."],a:2,w:"They + were + -ing."},
+      {o:["Did you saw the game?","Did you see the game?","Were you see the game?"],a:1,w:"Did + verbo base."},
+      {o:["I was watching TV when she called.","I watched TV when she was calling.","I was watch TV when she called."],a:0,w:"Larga en progresivo, corta en simple."}
+    ]
+  }
+},
+{
+  id:"futuro", name:"Futuro", num:"III",
+  title:'El <em>Futuro</em>',
+  idea:{
+    s:{tag:"La decisión y la promesa", text:"Presenta el futuro como un hecho <b>completo</b>: decisiones tomadas en el momento, predicciones, promesas y ofrecimientos. <b>Will + verbo base</b>.", tl:{dots:[222], tags:[[222,"mañana","s"]], label:"acción futura completa"}},
+    p:{tag:"La cámara en el futuro", text:"Viaja a un momento exacto del futuro y muestra una acción <b>en pleno desarrollo</b> en ese instante. <b>Will be + verbo-ing</b>.", tl:{wave:[188,262], mark:226, tags:[[226,"8 p.m.","p"]], label:"en progreso en el futuro"}},
+    key:"Imagina la hora exacta: ¿a las 8 <b>empieza</b> la acción (Simple) o a las 8 ya estarás <b>en medio</b> de ella (Progresivo)?"
+  },
+  formula:{
+    s:[["+","I / you / she / they <b>will work</b> · <b>'ll work</b>"],["−","she <b>won't work</b> · <b>will not work</b>"],["?","<b>Will</b> you <b>work</b>?"]],
+    p:[["+","I / you / she / they <b>will be working</b> · <b>'ll be working</b>"],["−","she <b>won't be working</b>"],["?","<b>Will</b> you <b>be working</b>?"]],
+    ns:"<b>Will</b> nunca cambia y nunca lleva <i>to</i>: <i>She will come</i>, no <i>She wills come</i> ni <i>will to come</i>.",
+    np:"Son tres piezas fijas: <b>will + be + -ing</b>. Si falta una, la estructura se rompe."
+  },
+  uses:{
+    s:[["Decisión en el momento","It's cold. I'll close the window.","Hace frío. Voy a cerrar la ventana."],["Predicción u opinión","I think it will rain.","Creo que va a llover."],["Promesas","I'll help you, I promise.","Te ayudaré, lo prometo."],["Ofrecimientos","I'll carry your bag.","Yo te llevo la maleta."],["Acción completa futura","I'll call you tomorrow.","Te llamaré mañana."]],
+    p:[["En curso a una hora exacta","At 8 p.m. tomorrow, I'll be flying to Miami.","Mañana a las 8 p.m. estaré volando a Miami."],["This time next…","This time next year, we'll be living in Canada.","El próximo año a esta hora estaremos viviendo en Canadá."],["Preguntas educadas sobre planes","Will you be using the car tonight?","¿Vas a usar el carro esta noche? (sin presionar)"],["Lo que ocurrirá de todos modos","I'll be passing by the bank, so I can pay it.","Voy a pasar por el banco igual, así que yo lo pago."]]
+  },
+  signals:{s:["tomorrow","next week","soon","I think","probably","I promise","in 2030"], p:["this time tomorrow","at 9 p.m. tomorrow","this time next week","all day tomorrow","when you arrive"]},
+  spelling:{
+    title:"Recordatorio: -ing y contracciones",
+    items:[["contracción","I will → I'll","muy común al hablar"],["negativo","will not → won't","se pronuncia /wount/"],["-e final","drive → driving","se elimina la e"],["consonante-vocal-consonante","sit → sitting","se duplica la consonante"],["-ie final","lie → lying","ie cambia a y"],["otros futuros","going to · presente progresivo","los verás en otra lección"]]
+  },
+  stative:{
+    text:"En el futuro, los verbos de estado tampoco van en progresivo.",
+    list:"know · want · need · like · love · believe · understand · own",
+    vs:[["I'll be knowing the results tomorrow.","I'll know the results tomorrow."],["She'll be needing help.","She'll need help."]],
+    extra:"Pista de pronunciación: <i>I'll be</i> suena casi como una sola palabra: /ail-bi/."
+  },
+  pairs:[["I'll call you at 8.","A las 8 hago la llamada.","I'll be working at 8.","A las 8 estaré en medio del trabajo."],["When you arrive, I'll make dinner.","Empiezo a cocinar cuando llegues.","When you arrive, I'll be making dinner.","Ya estaré cocinando cuando llegues."],["Will you help me tonight?","Pedido directo.","Will you be using the car tonight?","Pregunta suave por tus planes."]],
+  story:"Tomorrow is a big day for Ana. At seven in the morning she [p:will be driving] to the airport, and at noon she [p:will be flying] over the Caribbean. She [s:will call] her mom as soon as she lands. This time next week, she [p:will be working] in her new office in Miami. She knows she [s:will love] it.",
+  errors:[["I will to call you.","I will call you.","Will nunca lleva to."],["She wills come tomorrow.","She will come tomorrow.","Will no cambia con she."],["Will you to help me?","Will you help me?","Will + verbo base."],["I'll be knowing the results.","I'll know the results.","Know = verbo de estado."],["At 8 I will be watch the game.","At 8 I will be watching the game.","Will be + verbo-ing."]],
+  drills:{
+    mc:[
+      {q:"This time tomorrow, I ___ on a beach.",o:["will be lying","will lie"],a:0,w:"<b>This time tomorrow</b> → acción en curso en el futuro."},
+      {q:"It's hot in here. I ___ the window.",o:["'ll open","'ll be opening"],a:0,w:"Decisión tomada en el momento → Simple."},
+      {q:"I promise I ___ you tomorrow.",o:["will call","will be calling"],a:0,w:"Promesa → will + base."},
+      {q:"Don't call at 9. We ___ dinner then.",o:["will be having","will have"],a:0,w:"A las 9 estarán en medio de la cena."},
+      {q:"I think Colombia ___ the match.",o:["will win","will be winning"],a:0,w:"Predicción de un resultado → Simple."},
+      {q:"When you arrive, I ___ at the station. Look for me!",o:["will be waiting","will wait"],a:0,w:"Cuando llegues, ya estaré esperando."},
+      {q:"OK, I ___ the salad and you make the pasta.",o:["'ll make","'ll be making"],a:0,w:"Ofrecimiento / decisión → Simple."},
+      {q:"At 10 a.m. tomorrow, they ___ an exam.",o:["will be taking","will take"],a:0,w:"Hora exacta + acción en curso → Progresivo."},
+      {q:"I ___ you the money tomorrow, I promise.",o:["'ll give","'ll be giving"],a:0,w:"Promesa → Simple."},
+      {q:"She ___ the answer after the class.",o:["will know","will be knowing"],a:0,w:"Know = verbo de estado."},
+      {q:"Hurry up! The movie ___ in five minutes.",o:["will start","will be starting"],a:0,w:"Acción puntual en el futuro → Simple."},
+      {q:"Don't visit me on Saturday morning. I ___.",o:["will be working","will work"],a:0,w:"Toda esa mañana estarás en medio del trabajo."}
+    ],
+    type:[
+      {q:"Don't worry, I ___ (help) you with that.",a:["will help"],w:"Ofrecimiento → will + base."},
+      {q:"This time next week, we ___ (travel) to Peru.",a:["will be traveling"],w:"This time next week → will be + -ing."},
+      {q:"She ___ (not / come) to the party.",a:["will not come"],w:"Negativo: <b>won't</b> + base."},
+      {q:"___ (you / work) at 6 p.m. tomorrow?",a:["will you be working"],w:"Pregunta en futuro progresivo: Will + sujeto + be + -ing."},
+      {q:"Your secret is safe. I ___ (not / tell) anyone.",a:["will not tell"],w:"Promesa en negativo → won't."},
+      {q:"At midnight, I ___ (sleep).",a:["will be sleeping"],w:"A medianoche estarás en medio del sueño."},
+      {q:"I think it ___ (rain) tomorrow.",a:["will rain"],w:"Predicción con I think → Simple."},
+      {q:"Call me after 5. I ___ (not / work) then.",a:["will not be working"],w:"Won't be + -ing."},
+      {q:"___ (you / marry) me?",a:["will you marry"],w:"Pregunta directa → Will + sujeto + base."}
+    ],
+    order:[
+      {t:["I","will call","you","tomorrow"],a:["I will call you tomorrow","Tomorrow I will call you"],w:"Will + verbo base."},
+      {t:["This time tomorrow","I","will be flying","to Miami"],a:["This time tomorrow I will be flying to Miami","I will be flying to Miami this time tomorrow"],w:"Momento futuro exacto + will be + -ing."},
+      {t:["Will","you","be using","the car","tonight"],a:["Will you be using the car tonight"],w:"Pregunta educada: Will + sujeto + be + -ing."},
+      {t:["She","won't be working","on Sunday"],a:["She won't be working on Sunday","On Sunday she won't be working"],w:"Won't be + -ing."}
+    ],
+    err:[
+      {o:["I will to call you.","I will call you.","I will calling you."],a:1,w:"Will + base, sin to."},
+      {o:["She wills come tomorrow.","She will comes tomorrow.","She will come tomorrow."],a:2,w:"Will no cambia, y el verbo va en base."},
+      {o:["Will you to help me?","Will you help me?","Will you helping me?"],a:1,w:"Will + sujeto + base."},
+      {o:["I'll be knowing the results tomorrow.","I'll know the results tomorrow.","I'll knowing the results tomorrow."],a:1,w:"Know = verbo de estado."},
+      {o:["At 8 p.m. I will be watch the game.","At 8 p.m. I will be watching the game.","At 8 p.m. I will watching the game."],a:1,w:"Will be + verbo-ing."}
+    ]
+  }
+}];
+
+const MAP = [
+  ["Presente",["sujeto + verbo (+s)","She works."],["am / is / are + -ing","She is working."]],
+  ["Pasado",["verbo-ed / irregular","She worked."],["was / were + -ing","She was working."]],
+  ["Futuro",["will + verbo","She will work."],["will be + -ing","She will be working."]]
+];
+
+/* =========================================================
+   UTILIDADES
+   ========================================================= */
+const $ = s => document.querySelector(s);
+const KEY = "pg_lec07_v2";
+const PASS = 8;
+const ALL = /[?&](todo|all|profe)\b/i.test(location.search);
+let prog = {};
+try{ prog = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ prog = {}; }
+const save = () => { try{ localStorage.setItem(KEY, JSON.stringify(prog)); }catch(e){} };
+const shuffle = a => { a = a.slice(); for(let i=a.length-1;i>0;i--){ const j = Math.random()*(i+1)|0; [a[i],a[j]]=[a[j],a[i]]; } return a; };
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const strip = s => String(s).replace(/<[^>]+>/g,"").replace(/\[[sp]:([^\]]+)\]/g,"$1");
+const EXP = [[/won't/g,"will not"],[/can't/g,"can not"],[/n't/g," not"],[/'m\b/g," am"],[/'re\b/g," are"],[/'s\b/g," is"],[/'ll\b/g," will"],[/travelling/g,"traveling"]];
+function norm(s){
+  s = String(s).toLowerCase().replace(/[’‘`´]/g,"'");
+  EXP.forEach(([r,t]) => s = s.replace(r,t));
+  return s.replace(/[.,!?¿¡;:"—…]/g," ").replace(/\s+/g," ").trim();
+}
+function say(t){
+  try{
+    const u = new SpeechSynthesisUtterance(strip(t));
+    u.lang = "en-US"; u.rate = .92;
+    speechSynthesis.cancel(); speechSynthesis.speak(u);
+  }catch(e){}
+}
+const sayBtn = t => `<button class="say" data-say="${esc(strip(t))}" aria-label="Escuchar">▶</button>`;
+let toastT;
+function toast(m){ const t=$("#toast"); t.innerHTML=m; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),3200); }
+const mastered = i => (prog[CH[i].id]||0) >= PASS;
+const unlocked = i => ALL || i===0 || mastered(i-1);
+
+/* timeline svg */
+function tl(c, k){
+  const col = k==="s" ? "#D6B26E" : "#9DB9D9";
+  const colOf = x => x==="s" ? "#D6B26E" : "#9DB9D9";
+  let g = `<svg class="tl" viewBox="0 0 300 92" aria-hidden="true">
+  <line x1="12" y1="50" x2="282" y2="50" stroke="rgba(238,231,216,.2)" stroke-width="1.2"/>
+  <path d="M288 50 l-8 -4.5 v9z" fill="rgba(238,231,216,.35)"/>
+  <line x1="150" y1="36" x2="150" y2="64" stroke="rgba(238,231,216,.45)" stroke-dasharray="2 3"/>
+  <text x="150" y="84" text-anchor="middle" class="tlt">ahora</text>
+  <text x="12" y="84" class="tlt">pasado</text><text x="288" y="84" text-anchor="end" class="tlt">futuro</text>`;
+  if(c.label) g += `<text x="150" y="14" text-anchor="middle" class="tll" fill="${col}">${c.label}</text>`;
+  if(c.wave){
+    const [a,b] = c.wave; let d = `M${a} 50`;
+    for(let x=a; x<b; x+=10) d += " q 2.5 -8 5 0 q 2.5 8 5 0";
+    g += `<path d="${d}" fill="none" stroke="${col}" stroke-width="2.2" stroke-linecap="round"/>`;
+  }
+  if(c.mark) g += `<line x1="${c.mark}" y1="36" x2="${c.mark}" y2="64" stroke="${col}" stroke-width="1.5"/>`;
+  (c.dots||[]).forEach(x => g += `<circle cx="${x}" cy="50" r="4.5" fill="${col}"/><circle cx="${x}" cy="50" r="9" fill="${col}" opacity=".15"/>`);
+  if(c.hit) g += `<circle cx="${c.hit}" cy="50" r="5.5" fill="#D6B26E" stroke="#0D0B14" stroke-width="2"/>`;
+  (c.tags||[]).forEach(([x,t,kk]) => g += `<text x="${x}" y="32" text-anchor="middle" class="tlt" style="fill:${colOf(kk)}">${t}</text>`);
+  return g + "</svg>";
+}
+
+/* =========================================================
+   MOTOR DE EJERCICIOS
+   ========================================================= */
+const KIND = {mc:"Elige el modo", type:"Escribe la forma", order:"Ordena la oración", err:"Encuentra la correcta"};
+function Drill(el, items, opt){
+  opt = opt || {};
+  const st = {items: shuffle(items).slice(0, opt.n || items.length), i:0, score:0};
+  const gapify = q => esc(q).replace(/___/g,'<span class="gap">&nbsp;</span>').replace(/\(([^)]+)\)/g,'<span class="hint">($1)</span>');
+
+  function head(){
+    return `<div class="dp"><span>${st.i+1} / ${st.items.length}</span><div class="dbar"><i style="width:${st.i/st.items.length*100}%"></i></div><span class="dscore">✦ ${st.score}</span></div>`;
+  }
+  function feedback(ok, it, ans){
+    if(ok) st.score++;
+    const fb = document.createElement("div");
+    fb.className = "fb " + (ok ? "ok" : "bad");
+    fb.innerHTML = `<span class="h">${ok ? "✓ Correcto" : "✗ Casi"}</span>${ok ? "" : `<div class="ans">${esc(ans)}</div>`}<div>${it.w || ""}</div>`;
+    const nav = document.createElement("div");
+    nav.className = "dnav";
+    nav.innerHTML = `<button class="btn gold">${st.i+1 < st.items.length ? "Siguiente →" : "Ver resultado"}</button>`;
+    nav.querySelector("button").onclick = () => { st.i++; show(); };
+    el.querySelector(".dbody").append(fb, nav);
+    el.querySelector(".dscore").textContent = "✦ " + st.score;
+    nav.querySelector("button").focus({preventScroll:true});
+  }
+  function show(){
+    if(st.i >= st.items.length) return end();
+    const it = st.items[st.i];
+    let html = head() + `<div class="dbody"><div class="dk">${KIND[it.k]}</div>`;
+    if(it.k==="mc" || it.k==="err"){
+      const opts = shuffle(it.o.map((t,j)=>({t,j})));
+      html += it.k==="mc" ? `<div class="dq">${gapify(it.q)}</div>` : `<div class="dq">¿Cuál oración es correcta?</div>`;
+      html += `<div class="opts ${it.k==="err"?"err":(it.o.every(o=>o.length<22)?"two":"")}">` + opts.map(o=>`<button class="opt" data-j="${o.j}">${esc(o.t)}</button>`).join("") + `</div>`;
+      el.innerHTML = html + `</div>`;
+      el.querySelectorAll(".opt").forEach(b => b.onclick = () => {
+        const j = +b.dataset.j, ok = j===it.a;
+        el.querySelectorAll(".opt").forEach(x => { x.disabled = true; if(+x.dataset.j===it.a) x.classList.add("ok"); });
+        if(!ok) b.classList.add("bad");
+        const full = it.k==="mc" ? fill(it.q, it.o[it.a]) : it.o[it.a];
+        say(full);
+        feedback(ok, it, full);
+      });
+    } else if(it.k==="type"){
+      html += `<div class="dq">${gapify(it.q)}</div><div class="tin"><input type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Escribe aquí…" aria-label="Respuesta"><button class="btn gold">Comprobar</button></div>`;
+      el.innerHTML = html + `</div>`;
+      const inp = el.querySelector("input"), b = el.querySelector(".tin .btn");
+      const go = () => {
+        if(!inp.value.trim()) return inp.focus();
+        const ok = it.a.some(a => norm(a)===norm(inp.value));
+        inp.disabled = true; b.disabled = true; inp.classList.add(ok?"ok":"bad");
+        const full = fill(it.q.replace(/\s*\([^)]+\)/,""), cap(it.q, it.a[0]));
+        say(full);
+        feedback(ok, it, full);
+      };
+      b.onclick = go; inp.onkeydown = e => { if(e.key==="Enter") go(); };
+      setTimeout(()=>inp.focus({preventScroll:true}), 60);
+    } else if(it.k==="order"){
+      const bank = shuffle(it.t.map((t,j)=>({t,j}))); const placed = [];
+      html += `<div class="dq" style="font-size:20px;color:var(--muted)">Toca las piezas en el orden correcto.</div><div class="zone" aria-label="Tu oración"></div><div class="bank"></div><div class="dnav"><button class="btn gold chk" disabled>Comprobar</button></div>`;
+      el.innerHTML = html + `</div>`;
+      const zone = el.querySelector(".zone"), bk = el.querySelector(".bank"), chk = el.querySelector(".chk");
+      let locked = false;
+      const draw = () => {
+        zone.innerHTML = placed.map((o,i)=>`<button class="tile" data-i="${i}">${esc(o.t)}</button>`).join("");
+        bk.innerHTML = bank.map((o,i)=>`<button class="tile" data-i="${i}">${esc(o.t)}</button>`).join("");
+        chk.disabled = bank.length>0;
+        if(locked) return;
+        zone.querySelectorAll(".tile").forEach(t => t.onclick = () => { bank.push(placed.splice(+t.dataset.i,1)[0]); draw(); });
+        bk.querySelectorAll(".tile").forEach(t => t.onclick = () => { placed.push(bank.splice(+t.dataset.i,1)[0]); draw(); });
+      };
+      draw();
+      chk.onclick = () => {
+        locked = true; draw();
+        const s = norm(placed.map(o=>o.t).join(" "));
+        const ok = it.a.some(a => norm(a)===s);
+        zone.classList.add(ok?"ok":"bad");
+        chk.parentNode.remove();
+        say(it.a[0]);
+        feedback(ok, it, it.a[0]);
+      };
+    }
+  }
+  function end(){
+    const n = st.items.length, pct = Math.round(st.score/n*100);
+    const msg = pct===100 ? "Impecable. Esto ya es tuyo." : pct>=80 ? "Excelente nivel. Estás listo para el reto." : pct>=60 ? "Vas bien. Repasa las explicaciones y repite." : "Vuelve a la idea esencial y los pares de contraste; luego intenta de nuevo.";
+    const extra = opt.onFinish ? opt.onFinish(st.score, n) : "";
+    el.innerHTML = `<div class="end"><div class="big">${st.score}<span style="font-size:.45em;color:var(--muted)">/${n}</span></div><p>${extra || msg}</p><div class="row"><button class="btn ghost again">Repetir</button>${opt.endBtn || ""}</div></div>`;
+    el.querySelector(".again").onclick = () => Drill(el, items, opt);
+    if(opt.afterEnd) opt.afterEnd(el);
+  }
+  show();
+}
+function fill(q, ans){
+  const parts = String(ans).split(" / ");
+  let k = 0;
+  return q.replace(/___/g, () => parts[Math.min(k++, parts.length-1)]).replace(/ '/g,"'");
+}
+function cap(q, a){ return q.trim().startsWith("___") ? a.charAt(0).toUpperCase()+a.slice(1) : a; }
+
+/* =========================================================
+   RENDER
+   ========================================================= */
+let cur = 0;
+function renderTrack(){
+  $("#track").innerHTML = CH.map((c,i)=>{
+    const cls = ["chap"]; let st;
+    if(i===cur) cls.push("on");
+    if(mastered(i)){ cls.push("done"); st = "✓ Dominado"; }
+    else if(unlocked(i)) st = i===cur ? "En curso" : "Abierto";
+    else { cls.push("lock"); st = "Bloqueado"; }
+    return `<button class="${cls.join(" ")}" data-i="${i}"><span class="n">${c.num}</span><span class="t">${c.name}</span><span class="st">${st}</span></button>`;
+  }).join("");
+  $("#track").querySelectorAll(".chap").forEach(b => b.onclick = () => go(+b.dataset.i, true));
+  const done = CH.filter((c,i)=>mastered(i)).length;
+  $("#meter").style.width = (done/CH.length*100) + "%";
+}
+function renderMap(){
+  $("#map").innerHTML = `<div></div><div class="h s">Simple</div><div class="h p">Progresivo</div>` + MAP.map((r,i)=>{
+    const lk = !unlocked(i) ? " locked" : "";
+    return `<div class="rl">${r[0]}</div><div class="cell s${lk}"><div class="f">${r[1][0]}</div><div class="x">${r[1][1]}</div></div><div class="cell p${lk}"><div class="f">${r[2][0]}</div><div class="x">${r[2][1]}</div></div>`;
+  }).join("");
+}
+function go(i, scroll){
+  if(!unlocked(i)){
+    toast(`🔒 Supera el reto de <b>${CH[i-1].name}</b> con ${PASS}/10 para abrir <b>${CH[i].name}</b>.`);
+    return;
+  }
+  cur = i;
+  try{ history.replaceState(null, "", "#" + CH[i].id); }catch(e){}
+  renderTrack(); renderChapter(); renderMap();
+  if(scroll) $("#chapter").scrollIntoView({behavior:"smooth", block:"start"});
+}
+function sec(num, title, sub, body){
+  return `<section class="sec"><div class="sh"><span class="num">${num}</span><div><h3>${title}</h3>${sub?`<p>${sub}</p>`:""}</div></div>${body}</section>`;
+}
+function renderChapter(){
+  const c = CH[cur], el = $("#chapter");
+  el.style.animation = "none"; void el.offsetWidth; el.style.animation = "";
+  const card = (k, inner, h) => `<div class="card ${k}">${h?`<h4>${h}</h4>`:""}${inner}</div>`;
+  const nmS = `${c.name} Simple`, nmP = `${c.name} Progresivo`;
+  let h = `<div class="chtitle"><div class="k">Capítulo ${c.num}</div><h2>${c.title}</h2></div>`;
+
+  // I idea
+  h += sec("i.", "La idea esencial", "Antes de la fórmula, la mirada.",
+    `<div class="duo">${card("s", `<span class="pill">${c.idea.s.tag}</span><h4>${nmS}</h4><p>${c.idea.s.text}</p>${tl(c.idea.s.tl,"s")}`)}${card("p", `<span class="pill">${c.idea.p.tag}</span><h4>${nmP}</h4><p>${c.idea.p.text}</p>${tl(c.idea.p.tl,"p")}`)}</div><div class="key">${c.idea.key}</div>`);
+
+  // II formula
+  const fr = rows => rows.map(r=>`<div class="frow"><span class="sign">${r[0]}</span><div>${r[1]}</div></div>`).join("");
+  h += sec("ii.", "La fórmula", "Afirmativa, negativa y pregunta.",
+    `<div class="duo">${card("s", fr(c.formula.s)+`<div class="note">${c.formula.ns}</div>`, nmS)}${card("p", fr(c.formula.p)+`<div class="note">${c.formula.np}</div>`, nmP)}</div>`);
+
+  // III uses
+  const ul = arr => `<ul class="uses">${arr.map(u=>`<li><span class="ut">${u[0]}</span><div class="ex">${sayBtn(u[1])}<span>${esc(u[1])}</span></div><span class="gl">${u[2]}</span></li>`).join("")}</ul>`;
+  h += sec("iii.", "Cuándo usar cada uno", "Toca ▶ para escuchar la pronunciación.",
+    `<div class="duo">${card("s", ul(c.uses.s), nmS)}${card("p", ul(c.uses.p), nmP)}</div>`);
+
+  // IV signals
+  const ch = arr => `<div class="chips">${arr.map(x=>`<span class="chip">${x}</span>`).join("")}</div>`;
+  h += sec("iv.", "Palabras señal", "Son pistas, no reglas absolutas. El significado manda.",
+    `<div class="duo">${card("s", ch(c.signals.s), "Simple")}${card("p", ch(c.signals.p), "Progresivo")}</div>`);
+
+  // V spelling
+  let sp = `<div class="grid3">${c.spelling.items.map(x=>`<div class="mini"><div class="r">${x[0]}</div><div class="e">${x[1]}</div><div class="e"><i>${x[2]}</i></div></div>`).join("")}</div>`;
+  if(c.spelling.irr) sp += `<div class="irr">${c.spelling.irr.map(p=>`<span>${p[0]} → <b>${p[1]}</b></span>`).join("")}</div>`;
+  h += sec("v.", c.spelling.title, "", sp);
+
+  // VI stative
+  h += sec("vi.", "La trampa de los verbos de estado", "",
+    `<div class="alert"><h4>No todo verbo acepta -ing</h4><p>${c.stative.text}</p><p style="color:var(--gold-2);font-family:var(--serif);font-size:19px">${c.stative.list}</p><div class="vs2">${c.stative.vs.map(v=>`<div><span class="no">${esc(v[0])}</span><span class="yes">✓ ${esc(v[1])}</span></div>`).join("")}</div><p style="margin-top:14px">${c.stative.extra}</p></div>`);
+
+  // VII pairs
+  h += sec("vii.", "Pares de contraste", "Misma acción, mirada distinta. Aquí se entiende de verdad.",
+    `<div class="card">${c.pairs.map(p=>`<div class="pair"><div class="side"><div class="ex">${sayBtn(p[0])}<span>${esc(p[0])}</span></div><span class="gl">${p[1]}</span></div><div class="side p"><div class="ex">${sayBtn(p[2])}<span>${esc(p[2])}</span></div><span class="gl">${p[3]}</span></div></div>`).join("")}</div>`);
+
+  // VIII story
+  const story = esc(c.story).replace(/\[s:([^\]]+)\]/g,'<mark class="ms">$1</mark>').replace(/\[p:([^\]]+)\]/g,'<mark class="mp">$1</mark>');
+  h += sec("viii.", "Léelo en contexto", "Primero lee e identifica cada modo. Después revélalos.",
+    `<div class="card" id="storybox"><p class="story">${story}</p><div class="legend"><span><i style="background:var(--gold)"></i>Simple</span><span><i style="background:var(--pearl)"></i>Progresivo</span></div><div class="storybar"><button class="btn ghost" id="reveal">✦ Revelar los modos</button><button class="btn ghost" id="listen">▶ Escuchar</button></div></div>`);
+
+  // IX errors
+  h += sec("ix.", "Errores que delatan", "Los cinco errores más comunes en hispanohablantes.",
+    `<div class="errs">${c.errors.map(e=>`<div class="err"><div class="l"><span class="no">${esc(e[0])}</span><span class="yes">✓ ${esc(e[1])}</span></div><div class="w">${e[2]}</div></div>`).join("")}</div>`);
+
+  // X practice
+  h += sec("x.", "Práctica guiada", "Cada respuesta trae su explicación. Equivocarte aquí es entrenar.",
+    `<div class="seg" id="seg">${Object.keys(KIND).map((k,i)=>`<button data-k="${k}" class="${i?"":"on"}">${KIND[k]}</button>`).join("")}</div><div class="drill" id="drill"></div>`);
+
+  // XI challenge
+  const best = prog[c.id];
+  h += sec("xi.", "Reto de maestría", "",
+    `<div class="chal" id="chal"><div class="seal">${c.num}</div><h4>Demuestra que lo dominas</h4>${best!=null?`<div class="best">Mejor resultado: ${best}/10${best>=PASS?" · Dominado":""}</div>`:""}<p>Diez preguntas mezcladas de todos los tipos. Con <b>${PASS}/10</b> o más, el capítulo queda dominado${cur<CH.length-1?` y se desbloquea <b>${CH[cur+1].name}</b>`:" y completas la lección"}.</p><button class="btn gold" id="start">Comenzar el reto</button></div>`);
+
+  el.innerHTML = h;
+
+  // wire
+  $("#reveal").onclick = function(){ const r = $("#storybox").classList.toggle("reveal"); this.textContent = r ? "✦ Ocultar los modos" : "✦ Revelar los modos"; };
+  $("#listen").onclick = () => say(c.story);
+  const pool = k => c.drills[k].map(x=>({...x,k}));
+  const mount = k => Drill($("#drill"), pool(k));
+  $("#seg").querySelectorAll("button").forEach(b => b.onclick = () => {
+    $("#seg").querySelectorAll("button").forEach(x=>x.classList.toggle("on", x===b));
+    mount(b.dataset.k);
+  });
+  mount("mc");
+  $("#start").onclick = () => startChallenge();
+}
+function startChallenge(){
+  const c = CH[cur], i = cur;
+  const pick = (k,n) => shuffle(c.drills[k].map(x=>({...x,k}))).slice(0,n);
+  const items = [...pick("mc",4), ...pick("type",3), ...pick("order",1), ...pick("err",2)];
+  const box = $("#chal");
+  box.innerHTML = `<div class="drill" id="cdrill"></div>`;
+  const opt = {
+    n: 10,
+    onFinish: (score) => {
+      const wasMastered = mastered(i);
+      prog[c.id] = Math.max(prog[c.id]||0, score); save();
+      renderTrack(); renderMap();
+      if(score >= PASS){
+        if(i < CH.length-1){
+          opt.endBtn = `<button class="btn gold next">Abrir ${CH[i+1].name} →</button>`;
+          return `<b style="color:var(--gold-2)">Capítulo dominado.</b> ${wasMastered ? "Sigues en forma." : `Acabas de desbloquear el <b>${CH[i+1].name}</b>.`}`;
+        }
+        opt.endBtn = "";
+        return `<b style="color:var(--gold-2)">Lección completa.</b> Ya controlas las seis formas: presente, pasado y futuro en sus dos modos.`;
+      }
+      opt.endBtn = "";
+      return `Necesitas ${PASS}/10 para dominar el capítulo. Repasa la práctica guiada y vuelve a intentarlo.`;
+    },
+    afterEnd: (el) => {
+      const n = el.querySelector(".next");
+      if(n) n.onclick = () => go(i+1, true);
+      if(prog[c.id] >= PASS && !el.dataset.cel){ el.dataset.cel = 1; toast(i < CH.length-1 ? `✦ ${CH[i+1].name} desbloqueado` : "✦ Lección 7 dominada"); }
+    }
+  };
+  // reintento genera un reto nuevo
+  const origAgain = () => startChallenge();
+  Drill($("#cdrill"), items, opt);
+  const obs = new MutationObserver(() => {
+    const a = $("#cdrill") && $("#cdrill").querySelector(".again");
+    if(a){ a.onclick = origAgain; }
+  });
+  obs.observe(box, {childList:true, subtree:true});
+}
+
+/* eventos globales */
+document.addEventListener("click", e => {
+  const b = e.target.closest(".say");
+  if(b) say(b.dataset.say);
+});
+$("#reset").onclick = () => {
+  if(!confirm("¿Borrar tu progreso de esta lección?")) return;
+  prog = {}; save(); go(0, true); toast("Progreso reiniciado");
+};
+
+/* inicio */
+(function init(){
+  const h = location.hash.replace("#","");
+  let start = CH.findIndex(c=>c.id===h);
+  if(start < 0 || !unlocked(start)){
+    start = 0;
+    for(let i=0;i<CH.length;i++){ if(unlocked(i) && !mastered(i)){ start = i; break; } if(unlocked(i)) start = i; }
+  }
+  cur = start;
+  renderTrack(); renderChapter(); renderMap();
+})();
+</script>
+</body>
+</html>
