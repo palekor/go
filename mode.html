@@ -236,6 +236,21 @@ footer .small{margin-top:22px;font-size:11.5px;color:var(--dim)}
 footer .small button{text-decoration:underline;color:var(--dim);font-size:11.5px}
 .toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:50;max-width:calc(100% - 32px);padding:13px 18px;border-radius:14px;background:#221C31;border:1px solid var(--line-2);font-size:14px;transition:.35s;box-shadow:0 20px 50px -20px #000}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+/* código de acceso */
+.keybtn{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font-size:12px;letter-spacing:.08em;color:var(--gold);border:1px solid var(--line-2);border-radius:99px;padding:6px 14px;background:transparent;cursor:pointer}
+.keybtn:hover{background:rgba(255,255,255,.04)}
+.modal{position:fixed;inset:0;z-index:60;display:none;place-items:center;padding:16px;background:rgba(8,6,12,.72);backdrop-filter:blur(6px)}
+.modal.on{display:grid;animation:rise .3s ease}
+.modal .box{width:100%;max-width:380px;background:var(--panel);border:1px solid var(--line-2);border-radius:var(--r);padding:26px 22px;text-align:center;box-shadow:0 30px 80px -30px #000}
+.modal h4{font-family:var(--serif);font-weight:500;font-size:28px;line-height:1.1;margin-bottom:6px}
+.modal p{color:var(--muted);font-size:14px;margin-bottom:16px}
+.modal input{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line-2);background:var(--ink-2);color:var(--text);font:600 16px var(--sans);letter-spacing:.14em;text-align:center;text-transform:uppercase;outline:none}
+.modal input:focus{border-color:var(--gold)}
+.modal .msg{min-height:20px;font-size:13px;margin:8px 0 4px}
+.modal .msg.bad{color:#E58A8A}
+.modal .row{display:flex;gap:10px;justify-content:center;margin-top:8px}
+.modal.shake .box{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 #chapter{animation:rise .5s ease;scroll-margin-top:96px}
 .sec,.chal,.drill{scroll-margin-top:110px}
 @media(max-width:420px){.opts.two{grid-template-columns:1fr}.map{font-size:13px}.cell{padding:10px}.cell .x{font-size:16px}}
@@ -266,6 +281,7 @@ footer .small button{text-decoration:underline;color:var(--dim);font-size:11.5px
   <div class="wrap">
     <nav class="track" id="track" aria-label="Capítulos"></nav>
     <div class="meter"><i id="meter" style="width:0"></i></div>
+    <div style="text-align:center"><button class="keybtn" id="keyOpen" type="button">🔑 Tengo un código</button></div>
   </div>
 </div>
 
@@ -288,6 +304,19 @@ footer .small button{text-decoration:underline;color:var(--dim);font-size:11.5px
 </footer>
 
 <div class="toast" id="toast" role="status"></div>
+
+<div class="modal" id="keyModal" role="dialog" aria-modal="true" aria-labelledby="keyTitle">
+  <form class="box" id="keyForm" autocomplete="off">
+    <h4 id="keyTitle">Código de acceso</h4>
+    <p id="keyLead">Ingresa el código que te dio tu profesor para abrir un capítulo.</p>
+    <input id="keyInput" type="text" placeholder="PG-XXXXX" maxlength="24" spellcheck="false" autocapitalize="characters">
+    <div class="msg" id="keyMsg"></div>
+    <div class="row">
+      <button class="btn ghost" type="button" id="keyCancel">Cancelar</button>
+      <button class="btn gold" type="submit">Desbloquear</button>
+    </div>
+  </form>
+</div>
 
 <script>
 /* =========================================================
@@ -554,7 +583,49 @@ const sayBtn = t => `<button class="say" data-say="${esc(strip(t))}" aria-label=
 let toastT;
 function toast(m){ const t=$("#toast"); t.innerHTML=m; t.classList.add("on"); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove("on"),3200); }
 const mastered = i => (prog[CH[i].id]||0) >= PASS;
-const unlocked = i => ALL || i===0 || mastered(i-1);
+const codeOpen = i => !!(prog.codes && prog.codes[CH[i].id]);
+const unlocked = i => ALL || i===0 || mastered(i-1) || codeOpen(i);
+
+/* códigos de acceso (se guardan como hash SHA-256; cada código abre los capítulos listados) */
+const CODES = {
+  "37a04c101873567b79bf1f13fa464a56bf9cb22364589a9f6f6b20a3b9d0aa24": ["pasado"],
+  "12a47bca6caacc1b8336b45276d32d07e2b41e7f729589e909541503cb22cb1f": ["pasado","futuro"],
+  "bf2f67956d1097eb5df1b567e1dc4de82c1bd6c38024d31362b2439328792963": ["pasado","futuro"]
+};
+async function sha(t){
+  const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
+  return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+let keyTarget = -1;
+function openKey(i){
+  keyTarget = (typeof i==="number") ? i : -1;
+  $("#keyLead").innerHTML = keyTarget > 0
+    ? `Supera el reto de <b>${CH[keyTarget-1].name}</b> con ${PASS}/10, o ingresa tu código para abrir <b>${CH[keyTarget].name}</b>.`
+    : "Ingresa el código que te dio tu profesor para abrir un capítulo.";
+  $("#keyMsg").textContent = ""; $("#keyMsg").className = "msg";
+  $("#keyInput").value = "";
+  $("#keyModal").classList.add("on");
+  setTimeout(()=>$("#keyInput").focus(), 50);
+}
+function closeKey(){ $("#keyModal").classList.remove("on"); }
+async function tryKey(raw){
+  const code = String(raw).toUpperCase().replace(/\s+/g,"");
+  if(!code) return;
+  let ids = null;
+  try{ ids = CODES[await sha(code)]; }catch(e){}
+  if(!ids){
+    $("#keyMsg").textContent = "Código no válido. Revísalo e intenta de nuevo."; $("#keyMsg").className = "msg bad";
+    const m = $("#keyModal"); m.classList.remove("shake"); void m.offsetWidth; m.classList.add("shake");
+    return;
+  }
+  prog.codes = prog.codes || {};
+  ids.forEach(id => prog.codes[id] = true); save();
+  closeKey();
+  const names = ids.map(id => CH.find(c=>c.id===id).name).join(" y ");
+  toast(`✦ ${names} desbloqueado`);
+  const target = keyTarget > 0 && unlocked(keyTarget) ? keyTarget : CH.findIndex(c=>c.id===ids[ids.length-1]);
+  go(target, true);
+}
 
 /* timeline svg */
 function tl(c, k){
@@ -703,7 +774,7 @@ function renderMap(){
 }
 function go(i, scroll){
   if(!unlocked(i)){
-    toast(`🔒 Supera el reto de <b>${CH[i-1].name}</b> con ${PASS}/10 para abrir <b>${CH[i].name}</b>.`);
+    openKey(i);
     return;
   }
   cur = i;
@@ -833,6 +904,12 @@ $("#reset").onclick = () => {
   if(!confirm("¿Borrar tu progreso de esta lección?")) return;
   prog = {}; save(); go(0, true); toast("Progreso reiniciado");
 };
+
+$("#keyOpen").onclick = () => openKey();
+$("#keyCancel").onclick = closeKey;
+$("#keyModal").addEventListener("click", e => { if(e.target.id==="keyModal") closeKey(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape") closeKey(); });
+$("#keyForm").onsubmit = e => { e.preventDefault(); tryKey($("#keyInput").value); };
 
 /* inicio */
 (function init(){
