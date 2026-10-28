@@ -1,0 +1,1463 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="WH Mastery · Premium Edition A2–B1 by ProfGermandario. Ocho historias reales con audio y traducción, Question Machine, constructor de preguntas y conversaciones.">
+<title>WH Mastery A2–B1 · Premium · ProfGermandario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+ --navy:#0A1730;--navy2:#10223F;--navy3:#1A3156;--navy-line:rgba(255,255,255,.1);
+ --paper:#F8F4EC;--cream:#EFE7D6;--card:#FFFDF8;
+ --ink:#121C2B;--soft:#3B4657;--muted:#6C7584;
+ --gold:#C3983F;--gold2:#E2C07A;--gold-dk:#87651F;--gold-wash:rgba(195,152,63,.14);
+ --line:rgba(18,28,43,.12);--line2:rgba(18,28,43,.07);
+ --good:#1D7656;--good-wash:rgba(29,118,86,.1);--bad:#AE3A2C;--bad-wash:rgba(174,58,44,.09);
+ --shadow:0 24px 60px -30px rgba(10,23,48,.45);--shadow-s:0 10px 30px -18px rgba(10,23,48,.35);
+ --r:20px;--pill:999px;
+ --w-what:#A97614;--w-where:#0E7466;--w-when:#B4531C;--w-who:#6A3D9E;--w-why:#B8352A;--w-how:#1C5CA3;--w-which:#2C7A3A;--w-whose:#A0386D;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 Figtree,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}
+.mono{font-family:'DM Mono',ui-monospace,monospace}
+.eyebrow{font:500 .68rem/1.2 'DM Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk)}
+.eyebrow.gold{color:var(--gold2)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.025em;margin:0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,23,48,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--navy-line);color:#fff}
+.tb{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(140deg,var(--gold2),var(--gold));color:var(--navy);font:700 .85rem Fraunces,serif}
+.brand span:last-child{font:700 .9rem/1.1 Figtree}
+.brand small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-top:3px}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;padding:8px 12px;border-radius:var(--pill);font-size:.82rem;font-weight:600;color:rgba(255,255,255,.66);transition:.2s}
+.nav a:hover{color:#fff}
+.nav a.active{color:var(--navy);background:var(--gold2)}
+.mpill{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(226,192,122,.4);border-radius:var(--pill);font-size:.78rem;color:rgba(255,255,255,.8)}
+.mpill b{font:600 .95rem Fraunces;color:var(--gold2)}
+
+/* hero */
+.hero{background:radial-gradient(70% 60% at 85% 10%,rgba(195,152,63,.18),transparent 60%),radial-gradient(60% 70% at 0% 100%,rgba(28,92,163,.22),transparent 60%),var(--navy);color:#fff;padding:84px 0 92px;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,#000,transparent 85%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.9rem,6.6vw,5.6rem);line-height:.95;margin:20px 0 24px;letter-spacing:-.045em}
+.hero h1 em{display:block;font-style:italic;font-weight:500;color:var(--gold2)}
+.lede{font-size:clamp(1.02rem,1.6vw,1.16rem);color:rgba(255,255,255,.74);max-width:600px;margin:0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--pill);padding:14px 22px;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:linear-gradient(140deg,var(--gold2),var(--gold));color:var(--navy);box-shadow:0 16px 36px -14px rgba(195,152,63,.7)}
+.btn.line{border:1px solid rgba(255,255,255,.25);color:#fff;background:transparent}
+.btn.navy{background:var(--navy);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--navy-line);padding-top:22px;max-width:620px}
+.stats div{padding-right:12px}
+.stats b{display:block;font:600 2.1rem/1 Fraunces;color:#fff}
+.stats span{font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.3;display:block;margin-top:6px}
+.index{background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:24px;padding:22px 22px 18px;backdrop-filter:blur(6px)}
+.index-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.index-head .mono{font-size:.7rem;color:rgba(255,255,255,.5)}
+.index ol{list-style:none;margin:0;padding:0}
+.index li button{width:100%;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;text-align:left;background:none;border:0;border-bottom:1px solid var(--navy-line);padding:11px 4px;color:#fff;transition:.2s}
+.index li:last-child button{border-bottom:0}
+.index li button:hover{padding-left:10px;color:var(--gold2)}
+.index .n{font:500 .72rem 'DM Mono';color:var(--gold2)}
+.index .d{font-weight:700;font-size:.92rem}
+.index .d small{display:block;font-weight:400;font-size:.76rem;color:rgba(255,255,255,.5)}
+.index .lv{font:500 .64rem 'DM Mono';padding:3px 7px;border:1px solid var(--navy-line);border-radius:6px;color:rgba(255,255,255,.65)}
+.index-foot{margin:12px 0 0;font:italic 500 1rem Fraunces;color:var(--gold2);text-align:center}
+
+/* sections */
+section{padding:96px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:40px}
+.sh h2{font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1;margin-top:12px}
+.sh h2 em{font-style:italic;font-weight:500;color:var(--gold-dk)}
+.sh p{color:var(--soft);font-size:1.04rem;margin:0;max-width:560px}
+.dark{background:var(--navy);color:#fff}
+.dark .sh p{color:rgba(255,255,255,.68)}
+.dark .sh h2 em{color:var(--gold2)}
+.dark .eyebrow{color:var(--gold2)}
+
+/* method */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pillar{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:24px;box-shadow:var(--shadow-s);position:relative;overflow:hidden}
+.pillar:before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--gold),transparent)}
+.pillar .pk{font:500 .64rem 'DM Mono';letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pillar h3{font-size:1.4rem;margin:10px 0 8px}
+.pillar p{margin:0;color:var(--soft);font-size:.93rem}
+.pillar .tool{display:inline-block;margin-top:14px;font:500 .7rem 'DM Mono';color:var(--gold-dk);background:var(--gold-wash);padding:5px 9px;border-radius:8px}
+.manifesto{margin-top:18px;background:var(--navy);color:#fff;border-radius:var(--r);padding:28px 32px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.manifesto b{font:italic 500 clamp(1.4rem,2.6vw,2rem)/1.15 Fraunces;color:var(--gold2);max-width:420px}
+.manifesto p{margin:0;color:rgba(255,255,255,.72)}
+
+/* precision */
+.prec{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcd{background:var(--navy2);border:1px solid var(--navy-line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+.pcd .pk{font:500 .66rem 'DM Mono';color:var(--gold2);letter-spacing:.14em}
+.pcd h3{font-size:1.45rem;margin:8px 0 8px;color:#fff}
+.pcd p{color:rgba(255,255,255,.66);font-size:.92rem;margin:0 0 14px}
+.ex{display:flex;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--navy-line);font-size:.93rem}
+.ex .mk{font-weight:800;color:#6FD3B0;width:14px;flex-shrink:0}
+.ex.bad .mk{color:#FF8A7A}
+.ex.bad span:nth-child(2){text-decoration:line-through;text-decoration-color:rgba(255,138,122,.7);color:rgba(255,255,255,.5)}
+.ex span:nth-child(2){flex:1}
+.say{border:1px solid var(--navy-line);background:rgba(255,255,255,.05);color:var(--gold2);width:30px;height:30px;border-radius:50%;flex-shrink:0;font-size:.7rem;display:grid;place-items:center;transition:.2s}
+.say:hover{background:var(--gold2);color:var(--navy)}
+.intonation{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.into{background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:var(--r);padding:20px 22px;display:flex;gap:16px;align-items:center}
+.into svg{flex-shrink:0}
+.into b{display:block;font:600 1.1rem Fraunces;color:#fff}
+.into span{font-size:.9rem;color:rgba(255,255,255,.66)}
+
+/* reading lab */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.tile{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;gap:4px 12px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:14px 15px;transition:.2s}
+.tile:hover{border-color:var(--gold);transform:translateY(-2px)}
+.tile.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tile .tn{font:500 .7rem 'DM Mono';color:var(--gold-dk);grid-row:1/3}
+.tile.on .tn{color:var(--gold2)}
+.tile .tt b{display:block;font-size:.88rem;line-height:1.2}
+.tile .tt small{display:block;font-size:.74rem;color:var(--muted);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
+.tile.on .tt small{color:rgba(255,255,255,.6)}
+.tile .tp{font:500 .68rem 'DM Mono';color:var(--muted)}
+.tile.on .tp{color:var(--gold2)}
+.tile .tbar{grid-column:2/4;height:3px;background:var(--line2);border-radius:3px;overflow:hidden}
+.tile.on .tbar{background:rgba(255,255,255,.12)}
+.tile .tbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .4s}
+
+.reader{background:var(--card);border:1px solid var(--line2);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.rhead{padding:28px 32px 22px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;background:linear-gradient(180deg,#fff,var(--card))}
+.rhead h3{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.05;margin-top:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 .68rem 'DM Mono';padding:6px 10px;border-radius:8px;background:var(--cream);color:var(--soft);letter-spacing:.04em}
+.chip.g{background:var(--gold-wash);color:var(--gold-dk)}
+.chip.n{background:var(--navy);color:var(--gold2)}
+.rgrid{display:grid;grid-template-columns:1.08fr .92fr}
+.tcol{padding:26px 32px 32px;border-right:1px solid var(--line2)}
+.pcol{padding:22px 26px 30px;background:linear-gradient(180deg,#FBF8F1,var(--card))}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.tbtn{border:1px solid var(--line);background:#fff;border-radius:var(--pill);padding:8px 13px;font-size:.82rem;font-weight:700;color:var(--soft);display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.tbtn:hover{border-color:var(--ink);color:var(--ink)}
+.tbtn.pri{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tbtn.on{background:var(--gold-wash);border-color:var(--gold);color:var(--gold-dk)}
+.tbtn.live{background:var(--bad);border-color:var(--bad);color:#fff}
+.tsel{border:1px solid var(--line);background:#fff;border-radius:var(--pill);padding:8px 10px;font-size:.8rem;font-weight:700;color:var(--soft)}
+.lens{display:flex;gap:12px;background:var(--navy);color:rgba(255,255,255,.82);border-radius:16px;padding:14px 16px;font-size:.9rem;margin-bottom:20px}
+.lens b{font:500 .62rem 'DM Mono';color:var(--gold2);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-top:3px}
+.passage{font:400 1.2rem/1.78 Newsreader,Georgia,serif;color:#1A2333}
+.passage p{margin:0 0 1.05em}
+.s{cursor:pointer;border-radius:4px;transition:background .25s,box-shadow .25s,filter .3s;padding:1px 0}
+.s:hover{background:rgba(195,152,63,.08)}
+.s.speaking{background:rgba(195,152,63,.22);box-shadow:0 0 0 3px rgba(195,152,63,.22)}
+.s.your-turn{background:rgba(29,118,86,.14);box-shadow:0 0 0 3px rgba(29,118,86,.14)}
+.s.evidence{background:rgba(28,92,163,.14);box-shadow:0 0 0 3px rgba(28,92,163,.14)}
+.passage.listen .s{filter:blur(6px);user-select:none}
+.wh{--c:var(--w-what);transition:.2s}
+.wh-what{--c:var(--w-what)}.wh-where{--c:var(--w-where)}.wh-when{--c:var(--w-when)}.wh-who{--c:var(--w-who)}.wh-why{--c:var(--w-why)}.wh-how{--c:var(--w-how)}.wh-which{--c:var(--w-which)}.wh-whose{--c:var(--w-whose)}
+.show-wh .wh.q{color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border-radius:4px;font-weight:500;padding:0 .14em;box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--c) 55%,transparent)}
+.show-wh .wh.emb{color:var(--c);border-bottom:2px dotted var(--c)}
+.gl{border-bottom:1px solid rgba(195,152,63,.65);cursor:help}
+.gl:focus{outline:2px solid var(--gold);outline-offset:2px;border-radius:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:.76rem;color:var(--muted)}
+.legend i{font-style:normal;font-weight:700}
+.legend .key{width:100%;display:flex;gap:16px;flex-wrap:wrap;margin-top:4px}
+.legend .qk{padding:0 5px;border-radius:4px;background:color-mix(in srgb,var(--w-how) 13%,transparent);color:var(--w-how);box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--w-how) 55%,transparent)}
+.legend .ek{color:var(--w-how);border-bottom:2px dotted var(--w-how)}
+.hint-line{font-size:.8rem;color:var(--muted);margin-top:10px}
+
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--cream);padding:4px;border-radius:14px;margin-bottom:18px}
+.mode{border:0;background:none;border-radius:11px;padding:10px 6px;font-weight:700;font-size:.84rem;color:var(--soft);line-height:1.15}
+.mode small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.mode.on{background:var(--navy);color:#fff;box-shadow:var(--shadow-s)}
+.mode.on small{color:var(--gold2)}
+.lead-s{font-size:.9rem;color:var(--soft);margin:0 0 14px}
+.qcard,.fcard,.pcard{background:#fff;border:1px solid var(--line2);border-radius:16px;padding:16px;margin-bottom:10px;transition:.25s}
+.qcard.ok,.fcard.ok,.pcard.ok{border-color:rgba(29,118,86,.4);background:linear-gradient(0deg,var(--good-wash),var(--good-wash)),#fff}
+.qcard.no{border-color:rgba(174,58,44,.3)}
+.qn,.pn{font:500 .62rem 'DM Mono';letter-spacing:.14em;color:var(--gold-dk);text-transform:uppercase}
+.qq{font-weight:700;margin:4px 0 10px;line-height:1.35}
+.opts{display:grid;gap:6px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:10px 12px;font-size:.9rem;font-weight:600;color:var(--soft);transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--navy);color:var(--ink)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--good-wash);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--bad-wash);border-color:var(--bad);color:var(--bad)}
+.qfb,.ffb{font-size:.86rem;color:var(--soft);margin-top:9px}
+.qfb:empty,.ffb:empty{display:none}
+.qfb b.g,.ffb b.g{color:var(--good)}.qfb b.r,.ffb b.r{color:var(--bad)}
+.evid{display:block;margin-top:8px;text-align:left;border:0;background:rgba(28,92,163,.08);border-radius:10px;padding:8px 10px;font:italic 400 .92rem/1.45 Newsreader,serif;color:#1C4E86;width:100%}
+.evid small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.14em;font-style:normal;text-transform:uppercase;margin-bottom:2px}
+.fa{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.fa small{display:block;font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fa b{font:500 1.06rem/1.35 Newsreader,serif;color:var(--navy)}
+.loc{border:1px solid var(--line);background:none;border-radius:var(--pill);padding:4px 9px;font-size:.7rem;font-weight:700;color:var(--muted);flex-shrink:0}
+.fh{font-size:.8rem;color:var(--gold-dk);background:var(--gold-wash);border-radius:9px;padding:6px 9px;margin:10px 0}
+.frow{display:flex;gap:6px}
+.frow input{flex:1;min-width:0;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:var(--card);font-size:.95rem}
+.frow input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.frow2{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.bs{border:0;border-radius:var(--pill);padding:9px 14px;font-weight:700;font-size:.82rem;background:var(--cream);color:var(--soft);transition:.2s}
+.bs:hover{filter:brightness(.96)}
+.bs.dark{background:var(--navy);color:#fff}
+.bs.gold{background:var(--gold);color:var(--navy)}
+.bs.live{background:var(--bad);color:#fff}
+.model{display:block;margin-top:6px;font:500 1rem Newsreader,serif;color:var(--navy)}
+.pcard p{margin:6px 0 12px;font-weight:600;line-height:1.45}
+.prow{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.clock{font:500 .95rem 'DM Mono';color:var(--muted);margin-left:auto}
+.clock.run{color:var(--bad)}
+.pcard audio{width:100%;margin-top:10px;height:36px}
+.rubric{background:var(--navy);color:rgba(255,255,255,.78);border-radius:16px;padding:16px 18px;font-size:.86rem;margin-top:12px}
+.rubric b{display:block;font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
+.rubric ul{margin:0;padding-left:18px}.rubric li{margin:3px 0}
+.rfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;font-size:.78rem;color:var(--muted)}
+.linkbtn{border:0;background:none;color:var(--muted);text-decoration:underline;font-size:.78rem;padding:0}
+
+/* flow */
+.flow{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:start}
+.brief{background:var(--navy);color:#fff;border-radius:24px;padding:28px;position:sticky;top:84px}
+.brief h3{font-size:1.8rem;margin:10px 0 10px}
+.brief p{color:rgba(255,255,255,.7);font-size:.95rem}
+.brief .score{display:flex;align-items:baseline;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--navy-line)}
+.brief .score b{font:600 2.6rem/1 Fraunces;color:var(--gold2)}
+.brief .score span{color:rgba(255,255,255,.55);font-size:.85rem}
+.chat{background:var(--card);border:1px solid var(--line2);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.msg{max-width:88%;padding:12px 15px;border-radius:16px;margin-bottom:10px;font-size:.95rem;line-height:1.45;animation:pop .3s ease}
+.msg small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;opacity:.7}
+.msg.cl{background:var(--cream);border-bottom-left-radius:4px}
+.msg.me{background:var(--navy);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.msg.me small{color:var(--gold2);opacity:1}
+.msg.note{max-width:100%;background:var(--good-wash);color:var(--good);font-size:.86rem;border-radius:12px}
+.msg.note.x{background:var(--bad-wash);color:var(--bad)}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.choices{display:grid;gap:8px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.choices .cap{font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.choice{text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px 14px;font-weight:600;font-size:.92rem;color:var(--soft);transition:.2s}
+.choice:hover{border-color:var(--navy);color:var(--ink);transform:translateX(3px)}
+
+/* studio */
+.studio{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
+.desk{background:var(--card);border:1px solid var(--line2);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+.desk label{font:500 .62rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.desk select{width:100%;margin:6px 0 14px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;font-weight:600;font-size:.9rem}
+.desk textarea{width:100%;min-height:270px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff;font:400 1.08rem/1.7 Newsreader,serif;resize:vertical}
+.desk textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.desk .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meter{background:var(--navy);color:#fff;border-radius:24px;padding:24px}
+.meter h3{font-size:1.5rem;margin:8px 0 14px}
+.crit{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--navy-line);font-size:.9rem}
+.crit span{color:rgba(255,255,255,.75)}
+.crit b{font:500 .85rem 'DM Mono';color:rgba(255,255,255,.55)}
+.crit.met b{color:#6FD3B0}
+.crit .bar{grid-column:1/3;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.crit .bar i{display:block;height:100%;width:0;background:var(--gold2);transition:width .3s}
+.crit.met .bar i{background:#6FD3B0}
+.found{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;min-height:26px}
+.found span{font:500 .7rem 'DM Mono';padding:4px 8px;border-radius:7px;background:rgba(255,255,255,.08);color:var(--gold2)}
+.warns{margin-top:14px;display:grid;gap:8px}
+.warn{background:rgba(255,138,122,.12);border:1px solid rgba(255,138,122,.3);border-radius:12px;padding:10px 12px;font-size:.84rem;color:#FFD4CC}
+.warn b{color:#fff}
+.allgood{background:rgba(111,211,176,.12);border:1px solid rgba(111,211,176,.3);color:#C8F1E2;border-radius:12px;padding:10px 12px;font-size:.84rem}
+
+/* record */
+.rec-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stat{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:20px;box-shadow:var(--shadow-s)}
+.stat small{font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stat b{display:block;font:600 2.3rem/1.05 Fraunces;margin-top:8px;color:var(--navy)}
+.stat span{font-size:.82rem;color:var(--muted)}
+.stat.hl{background:var(--navy);border-color:var(--navy)}
+.stat.hl small{color:var(--gold2)}.stat.hl b{color:var(--gold2)}.stat.hl span{color:rgba(255,255,255,.6)}
+
+/* coach */
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.step{background:var(--navy2);border:1px solid var(--navy-line);border-radius:var(--r);padding:22px}
+.step .tm{font:500 .7rem 'DM Mono';color:var(--gold2)}
+.step h3{font-size:1.25rem;color:#fff;margin:8px 0 4px}
+.step .pl{font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.step p{color:rgba(255,255,255,.7);font-size:.9rem;margin:10px 0 0}
+.correction{margin-top:14px;background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:var(--r);padding:20px 24px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.correction b{font:500 .62rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+.correction span{padding:7px 12px;border-radius:var(--pill);border:1px solid rgba(226,192,122,.35);color:#fff;font-size:.85rem;font-weight:600}
+.correction p{margin:0;color:rgba(255,255,255,.66);font-size:.9rem;flex-basis:100%}
+
+/* final */
+.final{background:radial-gradient(60% 80% at 50% 0%,rgba(195,152,63,.22),transparent 70%),var(--navy);color:#fff;text-align:center;padding:100px 0}
+.final h2{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;margin:16px 0 18px}
+.final h2 em{font-style:italic;font-weight:500;color:var(--gold2)}
+.final p{max-width:640px;margin:0 auto 28px;color:rgba(255,255,255,.7)}
+footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:26px 0 90px;font:500 .64rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;border-top:1px solid var(--navy-line)}
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;background:#1FA855;color:#fff;border-radius:var(--pill);padding:12px 17px;font-weight:700;font-size:.9rem;box-shadow:0 14px 30px -10px rgba(31,168,85,.6);display:flex;align-items:center;gap:8px}
+
+.tip{position:absolute;z-index:80;background:var(--navy);color:#fff;border-radius:12px;padding:9px 12px;font-size:.85rem;box-shadow:var(--shadow);pointer-events:none;opacity:0;transform:translateY(4px);transition:.18s;max-width:260px}
+.tip.on{opacity:1;transform:none}
+.tip b{display:block;font:500 .62rem 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--gold2)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:11px 18px;border-radius:var(--pill);font-size:.88rem;font-weight:600;opacity:0;transition:.25s;z-index:90;pointer-events:none;box-shadow:var(--shadow)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.seen{opacity:1;transform:none}
+
+@media(max-width:1020px){
+ .hero-grid,.sh,.rgrid,.flow,.studio{grid-template-columns:1fr}
+ .tcol{border-right:0;border-bottom:1px solid var(--line2)}
+ .pillars,.tiles{grid-template-columns:repeat(2,1fr)}
+ .prec{grid-template-columns:repeat(2,1fr)}
+ .timeline{grid-template-columns:repeat(2,1fr)}
+ .rec-grid{grid-template-columns:repeat(3,1fr)}
+ .brief{position:static}
+ .mpill{display:none}
+}
+@media(max-width:640px){
+ .wrap{width:calc(100% - 32px)}
+ section{padding:68px 0}
+ .hero{padding:56px 0 64px}
+ .stats{grid-template-columns:repeat(2,1fr);gap:18px 0}
+ .pillars,.tiles,.prec,.timeline,.intonation{grid-template-columns:1fr}
+ .rec-grid{grid-template-columns:repeat(2,1fr)}
+ .manifesto{grid-template-columns:1fr;gap:12px;padding:24px}
+ .rhead,.tcol{padding-left:20px;padding-right:20px}
+ .pcol{padding:20px 16px 26px}
+ .passage{font-size:1.1rem}
+ .lens{flex-direction:column;gap:4px}
+ .brand span:last-child{display:none}
+ .wa span{display:none}
+ .wa{width:52px;height:52px;padding:0;justify-content:center}
+ .actions .btn{width:100%}
+ .tile .tt small{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}}
+
+/* ---- A2–B1 additions ---- */
+.badge-lv{display:inline-flex;gap:6px;align-items:center;margin-left:10px;font:500 .62rem 'DM Mono';letter-spacing:.12em;padding:4px 8px;border-radius:6px;background:rgba(111,211,176,.15);color:#8FE3C5;vertical-align:middle}
+.whmap{display:grid;grid-template-columns:repeat(7,1fr);gap:8px}
+.whm{text-align:left;background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:14px 14px 12px;transition:.2s;position:relative}
+.whm:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:var(--shadow-s)}
+.whm b{display:block;font:600 1.25rem/1.1 Fraunces;color:var(--navy)}
+.whm span{display:block;font-size:.8rem;color:var(--gold-dk);font-weight:700;margin-top:3px}
+.whm small{display:block;font:500 .62rem 'DM Mono';letter-spacing:.06em;color:var(--muted);margin-top:6px;text-transform:uppercase}
+.whm i{display:block;font:italic 400 .9rem/1.3 Newsreader,serif;color:var(--soft);margin-top:8px}
+.whm:after{content:"▶";position:absolute;top:12px;right:12px;font-size:.6rem;color:var(--gold)}
+.machine{display:grid;grid-template-columns:1.15fr .85fr;gap:16px;margin-top:18px}
+.mbox{background:var(--navy2);border:1px solid var(--navy-line);border-radius:24px;padding:22px}
+.mrow{margin-bottom:14px}
+.mrow .ml{font:500 .62rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:7px;display:flex;justify-content:space-between}
+.mrow .ml em{font-style:normal;color:rgba(255,255,255,.45);letter-spacing:.04em;text-transform:none;font-family:Figtree;font-size:.72rem}
+.mchips{display:flex;flex-wrap:wrap;gap:6px}
+.mc{border:1px solid var(--navy-line);background:rgba(255,255,255,.04);color:rgba(255,255,255,.82);border-radius:var(--pill);padding:7px 12px;font-size:.85rem;font-weight:600;transition:.15s}
+.mc:hover{border-color:var(--gold2)}
+.mc.on{background:var(--gold2);color:var(--navy);border-color:var(--gold2)}
+.mc.dim{opacity:.35}
+.mout{background:var(--card);color:var(--ink);border-radius:24px;padding:24px;display:flex;flex-direction:column}
+.mout .q{font:500 clamp(1.5rem,3vw,2.1rem)/1.25 Newsreader,serif;margin:10px 0 12px;min-height:2.6em}
+.mout .q .p{border-radius:6px;padding:0 .12em}
+.mout .q .p.wh{background:rgba(169,118,20,.13);color:var(--w-what)}
+.mout .q .p.ax{background:rgba(28,92,163,.12);color:var(--w-how)}
+.mout .q .p.sb{background:rgba(106,61,158,.1);color:var(--w-who)}
+.mout .q .p.vb{background:rgba(14,116,102,.12);color:var(--w-where)}
+.verdict{border-radius:14px;padding:12px 14px;font-size:.92rem;line-height:1.45}
+.verdict.ok{background:var(--good-wash);color:var(--good)}
+.verdict.no{background:var(--bad-wash);color:var(--bad)}
+.verdict>b{display:block;margin-bottom:2px}
+.tense{display:inline-block;margin-top:12px;font:500 .66rem 'DM Mono';letter-spacing:.08em;color:var(--gold-dk);background:var(--gold-wash);padding:5px 9px;border-radius:7px}
+.mout .row2{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:16px}
+.formula-line{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;font:500 .7rem 'DM Mono'}
+.formula-line span{padding:4px 8px;border-radius:6px}
+.trline{display:block;font:italic 400 .86rem/1.4 Figtree,sans-serif;color:#5D6B7E;margin:.15em 0 .35em}
+.passage .trline{font-size:.86rem}
+.passage.tr-on .s{display:block;margin-bottom:.1em}
+.passage.tr-on p{margin-bottom:1.3em}
+.buildq{background:#fff;border:1px solid var(--line2);border-radius:16px;padding:16px;margin-bottom:10px}
+.buildq.ok{border-color:rgba(29,118,86,.4);background:linear-gradient(0deg,var(--good-wash),var(--good-wash)),#fff}
+.slot{min-height:52px;border:1.5px dashed rgba(18,28,43,.2);border-radius:13px;padding:8px;display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0 8px;background:var(--card)}
+.slot:empty:before{content:"Toca las fichas en orden…";color:var(--muted);font-size:.84rem;padding-left:6px}
+.tok{border:1px solid var(--line);background:#fff;border-radius:10px;padding:7px 11px;font-weight:700;font-size:.9rem;color:var(--ink);transition:.15s}
+.tok:hover{border-color:var(--navy)}
+.tok.used{opacity:.25;pointer-events:none}
+.slot .tok{background:var(--navy);color:#fff;border-color:var(--navy)}
+.toks{display:flex;flex-wrap:wrap;gap:6px}
+.flowtabs{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+@media(max-width:1020px){.whmap{grid-template-columns:repeat(4,1fr)}.machine{grid-template-columns:1fr}.modes4{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:640px){.whmap{grid-template-columns:repeat(2,1fr)}}
+.passage:not(.tr-on) .trline{display:none}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="topbar"><div class="wrap tb">
+ <a href="#home" class="brand"><span class="mark">PG</span><span>ProfGermandario<small>WH Mastery · A2–B1</small></span></a>
+ <nav class="nav" aria-label="Sections">
+  <a href="#map">WH Map</a><a href="#engine">Engine</a><a href="#lab">Reading Lab</a><a href="#flow">Conversations</a><a href="#studio">Writing</a><a href="#record">Record</a><a href="#coach">Coach</a>
+ </nav>
+ <a class="mpill" href="#record" aria-label="Mastery progress"><b id="mPct">0%</b>mastery</a>
+</div></div>
+
+<header class="hero" id="home">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow gold">Premium Edition · A2 → B1</div>
+   <h1>Questions that <em>open doors.</em></h1>
+   <p class="lede">Tus primeras preguntas profesionales en inglés, dentro de historias reales: tu primer día de trabajo, un cliente, una entrevista, un viaje de negocios. Ocho historias, un solo motor y cero frases sueltas. Lees, escuchas, construyes la pregunta con fichas, luego la escribes de memoria y por último la dices en voz alta.</p>
+   <div class="actions">
+    <a class="btn gold" href="#lab">Empezar las historias →</a>
+    <a class="btn line" href="#engine">Ver el motor</a>
+   </div>
+   <div class="stats">
+    <div><b>8</b><span>historias con audio y traducción</span></div>
+    <div><b>24</b><span>preguntas para construir</span></div>
+    <div><b>24</b><span>preguntas para escribir</span></div>
+    <div><b>2</b><span>conversaciones reales</span></div>
+   </div>
+  </div>
+  <aside class="index" aria-label="Story index">
+   <div class="index-head"><span class="eyebrow gold">The story index</span><span class="mono">A2 → B1</span></div>
+   <ol id="arenaList"></ol>
+   <p class="index-foot">Think in English. Not about English.</p>
+  </aside>
+ </div>
+</header>
+
+<main>
+ <section id="map">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">01 · The WH map</div><h2>Fourteen doors.<br><em>One question each.</em></h2></div><p>Antes de elegir la palabra WH, pregúntate: ¿qué información me falta? ¿Un lugar, una hora, una persona, un precio? Toca cada tarjeta para escuchar un ejemplo real.</p></div>
+   <div class="whmap reveal" id="whMap"></div>
+  </div>
+ </section>
+
+ <section id="engine" class="dark">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">02 · The engine</div><h2>Six rules.<br><em>Hundreds of questions.</em></h2></div><p>No memorices preguntas una por una. Aprende el motor: WH + auxiliar + sujeto + verbo. Estas seis reglas resuelven el 90% de los errores en A2–B1. Toca ▶ para escuchar.</p></div>
+   <div class="prec" id="precGrid"></div>
+   <div class="intonation reveal">
+    <div class="into"><svg width="64" height="34" viewBox="0 0 64 34" aria-hidden="true"><path d="M3 8 C 20 6, 34 8, 44 14 S 58 28, 61 30" fill="none" stroke="#E2C07A" stroke-width="2.5" stroke-linecap="round"/><path d="M55 30 L61 30 L59 24" fill="none" stroke="#E2C07A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>WH questions bajan ↘</b><span>“Where do you work?” — la voz baja al final. Si sube, suenas inseguro.</span></div></div>
+    <div class="into"><svg width="64" height="34" viewBox="0 0 64 34" aria-hidden="true"><path d="M3 28 C 20 28, 34 26, 44 20 S 58 6, 61 4" fill="none" stroke="#6FD3B0" stroke-width="2.5" stroke-linecap="round"/><path d="M55 4 L61 4 L60 10" fill="none" stroke="#6FD3B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Yes / No questions suben ↗</b><span>“Do you work here?” — la voz sube al final, invitando a responder.</span></div></div>
+   </div>
+   <div class="machine reveal" id="machine">
+    <div class="mbox">
+     <div class="eyebrow">The Question Machine</div>
+     <p style="color:rgba(255,255,255,.66);font-size:.92rem;margin:6px 0 16px">Elige una pieza de cada fila. La máquina arma tu pregunta, la revisa y te explica cualquier error.</p>
+     <div class="mrow"><div class="ml">1 · WH <em>¿qué información buscas?</em></div><div class="mchips" id="qmWh"></div></div>
+     <div class="mrow"><div class="ml">2 · Auxiliar <em>¿qué tiempo?</em></div><div class="mchips" id="qmAux"></div></div>
+     <div class="mrow"><div class="ml">3 · Sujeto <em>¿quién?</em></div><div class="mchips" id="qmSubj"></div></div>
+     <div class="mrow"><div class="ml">4 · Verbo <em id="qmVes"></em></div><div class="mchips" id="qmVerb"></div></div>
+     <div class="mrow" style="margin-bottom:0"><div class="ml">5 · Forma del verbo</div><div class="mchips" id="qmForm"></div></div>
+    </div>
+    <div class="mout">
+     <div class="eyebrow">Your question</div>
+     <div class="q" id="qmQ"></div>
+     <div id="qmV"></div>
+     <span class="tense" id="qmT"></span>
+     <div class="row2"><button class="bs dark" id="qmSay">▶ Escuchar</button><button class="bs" id="qmRand">🎲 Reto aleatorio</button></div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section id="lab">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">03 · The Reading Lab</div><h2>Real stories,<br><em>real questions.</em></h2></div><p>Cada historia trae audio, traducción frase por frase y glosario. Avanza en cuatro pasos: entender → construir con fichas → escribir de memoria → hablar. Tu progreso se guarda en este dispositivo.</p></div>
+   <div class="tiles" id="tiles"></div>
+   <div class="reader reveal" id="reader">
+    <div class="rhead">
+     <div><div class="eyebrow" id="rKicker"></div><h3 id="rTitle"></h3></div>
+     <div class="chips" id="rChips"></div>
+    </div>
+    <div class="rgrid">
+     <div class="tcol">
+      <div class="toolbar">
+       <button class="tbtn pri" id="bPlay">▶ Listen</button>
+       <button class="tbtn" id="bShadow" title="Escucha una frase y repítela en la pausa">◐ Shadow</button>
+       <button class="tbtn" id="bStop">■ Stop</button>
+       <select class="tsel" id="sRate" aria-label="Speed"><option value=".7">0.7×</option><option value=".85" selected>0.85×</option><option value="1">1.0×</option></select>
+       <select class="tsel" id="sAccent" aria-label="Accent"><option value="en-US">US voice</option><option value="en-GB">UK voice</option></select>
+       <button class="tbtn" id="bTr" aria-pressed="false">ES Traducción</button>
+       <button class="tbtn on" id="bWh" aria-pressed="true">WH lens</button>
+       <button class="tbtn" id="bListen" aria-pressed="false">Listening mode</button>
+      </div>
+      <div class="lens" id="rLens"></div>
+      <div class="passage show-wh" id="passage"></div>
+      <div class="legend" id="legend"></div>
+      <div class="hint-line">Toca una frase para escucharla · Toca una palabra subrayada para ver su significado.</div>
+     </div>
+     <div class="pcol">
+      <div class="modes modes4" role="tablist" style="grid-template-columns:repeat(4,1fr)">
+       <button class="mode on" data-m="comp" role="tab"><small>Step 1</small>Understand</button>
+       <button class="mode" data-m="build" role="tab"><small>Step 2</small>Build</button>
+       <button class="mode" data-m="forge" role="tab"><small>Step 3</small>Write</button>
+       <button class="mode" data-m="perf" role="tab"><small>Step 4</small>Speak</button>
+      </div>
+      <div id="practice"></div>
+      <div class="rfoot"><span id="rProg"></span><button class="linkbtn" id="bResetR">Reiniciar esta historia</button></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section id="flow">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">04 · Conversations</div><h2>A good question<br><em>keeps it going.</em></h2></div><p>Una conversación real es una cadena: cada pregunta nace de lo que la otra persona acaba de decir. Elige la mejor pregunta en cada turno. Si te equivocas, verás por qué.</p></div>
+   <div class="flowtabs" id="flowTabs"></div>
+   <div class="flow">
+    <aside class="brief reveal">
+     <div class="eyebrow">Your mission</div>
+     <h3 id="flowTitle"></h3>
+     <p id="flowDesc"></p>
+     <div class="score"><b id="flowScore">0/6</b><span>buenas preguntas · récord <i id="flowBest">0</i>/6</span></div>
+     <button class="bs gold" id="flowRestart" style="margin-top:14px">Reiniciar ↺</button>
+    </aside>
+    <div class="chat reveal" id="chat"></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="studio" class="dark">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">05 · Writing Studio</div><h2>Your paragraph.<br><em>Your questions.</em></h2></div><p>La prueba final: escribe sobre tu propia vida usando preguntas reales. El analizador revisa tu estructura en vivo y detecta los errores típicos. Luego envíaselo a tu profe.</p></div>
+   <div class="studio">
+    <div class="desk reveal">
+     <label for="wPrompt">Prompt</label>
+     <select id="wPrompt"></select>
+     <label for="wText">Tu texto · 60+ palabras</label>
+     <textarea id="wText" placeholder="Start writing here… Usa al menos cuatro preguntas directas y cuatro palabras WH diferentes."></textarea>
+     <div class="row">
+      <button class="bs dark" id="wSend">Enviar a mi profe por WhatsApp</button>
+      <button class="bs" id="wCopy">Copiar</button>
+      <button class="bs" id="wHear">▶ Escuchar mi texto</button>
+     </div>
+    </div>
+    <aside class="meter reveal">
+     <div class="eyebrow">Live analysis</div>
+     <h3>Structure check</h3>
+     <div id="wCrit"></div>
+     <div class="found" id="wFound"></div>
+     <div class="warns" id="wWarn"></div>
+    </aside>
+   </div>
+  </div>
+ </section>
+
+ <section id="record">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">06 · Your mastery record</div><h2>Visible growth,<br><em>class over class.</em></h2></div><p>Cada respuesta, cada pregunta construida y cada misión de speaking queda registrada en este dispositivo. Muéstrale este registro a tu profe en cada sesión.</p></div>
+   <div class="rec-grid" id="recGrid"></div>
+   <div style="margin-top:14px;display:flex;justify-content:flex-end"><button class="linkbtn" id="bResetAll">Reiniciar todo el progreso</button></div>
+  </div>
+ </section>
+
+ <section id="coach" class="dark">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">07 · Coach protocol</div><h2>The 60-minute<br><em>A2–B1 session.</em></h2></div><p>Una historia por sesión. Primero el oído, después el ojo, luego la estructura y al final la voz — con la traducción como apoyo, nunca como muleta.</p></div>
+   <div class="timeline">
+    <article class="step reveal"><div class="tm">00 – 10 min</div><h3>Warm-up + listening</h3><div class="pl">Percepción</div><p>Cinco preguntas personales con el motor del día. Luego, Listening mode ON: escuchar la historia dos veces sin texto.</p></article>
+    <article class="step reveal"><div class="tm">10 – 22 min</div><h3>Read + understand</h3><div class="pl">Comprensión</div><p>Texto visible y traducción OFF. Understand con evidencia. Activar la traducción solo para comprobar, frase por frase.</p></article>
+    <article class="step reveal"><div class="tm">22 – 37 min</div><h3>Build → Write</h3><div class="pl">Estructura · memoria</div><p>Primero Build con fichas (A2). Después Write sin ayuda (B1). El estudiante dice cada pregunta en voz alta al terminarla.</p></article>
+    <article class="step reveal"><div class="tm">37 – 52 min</div><h3>Speak + converse</h3><div class="pl">Prosodia · fluidez</div><p>Grabar las dos misiones. Hacer una de las Conversations y comentar por qué cada pregunta funciona o no.</p></article>
+    <article class="step reveal"><div class="tm">52 – 60 min</div><h3>Homework</h3><div class="pl">Entregable</div><p>Writing Studio: un texto con cuatro o más preguntas, enviado por WhatsApp antes de la próxima clase.</p></article>
+   </div>
+   <div class="correction reveal"><b>Correction protocol</b><span>WH word</span><span>Auxiliar</span><span>Sujeto</span><span>Forma del verbo</span><span>Orden</span><p>No des la versión correcta de inmediato. Nombra la parte rota — “falta el auxiliar”, “después de does, verbo base” — y deja que el estudiante la repare. Así se construye el motor.</p></div>
+  </div>
+ </section>
+
+ <section class="final" id="finish">
+  <div class="wrap">
+   <div class="eyebrow gold">ProfGermandario · Premium</div>
+   <h2>Think in English.<br><em>Not about English.</em></h2>
+   <p>Cuando las preguntas salen solas, dejas de traducir y empiezas a conversar: en tu trabajo, con tus clientes y en cada lugar al que quieras llegar.</p>
+   <a class="btn gold" href="https://wa.me/573197894038?text=%C2%A1Hola%20Prof.%20Germandario!%20Estoy%20trabajando%20en%20WH%20Mastery%20A2-B1%20y%20quiero%20agendar%20mi%20pr%C3%B3xima%20sesi%C3%B3n." target="_blank" rel="noopener">Agendar mi próxima sesión →</a>
+  </div>
+ </section>
+</main>
+<footer>ProfGermandario · WH Mastery · Premium Edition A2–B1 · Think in English. Not about English.</footer>
+<a class="wa" href="https://wa.me/573197894038?text=%C2%A1Hola%20Prof.%20Germandario!%20Tengo%20una%20pregunta%20sobre%20WH%20Mastery%20A2-B1." target="_blank" rel="noopener" aria-label="WhatsApp">●<span>WhatsApp</span></a>
+<div class="toast" id="toast"></div>
+
+<script>
+const READ=[
+{
+ id:"first",num:"01",domain:"First Day at Work",skill:"Presentarte",level:"A2",min:3,
+ title:"Sofía’s First Day",
+ focus:"Who · Where · What time · How old",
+ lens:"Las preguntas con BE no usan do/does: Where is my desk? Who is my manager? What time is lunch?",
+ paras:[[
+  ["Sofía is 26 years old, and today is her first day at a bank in Pereira.","Sofía tiene 26 años y hoy es su primer día en un banco en Pereira."],
+  ["She arrives at 7:45, and a man is waiting at the door.","Llega a las 7:45 y un hombre la está esperando en la puerta."],
+  ["“Hi, I’m Andrés. Who are you?” he asks.","«Hola, soy Andrés. ¿Quién eres tú?», pregunta él."],
+  ["“I’m Sofía, the new assistant,” she answers.","«Soy Sofía, la nueva asistente», responde ella."]
+ ],[
+  ["Sofía has a lot of questions.","Sofía tiene muchas preguntas."],
+  ["Where is my desk?","¿Dónde está mi escritorio?"],
+  ["What time is lunch?","¿A qué hora es el almuerzo?"],
+  ["Who is my manager?","¿Quién es mi jefe?"],
+  ["Andrés shows her the office and answers everything.","Andrés le muestra la oficina y responde todo."],
+  ["Her desk is next to the window, lunch is at 12:30, and her manager is a woman called Patricia.","Su escritorio está al lado de la ventana, el almuerzo es a las 12:30 y su jefa es una mujer llamada Patricia."],
+  ["At the end of the day, Sofía is tired but happy.","Al final del día, Sofía está cansada pero feliz."],
+  ["She knows one important thing: good questions make a new job easier.","Sabe una cosa importante: las buenas preguntas hacen más fácil un trabajo nuevo."]
+ ]],
+ gloss:{"arrives":"llega","waiting":"esperando","assistant":"asistente","desk":"escritorio","lunch":"almuerzo","manager":"jefe / gerente","shows":"muestra","next to":"al lado de","tired":"cansada","easier":"más fácil"},
+ comp:[
+  {q:"Where does Sofía work?",a:["In a hotel","In a bank in Pereira","In a school","In a hospital"],c:1,ev:"first day at a bank",e:"Trabaja en un banco en Pereira."},
+  {q:"What time does she arrive?",a:["At 7:00","At 7:45","At 8:30","At 12:30"],c:1,ev:"She arrives at 7:45",e:"Llega a las 7:45."},
+  {q:"Who is her manager?",a:["Andrés","Patricia","Sofía","A man at the door"],c:1,ev:"her manager is a woman",e:"Su jefa es Patricia. Andrés es un compañero."},
+  {q:"How does she feel at the end of the day?",a:["Sad","Tired but happy","Angry","Bored"],c:1,ev:"tired but happy",e:"Cansada pero feliz."}
+ ],
+ build:[
+  {ans:"at 7:45",q:"What time does Sofía arrive?"},
+  {ans:"next to the window",q:"Where is her desk?"},
+  {ans:"Patricia",q:"Who is her manager?"}
+ ],
+ forge:[
+  {ans:"26 years old",hint:"Edad → How old + is",wh:"How old",aux:"is",start:["how old is"],keys:[],model:"How old is Sofía?"},
+  {ans:"at 12:30",hint:"Hora → What time / When + is",wh:"What time|When",aux:"is",start:["what time is","when is"],keys:["lunch"],model:"What time is lunch?"},
+  {ans:"Andrés",hint:"Persona que hace la acción (SUJETO) → Who + verbo con -s, sin do/does",wh:"Who",aux:null,start:["who shows","who is waiting","who answers","who waits"],keys:[],model:"Who shows Sofía the office?"}
+ ],
+ speak:[
+  "Introduce yourself: What’s your name? Where do you work or study? What time do you start?",
+  "Imagine your first day in a new job. Ask three questions: Where…? What time…? Who…?"
+ ]
+},
+{
+ id:"cafe",num:"02",domain:"Small Business",skill:"Atender clientes",level:"A2",min:3,
+ title:"Lucía’s Café",
+ focus:"What · How much · Where … from",
+ lens:"Los turistas usan What, How much y Where. Fíjate en la preposición al final: Where does this coffee come from?",
+ paras:[[
+  ["Lucía has a small café in Villa de Leyva, a beautiful town in Boyacá.","Lucía tiene un pequeño café en Villa de Leyva, un pueblo hermoso de Boyacá."],
+  ["She opens at seven in the morning and closes at six in the evening.","Abre a las siete de la mañana y cierra a las seis de la tarde."],
+  ["Many tourists visit her café every day, and they always ask the same questions.","Muchos turistas visitan su café todos los días, y siempre hacen las mismas preguntas."],
+  ["What do you recommend?","¿Qué me recomienda?"],
+  ["How much is a cappuccino?","¿Cuánto cuesta un capuchino?"],
+  ["Where does this coffee come from?","¿De dónde viene este café?"]
+ ],[
+  ["Lucía answers in English, and the tourists love it.","Lucía responde en inglés, y a los turistas les encanta."],
+  ["She recommends the house coffee, a cappuccino costs eight thousand pesos, and the coffee comes from a farm near the town.","Recomienda el café de la casa, un capuchino cuesta ocho mil pesos y el café viene de una finca cerca del pueblo."],
+  ["Last month, a tourist from Canada asked her a new question: “Why don’t you sell your coffee online?”","El mes pasado, un turista de Canadá le hizo una pregunta nueva: «¿Por qué no vendes tu café por internet?»"],
+  ["Lucía didn’t have an answer, but now she has a plan.","Lucía no tenía respuesta, pero ahora tiene un plan."],
+  ["Next year, she is going to sell her coffee in Canada.","El próximo año va a vender su café en Canadá."]
+ ]],
+ gloss:{"tourists":"turistas","recommend":"recomendar","costs":"cuesta","farm":"finca","near":"cerca de","sell":"vender","online":"por internet","plan":"plan"},
+ comp:[
+  {q:"What time does Lucía open?",a:["At six in the morning","At seven in the morning","At eight in the morning","At six in the evening"],c:1,ev:"She opens at seven",e:"Abre a las siete de la mañana."},
+  {q:"How much is a cappuccino?",a:["Five thousand pesos","Eight thousand pesos","Ten thousand pesos","Twelve thousand pesos"],c:1,ev:"eight thousand pesos",e:"Ocho mil pesos."},
+  {q:"Where does the coffee come from?",a:["From Canada","From a farm near the town","From Bogotá","From a supermarket"],c:1,ev:"comes from a farm",e:"De una finca cerca del pueblo."},
+  {q:"What is Lucía going to do next year?",a:["Close the café","Sell her coffee in Canada","Move to Canada","Open a hotel"],c:1,ev:"going to sell",e:"Va a vender su café en Canadá (futuro con going to)."}
+ ],
+ build:[
+  {ans:"at six in the evening",q:"What time does Lucía close?"},
+  {ans:"eight thousand pesos",q:"How much is a cappuccino?"},
+  {ans:"from Canada",q:"Where was the tourist from?"}
+ ],
+ forge:[
+  {ans:"a small café",hint:"Cosa (OBJETO) · presente → What + does + sujeto + verbo base",wh:"What",aux:"does",start:["what does"],keys:["have|own|run"],model:"What does Lucía have?"},
+  {ans:"Last month",hint:"Momento en el pasado → When + did",wh:"When",aux:"did",start:["when did"],keys:["ask"],model:"When did the tourist ask a new question?"},
+  {ans:"in Canada",hint:"Lugar · futuro → Where + is + sujeto + going to + verbo",wh:"Where",aux:"is|will",start:["where is","where will"],keys:["sell"],model:"Where is she going to sell her coffee?"}
+ ],
+ speak:[
+  "You are a tourist in Lucía’s café. Ask her three questions: What…? How much…? Where…?",
+  "Describe your favorite café or restaurant: Where is it? What do you order? How much does it cost?"
+ ]
+},
+{
+ id:"interview",num:"03",domain:"Job Interview",skill:"Entrevistas",level:"A2+",min:4,
+ title:"Carlos Practices for the Interview",
+ focus:"Why · What · How long + did",
+ lens:"En pasado, did hace todo el trabajo: What did you do? How long did you work there? — el verbo queda en forma base.",
+ paras:[[
+  ["Carlos has a job interview at a tech company on Monday.","Carlos tiene una entrevista de trabajo en una empresa de tecnología el lunes."],
+  ["He is nervous, so he practices with his sister, Daniela.","Está nervioso, así que practica con su hermana, Daniela."],
+  ["She plays the role of the interviewer and asks him typical questions.","Ella hace el papel de entrevistadora y le hace preguntas típicas."],
+  ["“Tell me about yourself,” she says.","«Háblame de ti», dice ella."],
+  ["“Why do you want this job? What are your strengths?”","«¿Por qué quieres este trabajo? ¿Cuáles son tus fortalezas?»"]
+ ],[
+  ["The first time, Carlos answers with only one or two words.","La primera vez, Carlos responde con solo una o dos palabras."],
+  ["Daniela stops him and says: “Give examples. What did you do in your last job? How long did you work there?”","Daniela lo detiene y dice: «Da ejemplos. ¿Qué hacías en tu último trabajo? ¿Cuánto tiempo trabajaste allí?»"],
+  ["Carlos tries again.","Carlos lo intenta de nuevo."],
+  ["“I worked in customer service for three years, and I solved problems for more than fifty clients a day.”","«Trabajé en servicio al cliente durante tres años y resolvía problemas de más de cincuenta clientes al día»."],
+  ["This time, his answer is clear and strong.","Esta vez, su respuesta es clara y sólida."],
+  ["On Monday, the interviewer asks exactly the same questions, and Carlos is ready.","El lunes, el entrevistador hace exactamente las mismas preguntas, y Carlos está listo."]
+ ]],
+ gloss:{"job interview":"entrevista de trabajo","nervous":"nervioso","practices":"practica","plays the role":"hace el papel","interviewer":"entrevistador(a)","strengths":"fortalezas","examples":"ejemplos","customer service":"servicio al cliente","solved":"resolvió","ready":"listo"},
+ comp:[
+  {q:"When is the interview?",a:["On Friday","On Monday","Tomorrow","Today"],c:1,ev:"on Monday",e:"Es el lunes."},
+  {q:"Who helps Carlos practice?",a:["His mother","His sister, Daniela","His manager","A teacher"],c:1,ev:"practices with his sister",e:"Su hermana Daniela."},
+  {q:"How long did Carlos work in customer service?",a:["One year","Two years","Three years","Fifty days"],c:2,ev:"for three years",e:"Tres años."},
+  {q:"What was the problem with his first answers?",a:["They were too long","They had only one or two words","They were in Spanish","They were rude"],c:1,ev:"only one or two words",e:"Respuestas de una o dos palabras: sin ejemplos."}
+ ],
+ build:[
+  {ans:"at a tech company",q:"Where is his interview?"},
+  {ans:"He is nervous",q:"Why does he practice with his sister?"},
+  {ans:"for three years",q:"How long did he work in customer service?"}
+ ],
+ forge:[
+  {ans:"in customer service",hint:"Lugar / área · pasado → Where + did",wh:"Where|What",aux:"did",start:["where did","what did"],keys:["work|do"],model:"Where did Carlos work?"},
+  {ans:"his sister, Daniela",hint:"Persona que hace la acción (SUJETO) → Who + verbo con -s",wh:"Who",aux:null,start:["who plays","who helps","who practices","who asks"],keys:[],model:"Who plays the role of the interviewer?"},
+  {ans:"more than fifty clients a day",hint:"Cantidad contable · pasado → How many + sustantivo + did",wh:"How many",aux:"did",start:["how many"],keys:["help|solve|serve|attend"],model:"How many clients did he help a day?"}
+ ],
+ speak:[
+  "Answer like Carlos, with examples: Why do you want to learn English? What did you do in your last job?",
+  "Interview yourself: Tell me about yourself. What are your strengths? How long did you work in your last job?"
+ ]
+},
+{
+ id:"trip",num:"04",domain:"Business Travel",skill:"Viajar por trabajo",level:"A2+",min:4,
+ title:"Mariana’s First Business Trip",
+ focus:"When · Where · How · going to",
+ lens:"Tres tiempos en un texto: futuro (is going to travel), pasado (went) y presente (What time does it start?).",
+ paras:[[
+  ["Next week, Mariana is going to travel to Miami for a business fair.","La próxima semana, Mariana va a viajar a Miami para una feria comercial."],
+  ["It is her first business trip abroad, and she has a list of questions.","Es su primer viaje de negocios al exterior y tiene una lista de preguntas."],
+  ["How do I get from the airport to the hotel?","¿Cómo llego del aeropuerto al hotel?"],
+  ["Where is the fair?","¿Dónde es la feria?"],
+  ["What time does it start?","¿A qué hora empieza?"],
+  ["Her colleague Jorge went to the same fair last year, so she calls him.","Su colega Jorge fue a la misma feria el año pasado, así que lo llama."]
+ ],[
+  ["Jorge explains everything.","Jorge le explica todo."],
+  ["“Take a taxi from the airport — it takes about twenty minutes.”","«Toma un taxi desde el aeropuerto; tarda unos veinte minutos»."],
+  ["“The fair is at the convention center, and it starts at nine.”","«La feria es en el centro de convenciones y empieza a las nueve»."],
+  ["Then Mariana asks one more question: “What was the most difficult thing for you?”","Luego Mariana hace una pregunta más: «¿Qué fue lo más difícil para ti?»"],
+  ["Jorge laughs. “The questions people asked me in English! So practice your answers before you go.”","Jorge se ríe. «¡Las preguntas que la gente me hacía en inglés! Así que practica tus respuestas antes de ir»."]
+ ]],
+ gloss:{"business fair":"feria comercial","abroad":"al exterior","airport":"aeropuerto","colleague":"colega","convention center":"centro de convenciones","takes":"tarda","laughs":"se ríe","difficult":"difícil"},
+ comp:[
+  {q:"Where is Mariana going to travel?",a:["Madrid","Miami","Mexico City","Medellín"],c:1,ev:"travel to Miami",e:"A Miami, para una feria comercial."},
+  {q:"Who went to the same fair last year?",a:["Mariana","Jorge","Her manager","A taxi driver"],c:1,ev:"Jorge went",e:"Jorge, su colega."},
+  {q:"How long does the taxi take?",a:["Ten minutes","About twenty minutes","One hour","Two hours"],c:1,ev:"twenty minutes",e:"Unos veinte minutos."},
+  {q:"What was the most difficult thing for Jorge?",a:["The taxi","The questions people asked him in English","The hotel","The food"],c:1,ev:"people asked me in English",e:"Las preguntas en inglés: por eso hay que practicar."}
+ ],
+ build:[
+  {ans:"Next week",q:"When is Mariana going to travel?"},
+  {ans:"at the convention center",q:"Where is the fair?"},
+  {ans:"at nine",q:"What time does the fair start?"}
+ ],
+ forge:[
+  {ans:"for a business fair",hint:"Razón · futuro → Why + is + sujeto + going to + verbo",wh:"Why",aux:"is",start:["why is"],keys:["go|travel"],model:"Why is Mariana going to travel to Miami?"},
+  {ans:"last year",hint:"Momento en el pasado → When + did + sujeto + verbo base",wh:"When",aux:"did",start:["when did"],keys:["go|visit"],model:"When did Jorge go to the fair?"},
+  {ans:"Take a taxi from the airport",hint:"Manera / método → How + do/does + sujeto + verbo",wh:"How",aux:"do|does|can|should",start:["how do","how does","how can","how should"],keys:["get|go"],model:"How do I get from the airport to the hotel?"}
+ ],
+ speak:[
+  "Plan a trip: Where are you going to go? When are you going to travel? How are you going to get there?",
+  "Tell a story about your last trip: Where did you go? Who did you travel with? What was the most difficult thing?"
+ ]
+},
+{
+ id:"order",num:"05",domain:"Customer Service",skill:"Resolver problemas",level:"B1",min:4,
+ title:"The Wrong Chairs",
+ focus:"What happened · Which · When + did",
+ lens:"Un buen asesor no discute: pregunta. What happened? Which model…? When did…? Cada pregunta busca un dato preciso.",
+ paras:[[
+  ["Last Tuesday, Paula ordered thirty office chairs for her company.","El martes pasado, Paula pidió treinta sillas de oficina para su empresa."],
+  ["The chairs arrived on Friday, but there was a problem: they were the wrong color.","Las sillas llegaron el viernes, pero había un problema: eran del color equivocado."],
+  ["Paula called the store immediately.","Paula llamó a la tienda inmediatamente."],
+  ["The customer service agent was very professional.","El asesor de servicio al cliente fue muy profesional."],
+  ["Instead of saying “That’s impossible,” he asked clear questions.","En lugar de decir «Eso es imposible», hizo preguntas claras."]
+ ],[
+  ["“What happened exactly?","«¿Qué pasó exactamente?"],
+  ["Which model did you order?","¿Qué modelo pidió?"],
+  ["When did the chairs arrive?”","¿Cuándo llegaron las sillas?»"],
+  ["Paula explained that she ordered black chairs, but she received grey ones.","Paula explicó que pidió sillas negras, pero recibió unas grises."],
+  ["The agent checked the system and found the mistake in two minutes.","El asesor revisó el sistema y encontró el error en dos minutos."],
+  ["“Which day is better for you, Monday or Wednesday? We can change them for free.”","«¿Qué día le queda mejor, el lunes o el miércoles? Podemos cambiarlas gratis»."],
+  ["On Monday, the black chairs arrived, and Paula wrote a five-star review.","El lunes llegaron las sillas negras, y Paula escribió una reseña de cinco estrellas."]
+ ]],
+ gloss:{"ordered":"pidió","wrong color":"color equivocado","immediately":"inmediatamente","agent":"asesor","model":"modelo","received":"recibió","grey":"gris","checked":"revisó","mistake":"error","for free":"gratis","review":"reseña"},
+ comp:[
+  {q:"How many chairs did Paula order?",a:["Three","Thirteen","Thirty","Fifty"],c:2,ev:"thirty office chairs",e:"Treinta sillas."},
+  {q:"What was the problem?",a:["They were broken","They were the wrong color","They were late","They were expensive"],c:1,ev:"wrong color",e:"El color era equivocado."},
+  {q:"How long did the agent need to find the mistake?",a:["Two minutes","Two hours","Two days","A week"],c:0,ev:"in two minutes",e:"Solo dos minutos: buenas preguntas, solución rápida."},
+  {q:"What did Paula do on Monday?",a:["She cancelled the order","She wrote a five-star review","She called again","She bought new chairs"],c:1,ev:"five-star review",e:"Escribió una reseña de cinco estrellas."}
+ ],
+ build:[
+  {ans:"on Friday",q:"When did the chairs arrive?"},
+  {ans:"black chairs",q:"What color did Paula order?"},
+  {ans:"The customer service agent",q:"Who checked the system?"}
+ ],
+ forge:[
+  {ans:"thirty office chairs",hint:"Cosa / cantidad · pasado → What / How many + did",wh:"What|How many",aux:"did",start:["what did","how many chairs did","how many office chairs did"],keys:["order|buy"],model:"What did Paula order?"},
+  {ans:"they were the wrong color",hint:"Cosa con BE en pasado → What + was",wh:"What",aux:"was",start:["what was"],keys:["problem|wrong"],model:"What was the problem?"},
+  {ans:"On Monday",hint:"Momento · pasado → When + did + sujeto + verbo base",wh:"When",aux:"did",start:["when did"],keys:["arriv|come"],model:"When did the black chairs arrive?"}
+ ],
+ speak:[
+  "You are the agent. A client calls with a problem. Ask: What happened? Which…? When…? Then offer a solution.",
+  "Tell a real story: Did you ever have a problem with an order? What happened? How did they solve it?"
+ ]
+},
+{
+ id:"event",num:"06",domain:"Teamwork",skill:"Planear en equipo",level:"B1",min:4,
+ title:"Planning the Team Event",
+ focus:"going to · will · Who is going to…?",
+ lens:"Futuro en dos formas: planes (Where are we going to have it?) y decisiones del momento (Who will pay for it?).",
+ paras:[[
+  ["Every December, Andrés’s team organizes an end-of-year event, and this year he is in charge.","Cada diciembre, el equipo de Andrés organiza un evento de fin de año, y este año él está a cargo."],
+  ["He starts with a short meeting and a few simple questions.","Empieza con una reunión corta y unas preguntas sencillas."],
+  ["Where are we going to have the event?","¿Dónde vamos a hacer el evento?"],
+  ["What are we going to eat?","¿Qué vamos a comer?"],
+  ["Who is going to bring the music?","¿Quién va a traer la música?"],
+  ["Everybody has an opinion, and the meeting is a little chaotic.","Todos tienen una opinión, y la reunión es un poco caótica."]
+ ],[
+  ["So Andrés changes his strategy.","Entonces Andrés cambia de estrategia."],
+  ["He sends a quick survey with only three options for each question.","Envía una encuesta rápida con solo tres opciones por pregunta."],
+  ["In one day, twenty-two people answer.","En un día, responden veintidós personas."],
+  ["The team chooses a restaurant with a garden, Colombian food, and a playlist made by the interns.","El equipo elige un restaurante con jardín, comida colombiana y una lista de música hecha por los practicantes."],
+  ["“Who will pay for it?” asks a colleague.","«¿Quién lo va a pagar?», pregunta un colega."],
+  ["“The company will pay for the food, and we will pay for the drinks,” Andrés answers.","«La empresa pagará la comida y nosotros pagaremos las bebidas», responde Andrés."]
+ ]],
+ gloss:{"organizes":"organiza","in charge":"a cargo","opinion":"opinión","chaotic":"caótica","strategy":"estrategia","survey":"encuesta","options":"opciones","chooses":"elige","garden":"jardín","interns":"practicantes","drinks":"bebidas"},
+ comp:[
+  {q:"When does the team organize the event?",a:["Every January","Every December","Every month","Every Friday"],c:1,ev:"Every December",e:"Cada diciembre."},
+  {q:"Why does Andrés change his strategy?",a:["Because the meeting is chaotic","Because nobody comes","Because he is sick","Because the restaurant is closed"],c:0,ev:"a little chaotic",e:"Porque la reunión es caótica."},
+  {q:"How many people answer the survey?",a:["Twelve","Twenty","Twenty-two","Thirty"],c:2,ev:"twenty-two people",e:"Veintidós personas, en un día."},
+  {q:"Who will pay for the drinks?",a:["The company","The team","The interns","The restaurant"],c:1,ev:"we will pay for the drinks",e:"El equipo («we»); la empresa paga la comida."}
+ ],
+ build:[
+  {ans:"a restaurant with a garden",q:"Where are they going to have the event?"},
+  {ans:"the interns",q:"Who made the playlist?"},
+  {ans:"twenty-two people",q:"How many people answer the survey?"}
+ ],
+ forge:[
+  {ans:"Andrés",hint:"Persona (SUJETO) con BE → Who + is …?",wh:"Who",aux:null,start:["who is in charge","who organizes","who is organizing","who is organising"],keys:[],model:"Who is in charge this year?"},
+  {ans:"Colombian food",hint:"Cosa · futuro → What + are + sujeto + going to + verbo",wh:"What",aux:"are|is|will",start:["what are","what is","what will"],keys:["eat"],model:"What are they going to eat?"},
+  {ans:"The company",hint:"Persona / entidad (SUJETO) · futuro → Who + will + verbo",wh:"Who",aux:null,start:["who will pay","who is going to pay","who pays"],keys:["food"],model:"Who will pay for the food?"}
+ ],
+ speak:[
+  "Plan a team event: Where are you going to have it? What are you going to eat? Who is going to organize it?",
+  "Describe your last celebration at work or with friends: Where was it? Who organized it? What did you eat?"
+ ]
+},
+{
+ id:"call",num:"07",domain:"Client Calls",skill:"Llamadas con clientes",level:"B1",min:4,
+ title:"Natalia’s Video Calls",
+ focus:"Could you…? · What do you mean…? · How often",
+ lens:"Las preguntas de aclaración son una herramienta profesional, no una debilidad: Could you repeat that, please?",
+ paras:[[
+  ["Natalia works in sales, and every Thursday she has a video call with a client in Texas.","Natalia trabaja en ventas y cada jueves tiene una videollamada con un cliente en Texas."],
+  ["At first, the calls were difficult for her.","Al principio, las llamadas eran difíciles para ella."],
+  ["The client spoke fast, and Natalia didn’t understand everything.","El cliente hablaba rápido y Natalia no entendía todo."],
+  ["She was afraid to ask, so she just said “Yes, yes.”","Le daba miedo preguntar, así que solo decía «Sí, sí»."]
+ ],[
+  ["Her English coach gave her a simple tool: clarification questions.","Su coach de inglés le dio una herramienta sencilla: preguntas de aclaración."],
+  ["“Could you repeat that, please?”","«¿Podría repetir eso, por favor?»"],
+  ["“What do you mean by ‘lead time’?”","«¿Qué quiere decir con ‘lead time’?»"],
+  ["“Can you send me that in an email?”","«¿Me puede enviar eso por correo?»"],
+  ["Now Natalia uses these questions in every call.","Ahora Natalia usa estas preguntas en cada llamada."],
+  ["The client doesn’t think she is less professional — he thinks she is more careful.","El cliente no cree que sea menos profesional; cree que es más cuidadosa."],
+  ["Last week he asked her: “How often do you talk to your other clients? You’re very organized.”","La semana pasada le preguntó: «¿Con qué frecuencia hablas con tus otros clientes? Eres muy organizada»."]
+ ]],
+ gloss:{"sales":"ventas","video call":"videollamada","afraid":"con miedo","coach":"entrenador(a)","tool":"herramienta","clarification":"aclaración","repeat":"repetir","lead time":"tiempo de entrega","careful":"cuidadosa","organized":"organizada"},
+ comp:[
+  {q:"How often does Natalia have a video call with the client?",a:["Every Monday","Every Thursday","Every day","Once a month"],c:1,ev:"every Thursday",e:"Cada jueves."},
+  {q:"Why did she say “Yes, yes”?",a:["She understood everything","She was afraid to ask","She was tired","The client was angry"],c:1,ev:"afraid to ask",e:"Le daba miedo preguntar."},
+  {q:"What tool did her coach give her?",a:["A dictionary","Clarification questions","A new computer","An app"],c:1,ev:"clarification questions",e:"Preguntas de aclaración."},
+  {q:"What does the client think of Natalia now?",a:["She is less professional","She is more careful","She is too slow","She is rude"],c:1,ev:"more careful",e:"Que es más cuidadosa."}
+ ],
+ build:[
+  {ans:"in Texas",q:"Where is the client?"},
+  {ans:"every Thursday",q:"How often does she have a call?"},
+  {ans:"Her English coach",q:"Who gave her a simple tool?"}
+ ],
+ forge:[
+  {ans:"in sales",hint:"Lugar / área · presente → Where + does",wh:"Where|What",aux:"does",start:["where does","what does"],keys:["work|do"],model:"Where does Natalia work?"},
+  {ans:"fast",hint:"Manera · pasado → How + did + sujeto + verbo base",wh:"How",aux:"did",start:["how did"],keys:["speak|talk"],model:"How did the client speak?"},
+  {ans:"“Yes, yes.”",hint:"Cosa (lo que dijo) · pasado → What + did + sujeto + say",wh:"What",aux:"did",start:["what did"],keys:["say"],model:"What did she say?"}
+ ],
+ speak:[
+  "Practice the three clarification questions with polite, falling intonation: Could you repeat that, please? What do you mean by…? Can you send me that in an email?",
+  "Tell about a moment when you didn’t understand someone in English. What did you do? What could you ask next time?"
+ ]
+},
+{
+ id:"story",num:"08",domain:"Your English Story",skill:"Contar tu historia",level:"B1",min:4,
+ title:"Learning English at 41",
+ focus:"How long have you…? · Have you ever…?",
+ lens:"Presente perfecto para hablar de tu vida hasta hoy: How long have you worked here? Have you ever made a big mistake?",
+ paras:[[
+  ["Ricardo is 41, and he has worked as an accountant for almost twenty years.","Ricardo tiene 41 años y ha trabajado como contador durante casi veinte años."],
+  ["Two years ago, his company started working with clients in the United States.","Hace dos años, su empresa empezó a trabajar con clientes en Estados Unidos."],
+  ["Suddenly, English wasn’t optional anymore.","De repente, el inglés ya no era opcional."],
+  ["He asked himself an uncomfortable question: “Why haven’t I learned English before?”","Se hizo una pregunta incómoda: «¿Por qué no he aprendido inglés antes?»"]
+ ],[
+  ["Ricardo has studied English for eighteen months now.","Ricardo lleva dieciocho meses estudiando inglés."],
+  ["He has had three different teachers, but only one changed everything.","Ha tenido tres profesores diferentes, pero solo una lo cambió todo."],
+  ["She didn’t give him lists of words; she asked him questions about his life.","Ella no le daba listas de palabras; le hacía preguntas sobre su vida."],
+  ["“How long have you worked here? Have you ever made a big mistake? What have you learned from it?”","«¿Cuánto tiempo has trabajado aquí? ¿Alguna vez has cometido un gran error? ¿Qué has aprendido de eso?»"],
+  ["Today, Ricardo leads meetings in English twice a month.","Hoy, Ricardo dirige reuniones en inglés dos veces al mes."],
+  ["When people ask him, “How did you do it?”, he answers: “I stopped studying English and started using it.”","Cuando le preguntan «¿Cómo lo hiciste?», responde: «Dejé de estudiar inglés y empecé a usarlo»."]
+ ]],
+ gloss:{"accountant":"contador","almost":"casi","suddenly":"de repente","optional":"opcional","uncomfortable":"incómoda","mistake":"error","learned":"aprendido","leads":"dirige","twice a month":"dos veces al mes"},
+ comp:[
+  {q:"What is Ricardo’s job?",a:["Teacher","Accountant","Engineer","Lawyer"],c:1,ev:"as an accountant",e:"Es contador."},
+  {q:"Why did English become necessary?",a:["He moved abroad","His company started working with clients in the US","His teacher told him","He wanted to travel"],c:1,ev:"clients in the United States",e:"Su empresa empezó a trabajar con clientes en EE. UU."},
+  {q:"How long has he studied English?",a:["Two years","Eighteen months","Twenty years","Three months"],c:1,ev:"eighteen months",e:"Dieciocho meses (presente perfecto: has studied)."},
+  {q:"How often does he lead meetings in English?",a:["Every day","Twice a month","Once a year","Every week"],c:1,ev:"twice a month",e:"Dos veces al mes."}
+ ],
+ build:[
+  {ans:"almost twenty years",q:"How long has he worked as an accountant?"},
+  {ans:"three different teachers",q:"How many teachers has he had?"},
+  {ans:"twice a month",q:"How often does Ricardo lead meetings in English?"}
+ ],
+ forge:[
+  {ans:"41",hint:"Edad → How old + is",wh:"How old",aux:"is",start:["how old is"],keys:[],model:"How old is Ricardo?"},
+  {ans:"Two years ago",hint:"Momento en el pasado → When + did + sujeto + verbo base",wh:"When",aux:"did",start:["when did"],keys:["start|begin"],model:"When did his company start working with US clients?"},
+  {ans:"questions about his life",hint:"Cosa (OBJETO) · pasado → What + did + sujeto + verbo base",wh:"What",aux:"did",start:["what did"],keys:["ask"],model:"What did his teacher ask him?"}
+ ],
+ speak:[
+  "Tell your English story: How long have you studied English? Have you ever had a great teacher? What have you learned?",
+  "Answer Ricardo’s teacher’s questions about your work: How long have you worked there? Have you ever made a big mistake? What have you learned from it?"
+ ]
+}
+];
+
+const WHMAP=[
+ {w:"What",es:"Qué / cuál",a:"cosa · acción",ex:"What do you do?"},
+ {w:"Where",es:"Dónde",a:"lugar",ex:"Where do you live?"},
+ {w:"When",es:"Cuándo",a:"momento",ex:"When is the meeting?"},
+ {w:"What time",es:"A qué hora",a:"hora exacta",ex:"What time does it start?"},
+ {w:"Who",es:"Quién",a:"persona",ex:"Who is your manager?"},
+ {w:"Why",es:"Por qué",a:"razón → because",ex:"Why are you learning English?"},
+ {w:"How",es:"Cómo",a:"manera · estado",ex:"How do you get to work?"},
+ {w:"How much",es:"Cuánto (precio / no contable)",a:"precio · cantidad",ex:"How much is this coffee?"},
+ {w:"How many",es:"Cuántos (contable)",a:"número",ex:"How many people work here?"},
+ {w:"How often",es:"Con qué frecuencia",a:"frecuencia",ex:"How often do you exercise?"},
+ {w:"How long",es:"Cuánto tiempo",a:"duración",ex:"How long does the trip take?"},
+ {w:"How old",es:"Qué edad",a:"edad",ex:"How old is your company?"},
+ {w:"Which",es:"Cuál (entre opciones)",a:"elección",ex:"Which day is better for you?"},
+ {w:"Whose",es:"De quién",a:"dueño",ex:"Whose laptop is this?"}
+];
+
+const PRECISION=[
+ {k:"01",t:"El motor",r:"WH + auxiliar + sujeto + verbo. El auxiliar va ANTES del sujeto. Sin auxiliar, la pregunta se rompe.",ok:["Where do you work?","What does she study?","When do they start?"],no:"Where you work?"},
+ {k:"02",t:"do o does",r:"Does con he / she / it — y el verbo pierde la -s, porque does ya la tiene.",ok:["Where does she live?","What time does the bank open?","How does he get to work?"],no:"Where does she lives?"},
+ {k:"03",t:"El pasado: did",r:"Did lleva el pasado. El verbo principal vuelve a su forma base.",ok:["What did you eat?","Where did you go last weekend?","Why did they leave?"],no:"What did you ate?"},
+ {k:"04",t:"Ahora mismo: am / is / are + -ing",r:"Para acciones en progreso usa BE + verbo-ing, no do/does.",ok:["What are you doing?","Where is she going?","Why are they laughing?"],no:"What do you doing?"},
+ {k:"05",t:"Preguntas con BE",r:"Cuando el verbo principal es be (is, are, was), no necesitas do: solo inviertes.",ok:["Where is the office?","How old are you?","Who was your first teacher?"],no:"Where does the office is?"},
+ {k:"06",t:"Who sujeto vs objeto",r:"Si Who es quien hace la acción, no hay auxiliar. Si Who recibe la acción, usa do/does/did.",ok:["Who called you?","Who did you call?","Who works here?"],no:"Who did call you?"}
+];
+
+const FLOWS=[
+ {id:"colleague",t:"New colleague",who:"Tomás · new colleague",d:"Estás en la máquina de café y llega un compañero nuevo. Mantén la conversación con buenas preguntas.",turns:[
+  {c:"Hi! I’m Tomás. I’m new here.",o:[
+   {t:"Who are you?",ok:0,w:"Él acaba de decir quién es. Suena brusco."},
+   {t:"Nice to meet you! Which team are you in?",ok:1,w:"Saludo + pregunta con Which: amable y concreta."},
+   {t:"Why are you here?",ok:0,w:"Suena desconfiado, casi grosero."}]},
+  {c:"I’m in the marketing team. I started on Monday.",o:[
+   {t:"When did you start?",ok:0,w:"Ya lo dijo: el lunes. Escucha antes de preguntar."},
+   {t:"How is your first week going?",ok:1,w:"Pregunta abierta: invita a contar más."},
+   {t:"Is marketing a team?",ok:0,w:"No tiene sentido en este contexto."}]},
+  {c:"Busy, but good! Everybody is very friendly.",o:[
+   {t:"Is everybody friendly?",ok:0,w:"Repite lo que dijo. Pregunta eco = no estás escuchando."},
+   {t:"How much money do you make?",ok:0,w:"Demasiado personal para una primera conversación."},
+   {t:"Where did you work before?",ok:1,w:"Pasado con did + verbo base: natural y abre su historia."}]},
+  {c:"At a small agency in Cali, for three years.",o:[
+   {t:"Why did you decide to move to Bogotá?",ok:1,w:"Why + did: buena pregunta de seguimiento."},
+   {t:"How long did you work there?",ok:0,w:"Ya lo dijo: tres años."},
+   {t:"Where is Cali?",ok:0,w:"Pregunta extraña: Cali es conocida."}]},
+  {c:"My wife got a job here, so we moved together.",o:[
+   {t:"Why did your wife get a job?",ok:0,w:"Demasiado personal y raro."},
+   {t:"How do you like the city so far?",ok:1,w:"Expresión natural para pedir su opinión."},
+   {t:"Whose job is it?",ok:0,w:"No tiene sentido aquí."}]},
+  {c:"It’s big and the traffic is crazy, but I love the food!",o:[
+   {t:"What’s your favorite food so far? There’s a great place near the office.",ok:1,w:"Pregunta + oferta: así nace una amistad en el trabajo."},
+   {t:"Why do you love food?",ok:0,w:"Pregunta extraña: a todos nos gusta comer."},
+   {t:"Do you have a car?",ok:0,w:"Cambia de tema sin conexión."}]}
+ ]},
+ {id:"hotel",t:"Hotel check-in",who:"Receptionist",d:"Llegas a un hotel en Miami. Haz las preguntas que necesitas, en el orden correcto y con cortesía.",turns:[
+  {c:"Good evening, welcome to Hotel Central. How can I help you?",o:[
+   {t:"Where is my room?",ok:0,w:"Muy brusco: primero el registro."},
+   {t:"Good evening. I have a reservation. Could you check my name, please?",ok:1,w:"Saludo + Could you…please? = cortesía profesional."},
+   {t:"Why is the hotel so big?",ok:0,w:"No es lo que necesitas ahora."}]},
+  {c:"Of course. Yes, Mr. Ramírez, three nights. Here is your key.",o:[
+   {t:"Who is Mr. Ramírez?",ok:0,w:"¡Eres tú!"},
+   {t:"What is a key?",ok:0,w:"No tiene sentido."},
+   {t:"Thank you. What time is breakfast?",ok:1,w:"What time + is: información clave."}]},
+  {c:"Breakfast is from 6:30 to 10:00 on the first floor.",o:[
+   {t:"Is the wifi free, and what’s the password?",ok:1,w:"Dos preguntas útiles en una: muy natural."},
+   {t:"Is breakfast on the first floor?",ok:0,w:"Pregunta eco: ya lo dijo."},
+   {t:"Why is breakfast on the first floor?",ok:0,w:"Irrelevante."}]},
+  {c:"Yes, it’s free. The password is on the back of your key card.",o:[
+   {t:"Whose card is this?",ok:0,w:"Es tuya."},
+   {t:"How do I get to the airport tomorrow morning?",ok:1,w:"How + do I get…? para pedir indicaciones."},
+   {t:"Where is the back?",ok:0,w:"No tiene sentido."}]},
+  {c:"You can take a taxi from the door. It takes about thirty minutes.",o:[
+   {t:"How long is a taxi?",ok:0,w:"Un taxi no tiene «largo»; ya te dijo el tiempo."},
+   {t:"How much does a taxi usually cost?",ok:1,w:"How much + does: el dato que te falta."},
+   {t:"Why a taxi?",ok:0,w:"Suena como si discutieras."}]},
+  {c:"Around forty dollars. Can I help you with anything else?",o:[
+   {t:"Could you call a taxi for me at six tomorrow, please?",ok:1,w:"Petición cortés y concreta: misión cumplida."},
+   {t:"What is else?",ok:0,w:"Error de comprensión."},
+   {t:"Who are you?",ok:0,w:"Ya sabes que es la recepcionista."}]}
+ ]}
+];
+
+const PROMPTS=[
+ "Interview a new colleague: write 6 questions you would ask. Use at least 5 different WH words.",
+ "Describe your daily routine at work and include 3 questions you ask your team or your clients.",
+ "Tell the story of your last trip: where you went, when, with whom, what happened — and 2 questions you asked someone."
+];
+
+/* Question Machine */
+const QM={
+ wh:["What","Where","When","What time","Why","How","How often","Who"],
+ aux:["do","does","did","am","is","are","can","will","—"],
+ subj:["I","you","he","she","we","they","Sofía","your team"],
+ verbs:[
+  {b:"work",s:"works",ing:"working",p:"worked",es:"trabajar"},
+  {b:"live",s:"lives",ing:"living",p:"lived",es:"vivir"},
+  {b:"study",s:"studies",ing:"studying",p:"studied",es:"estudiar"},
+  {b:"eat",s:"eats",ing:"eating",p:"ate",es:"comer"},
+  {b:"go",s:"goes",ing:"going",p:"went",es:"ir"},
+  {b:"start",s:"starts",ing:"starting",p:"started",es:"empezar"},
+  {b:"travel",s:"travels",ing:"traveling",p:"traveled",es:"viajar"},
+  {b:"call",s:"calls",ing:"calling",p:"called",es:"llamar"}
+ ]
+};
+
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const WA='573197894038';
+
+/* ---------- storage ---------- */
+const KEY='pg-wh-a2b1-v1';
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){ST={}}
+function initST(){ST.r=ST.r||{};ST.flow=ST.flow||{};ST.write=ST.write||{sent:0,draft:''};ST.qm=ST.qm||0}
+initST();
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}}
+function RS(id){const s=ST.r[id]=ST.r[id]||{};s.read=s.read||0;s.comp=s.comp||{};s.build=s.build||{};s.forge=s.forge||{};s.speak=s.speak||{};return s}
+const cnt=o=>Object.values(o).filter(x=>x&&(x.ok===undefined?x:x.ok)).length;
+function pts(r){const s=RS(r.id);return (s.read?1:0)+cnt(s.comp)+cnt(s.build)+cnt(s.forge)+cnt(s.speak)}
+const MAXP=13;
+const pct=r=>Math.round(pts(r)/MAXP*100);
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),2200)}
+
+/* ---------- speech ---------- */
+const TTS={voice:null,accent:'en-US',rate:.85,token:0,timer:null};
+const hasTTS='speechSynthesis' in window;
+function pickVoice(){
+ if(!hasTTS)return;
+ const vs=speechSynthesis.getVoices();
+ const pool=vs.filter(v=>v.lang&&v.lang.replace('_','-').toLowerCase().startsWith(TTS.accent.toLowerCase()));
+ TTS.voice=pool.find(v=>/natural|neural|premium|enhanced/i.test(v.name))||pool.find(v=>/google|samantha|aria|jenny|guy|daniel|serena|libby|sonia|ryan/i.test(v.name))||pool[0]||vs.find(v=>/^en/i.test(v.lang))||null;
+}
+if(hasTTS){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(text,onend,rate){
+ if(!hasTTS){toast('El audio no está disponible en este navegador');onend&&onend();return}
+ const u=new SpeechSynthesisUtterance(text.replace(/[“”]/g,'"'));
+ u.lang=TTS.accent;if(TTS.voice)u.voice=TTS.voice;u.rate=rate||TTS.rate;
+ if(onend){u.onend=onend;u.onerror=onend}
+ speechSynthesis.speak(u);
+}
+function stopAll(){
+ TTS.token++;if(hasTTS)speechSynthesis.cancel();clearTimeout(TTS.timer);
+ $$('.s.speaking,.s.your-turn').forEach(x=>x.classList.remove('speaking','your-turn'));
+ setPlay(null);
+}
+function speakOne(t,rate){stopAll();say(t,null,rate)}
+function setPlay(mode){$('#bPlay').classList.toggle('on',mode==='listen');$('#bShadow').classList.toggle('on',mode==='shadow')}
+function playSeq(mode){
+ stopAll();const my=TTS.token;const els=$$('#passage .s');let i=0;setPlay(mode);
+ const step=()=>{
+  if(my!==TTS.token)return;
+  els.forEach(e=>e.classList.remove('speaking','your-turn'));
+  if(i>=els.length){setPlay(null);markRead();return}
+  const el=els[i];el.classList.add('speaking');
+  const r=el.getBoundingClientRect();if(r.top<70||r.bottom>innerHeight-20)el.scrollIntoView({block:'center',behavior:'smooth'});
+  say(el.dataset.t,()=>{
+   if(my!==TTS.token)return;i++;
+   if(mode==='shadow'){el.classList.remove('speaking');el.classList.add('your-turn');
+    TTS.timer=setTimeout(step,Math.min(9000,1300+el.dataset.t.split(/\s+/).length*480/TTS.rate))}
+   else step();
+  });
+ };
+ step();
+}
+
+/* ---------- passage decoration ---------- */
+const WHLIST=['how much','how many','how long','how often','how old','what time','whose','whom','what','where','when','which','who','why','how'];
+const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function whClass(w){w=w.toLowerCase();if(w.startsWith('how'))return'how';if(w.startsWith('what'))return'what';if(w==='whom')return'who';return w}
+function qRanges(t){const out=[],re=/[^.:;!?“”"]*\?/g;let m;while((m=re.exec(t))){if(!m[0].length){re.lastIndex++;continue}out.push([m.index,m.index+m[0].length])}return out}
+function decorate(t,gloss){
+ const keys=Object.keys(gloss||{});
+ const parts=[...keys].sort((a,b)=>b.length-a.length).map(reEsc).concat(WHLIST.map(x=>x.replace(/ /g,'\\s+')));
+ const re=new RegExp('\\b('+parts.join('|')+')\\b','gi');
+ const qr=qRanges(t);let out='',last=0,m;
+ while((m=re.exec(t))){
+  out+=esc(t.slice(last,m.index));
+  const tok=m[0],low=tok.toLowerCase().replace(/\s+/g,' ');
+  const g=keys.find(k=>k.toLowerCase()===low);
+  if(g&&!WHLIST.includes(low)){out+=`<span class="gl" tabindex="0" data-es="${esc(gloss[g])}" data-en="${esc(tok)}">${esc(tok)}</span>`}
+  else{const inQ=qr.some(([a,b])=>m.index>=a&&m.index<b);out+=`<span class="wh wh-${whClass(low)} ${inQ?'q':'emb'}">${esc(tok)}</span>`}
+  last=m.index+tok.length;
+ }
+ return out+esc(t.slice(last));
+}
+
+/* ---------- tooltip ---------- */
+const tip=document.createElement('div');tip.className='tip';document.body.appendChild(tip);
+function showTip(el){
+ tip.innerHTML=`<b>${esc(el.dataset.en)}</b>${esc(el.dataset.es)}`;tip.classList.add('on');
+ const r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
+ let x=r.left+r.width/2-tw/2+scrollX;x=Math.max(scrollX+8,Math.min(x,scrollX+document.documentElement.clientWidth-tw-8));
+ let y=r.top+scrollY-th-10;if(r.top-th-10<70)y=r.bottom+scrollY+10;
+ tip.style.left=x+'px';tip.style.top=y+'px';
+}
+document.addEventListener('click',e=>{
+ const g=e.target.closest('.gl');
+ if(g){e.stopPropagation();showTip(g);speakOne(g.dataset.en);return}
+ tip.classList.remove('on');
+},true);
+document.addEventListener('keydown',e=>{const g=e.target.closest&&e.target.closest('.gl');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showTip(g);speakOne(g.dataset.en)}});
+addEventListener('scroll',()=>tip.classList.remove('on'),{passive:true});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)speakOne(b.dataset.say)});
+
+/* ---------- story index ---------- */
+$('#arenaList').innerHTML=READ.map((r,i)=>`<li><button data-i="${i}"><span class="n">${r.num}</span><span class="d">${esc(r.domain)}<small>${esc(r.skill)}</small></span><span class="lv">${r.level}</span></button></li>`).join('');
+$('#arenaList').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;loadReading(+b.dataset.i);$('#lab').scrollIntoView({behavior:'smooth'})});
+
+/* ---------- WH map ---------- */
+$('#whMap').innerHTML=WHMAP.map(m=>`<button class="whm" data-say="${esc(m.ex)}"><b>${esc(m.w)}</b><span>${esc(m.es)}</span><small>${esc(m.a)}</small><i>${esc(m.ex)}</i></button>`).join('');
+
+/* ---------- foundations ---------- */
+$('#precGrid').innerHTML=PRECISION.map(p=>`<article class="pcd reveal"><div class="pk">${p.k}</div><h3>${esc(p.t)}</h3><p>${esc(p.r)}</p>${p.ok.map(x=>`<div class="ex"><span class="mk">✓</span><span>${esc(x)}</span><button class="say" data-say="${esc(x)}" aria-label="Escuchar">▶</button></div>`).join('')}<div class="ex bad"><span class="mk">✗</span><span>${esc(p.no)}</span></div></article>`).join('');
+
+/* ---------- question machine ---------- */
+const Q={wh:'Where',aux:'does',subj:'she',v:0,f:'b'};
+const THIRD=['he','she','Sofía','your team'];
+const FORMS=[['b','base'],['s','+ s'],['ing','+ ing'],['p','pasado']];
+function qmRender(){
+ const chips=(arr,key,lab)=>arr.map(x=>`<button class="mc ${Q[key]===x?'on':''}" data-k="${key}" data-v="${esc(x)}">${esc(lab?lab(x):x)}</button>`).join('');
+ $('#qmWh').innerHTML=chips(QM.wh,'wh');
+ $('#qmAux').innerHTML=chips(QM.aux,'aux',x=>x==='—'?'— (sin auxiliar)':x);
+ $('#qmSubj').innerHTML=QM.subj.map(x=>`<button class="mc ${Q.subj===x?'on':''} ${Q.aux==='—'?'dim':''}" data-k="subj" data-v="${esc(x)}">${esc(x)}</button>`).join('');
+ $('#qmVerb').innerHTML=QM.verbs.map((v,i)=>`<button class="mc ${Q.v===i?'on':''}" data-k="v" data-v="${i}">${v.b}</button>`).join('');
+ const V=QM.verbs[Q.v];
+ $('#qmVes').textContent=`${V.b} = ${V.es}`;
+ $('#qmForm').innerHTML=FORMS.map(([k,l])=>`<button class="mc ${Q.f===k?'on':''}" data-k="f" data-v="${k}">${V[k]} <span style="opacity:.55;font-size:.75em">${l}</span></button>`).join('');
+ const vf=V[Q.f],res=qmCheck();
+ const parts=[`<span class="p wh">${esc(Q.wh)}</span>`];
+ if(Q.aux!=='—')parts.push(`<span class="p ax">${esc(Q.aux)}</span>`,`<span class="p sb">${esc(Q.subj)}</span>`);
+ parts.push(`<span class="p vb">${esc(vf)}</span>?`);
+ $('#qmQ').innerHTML=parts.join(' ');
+ $('#qmV').innerHTML=`<div class="verdict ${res.ok?'ok':'no'}"><b>${res.ok?'✓ Pregunta correcta':'✗ Hay que corregir'}</b>${res.msg}</div>`;
+ $('#qmT').textContent=res.ok?res.t:'Piensa: WH + auxiliar + sujeto + verbo';
+}
+function qmText(){const V=QM.verbs[Q.v];return Q.aux==='—'?`${Q.wh} ${V[Q.f]}?`:`${Q.wh} ${Q.aux} ${Q.subj} ${V[Q.f]}?`}
+function qmCheck(){
+ const V=QM.verbs[Q.v],third=THIRD.includes(Q.subj),a=Q.aux,f=Q.f;
+ if(a==='—'){
+  if(Q.wh!=='Who')return{ok:false,msg:`Solo <b>Who</b> puede ir sin auxiliar, cuando Who es el sujeto (Who ${V.s}…?). Con ${esc(Q.wh)} elige un auxiliar.`};
+  if(f==='s')return{ok:true,msg:`Who es el sujeto: el verbo lleva -s, como con he/she.`,t:'Who sujeto · presente simple'};
+  if(f==='p')return{ok:true,msg:`Who es el sujeto: el verbo va directo en pasado.`,t:'Who sujeto · pasado simple'};
+  if(f==='b')return{ok:false,msg:`Con Who como sujeto en presente, el verbo lleva -s: <b>Who ${V.s}?</b>`};
+  return{ok:false,msg:`Para -ing necesitas <b>is</b>: Who is ${V.ing}?`};
+ }
+ if(a==='does'&&!third)return{ok:false,msg:`<b>Does</b> va con he / she / it (o un nombre en singular). Con <b>${esc(Q.subj)}</b> usa <b>do</b>.`};
+ if(a==='do'&&third)return{ok:false,msg:`<b>${esc(Q.subj)}</b> es tercera persona: usa <b>does</b>, no do.`};
+ if(a==='am'&&Q.subj!=='I')return{ok:false,msg:`<b>Am</b> solo va con <b>I</b>. Con ${esc(Q.subj)} usa ${third?'is':'are'}.`};
+ if(a==='is'&&!third)return{ok:false,msg:`<b>Is</b> va con he / she / it. Con <b>${esc(Q.subj)}</b> usa ${Q.subj==='I'?'am':'are'}.`};
+ if(a==='are'&&(third||Q.subj==='I'))return{ok:false,msg:`<b>Are</b> va con you / we / they. Con <b>${esc(Q.subj)}</b> usa ${Q.subj==='I'?'am':'is'}.`};
+ if(['do','does','did','can','will'].includes(a)){
+  if(f==='s')return{ok:false,msg:`Después de <b>${a}</b>, el verbo va en forma base: <b>${V.b}</b>, no ${V.s}.${a==='does'?' Does ya tiene la -s.':''}`};
+  if(f==='ing')return{ok:false,msg:`La forma <b>-ing</b> va con am / is / are, no con ${a}.`};
+  if(f==='p')return{ok:false,msg:a==='did'?`El pasado ya está en <b>did</b>: usa <b>${V.b}</b>, no ${V.p}.`:`Después de <b>${a}</b>, el verbo va en forma base: <b>${V.b}</b>.`};
+  const t={do:'Presente simple · rutinas y hechos',does:'Presente simple · rutinas y hechos',did:'Pasado simple · acciones terminadas',can:'Can · habilidad o posibilidad',will:'Will · futuro o decisión'}[a];
+  return{ok:true,msg:`Auxiliar <b>${a}</b> + sujeto + verbo base. Estructura perfecta.`,t};
+ }
+ if(f!=='ing')return{ok:false,msg:`Con <b>${a}</b> necesitas el verbo con <b>-ing</b>: ${a} ${esc(Q.subj)} <b>${V.ing}</b>.`};
+ return{ok:true,msg:`BE (${a}) + sujeto + verbo-ing: acción en progreso.`,t:'Presente continuo · ahora mismo'};
+}
+$('#machine').addEventListener('click',e=>{
+ const c=e.target.closest('.mc');
+ if(c){const k=c.dataset.k;Q[k]=k==='v'?+c.dataset.v:c.dataset.v;qmRender();const r=qmCheck();if(r.ok){ST.qm++;save()}return}
+ if(e.target.closest('#qmSay'))speakOne(qmText());
+ if(e.target.closest('#qmRand')){const pick=a=>a[Math.floor(Math.random()*a.length)];Q.wh=pick(QM.wh.slice(0,7));Q.aux=pick(QM.aux.slice(0,8));Q.subj=pick(QM.subj);Q.v=Math.floor(Math.random()*QM.verbs.length);Q.f=pick(['b','s','ing','p']);qmRender();toast(qmCheck().ok?'¡Salió correcta! Léela en voz alta.':'Reto: corrige esta pregunta cambiando una o dos piezas.')}
+});
+qmRender();
+
+/* ---------- reading lab ---------- */
+let cur=0,mode='comp';
+const sentences=r=>r.paras.flat().map(s=>s[0]);
+function findIdx(r,frag){const f=frag.toLowerCase().replace(/[“”]/g,'');return sentences(r).findIndex(s=>s.toLowerCase().replace(/[“”]/g,'').includes(f))}
+function renderTiles(){
+ $('#tiles').innerHTML=READ.map((r,i)=>{const p=pct(r);return `<button class="tile ${i===cur?'on':''}" data-i="${i}"><span class="tn">${r.num}</span><span class="tt"><b>${esc(r.domain)}</b><small>${esc(r.title)}</small></span><span class="tp">${p}%</span><span class="tbar"><i style="width:${p}%"></i></span></button>`}).join('');
+}
+$('#tiles').addEventListener('click',e=>{const b=e.target.closest('.tile');if(b)loadReading(+b.dataset.i)});
+function loadReading(i){
+ stopAll();cur=i;const r=READ[i];
+ $('#rKicker').textContent=`Story ${r.num} · ${r.domain}`;
+ $('#rTitle').textContent=r.title;
+ $('#rChips').innerHTML=`<span class="chip n">${r.level}</span><span class="chip g">${esc(r.skill)}</span><span class="chip">${esc(r.focus)}</span><span class="chip">${r.min} min</span>`;
+ $('#rLens').innerHTML=`<b>WH lens</b><span>${esc(r.lens)}</span>`;
+ let k=0;
+ $('#passage').innerHTML=r.paras.map(p=>`<p>${p.map(([en,es])=>`<span class="s" data-i="${k++}" data-t="${esc(en)}">${decorate(en,r.gloss)}<span class="trline">${esc(es)}</span></span>`).join(' ')}</p>`).join('');
+ const used=new Set($$('#passage .wh').map(x=>[...x.classList].find(c=>c.startsWith('wh-'))));
+ const names={what:'What',where:'Where',when:'When',who:'Who',why:'Why',how:'How',which:'Which',whose:'Whose'};
+ $('#legend').innerHTML=Object.keys(names).filter(n=>used.has('wh-'+n)).map(n=>`<i style="color:var(--w-${n})">${names[n]}</i>`).join('')+`<span class="key"><span><span class="qk">relleno</span> = WH en una pregunta</span><span><span class="ek">punteado</span> = WH dentro de una frase normal</span></span>`;
+ renderTiles();renderPractice();
+}
+$('#passage').addEventListener('click',e=>{const s=e.target.closest('.s');if(!s)return;speakOne(s.dataset.t);s.classList.add('speaking');setTimeout(()=>s.classList.remove('speaking'),1500)});
+$('#bPlay').onclick=()=>playSeq('listen');
+$('#bShadow').onclick=()=>playSeq('shadow');
+$('#bStop').onclick=stopAll;
+$('#sRate').onchange=e=>{TTS.rate=+e.target.value};
+$('#sAccent').onchange=e=>{TTS.accent=e.target.value;pickVoice();speakOne(TTS.accent==='en-GB'?'British voice selected.':'American voice selected.')};
+$('#bWh').onclick=e=>{const on=$('#passage').classList.toggle('show-wh');e.currentTarget.classList.toggle('on',on);e.currentTarget.setAttribute('aria-pressed',on)};
+$('#bTr').onclick=e=>{const on=$('#passage').classList.toggle('tr-on');e.currentTarget.classList.toggle('on',on);e.currentTarget.setAttribute('aria-pressed',on);if(on&&$('#passage').classList.contains('listen'))$('#bListen').click()};
+$('#bListen').onclick=e=>{const on=$('#passage').classList.toggle('listen');e.currentTarget.classList.toggle('on',on);e.currentTarget.setAttribute('aria-pressed',on);e.currentTarget.textContent=on?'Mostrar texto':'Listening mode';if(on){toast('Texto oculto: escucha y responde de oído');if($('#passage').classList.contains('tr-on'))$('#bTr').click()}};
+function markRead(){const s=RS(READ[cur].id);if(!s.read){s.read=1;save();refresh();toast('Historia escuchada ✓')}}
+function flashSentence(frag){
+ const i=findIdx(READ[cur],frag);if(i<0)return;
+ const el=$(`#passage .s[data-i="${i}"]`);if(!el)return;
+ $$('#passage .s.evidence').forEach(x=>x.classList.remove('evidence'));
+ if($('#passage').classList.contains('listen'))$('#bListen').click();
+ el.classList.add('evidence');el.scrollIntoView({block:'center',behavior:'smooth'});
+ setTimeout(()=>el.classList.remove('evidence'),3200);
+}
+$$('.mode').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('.mode').forEach(x=>x.classList.toggle('on',x===b));renderPractice()});
+function renderPractice(){
+ const r=READ[cur];
+ $('#practice').innerHTML=mode==='comp'?renderComp(r):mode==='build'?renderBuild(r):mode==='forge'?renderForge(r):renderPerf(r);
+ $('#rProg').textContent=`Progreso de la historia · ${pct(r)}%`;
+}
+
+/* --- Understand --- */
+function renderComp(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">Responde desde el texto — o solo de oído, con Listening mode. Cada respuesta te muestra la frase que la prueba.</p>`+r.comp.map((c,qi)=>{
+  const st=s.comp[qi],done=!!st;
+  return `<div class="qcard ${done?(st.ok?'ok':'no'):''}" data-qi="${qi}"><div class="qn">Check ${qi+1} / ${r.comp.length} <button class="say" style="display:inline-grid;width:22px;height:22px;margin-left:4px;vertical-align:middle;color:var(--gold-dk);border-color:var(--line);background:#fff" data-say="${esc(c.q)}" aria-label="Escuchar pregunta">▶</button></div><p class="qq">${esc(c.q)}</p><div class="opts">${c.a.map((a,ai)=>`<button class="opt ${done&&ai===c.c?'right':''} ${done&&ai===st.pick&&!st.ok?'wrong':''}" data-ai="${ai}" ${done?'disabled':''}>${esc(a)}</button>`).join('')}</div><div class="qfb">${done?compFb(r,c,st.ok):''}</div></div>`}).join('');
+}
+function compFb(r,c,ok){
+ const i=findIdx(r,c.ev),sent=i>=0?sentences(r)[i]:'';
+ return `<b class="${ok?'g':'r'}">${ok?'¡Correcto!':'Casi.'}</b> ${esc(c.e)}${sent?`<button class="evid" data-ev="${esc(c.ev)}"><small>Evidencia · toca para ubicarla</small>${esc(sent)}</button>`:''}`;
+}
+
+/* --- Build (chips) --- */
+const tokens=q=>q.split(' ');
+function renderBuild(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">Te damos la respuesta y las piezas de la pregunta. Tócalas en el orden correcto: WH → auxiliar → sujeto → verbo.</p>`+r.build.map((b,bi)=>{
+  const done=s.build[bi];let order=tokens(b.q);
+  let sh=shuffle(order);let guard=0;while(sh.join(' ')===order.join(' ')&&guard++<10)sh=shuffle(order);
+  return `<div class="buildq ${done?'ok':''}" data-bi="${bi}"><div class="fa"><div><small>Respuesta ${bi+1} · del texto</small><b>“${esc(b.ans)}”</b></div><button class="loc" data-ev="${esc(b.ans)}">Ubicar</button></div><div class="slot">${done?order.map(t=>`<span class="tok">${esc(t)}</span>`).join(''):''}</div><div class="toks">${done?'':sh.map((t,ti)=>`<button class="tok" data-t="${ti}">${esc(t)}</button>`).join('')}</div><div class="ffb">${done?`<b class="g">¡Construida!</b> ${esc(b.q)}`:''}</div><div class="frow2">${done?`<button class="bs" data-say="${esc(b.q)}">▶ Escuchar</button>`:`<button class="bs dark bchk">Comprobar</button><button class="bs bundo">↶ Deshacer</button><button class="bs" data-say="${esc(b.q)}">▶ Pista de audio</button>`}</div></div>`}).join('');
+}
+
+/* --- Write (forge) --- */
+function renderForge(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">Ahora sin fichas. Lee la respuesta y escribe la pregunta exacta. La pista te dice qué tipo de información buscas.</p>`+r.forge.map((f,fi)=>{
+  const st=s.forge[fi]||{};
+  return `<div class="fcard ${st.ok?'ok':''}" data-fi="${fi}"><div class="fa"><div><small>Respuesta ${fi+1} · del texto</small><b>“${esc(f.ans)}”</b></div><button class="loc" data-ev="${esc(f.ans)}">Ubicar</button></div><div class="fh">🎯 ${esc(f.hint)}</div><div class="frow"><input type="text" autocomplete="off" autocapitalize="sentences" spellcheck="false" enterkeyhint="done" placeholder="Write the question…" value="${esc(st.v||'')}" aria-label="Tu pregunta"><button class="bs dark chk">Comprobar</button></div><div class="ffb">${st.ok?`<b class="g">¡Pregunta perfecta!</b><span class="model">Modelo: ${esc(f.model)}</span>`:''}</div><div class="frow2"><button class="bs show">Ver modelo</button><button class="bs hear">▶ Escuchar modelo</button></div></div>`}).join('');
+}
+function norm(s){
+ s=s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[’‘`´]/g,"'");
+ s=s.replace(/\bwon't\b/g,'will not').replace(/\bcan't\b/g,'can not').replace(/\bcannot\b/g,'can not').replace(/n't\b/g,' not')
+  .replace(/\b(what|where|who|how|when|why|that|it|there|he|she)'s\b/g,'$1 is').replace(/'re\b/g,' are').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will').replace(/'m\b/g,' am').replace(/'d\b/g,' would').replace(/'s\b/g,'');
+ return s.replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+}
+const IRREG=/\bdid\b.*\b(said|went|ate|came|gave|made|took|saw|had|got|spoke|bought|wrote|began|knew|thought|told|found|left|met|paid|sent|was|were)\b/;
+const NAMES='i|you|he|she|it|we|they|the|his|her|their|sofia|lucia|carlos|mariana|paula|andres|natalia|ricardo|jorge|daniela|patricia|tomas|lucia s';
+function checkForge(f,raw){
+ const n=norm(raw);
+ if(n.split(' ').length<2)return{ok:false,msg:'Escribe una pregunta completa.'};
+ const okStart=f.start.some(p=>n.startsWith(norm(p)));
+ const okKeys=f.keys.every(k=>new RegExp('\\b('+k+')').test(n));
+ if(f.aux&&/does/.test(f.aux)){const after=n.split(/\bdoes\b/)[1];if(after!==undefined&&f.keys.join('|').split('|').filter(Boolean).some(k=>new RegExp('\\b('+k+')(s|es)\\b').test(after)))return{ok:false,msg:'<b class="r">Casi.</b> Después de <b>does</b>, el verbo va sin -s: <i>Where does she work?</i> (no works).'}}
+ if(f.aux&&/did/.test(f.aux)&&/\bdid\b/.test(n)){if(IRREG.test(n)||/\bdid\s+(?:\w+\s+){0,3}?(\w{3,}ed)\b/.test(n)&&!/\b(need|feed|speed)\b/.test(n))return{ok:false,msg:'<b class="r">Casi.</b> Después de <b>did</b>, el verbo va en forma base: <i>did … go / say / eat</i>, no went / said / ate.'}}
+ if(okStart&&okKeys){
+  if(!/[?？]\s*$/.test(raw.trim()))return{ok:true,msg:'<b class="g">Estructura correcta.</b> No olvides el signo <b>?</b> al final (en inglés solo va al final).'};
+  return{ok:true,msg:'<b class="g">¡Pregunta perfecta!</b>'};
+ }
+ const whs=f.wh.split('|');
+ if(!whs.some(w=>n.startsWith(norm(w))))return{ok:false,msg:`<b class="r">Revisa la palabra WH.</b> ${esc(f.hint.split('→')[0].trim())} → empieza con <b>${whs.join('</b> o <b>')}</b>.`};
+ const first=norm(whs.find(w=>n.startsWith(norm(w))));
+ const rest=n.slice(first.length).trim();
+ if(!f.aux&&/^(did|does|do)\b/.test(rest))return{ok:false,msg:'<b class="r">Pregunta de sujeto.</b> Aquí Who es quien hace la acción: no uses do/does/did. <i>Who + verbo</i> (Who helps…?).'};
+ if(f.aux&&!new RegExp('\\b('+f.aux+')\\b').test(n))return{ok:false,msg:`<b class="r">Falta el auxiliar.</b> Esta pregunta necesita <b>${f.aux.split('|').join('</b> o <b>')}</b> antes del sujeto.`};
+ if(f.aux&&new RegExp('^('+NAMES+')\\b').test(rest.replace(/^(units|people|weeks|days|clients|chairs|office chairs|teachers|company|color)\s*/,'')))return{ok:false,msg:'<b class="r">Orden.</b> El auxiliar va <b>antes</b> del sujeto: WH + auxiliar + sujeto + verbo.'};
+ return{ok:false,msg:'<b class="r">Muy cerca.</b> Tu estructura funciona, pero pregunta por otra información. Vuelve a leer la respuesta y compara con el modelo.'};
+}
+function runForge(fc,fi){
+ const r=READ[cur],s=RS(r.id),f=r.forge[fi],v=$('input',fc).value;
+ const res=checkForge(f,v),fb=$('.ffb',fc),prev=s.forge[fi]||{};
+ s.forge[fi]={v,ok:prev.ok||res.ok};save();
+ fb.innerHTML=res.msg+(res.ok?`<span class="model">Modelo: ${esc(f.model)}</span>`:'');
+ if(res.ok){fc.classList.add('ok');speakOne(f.model)}
+ refresh();
+}
+
+/* --- Speak --- */
+function renderPerf(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">Habla 60 segundos por misión. Grábate, escúchate y evalúate como lo haría tu coach.</p>`+r.speak.map((p,pi)=>`<div class="pcard ${s.speak[pi]?'ok':''}" data-pi="${pi}"><div class="pn">Mission ${pi+1} <button class="say" style="display:inline-grid;width:22px;height:22px;margin-left:4px;vertical-align:middle;color:var(--gold-dk);border-color:var(--line);background:#fff" data-say="${esc(p)}" aria-label="Escuchar">▶</button></div><p>${esc(p)}</p><div class="prow"><button class="bs dark tmr">⏱ 60 s</button><button class="bs rec">● Grabar</button><span class="clock">1:00</span></div><audio controls hidden></audio></div>`).join('')+`<div class="rubric"><b>Autoevaluación</b><ul><li>Cada pregunta tuvo su auxiliar (do / does / did / is / are…).</li><li>Después de does y did usé el verbo base.</li><li>Mi voz bajó al final de las preguntas WH ↘.</li><li>Respondí con frases completas, no con una sola palabra.</li></ul></div>`;
+}
+let rec=null,recStream=null,clockT=null;
+const fmt=sec=>`${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`;
+function markSpeak(card){const s=RS(READ[cur].id),pi=+card.dataset.pi;if(!s.speak[pi]){s.speak[pi]=1;save();card.classList.add('ok');refresh();toast('Misión registrada ✓')}}
+function runClock(card,secs,onDone){
+ clearInterval(clockT);const c=$('.clock',card);let t=secs;c.textContent=fmt(t);c.classList.add('run');
+ clockT=setInterval(()=>{t--;c.textContent=fmt(Math.max(t,0));if(t<=0){clearInterval(clockT);c.classList.remove('run');onDone&&onDone()}},1000);
+}
+
+/* --- practice events --- */
+$('#practice').addEventListener('click',async e=>{
+ const r=READ[cur],s=RS(r.id);
+ const ev=e.target.closest('[data-ev]');if(ev){flashSentence(ev.dataset.ev);return}
+ const opt=e.target.closest('.opt');
+ if(opt&&!opt.disabled){
+  const card=opt.closest('.qcard'),qi=+card.dataset.qi,c=r.comp[qi],pick=+opt.dataset.ai,ok=pick===c.c;
+  s.comp[qi]={pick,ok};save();
+  $$('.opt',card).forEach((b,ai)=>{b.disabled=true;if(ai===c.c)b.classList.add('right');if(ai===pick&&!ok)b.classList.add('wrong')});
+  card.classList.add(ok?'ok':'no');$('.qfb',card).innerHTML=compFb(r,c,ok);
+  flashSentence(c.ev);refresh();return;
+ }
+ const bq=e.target.closest('.buildq');
+ if(bq&&!s.build[+bq.dataset.bi]){
+  const bi=+bq.dataset.bi,b=r.build[bi],slot=$('.slot',bq);
+  const t=e.target.closest('.toks .tok');
+  if(t){const c=t.cloneNode(true);c.dataset.src=t.dataset.t;slot.appendChild(c);t.classList.add('used');$('.ffb',bq).innerHTML='';return}
+  const back=e.target.closest('.slot .tok');
+  if(back){$(`.toks .tok[data-t="${back.dataset.src}"]`,bq).classList.remove('used');back.remove();return}
+  if(e.target.closest('.bundo')){const last=slot.lastElementChild;if(last){$(`.toks .tok[data-t="${last.dataset.src}"]`,bq).classList.remove('used');last.remove()}return}
+  if(e.target.closest('.bchk')){
+   const got=$$('.tok',slot).map(x=>x.textContent).join(' ');
+   if(got===b.q){s.build[bi]=1;save();bq.classList.add('ok');$('.ffb',bq).innerHTML=`<b class="g">¡Construida!</b> Ahora dila en voz alta.`;$('.toks',bq).innerHTML='';$('.frow2',bq).innerHTML=`<button class="bs" data-say="${esc(b.q)}">▶ Escuchar</button>`;speakOne(b.q);refresh()}
+   else{const n=$$('.tok',slot).length,total=tokens(b.q).length;
+    let first=-1;const g=got.split(' ');tokens(b.q).some((w,i)=>{if(g[i]!==w){first=i;return true}});
+    $('.ffb',bq).innerHTML=n<total?`<b class="r">Faltan piezas.</b> Usa las ${total} fichas.`:`<b class="r">Revisa el orden.</b> ${first===0?'La pregunta empieza con la palabra WH.':first===1||(first===2&&/^(How|What) (much|many|long|often|old|time|color)$/.test(tokens(b.q).slice(0,2).join(' ')))?'Después de la WH va el auxiliar (do / does / did / is / are…).':'Recuerda: WH → auxiliar → sujeto → verbo → resto.'} Toca una ficha colocada para devolverla.`}
+   return;
+  }
+ }
+ const fc=e.target.closest('.fcard');
+ if(fc){const fi=+fc.dataset.fi,f=r.forge[fi],fb=$('.ffb',fc);
+  if(e.target.closest('.chk'))runForge(fc,fi);
+  else if(e.target.closest('.show'))fb.innerHTML=`<span class="model">Modelo: ${esc(f.model)}</span>Estúdiala, ocúltala y escríbela de memoria.`;
+  else if(e.target.closest('.hear'))speakOne(f.model,.75);
+  return}
+ const card=e.target.closest('.pcard');
+ if(card){
+  if(e.target.closest('.tmr')){stopAll();runClock(card,60,()=>{markSpeak(card);toast('¡Tiempo! 60 segundos')})}
+  if(e.target.closest('.rec')){
+   const btn=e.target.closest('.rec');
+   if(rec&&rec.state==='recording'){rec.stop();return}
+   if(!navigator.mediaDevices||!window.MediaRecorder){toast('Este navegador no permite grabar: usa el temporizador y habla en voz alta');return}
+   try{
+    stopAll();recStream=await navigator.mediaDevices.getUserMedia({audio:true});
+    const chunks=[];rec=new MediaRecorder(recStream);
+    rec.ondataavailable=ev=>{if(ev.data.size)chunks.push(ev.data)};
+    rec.onstop=()=>{recStream.getTracks().forEach(t=>t.stop());clearInterval(clockT);const a=$('audio',card);a.src=URL.createObjectURL(new Blob(chunks,{type:rec.mimeType||'audio/webm'}));a.hidden=false;btn.textContent='● Grabar otra vez';btn.classList.remove('live');$('.clock',card).classList.remove('run');markSpeak(card)};
+    rec.start();btn.textContent='■ Detener';btn.classList.add('live');
+    runClock(card,90,()=>{if(rec&&rec.state==='recording')rec.stop()});
+   }catch(err){toast('Micrófono no disponible: usa el temporizador y habla en voz alta')}
+  }
+ }
+});
+$('#practice').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.fcard input')){e.preventDefault();const fc=e.target.closest('.fcard');runForge(fc,+fc.dataset.fi)}});
+$('#bResetR').onclick=()=>{const r=READ[cur];if(!confirm(`¿Reiniciar tu progreso en “${r.title}”?`))return;delete ST.r[r.id];save();loadReading(cur);refresh()};
+
+/* ---------- conversations ---------- */
+let F=0,fi=0,fscore=0;
+$('#flowTabs').innerHTML=FLOWS.map((f,i)=>`<button class="chip ${i===0?'on':''}" data-f="${i}" style="padding:10px 16px">${esc(f.t)}</button>`).join('');
+$('#flowTabs').addEventListener('click',e=>{const b=e.target.closest('.chip');if(!b)return;F=+b.dataset.f;$$('#flowTabs .chip').forEach(x=>x.classList.toggle('on',x===b));fi=0;renderFlow()});
+function renderFlow(){
+ const FL=FLOWS[F],T=FL.turns,chat=$('#chat');
+ if(fi===0){chat.innerHTML='';fscore=0}
+ $('#flowTitle').textContent=FL.t;$('#flowDesc').textContent=FL.d;
+ $('#flowScore').textContent=`${fscore}/${T.length}`;$('#flowBest').textContent=ST.flow[FL.id]||0;
+ $$('.choices',chat).forEach(x=>x.remove());
+ if(fi>=T.length){
+  if(fscore>(ST.flow[FL.id]||0)){ST.flow[FL.id]=fscore;save();refresh()}
+  $('#flowBest').textContent=ST.flow[FL.id]||0;
+  chat.insertAdjacentHTML('beforeend',`<div class="msg note ${fscore>=5?'':'x'}"><b>${fscore}/${T.length} buenas preguntas.</b> ${fscore>=5?'¡Excelente! Escuchaste y cada pregunta nació de la respuesta anterior.':'Repite la conversación: la mejor pregunta siempre conecta con lo que la otra persona acaba de decir.'}</div>`);
+  return;
+ }
+ const t=T[fi];
+ chat.insertAdjacentHTML('beforeend',`<div class="msg cl"><small>${esc(FL.who)} <button class="say" style="display:inline-grid;width:22px;height:22px;margin-left:4px;vertical-align:middle;color:var(--gold-dk);border-color:var(--line)" data-say="${esc(t.c)}" aria-label="Escuchar">▶</button></small>${esc(t.c)}</div>`);
+ chat.insertAdjacentHTML('beforeend',`<div class="choices"><span class="cap">Turno ${fi+1} de ${T.length} · Tu pregunta</span>${t.o.map((o,i)=>`<button class="choice" data-o="${i}">${esc(o.t)}</button>`).join('')}</div>`);
+ if(fi>0)say(t.c);
+}
+$('#chat').addEventListener('click',e=>{
+ const b=e.target.closest('.choice');if(!b)return;
+ const t=FLOWS[F].turns[fi],o=t.o[+b.dataset.o],best=t.o.find(x=>x.ok),chat=$('#chat');
+ $$('.choices',chat).forEach(x=>x.remove());
+ if(o.ok){fscore++;chat.insertAdjacentHTML('beforeend',`<div class="msg me"><small>You</small>${esc(o.t)}</div><div class="msg note">✓ ${esc(o.w)}</div>`);speakOne(o.t)}
+ else{chat.insertAdjacentHTML('beforeend',`<div class="msg note x">✗ “${esc(o.t)}” — ${esc(o.w)}</div><div class="msg me"><small>Mejor opción</small>${esc(best.t)}</div><div class="msg note">✓ ${esc(best.w)}</div>`);speakOne(best.t)}
+ fi++;setTimeout(()=>{if(hasTTS&&speechSynthesis.speaking){const wait=()=>{if(speechSynthesis.speaking)setTimeout(wait,200);else renderFlow()};wait()}else renderFlow()},400);
+});
+$('#flowRestart').onclick=()=>{stopAll();fi=0;renderFlow()};
+
+/* ---------- writing studio ---------- */
+$('#wPrompt').innerHTML=PROMPTS.map((p,i)=>`<option value="${i}">${i+1}. ${esc(p)}</option>`).join('');
+const wT=$('#wText');wT.value=ST.write.draft||'';
+function analyze(){
+ const t=wT.value,words=(t.match(/[A-Za-zÀ-ÿ’']+/g)||[]).length;
+ const direct=(t.match(/\?/g)||[]).length;
+ const found=[...new Set((t.match(/\b(how much|how many|how long|how often|how old|what time|whose|what|where|when|which|who|why|how)\b/gi)||[]).map(x=>x.toLowerCase()))];
+ const crit=[['Longitud',words,60,'palabras'],['Preguntas directas',direct,4,''],['Palabras WH diferentes',found.length,4,'']];
+ $('#wCrit').innerHTML=crit.map(([l,v,g,u])=>`<div class="crit ${v>=g?'met':''}"><span>${l}</span><b>${v}/${g}${u?' '+u:''}</b><div class="bar"><i style="width:${Math.min(100,v/g*100)}%"></i></div></div>`).join('');
+ $('#wFound').innerHTML=found.map(w=>`<span>${esc(w)}</span>`).join('');
+ const warns=[];
+ const add=(re,msg)=>{let m;const r=new RegExp(re.source,re.flags.includes('g')?re.flags:re.flags+'g');while((m=r.exec(t))&&warns.length<6){warns.push(`<b>“${esc(m[0].replace(/^[.!?¿]\s*/,'').trim())}”</b> — ${msg}`)}};
+ add(/\bdoes\s+(?:he|she|it|the \w+|my \w+|your \w+|our \w+|\w+)\s+(?!is\b|was\b|has\b|does\b|focus\b|access\b|process\b|discuss\b|pass\b|miss\b|guess\b)\w{2,}[^s\W]s\b/gi,'después de <b>does</b>, el verbo va sin -s.');
+ add(/\bdid\s+(?:i|you|he|she|it|we|they)\s+(?!need\b|feed\b|speed\b)\w+ed\b/gi,'después de <b>did</b>, usa el verbo base.');
+ add(/\bdid\s+(?:i|you|he|she|it|we|they)\s+(?:said|went|ate|came|gave|made|took|saw|had|got|bought|wrote|told|found|met|paid|sent)\b/gi,'después de <b>did</b>, usa el verbo base (go, eat, say…).');
+ add(/\b(?:do|does)\s+(?:you|he|she|it|we|they|i)\s+\w+ing\b/gi,'la forma <b>-ing</b> va con am / is / are, no con do/does.');
+ add(/\bdoes\s+(?:i|you|we|they)\b/gi,'con I / you / we / they usa <b>do</b>.');
+ add(/(?:^|[.!?]\s+)¿?(?:what|where|when|why|how)\s+(?:you|he|she|they|we|i)\s+(?!are\b|were\b|am\b|is\b)\w+[^.?!]*\?/gi,'falta el auxiliar: WH + <b>do / does / did</b> + sujeto + verbo.');
+ if(/¿/.test(t))warns.push('<b>¿</b> — en inglés no se usa el signo de apertura: solo <b>?</b> al final.');
+ $('#wWarn').innerHTML=warns.length?warns.map(w=>`<div class="warn">${w}</div>`).join(''):(words>=15?`<div class="allgood">Sin alertas de estructura. Tu profe revisará el significado y la naturalidad.</div>`:'');
+ ST.write.draft=t;save();
+ return{words,direct,core:found.length};
+}
+wT.addEventListener('input',analyze);analyze();
+$('#wCopy').onclick=async()=>{try{await navigator.clipboard.writeText(wT.value);toast('Copiado ✓')}catch(e){wT.select();document.execCommand&&document.execCommand('copy');toast('Copiado ✓')}};
+$('#wHear').onclick=()=>{if(wT.value.trim())speakOne(wT.value);else toast('Escribe algo primero')};
+$('#wSend').onclick=()=>{
+ const a=analyze();if(a.words<15){toast('Escribe tu texto primero');return}
+ const p=PROMPTS[+$('#wPrompt').value];
+ const msg=`WH Mastery A2–B1 · Writing Studio\nPrompt: ${p}\nPalabras: ${a.words} · Preguntas: ${a.direct} · WH diferentes: ${a.core}\n\n${wT.value.trim()}`.slice(0,3500);
+ ST.write.sent=(ST.write.sent||0)+1;save();refresh();
+ window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+};
+
+/* ---------- mastery record ---------- */
+function refresh(){
+ renderTiles();
+ if($('#rProg'))$('#rProg').textContent=`Progreso de la historia · ${pct(READ[cur])}%`;
+ let total=0,mastered=0,cOk=0,cAns=0,bOk=0,fOk=0,sp=0;
+ READ.forEach(x=>{const s=RS(x.id);total+=pts(x);if(pct(x)>=80)mastered++;Object.values(s.comp).forEach(c=>{cAns++;if(c.ok)cOk++});bOk+=cnt(s.build);fOk+=cnt(s.forge);sp+=cnt(s.speak)});
+ const conv=FLOWS.reduce((a,f)=>a+(ST.flow[f.id]||0),0),convMax=FLOWS.reduce((a,f)=>a+f.turns.length,0);
+ const overall=Math.round((total+conv)/(READ.length*MAXP+convMax)*100);
+ $('#mPct').textContent=overall+'%';
+ $('#recGrid').innerHTML=`
+  <div class="stat hl"><small>Dominio total</small><b>${overall}%</b><span>todas las actividades</span></div>
+  <div class="stat"><small>Historias dominadas</small><b>${mastered}/${READ.length}</b><span>con 80% o más</span></div>
+  <div class="stat"><small>Comprensión</small><b>${cOk}/${READ.length*4}</b><span>${cAns?Math.round(cOk/cAns*100):0}% al primer intento</span></div>
+  <div class="stat"><small>Preguntas</small><b>${bOk+fOk}/${READ.length*6}</b><span>${bOk} construidas · ${fOk} escritas</span></div>
+  <div class="stat"><small>Speaking</small><b>${sp}/${READ.length*2}</b><span>conversaciones ${conv}/${convMax} · ${ST.write.sent||0} textos enviados</span></div>`;
+}
+$('#bResetAll').onclick=()=>{if(!confirm('¿Reiniciar todo tu progreso en este dispositivo?'))return;ST={write:{sent:0,draft:wT.value}};initST();save();loadReading(cur);fi=0;renderFlow();refresh()};
+
+/* ---------- boot ---------- */
+loadReading(0);renderFlow();refresh();
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');ro.unobserve(e.target)}}),{threshold:.08});
+$$('.reveal').forEach(el=>ro.observe(el));
+const links=$$('.nav a');
+const no=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-35% 0px -60%'});
+$$('main section[id]').forEach(s=>no.observe(s));
+addEventListener('beforeunload',()=>{if(hasTTS)speechSynthesis.cancel()});
+
+</script>
+</body>
+</html>
