@@ -1,0 +1,1224 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="WH Mastery · Premium Edition by ProfGermandario. Eight professional readings where WH questions live inside real paragraphs: listen, decode, rebuild and perform.">
+<title>WH Mastery · Premium · ProfGermandario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Figtree:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500;1,9..144,600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+:root{
+ --navy:#0A1730;--navy2:#10223F;--navy3:#1A3156;--navy-line:rgba(255,255,255,.1);
+ --paper:#F8F4EC;--cream:#EFE7D6;--card:#FFFDF8;
+ --ink:#121C2B;--soft:#3B4657;--muted:#6C7584;
+ --gold:#C3983F;--gold2:#E2C07A;--gold-dk:#87651F;--gold-wash:rgba(195,152,63,.14);
+ --line:rgba(18,28,43,.12);--line2:rgba(18,28,43,.07);
+ --good:#1D7656;--good-wash:rgba(29,118,86,.1);--bad:#AE3A2C;--bad-wash:rgba(174,58,44,.09);
+ --shadow:0 24px 60px -30px rgba(10,23,48,.45);--shadow-s:0 10px 30px -18px rgba(10,23,48,.35);
+ --r:20px;--pill:999px;
+ --w-what:#A97614;--w-where:#0E7466;--w-when:#B4531C;--w-who:#6A3D9E;--w-why:#B8352A;--w-how:#1C5CA3;--w-which:#2C7A3A;--w-whose:#A0386D;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:84px;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 1rem/1.6 Figtree,system-ui,sans-serif}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,calc(100% - 32px));margin:0 auto}
+.mono{font-family:'DM Mono',ui-monospace,monospace}
+.eyebrow{font:500 .68rem/1.2 'DM Mono',monospace;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dk)}
+.eyebrow.gold{color:var(--gold2)}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;letter-spacing:-.025em;margin:0}
+
+/* top bar */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(10,23,48,.94);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--navy-line);color:#fff}
+.tb{display:flex;align-items:center;gap:18px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;flex-shrink:0}
+.mark{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;background:linear-gradient(140deg,var(--gold2),var(--gold));color:var(--navy);font:700 .85rem Fraunces,serif}
+.brand span:last-child{font:700 .9rem/1.1 Figtree}
+.brand small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.16em;text-transform:uppercase;color:var(--gold2);margin-top:3px}
+.nav{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none;flex:1;min-width:0}
+.nav::-webkit-scrollbar{display:none}
+.nav a{white-space:nowrap;padding:8px 12px;border-radius:var(--pill);font-size:.82rem;font-weight:600;color:rgba(255,255,255,.66);transition:.2s}
+.nav a:hover{color:#fff}
+.nav a.active{color:var(--navy);background:var(--gold2)}
+.mpill{flex-shrink:0;display:flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(226,192,122,.4);border-radius:var(--pill);font-size:.78rem;color:rgba(255,255,255,.8)}
+.mpill b{font:600 .95rem Fraunces;color:var(--gold2)}
+
+/* hero */
+.hero{background:radial-gradient(70% 60% at 85% 10%,rgba(195,152,63,.18),transparent 60%),radial-gradient(60% 70% at 0% 100%,rgba(28,92,163,.22),transparent 60%),var(--navy);color:#fff;padding:84px 0 92px;overflow:hidden;position:relative}
+.hero:after{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:56px 56px;mask-image:linear-gradient(to bottom,#000,transparent 85%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(2.9rem,6.6vw,5.6rem);line-height:.95;margin:20px 0 24px;letter-spacing:-.045em}
+.hero h1 em{display:block;font-style:italic;font-weight:500;color:var(--gold2)}
+.lede{font-size:clamp(1.02rem,1.6vw,1.16rem);color:rgba(255,255,255,.74);max-width:600px;margin:0}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:var(--pill);padding:14px 22px;font-weight:700;font-size:.95rem;transition:transform .2s,box-shadow .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.gold{background:linear-gradient(140deg,var(--gold2),var(--gold));color:var(--navy);box-shadow:0 16px 36px -14px rgba(195,152,63,.7)}
+.btn.line{border:1px solid rgba(255,255,255,.25);color:#fff;background:transparent}
+.btn.navy{background:var(--navy);color:#fff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:44px;border-top:1px solid var(--navy-line);padding-top:22px;max-width:620px}
+.stats div{padding-right:12px}
+.stats b{display:block;font:600 2.1rem/1 Fraunces;color:#fff}
+.stats span{font-size:.76rem;color:rgba(255,255,255,.55);line-height:1.3;display:block;margin-top:6px}
+.index{background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:24px;padding:22px 22px 18px;backdrop-filter:blur(6px)}
+.index-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.index-head .mono{font-size:.7rem;color:rgba(255,255,255,.5)}
+.index ol{list-style:none;margin:0;padding:0}
+.index li button{width:100%;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:10px;text-align:left;background:none;border:0;border-bottom:1px solid var(--navy-line);padding:11px 4px;color:#fff;transition:.2s}
+.index li:last-child button{border-bottom:0}
+.index li button:hover{padding-left:10px;color:var(--gold2)}
+.index .n{font:500 .72rem 'DM Mono';color:var(--gold2)}
+.index .d{font-weight:700;font-size:.92rem}
+.index .d small{display:block;font-weight:400;font-size:.76rem;color:rgba(255,255,255,.5)}
+.index .lv{font:500 .64rem 'DM Mono';padding:3px 7px;border:1px solid var(--navy-line);border-radius:6px;color:rgba(255,255,255,.65)}
+.index-foot{margin:12px 0 0;font:italic 500 1rem Fraunces;color:var(--gold2);text-align:center}
+
+/* sections */
+section{padding:96px 0}
+.sh{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:end;margin-bottom:40px}
+.sh h2{font-size:clamp(2.2rem,4.6vw,3.7rem);line-height:1;margin-top:12px}
+.sh h2 em{font-style:italic;font-weight:500;color:var(--gold-dk)}
+.sh p{color:var(--soft);font-size:1.04rem;margin:0;max-width:560px}
+.dark{background:var(--navy);color:#fff}
+.dark .sh p{color:rgba(255,255,255,.68)}
+.dark .sh h2 em{color:var(--gold2)}
+.dark .eyebrow{color:var(--gold2)}
+
+/* method */
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.pillar{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:24px;box-shadow:var(--shadow-s);position:relative;overflow:hidden}
+.pillar:before{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--gold),transparent)}
+.pillar .pk{font:500 .64rem 'DM Mono';letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.pillar h3{font-size:1.4rem;margin:10px 0 8px}
+.pillar p{margin:0;color:var(--soft);font-size:.93rem}
+.pillar .tool{display:inline-block;margin-top:14px;font:500 .7rem 'DM Mono';color:var(--gold-dk);background:var(--gold-wash);padding:5px 9px;border-radius:8px}
+.manifesto{margin-top:18px;background:var(--navy);color:#fff;border-radius:var(--r);padding:28px 32px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.manifesto b{font:italic 500 clamp(1.4rem,2.6vw,2rem)/1.15 Fraunces;color:var(--gold2);max-width:420px}
+.manifesto p{margin:0;color:rgba(255,255,255,.72)}
+
+/* precision */
+.prec{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pcd{background:var(--navy2);border:1px solid var(--navy-line);border-radius:var(--r);padding:24px;display:flex;flex-direction:column}
+.pcd .pk{font:500 .66rem 'DM Mono';color:var(--gold2);letter-spacing:.14em}
+.pcd h3{font-size:1.45rem;margin:8px 0 8px;color:#fff}
+.pcd p{color:rgba(255,255,255,.66);font-size:.92rem;margin:0 0 14px}
+.ex{display:flex;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--navy-line);font-size:.93rem}
+.ex .mk{font-weight:800;color:#6FD3B0;width:14px;flex-shrink:0}
+.ex.bad .mk{color:#FF8A7A}
+.ex.bad span:nth-child(2){text-decoration:line-through;text-decoration-color:rgba(255,138,122,.7);color:rgba(255,255,255,.5)}
+.ex span:nth-child(2){flex:1}
+.say{border:1px solid var(--navy-line);background:rgba(255,255,255,.05);color:var(--gold2);width:30px;height:30px;border-radius:50%;flex-shrink:0;font-size:.7rem;display:grid;place-items:center;transition:.2s}
+.say:hover{background:var(--gold2);color:var(--navy)}
+.intonation{margin-top:18px;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.into{background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:var(--r);padding:20px 22px;display:flex;gap:16px;align-items:center}
+.into svg{flex-shrink:0}
+.into b{display:block;font:600 1.1rem Fraunces;color:#fff}
+.into span{font-size:.9rem;color:rgba(255,255,255,.66)}
+
+/* reading lab */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px}
+.tile{display:grid;grid-template-columns:auto 1fr auto;grid-template-rows:auto auto;gap:4px 12px;align-items:center;text-align:left;background:var(--card);border:1px solid var(--line2);border-radius:16px;padding:14px 15px;transition:.2s}
+.tile:hover{border-color:var(--gold);transform:translateY(-2px)}
+.tile.on{background:var(--navy);border-color:var(--navy);color:#fff}
+.tile .tn{font:500 .7rem 'DM Mono';color:var(--gold-dk);grid-row:1/3}
+.tile.on .tn{color:var(--gold2)}
+.tile .tt b{display:block;font-size:.88rem;line-height:1.2}
+.tile .tt small{display:block;font-size:.74rem;color:var(--muted);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:170px}
+.tile.on .tt small{color:rgba(255,255,255,.6)}
+.tile .tp{font:500 .68rem 'DM Mono';color:var(--muted)}
+.tile.on .tp{color:var(--gold2)}
+.tile .tbar{grid-column:2/4;height:3px;background:var(--line2);border-radius:3px;overflow:hidden}
+.tile.on .tbar{background:rgba(255,255,255,.12)}
+.tile .tbar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));transition:width .4s}
+
+.reader{background:var(--card);border:1px solid var(--line2);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+.rhead{padding:28px 32px 22px;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:flex-end;background:linear-gradient(180deg,#fff,var(--card))}
+.rhead h3{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.05;margin-top:8px}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chip{font:500 .68rem 'DM Mono';padding:6px 10px;border-radius:8px;background:var(--cream);color:var(--soft);letter-spacing:.04em}
+.chip.g{background:var(--gold-wash);color:var(--gold-dk)}
+.chip.n{background:var(--navy);color:var(--gold2)}
+.rgrid{display:grid;grid-template-columns:1.08fr .92fr}
+.tcol{padding:26px 32px 32px;border-right:1px solid var(--line2)}
+.pcol{padding:22px 26px 30px;background:linear-gradient(180deg,#FBF8F1,var(--card))}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:16px}
+.tbtn{border:1px solid var(--line);background:#fff;border-radius:var(--pill);padding:8px 13px;font-size:.82rem;font-weight:700;color:var(--soft);display:inline-flex;align-items:center;gap:6px;transition:.2s}
+.tbtn:hover{border-color:var(--ink);color:var(--ink)}
+.tbtn.pri{background:var(--navy);color:#fff;border-color:var(--navy)}
+.tbtn.on{background:var(--gold-wash);border-color:var(--gold);color:var(--gold-dk)}
+.tbtn.live{background:var(--bad);border-color:var(--bad);color:#fff}
+.tsel{border:1px solid var(--line);background:#fff;border-radius:var(--pill);padding:8px 10px;font-size:.8rem;font-weight:700;color:var(--soft)}
+.lens{display:flex;gap:12px;background:var(--navy);color:rgba(255,255,255,.82);border-radius:16px;padding:14px 16px;font-size:.9rem;margin-bottom:20px}
+.lens b{font:500 .62rem 'DM Mono';color:var(--gold2);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding-top:3px}
+.passage{font:400 1.2rem/1.78 Newsreader,Georgia,serif;color:#1A2333}
+.passage p{margin:0 0 1.05em}
+.s{cursor:pointer;border-radius:4px;transition:background .25s,box-shadow .25s,filter .3s;padding:1px 0}
+.s:hover{background:rgba(195,152,63,.08)}
+.s.speaking{background:rgba(195,152,63,.22);box-shadow:0 0 0 3px rgba(195,152,63,.22)}
+.s.your-turn{background:rgba(29,118,86,.14);box-shadow:0 0 0 3px rgba(29,118,86,.14)}
+.s.evidence{background:rgba(28,92,163,.14);box-shadow:0 0 0 3px rgba(28,92,163,.14)}
+.passage.listen .s{filter:blur(6px);user-select:none}
+.wh{--c:var(--w-what);transition:.2s}
+.wh-what{--c:var(--w-what)}.wh-where{--c:var(--w-where)}.wh-when{--c:var(--w-when)}.wh-who{--c:var(--w-who)}.wh-why{--c:var(--w-why)}.wh-how{--c:var(--w-how)}.wh-which{--c:var(--w-which)}.wh-whose{--c:var(--w-whose)}
+.show-wh .wh.q{color:var(--c);background:color-mix(in srgb,var(--c) 13%,transparent);border-radius:4px;font-weight:500;padding:0 .14em;box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--c) 55%,transparent)}
+.show-wh .wh.emb{color:var(--c);border-bottom:2px dotted var(--c)}
+.gl{border-bottom:1px solid rgba(195,152,63,.65);cursor:help}
+.gl:focus{outline:2px solid var(--gold);outline-offset:2px;border-radius:2px}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;margin-top:20px;padding-top:16px;border-top:1px dashed var(--line);font-size:.76rem;color:var(--muted)}
+.legend i{font-style:normal;font-weight:700}
+.legend .key{width:100%;display:flex;gap:16px;flex-wrap:wrap;margin-top:4px}
+.legend .qk{padding:0 5px;border-radius:4px;background:color-mix(in srgb,var(--w-how) 13%,transparent);color:var(--w-how);box-shadow:inset 0 -2px 0 color-mix(in srgb,var(--w-how) 55%,transparent)}
+.legend .ek{color:var(--w-how);border-bottom:2px dotted var(--w-how)}
+.hint-line{font-size:.8rem;color:var(--muted);margin-top:10px}
+
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:var(--cream);padding:4px;border-radius:14px;margin-bottom:18px}
+.mode{border:0;background:none;border-radius:11px;padding:10px 6px;font-weight:700;font-size:.84rem;color:var(--soft);line-height:1.15}
+.mode small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.mode.on{background:var(--navy);color:#fff;box-shadow:var(--shadow-s)}
+.mode.on small{color:var(--gold2)}
+.lead-s{font-size:.9rem;color:var(--soft);margin:0 0 14px}
+.qcard,.fcard,.pcard{background:#fff;border:1px solid var(--line2);border-radius:16px;padding:16px;margin-bottom:10px;transition:.25s}
+.qcard.ok,.fcard.ok,.pcard.ok{border-color:rgba(29,118,86,.4);background:linear-gradient(0deg,var(--good-wash),var(--good-wash)),#fff}
+.qcard.no{border-color:rgba(174,58,44,.3)}
+.qn,.pn{font:500 .62rem 'DM Mono';letter-spacing:.14em;color:var(--gold-dk);text-transform:uppercase}
+.qq{font-weight:700;margin:4px 0 10px;line-height:1.35}
+.opts{display:grid;gap:6px}
+.opt{text-align:left;border:1px solid var(--line);background:var(--card);border-radius:11px;padding:10px 12px;font-size:.9rem;font-weight:600;color:var(--soft);transition:.2s}
+.opt:hover:not(:disabled){border-color:var(--navy);color:var(--ink)}
+.opt:disabled{cursor:default}
+.opt.right{background:var(--good-wash);border-color:var(--good);color:var(--good)}
+.opt.wrong{background:var(--bad-wash);border-color:var(--bad);color:var(--bad)}
+.qfb,.ffb{font-size:.86rem;color:var(--soft);margin-top:9px}
+.qfb:empty,.ffb:empty{display:none}
+.qfb b.g,.ffb b.g{color:var(--good)}.qfb b.r,.ffb b.r{color:var(--bad)}
+.evid{display:block;margin-top:8px;text-align:left;border:0;background:rgba(28,92,163,.08);border-radius:10px;padding:8px 10px;font:italic 400 .92rem/1.45 Newsreader,serif;color:#1C4E86;width:100%}
+.evid small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.14em;font-style:normal;text-transform:uppercase;margin-bottom:2px}
+.fa{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.fa small{display:block;font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fa b{font:500 1.06rem/1.35 Newsreader,serif;color:var(--navy)}
+.loc{border:1px solid var(--line);background:none;border-radius:var(--pill);padding:4px 9px;font-size:.7rem;font-weight:700;color:var(--muted);flex-shrink:0}
+.fh{font-size:.8rem;color:var(--gold-dk);background:var(--gold-wash);border-radius:9px;padding:6px 9px;margin:10px 0}
+.frow{display:flex;gap:6px}
+.frow input{flex:1;min-width:0;border:1px solid var(--line);border-radius:11px;padding:10px 12px;background:var(--card);font-size:.95rem}
+.frow input:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.frow2{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.bs{border:0;border-radius:var(--pill);padding:9px 14px;font-weight:700;font-size:.82rem;background:var(--cream);color:var(--soft);transition:.2s}
+.bs:hover{filter:brightness(.96)}
+.bs.dark{background:var(--navy);color:#fff}
+.bs.gold{background:var(--gold);color:var(--navy)}
+.bs.live{background:var(--bad);color:#fff}
+.model{display:block;margin-top:6px;font:500 1rem Newsreader,serif;color:var(--navy)}
+.pcard p{margin:6px 0 12px;font-weight:600;line-height:1.45}
+.prow{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.clock{font:500 .95rem 'DM Mono';color:var(--muted);margin-left:auto}
+.clock.run{color:var(--bad)}
+.pcard audio{width:100%;margin-top:10px;height:36px}
+.rubric{background:var(--navy);color:rgba(255,255,255,.78);border-radius:16px;padding:16px 18px;font-size:.86rem;margin-top:12px}
+.rubric b{display:block;font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--gold2);margin-bottom:8px}
+.rubric ul{margin:0;padding-left:18px}.rubric li{margin:3px 0}
+.rfoot{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:14px;font-size:.78rem;color:var(--muted)}
+.linkbtn{border:0;background:none;color:var(--muted);text-decoration:underline;font-size:.78rem;padding:0}
+
+/* flow */
+.flow{display:grid;grid-template-columns:.8fr 1.2fr;gap:18px;align-items:start}
+.brief{background:var(--navy);color:#fff;border-radius:24px;padding:28px;position:sticky;top:84px}
+.brief h3{font-size:1.8rem;margin:10px 0 10px}
+.brief p{color:rgba(255,255,255,.7);font-size:.95rem}
+.brief .score{display:flex;align-items:baseline;gap:8px;margin-top:18px;padding-top:16px;border-top:1px solid var(--navy-line)}
+.brief .score b{font:600 2.6rem/1 Fraunces;color:var(--gold2)}
+.brief .score span{color:rgba(255,255,255,.55);font-size:.85rem}
+.chat{background:var(--card);border:1px solid var(--line2);border-radius:24px;padding:22px;box-shadow:var(--shadow)}
+.msg{max-width:88%;padding:12px 15px;border-radius:16px;margin-bottom:10px;font-size:.95rem;line-height:1.45;animation:pop .3s ease}
+.msg small{display:block;font:500 .58rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;opacity:.7}
+.msg.cl{background:var(--cream);border-bottom-left-radius:4px}
+.msg.me{background:var(--navy);color:#fff;margin-left:auto;border-bottom-right-radius:4px}
+.msg.me small{color:var(--gold2);opacity:1}
+.msg.note{max-width:100%;background:var(--good-wash);color:var(--good);font-size:.86rem;border-radius:12px}
+.msg.note.x{background:var(--bad-wash);color:var(--bad)}
+@keyframes pop{from{opacity:0;transform:translateY(6px)}}
+.choices{display:grid;gap:8px;margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.choices .cap{font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.choice{text-align:left;border:1px solid var(--line);background:#fff;border-radius:13px;padding:12px 14px;font-weight:600;font-size:.92rem;color:var(--soft);transition:.2s}
+.choice:hover{border-color:var(--navy);color:var(--ink);transform:translateX(3px)}
+
+/* studio */
+.studio{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:start}
+.desk{background:var(--card);border:1px solid var(--line2);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+.desk label{font:500 .62rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.desk select{width:100%;margin:6px 0 14px;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:#fff;font-weight:600;font-size:.9rem}
+.desk textarea{width:100%;min-height:270px;border:1px solid var(--line);border-radius:16px;padding:16px 18px;background:#fff;font:400 1.08rem/1.7 Newsreader,serif;resize:vertical}
+.desk textarea:focus{outline:2px solid var(--gold);outline-offset:1px;border-color:transparent}
+.desk .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.meter{background:var(--navy);color:#fff;border-radius:24px;padding:24px}
+.meter h3{font-size:1.5rem;margin:8px 0 14px}
+.crit{display:grid;grid-template-columns:1fr auto;gap:4px 10px;align-items:center;padding:10px 0;border-top:1px solid var(--navy-line);font-size:.9rem}
+.crit span{color:rgba(255,255,255,.75)}
+.crit b{font:500 .85rem 'DM Mono';color:rgba(255,255,255,.55)}
+.crit.met b{color:#6FD3B0}
+.crit .bar{grid-column:1/3;height:3px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
+.crit .bar i{display:block;height:100%;width:0;background:var(--gold2);transition:width .3s}
+.crit.met .bar i{background:#6FD3B0}
+.found{display:flex;flex-wrap:wrap;gap:5px;margin-top:12px;min-height:26px}
+.found span{font:500 .7rem 'DM Mono';padding:4px 8px;border-radius:7px;background:rgba(255,255,255,.08);color:var(--gold2)}
+.warns{margin-top:14px;display:grid;gap:8px}
+.warn{background:rgba(255,138,122,.12);border:1px solid rgba(255,138,122,.3);border-radius:12px;padding:10px 12px;font-size:.84rem;color:#FFD4CC}
+.warn b{color:#fff}
+.allgood{background:rgba(111,211,176,.12);border:1px solid rgba(111,211,176,.3);color:#C8F1E2;border-radius:12px;padding:10px 12px;font-size:.84rem}
+
+/* record */
+.rec-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.stat{background:var(--card);border:1px solid var(--line2);border-radius:var(--r);padding:20px;box-shadow:var(--shadow-s)}
+.stat small{font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.stat b{display:block;font:600 2.3rem/1.05 Fraunces;margin-top:8px;color:var(--navy)}
+.stat span{font-size:.82rem;color:var(--muted)}
+.stat.hl{background:var(--navy);border-color:var(--navy)}
+.stat.hl small{color:var(--gold2)}.stat.hl b{color:var(--gold2)}.stat.hl span{color:rgba(255,255,255,.6)}
+
+/* coach */
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.step{background:var(--navy2);border:1px solid var(--navy-line);border-radius:var(--r);padding:22px}
+.step .tm{font:500 .7rem 'DM Mono';color:var(--gold2)}
+.step h3{font-size:1.25rem;color:#fff;margin:8px 0 4px}
+.step .pl{font:500 .6rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.step p{color:rgba(255,255,255,.7);font-size:.9rem;margin:10px 0 0}
+.correction{margin-top:14px;background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:var(--r);padding:20px 24px;display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.correction b{font:500 .62rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;color:var(--gold2)}
+.correction span{padding:7px 12px;border-radius:var(--pill);border:1px solid rgba(226,192,122,.35);color:#fff;font-size:.85rem;font-weight:600}
+.correction p{margin:0;color:rgba(255,255,255,.66);font-size:.9rem;flex-basis:100%}
+
+/* final */
+.final{background:radial-gradient(60% 80% at 50% 0%,rgba(195,152,63,.22),transparent 70%),var(--navy);color:#fff;text-align:center;padding:100px 0}
+.final h2{font-size:clamp(2.4rem,6vw,4.6rem);line-height:1;margin:16px 0 18px}
+.final h2 em{font-style:italic;font-weight:500;color:var(--gold2)}
+.final p{max-width:640px;margin:0 auto 28px;color:rgba(255,255,255,.7)}
+footer{background:var(--navy);color:rgba(255,255,255,.4);text-align:center;padding:26px 0 90px;font:500 .64rem 'DM Mono';letter-spacing:.14em;text-transform:uppercase;border-top:1px solid var(--navy-line)}
+.wa{position:fixed;right:18px;bottom:18px;z-index:60;background:#1FA855;color:#fff;border-radius:var(--pill);padding:12px 17px;font-weight:700;font-size:.9rem;box-shadow:0 14px 30px -10px rgba(31,168,85,.6);display:flex;align-items:center;gap:8px}
+
+.tip{position:absolute;z-index:80;background:var(--navy);color:#fff;border-radius:12px;padding:9px 12px;font-size:.85rem;box-shadow:var(--shadow);pointer-events:none;opacity:0;transform:translateY(4px);transition:.18s;max-width:260px}
+.tip.on{opacity:1;transform:none}
+.tip b{display:block;font:500 .62rem 'DM Mono';letter-spacing:.12em;text-transform:uppercase;color:var(--gold2)}
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);background:var(--navy);color:#fff;padding:11px 18px;border-radius:var(--pill);font-size:.88rem;font-weight:600;opacity:0;transition:.25s;z-index:90;pointer-events:none;box-shadow:var(--shadow)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.seen{opacity:1;transform:none}
+
+@media(max-width:1020px){
+ .hero-grid,.sh,.rgrid,.flow,.studio{grid-template-columns:1fr}
+ .tcol{border-right:0;border-bottom:1px solid var(--line2)}
+ .pillars,.tiles{grid-template-columns:repeat(2,1fr)}
+ .prec{grid-template-columns:repeat(2,1fr)}
+ .timeline{grid-template-columns:repeat(2,1fr)}
+ .rec-grid{grid-template-columns:repeat(3,1fr)}
+ .brief{position:static}
+ .mpill{display:none}
+}
+@media(max-width:640px){
+ .wrap{width:calc(100% - 32px)}
+ section{padding:68px 0}
+ .hero{padding:56px 0 64px}
+ .stats{grid-template-columns:repeat(2,1fr);gap:18px 0}
+ .pillars,.tiles,.prec,.timeline,.intonation{grid-template-columns:1fr}
+ .rec-grid{grid-template-columns:repeat(2,1fr)}
+ .manifesto{grid-template-columns:1fr;gap:12px;padding:24px}
+ .rhead,.tcol{padding-left:20px;padding-right:20px}
+ .pcol{padding:20px 16px 26px}
+ .passage{font-size:1.1rem}
+ .lens{flex-direction:column;gap:4px}
+ .brand span:last-child{display:none}
+ .wa span{display:none}
+ .wa{width:52px;height:52px;padding:0;justify-content:center}
+ .actions .btn{width:100%}
+ .tile .tt small{max-width:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+
+<div class="topbar"><div class="wrap tb">
+ <a href="#home" class="brand"><span class="mark">PG</span><span>ProfGermandario<small>WH Mastery · Premium</small></span></a>
+ <nav class="nav" aria-label="Sections">
+  <a href="#method">Method</a><a href="#precision">Precision</a><a href="#lab">Reading Lab</a><a href="#flow">Discovery Call</a><a href="#studio">Writing Studio</a><a href="#record">Record</a><a href="#coach">Coach</a>
+ </nav>
+ <a class="mpill" href="#record" aria-label="Mastery progress"><b id="mPct">0%</b>mastery</a>
+</div></div>
+
+<header class="hero" id="home">
+ <div class="wrap hero-grid">
+  <div>
+   <div class="eyebrow gold">Premium Edition · The Question Engine II</div>
+   <h1>Questions that <em>run the room.</em></h1>
+   <p class="lede">Executives don’t collect phrases. They ask the question that moves the conversation. Eight professional readings, eight arenas, one engine — the WH question, read in real paragraphs, decoded by ear, rebuilt from memory and delivered in your own voice.</p>
+   <div class="actions">
+    <a class="btn gold" href="#lab">Enter the Reading Lab →</a>
+    <a class="btn line" href="#precision">The precision layer</a>
+   </div>
+   <div class="stats">
+    <div><b>8</b><span>professional readings</span></div>
+    <div><b>32</b><span>evidence checks</span></div>
+    <div><b>24</b><span>question forges</span></div>
+    <div><b>16</b><span>speaking missions</span></div>
+   </div>
+  </div>
+  <aside class="index" aria-label="Reading index">
+   <div class="index-head"><span class="eyebrow gold">The arena index</span><span class="mono">B2 → C1</span></div>
+   <ol id="arenaList"></ol>
+   <p class="index-foot">Think in English. Not about English.</p>
+  </aside>
+ </div>
+</header>
+
+<main>
+ <section id="method">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">01 · The method</div><h2>Phrases are cheap.<br><em>Questions are leverage.</em></h2></div><p>A memorized phrase works once, in one situation. A question engine works everywhere. In this edition every WH structure lives inside real professional prose — rate decisions, supplier calls, keynotes, conflict meetings — so you learn to detect it, decode it, rebuild it and deploy it under pressure.</p></div>
+   <div class="pillars">
+    <article class="pillar reveal"><div class="pk">Pillar 1 · Perception</div><h3>See the architecture</h3><p>Colour-coded WH words separate direct questions from WH clauses embedded inside statements — the structure natives use and textbooks skip.</p><span class="tool">Reading Lab · WH lens</span></article>
+    <article class="pillar reveal"><div class="pk">Pillar 2 · Auditory comprehension</div><h3>Decode by ear</h3><p>Listening mode hides the text. You answer from audio, then verify every answer against the exact evidence sentence.</p><span class="tool">Listening mode · Evidence</span></article>
+    <article class="pillar reveal"><div class="pk">Pillar 3 · Prosody</div><h3>Shadow the rhythm</h3><p>Sentence-by-sentence shadowing with US or UK voice. Record your missions and judge your own intonation like a coach.</p><span class="tool">Shadow · Record</span></article>
+    <article class="pillar reveal"><div class="pk">Pillar 4 · Retrieval</div><h3>Rebuild from memory</h3><p>Question Forge gives you the answer and no options. You produce the exact question — retrieval, not recognition.</p><span class="tool">Question Forge</span></article>
+   </div>
+   <div class="manifesto reveal"><b>The answer tells you which question to ask.</b><p>Before choosing a WH word, identify the missing information: thing, place, time, person, reason, method, amount, choice or owner. Then let the auxiliary carry the time. That sequence — not memorization — is what makes English automatic.</p></div>
+  </div>
+ </section>
+
+ <section id="precision" class="dark">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">02 · The precision layer</div><h2>Beyond the basic formula.<br><em>Six executive moves.</em></h2></div><p>You already know WH + auxiliary + subject + verb. Premium fluency lives in the details that separate an intermediate speaker from a credible professional. Tap ▶ to hear each model.</p></div>
+   <div class="prec" id="precGrid"></div>
+   <div class="intonation reveal">
+    <div class="into"><svg width="64" height="34" viewBox="0 0 64 34" aria-hidden="true"><path d="M3 8 C 20 6, 34 8, 44 14 S 58 28, 61 30" fill="none" stroke="#E2C07A" stroke-width="2.5" stroke-linecap="round"/><path d="M55 30 L61 30 L59 24" fill="none" stroke="#E2C07A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>WH questions fall ↘</b><span>“What made the timeline difficult?” — the voice drops on the last stressed word. Rising sounds uncertain.</span></div></div>
+    <div class="into"><svg width="64" height="34" viewBox="0 0 64 34" aria-hidden="true"><path d="M3 28 C 20 28, 34 26, 44 20 S 58 6, 61 4" fill="none" stroke="#6FD3B0" stroke-width="2.5" stroke-linecap="round"/><path d="M55 4 L61 4 L60 10" fill="none" stroke="#6FD3B0" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Yes/No questions rise ↗</b><span>“Can you walk me through it?” — the voice goes up at the end, inviting a response.</span></div></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="lab">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">03 · The Reading Lab</div><h2>WH in real prose,<br><em>not loose phrases.</em></h2></div><p>Each reading is built around one professional arena and one soft skill. Read or listen, tap underlined words for Spanish, then move through Understand → Forge → Perform. Your progress saves on this device.</p></div>
+   <div class="tiles" id="tiles"></div>
+   <div class="reader reveal" id="reader">
+    <div class="rhead">
+     <div><div class="eyebrow" id="rKicker"></div><h3 id="rTitle"></h3></div>
+     <div class="chips" id="rChips"></div>
+    </div>
+    <div class="rgrid">
+     <div class="tcol">
+      <div class="toolbar">
+       <button class="tbtn pri" id="bPlay">▶ Listen</button>
+       <button class="tbtn" id="bShadow" title="Hear a sentence, then repeat it in the pause">◐ Shadow</button>
+       <button class="tbtn" id="bStop">■ Stop</button>
+       <select class="tsel" id="sRate" aria-label="Speed"><option value=".75">0.75×</option><option value=".9" selected>0.9×</option><option value="1">1.0×</option><option value="1.1">1.1×</option></select>
+       <select class="tsel" id="sAccent" aria-label="Accent"><option value="en-US">US voice</option><option value="en-GB">UK voice</option></select>
+       <button class="tbtn on" id="bWh" aria-pressed="true">WH lens</button>
+       <button class="tbtn" id="bListen" aria-pressed="false">Listening mode</button>
+      </div>
+      <div class="lens" id="rLens"></div>
+      <div class="passage show-wh" id="passage"></div>
+      <div class="legend" id="legend"></div>
+      <div class="hint-line">Tap any sentence to hear it · Tap an underlined word for its Spanish meaning.</div>
+     </div>
+     <div class="pcol">
+      <div class="modes" role="tablist">
+       <button class="mode on" data-m="comp" role="tab"><small>Step 1</small>Understand</button>
+       <button class="mode" data-m="forge" role="tab"><small>Step 2</small>Forge</button>
+       <button class="mode" data-m="perf" role="tab"><small>Step 3</small>Perform</button>
+      </div>
+      <div id="practice"></div>
+      <div class="rfoot"><span id="rProg"></span><button class="linkbtn" id="bResetR">Reset this reading</button></div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <section id="flow">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">04 · The Discovery Call</div><h2>One good question<br><em>earns the next one.</em></h2></div><p>Real conversations are chains, not lists. You are a consultant on a call with Mariana, an HR director. Choose the follow-up that a senior advisor would ask — the one that builds on what she just said.</p></div>
+   <div class="flow">
+    <aside class="brief reveal">
+     <div class="eyebrow">Your brief</div>
+     <h3>Diagnose before you prescribe.</h3>
+     <p>Six turns. Each strong question does one job: define the outcome, narrow the problem, quantify it, translate it into money, map the decision-makers, secure the next step.</p>
+     <div class="score"><b id="flowScore">0/6</b><span>strong questions · best <i id="flowBest">0</i>/6</span></div>
+     <button class="bs gold" id="flowRestart" style="margin-top:14px">Restart the call ↺</button>
+    </aside>
+    <div class="chat reveal" id="chat"></div>
+   </div>
+  </div>
+ </section>
+
+ <section id="studio" class="dark">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">05 · Writing Studio</div><h2>Your paragraph.<br><em>Your questions.</em></h2></div><p>The final proof of mastery: a paragraph about your own work where WH questions do real work — direct, embedded and indirect. The analyzer checks your structure live; then send it to your coach.</p></div>
+   <div class="studio">
+    <div class="desk reveal">
+     <label for="wPrompt">Prompt</label>
+     <select id="wPrompt"></select>
+     <label for="wText">Your paragraph · 120+ words</label>
+     <textarea id="wText" placeholder="Start writing here… Use at least four direct questions, one indirect question (Could you tell me what…? / I wonder why…) and five different WH words."></textarea>
+     <div class="row">
+      <button class="bs dark" id="wSend">Send to my coach via WhatsApp</button>
+      <button class="bs" id="wCopy">Copy text</button>
+      <button class="bs" id="wHear">▶ Hear my paragraph</button>
+     </div>
+    </div>
+    <aside class="meter reveal">
+     <div class="eyebrow">Live analysis</div>
+     <h3>Structure check</h3>
+     <div id="wCrit"></div>
+     <div class="found" id="wFound"></div>
+     <div class="warns" id="wWarn"></div>
+    </aside>
+   </div>
+  </div>
+ </section>
+
+ <section id="record">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">06 · Your mastery record</div><h2>Visible growth,<br><em>class over class.</em></h2></div><p>Every check, forge and mission is logged on this device. Bring this record to your session: your coach reads the numbers, you read the progress.</p></div>
+   <div class="rec-grid" id="recGrid"></div>
+   <div style="margin-top:14px;display:flex;justify-content:flex-end"><button class="linkbtn" id="bResetAll">Reset all progress</button></div>
+  </div>
+ </section>
+
+ <section id="coach" class="dark">
+  <div class="wrap">
+   <div class="sh reveal"><div><div class="eyebrow">07 · Coach protocol</div><h2>The 60-minute<br><em>premium session.</em></h2></div><p>One reading per session. Exposure, integration and performance in a single hour — with a written deliverable as homework.</p></div>
+   <div class="timeline">
+    <article class="step reveal"><div class="tm">00 – 10 min</div><h3>Exposure</h3><div class="pl">Perception · Listening</div><p>Listening mode ON. The student hears the passage twice without text and summarizes it in three sentences.</p></article>
+    <article class="step reveal"><div class="tm">10 – 25 min</div><h3>Integration</h3><div class="pl">Comprehension</div><p>Text visible, WH lens ON. Complete Understand; the student reads every evidence sentence aloud.</p></article>
+    <article class="step reveal"><div class="tm">25 – 40 min</div><h3>Retrieval</h3><div class="pl">Memory</div><p>Question Forge. The coach adds three extra answers from the text; the student builds questions without looking.</p></article>
+    <article class="step reveal"><div class="tm">40 – 55 min</div><h3>Performance</h3><div class="pl">Prosody · Speaking</div><p>Record both missions. Feedback on WH accuracy, falling intonation and depth of follow-up questions.</p></article>
+    <article class="step reveal"><div class="tm">55 – 60 min</div><h3>Commitment</h3><div class="pl">Deliverable</div><p>Assign the Writing Studio paragraph, sent by WhatsApp before the next session. Close with the Discovery Call.</p></article>
+   </div>
+   <div class="correction reveal"><b>Correction protocol</b><span>WH word</span><span>Auxiliary</span><span>Subject</span><span>Verb form</span><span>Word order</span><p>Never just give the correct version. Name the broken part — “the auxiliary is missing”, “after did, base verb” — and let the student repair it. Self-correction builds the engine; correction from outside only builds dependence.</p></div>
+  </div>
+ </section>
+
+ <section class="final" id="finish">
+  <div class="wrap">
+   <div class="eyebrow gold">ProfGermandario · Premium</div>
+   <h2>Think in English.<br><em>Not about English.</em></h2>
+   <p>When WH questions become automatic, you stop translating and start leading the conversation — in meetings, negotiations and every room that matters.</p>
+   <a class="btn gold" href="https://wa.me/573197894038?text=Hi%20Prof.%20Germandario!%20I%27m%20working%20on%20the%20WH%20Mastery%20Premium%20Edition%20and%20I%20want%20to%20book%20my%20next%20session." target="_blank" rel="noopener">Book my next session →</a>
+  </div>
+ </section>
+</main>
+<footer>ProfGermandario · WH Mastery · Premium Edition · Think in English. Not about English.</footer>
+<a class="wa" href="https://wa.me/573197894038?text=Hi%20Prof.%20Germandario!%20I%20have%20a%20question%20about%20the%20WH%20Mastery%20Premium%20Edition." target="_blank" rel="noopener" aria-label="WhatsApp">●<span>WhatsApp</span></a>
+<div class="toast" id="toast"></div>
+
+<script>
+const READ=[
+{
+ id:"econ",num:"01",domain:"Economics",skill:"Analytical reading",level:"B2+",min:4,
+ title:"The Question Behind the Rate Hike",
+ focus:"Why · How much · Who as subject",
+ lens:"Watch how Laura upgrades a backward-looking “why?” into forward-looking questions: what, how much, who, when.",
+ paras:[[
+  "When the central bank raised interest rates by half a percentage point last March, most headlines asked the same question: why now?",
+  "Inflation had started to cool, and many small businesses were still recovering.",
+  "Laura Méndez, a financial analyst in Bogotá, decided to ask better questions instead of repeating the headline.",
+  "What exactly did the bank see in the data?",
+  "How much had prices risen in services, not just in food and fuel?",
+  "And who would feel the impact first?"
+ ],[
+  "Her answers changed her report.",
+  "Services inflation, she discovered, was still climbing, mainly because wages were rising faster than productivity.",
+  "The bank was worried about how long that pressure would last.",
+  "Laura’s conclusion was simple: the headline question was “why?”, but the useful question was “what will happen to borrowing costs over the next twelve months?”",
+  "Her clients didn’t need a history lesson.",
+  "They needed to know when to refinance and how much risk they could afford."
+ ]],
+ gloss:{"interest rates":"tasas de interés","percentage point":"punto porcentual","cool":"enfriarse, moderarse","recovering":"recuperándose","wages":"salarios","productivity":"productividad","borrowing costs":"costos de endeudamiento","refinance":"refinanciar","afford":"permitirse, poder asumir"},
+ comp:[
+  {q:"How much did the central bank raise interest rates?",a:["A quarter of a point","Half a percentage point","One full point","Two points"],c:1,ev:"half a percentage point",e:"Half a percentage point (0.5%) — the amount is in the first sentence."},
+  {q:"Why was services inflation still climbing?",a:["Fuel prices were rising","Wages were rising faster than productivity","Food imports were expensive","Small businesses were closing"],c:1,ev:"wages were rising faster",e:"The cause is introduced by “mainly because…”."},
+  {q:"What was Laura’s main improvement on the headline?",a:["She researched the bank’s history","She replaced “why?” with a forward-looking question","She ignored the data","She interviewed the central bank"],c:1,ev:"the useful question was",e:"Useful questions point to the future: what will happen to borrowing costs?"},
+  {q:"What did her clients actually need to know?",a:["The history of interest rates","When to refinance and how much risk they could afford","Who wrote the headlines","Where to invest in fuel"],c:1,ev:"when to refinance",e:"Notice the embedded WH clauses: when to refinance, how much risk they could afford."}
+ ],
+ forge:[
+  {ans:"half a percentage point",hint:"Target: an amount · past simple → How much + did",wh:"How much",aux:"did",start:["how much did"],keys:["raise|increase|lift"],model:"How much did the central bank raise interest rates?"},
+  {ans:"mainly because wages were rising faster than productivity",hint:"Target: a reason · past of be → Why + was",wh:"Why",aux:"was",start:["why was"],keys:["inflation|climbing|rising"],model:"Why was services inflation still climbing?"},
+  {ans:"Laura Méndez, a financial analyst in Bogotá",hint:"Target: the person who did the action (SUBJECT) → Who + past verb, no auxiliary",wh:"Who",aux:null,start:["who decided","who asked","who wanted"],keys:[],model:"Who decided to ask better questions?"}
+ ],
+ speak:[
+  "What question is everyone in your industry asking right now — and what is the better question nobody is asking? Explain both.",
+  "How much does a one-point change in interest rates affect your business or your personal finances? Answer in four sentences, then ask your listener two WH questions."
+ ]
+},
+{
+ id:"trade",num:"02",domain:"Trading",skill:"Decisions under pressure",level:"B2",min:4,
+ title:"Ninety Seconds Before the Open",
+ focus:"How much · How long · Which + noun",
+ lens:"Each line of the checklist is a different WH lens on risk: plan (what), size (how much), exit (where), time (how long), invalidation (which).",
+ paras:[[
+  "At 8:58 a.m., ninety seconds before the market opened, Daniel stopped looking at the chart and opened his checklist.",
+  "It contained only five questions.",
+  "What is my plan if the price gaps down?",
+  "How much am I willing to lose on this trade?",
+  "Where is my exit?",
+  "How long will I hold the position if nothing happens?",
+  "And which signal would prove that I am wrong?"
+ ],[
+  "Daniel had not always traded this way.",
+  "Two years earlier, he lost almost a third of his account in a single week because he never asked those questions before entering a trade.",
+  "He asked them afterwards, when it was too late.",
+  "Now his mentor tests him every Friday: “What did you risk? Why did you enter? What would you do differently?”",
+  "The questions take less than a minute to answer, but they protect him from the most expensive mistake in trading: deciding under pressure instead of deciding in advance."
+ ]],
+ gloss:{"checklist":"lista de verificación","gaps down":"abre con un hueco a la baja","willing":"dispuesto","exit":"salida","position":"posición (operación abierta)","account":"cuenta","afterwards":"después","mentor":"mentor","in advance":"con anticipación","signal":"señal"},
+ comp:[
+  {q:"How many questions did Daniel’s checklist contain?",a:["Three","Five","Ninety","Ten"],c:1,ev:"only five questions",e:"Five questions in ninety seconds — short on purpose."},
+  {q:"What happened two years earlier?",a:["He doubled his account","He lost almost a third of his account in one week","He stopped trading for a year","He hired his mentor"],c:1,ev:"almost a third",e:"He lost almost a third of his account in a single week."},
+  {q:"When does his mentor test him?",a:["Every morning","Every Friday","Before every trade","Once a month"],c:1,ev:"every Friday",e:"A weekly review: every Friday."},
+  {q:"What is the most expensive mistake in trading, according to the text?",a:["Trading too early in the day","Deciding under pressure instead of in advance","Using a checklist","Asking too many questions"],c:1,ev:"most expensive mistake",e:"Decide in advance; execute under pressure."}
+ ],
+ forge:[
+  {ans:"every Friday",hint:"Target: time or frequency · present simple → When / How often + does",wh:"When|How often",aux:"does",start:["when does","how often does"],keys:["test|review|check"],model:"How often does his mentor test him?"},
+  {ans:"almost a third of his account",hint:"Target: an amount · past simple → How much + did",wh:"How much",aux:"did",start:["how much did","how much of his account did","how much money did"],keys:["lose"],model:"How much did Daniel lose in a single week?"},
+  {ans:"ninety seconds before the market opened",hint:"Target: a moment · past simple → When + did",wh:"When",aux:"did",start:["when did"],keys:["open|checklist|stop"],model:"When did Daniel open his checklist?"}
+ ],
+ speak:[
+  "Which five questions would you put on a checklist before a big decision at work? Say each one, then explain which risk it controls.",
+  "Tell the story of a decision you made under pressure. What did you risk? Why did you act? What would you do differently?"
+ ]
+},
+{
+ id:"nego",num:"03",domain:"Negotiation",skill:"Money management & negotiation",level:"B2",min:4,
+ title:"The Supplier Call",
+ focus:"Which · How many · What if",
+ lens:"Precision questions with Which and How many force vague offers to become numbers. “What if…?” opens a new option without confrontation.",
+ paras:[[
+  "Andrea runs purchasing for a furniture company in Medellín, and she has one rule for every negotiation: the person who asks the most precise questions controls the conversation.",
+  "When a new supplier offered her a “special price” for wood panels, she did not say yes or no.",
+  "She asked three questions.",
+  "Which price is special — the unit price or the total?",
+  "How many units do I need to buy to get it?",
+  "And when would the first delivery arrive?"
+ ],[
+  "The supplier hesitated.",
+  "The discount, it turned out, applied only to orders above two thousand units, and delivery took nine weeks instead of four.",
+  "Andrea stayed calm and asked one more question: “What if we commit to twelve hundred units now and another twelve hundred in June — which conditions could you offer for that?”",
+  "Ten minutes later, she had the discount, a six-week delivery time and no risk of storing material she didn’t need.",
+  "She never raised her voice.",
+  "She simply asked questions that the supplier could not answer vaguely."
+ ]],
+ gloss:{"purchasing":"compras (departamento)","supplier":"proveedor","wood panels":"paneles de madera","unit price":"precio unitario","delivery":"entrega","hesitated":"dudó","it turned out":"resultó que","commit to":"comprometerse con","storing":"almacenar","vaguely":"de forma vaga"},
+ comp:[
+  {q:"What is Andrea’s rule for every negotiation?",a:["Never accept the first price","The person who asks the most precise questions controls the conversation","Always ask for a discount","Let the supplier speak first"],c:1,ev:"one rule for every negotiation",e:"Precision = control. Notice “who” here is a relative pronoun, not a question."},
+  {q:"How many units did the original discount require?",a:["Twelve hundred","More than two thousand","Four hundred","Nine hundred"],c:1,ev:"above two thousand units",e:"Orders above two thousand units."},
+  {q:"Which delivery time did Andrea finally get?",a:["Four weeks","Six weeks","Nine weeks","Twelve weeks"],c:1,ev:"six-week delivery",e:"Six weeks — better than the original nine."},
+  {q:"Why didn’t Andrea want to buy all the units at once?",a:["She didn’t have the budget","She didn’t want to store material she didn’t need","The supplier refused","The wood was low quality"],c:1,ev:"no risk of storing",e:"Splitting the order removed the storage risk."}
+ ],
+ forge:[
+  {ans:"a furniture company in Medellín",hint:"Target: a place or company · present simple → Where / Which company + does",wh:"Where|What|Which",aux:"does",start:["where does","what company does","which company does","what kind of company does"],keys:["work|purchas|run"],model:"Where does Andrea work?"},
+  {ans:"nine weeks instead of four",hint:"Target: duration · past simple → How long + did",wh:"How long|How many",aux:"did",start:["how long did","how many weeks did"],keys:["deliver"],model:"How long did the delivery take?"},
+  {ans:"orders above two thousand units",hint:"Target: a quantity of countable things → How many + noun + did",wh:"How many",aux:"did|does",start:["how many"],keys:["discount|buy|order"],model:"How many units did she need to order to get the discount?"}
+ ],
+ speak:[
+  "Which three questions would you ask before accepting a “special price” from a supplier? Ask them aloud and justify each one.",
+  "Role-play the supplier: how would you answer Andrea’s “What if…?” question? Then ask her one precise question back."
+ ]
+},
+{
+ id:"speak",num:"04",domain:"Public Speaking",skill:"Persuasive communication",level:"B2",min:4,
+ title:"Who Is in the Room?",
+ focus:"Who: subject vs object questions",
+ lens:"Both question types live in this text: subject questions (Who makes…? — no auxiliary) and object questions (Who did she interview? — needs did).",
+ paras:[[
+  "Before Camila wrote a single slide for her keynote, her coach asked her three questions.",
+  "Who is going to be in the room?",
+  "What do they already know?",
+  "And what do you want them to do on Monday morning?",
+  "Camila had prepared presentations for years, but she usually started with a different question: “What do I want to say?”",
+  "The result was always the same: accurate content, polite applause and no real change."
+ ],[
+  "This time, she interviewed four people from the audience.",
+  "Who makes the final budget decisions?",
+  "Who influences them?",
+  "What keeps them awake at night?",
+  "The answers surprised her.",
+  "The managers were not worried about technology; they were worried about losing their best people.",
+  "Camila rewrote the opening of her talk around one question — “Who will still be on your team in two years?” — and for the first time, the room went silent before the applause."
+ ]],
+ gloss:{"slide":"diapositiva","keynote":"conferencia principal","accurate":"preciso, exacto","polite applause":"aplauso de cortesía","budget":"presupuesto","influences":"influye en","keeps them awake at night":"les quita el sueño","rewrote":"reescribió","opening":"apertura, inicio"},
+ comp:[
+  {q:"Which question did Camila usually start with?",a:["Who is going to be in the room?","What do I want to say?","What do they already know?","Why am I speaking?"],c:1,ev:"What do I want to say",e:"Speaker-centered instead of audience-centered."},
+  {q:"How many people from the audience did she interview?",a:["Two","Three","Four","Twelve"],c:2,ev:"four people",e:"Four people from the audience."},
+  {q:"What were the managers really worried about?",a:["New technology","Losing their best people","Cutting the budget","The length of the keynote"],c:1,ev:"losing their best people",e:"Talent, not technology."},
+  {q:"“Who makes the final budget decisions?” has no do/does. Why?",a:["Because it is informal English","Because Who is the subject of the verb makes","Because it is a past question","It is a mistake"],c:1,ev:"Who makes the final budget",e:"When Who is the subject, the verb follows directly: Who makes…? Who influences…?"}
+ ],
+ forge:[
+  {ans:"her coach",hint:"Target: the person who did the action (SUBJECT) → Who + past verb, no auxiliary",wh:"Who",aux:null,start:["who asked"],keys:[],model:"Who asked Camila three questions?"},
+  {ans:"four people from the audience",hint:"Target: the person who RECEIVED the action (OBJECT) → Who + did + subject + base verb",wh:"Who|How many",aux:"did",start:["who did","how many people did"],keys:["interview"],model:"Who did Camila interview?"},
+  {ans:"losing their best people",hint:"Target: a thing · preposition at the end → What + were + subject + worried about?",wh:"What",aux:"were",start:["what were"],keys:["worried about|afraid of|concerned about"],model:"What were the managers worried about?"}
+ ],
+ speak:[
+  "Think of your next presentation or meeting. Who is in the room? What do they already know? What should they do afterwards?",
+  "Create one opening question for a talk about your industry. Deliver it, pause for two full seconds, then give your first sentence."
+ ]
+},
+{
+ id:"hist",num:"05",domain:"Business History",skill:"Root-cause reasoning",level:"B2+",min:5,
+ title:"Five Times Why",
+ focus:"Why chains · Because answers",
+ lens:"One WH word, repeated with discipline, moves from symptom to root cause. Every answer starts with Because.",
+ paras:[[
+  "Sakichi Toyoda, an inventor who built automatic looms in Japan in the early twentieth century, is credited with a simple habit: when something goes wrong, ask “why?” five times.",
+  "Decades later, Taiichi Ohno made that habit a central part of the Toyota Production System.",
+  "His favorite example began with a machine that had stopped working.",
+  "Why did it stop?",
+  "Because a fuse blew after an overload.",
+  "Why was there an overload?",
+  "Because the bearing was not lubricated well enough."
+ ],[
+  "Most managers stop there and replace the fuse.",
+  "Ohno kept going.",
+  "Why wasn’t the bearing lubricated?",
+  "Because the pump wasn’t working properly.",
+  "Why wasn’t it working?",
+  "Because its shaft was worn out.",
+  "And why was the shaft worn out?",
+  "Because there was no filter, so metal scraps got inside.",
+  "The real problem was a missing filter, not a fuse.",
+  "The lesson for modern teams is clear: the first answer explains what happened, but only a chain of questions reveals why it keeps happening."
+ ]],
+ gloss:{"automatic looms":"telares automáticos","credited with":"se le atribuye","fuse":"fusible","overload":"sobrecarga","bearing":"rodamiento","lubricated":"lubricado","shaft":"eje","worn out":"desgastado","scraps":"virutas, residuos","chain":"cadena"},
+ comp:[
+  {q:"Who is credited with the “five whys” habit?",a:["Taiichi Ohno","Sakichi Toyoda","Henry Ford","A modern project manager"],c:1,ev:"is credited with",e:"Sakichi Toyoda; Ohno later built it into the Toyota Production System."},
+  {q:"What did Taiichi Ohno do with the habit?",a:["He replaced it with a checklist","He made it a central part of the Toyota Production System","He used it only for looms","He taught it at a university"],c:1,ev:"central part of the Toyota",e:"He made it central to the Toyota Production System."},
+  {q:"What was the real root cause of the machine failure?",a:["A blown fuse","A worn shaft","A missing filter","An overloaded operator"],c:2,ev:"missing filter",e:"The fuse was the symptom; the missing filter was the root cause."},
+  {q:"What does a chain of questions reveal that the first answer doesn’t?",a:["Who is to blame","Why the problem keeps happening","How much the repair costs","When the machine was built"],c:1,ev:"keeps happening",e:"First answer = what happened. Chain = why it keeps happening."}
+ ],
+ forge:[
+  {ans:"Because a fuse blew after an overload",hint:"Target: a reason · past simple → Why + did",wh:"Why",aux:"did",start:["why did"],keys:["stop|fail|break"],model:"Why did the machine stop?"},
+  {ans:"Taiichi Ohno",hint:"Target: the person who did the action (SUBJECT) → Who + past verb",wh:"Who",aux:null,start:["who made","who turned","who put","who built"],keys:[],model:"Who made the habit a central part of the Toyota Production System?"},
+  {ans:"automatic looms",hint:"Target: a thing (OBJECT) · past simple → What + did + subject + base verb",wh:"What",aux:"did",start:["what did"],keys:["build|invent|make|design"],model:"What did Sakichi Toyoda build?"}
+ ],
+ speak:[
+  "Apply the Five Whys to a real problem in your work. Say all five questions and all five “Because…” answers aloud.",
+  "Why do most managers stop after the first answer? Give two reasons, and propose one question that would keep them going."
+ ]
+},
+{
+ id:"lead",num:"06",domain:"Leadership",skill:"Coaching & delegation",level:"B2+",min:4,
+ title:"The One-on-One",
+ focus:"Open questions · How long have you…?",
+ lens:"Coaching questions replace instructions: What have you tried…? How long have you been…? What do you need…?",
+ paras:[[
+  "When Martín was promoted to team lead, he believed his job was to give answers.",
+  "Every time someone came to his desk with a problem, he told them exactly what to do.",
+  "Six months later, his team was polite, dependent and exhausted — and so was he.",
+  "His director gave him a challenge: for one month, he could not give advice in his weekly one-on-ones.",
+  "He could only ask questions."
+ ],[
+  "The first week was uncomfortable.",
+  "Instead of “Do this,” he asked, “What have you tried so far?”",
+  "Instead of “That won’t work,” he asked, “What could go wrong, and how would you handle it?”",
+  "He learned to ask, “How long have you been stuck on this?” and “What do you need from me?”",
+  "By the end of the month, Sofía from finance had solved a reporting problem she had carried for weeks, and two developers had proposed a new deployment process.",
+  "Martín discovered that good leaders don’t always know the answer.",
+  "They know which question unlocks it."
+ ]],
+ gloss:{"promoted":"ascendido","team lead":"líder de equipo","dependent":"dependiente","exhausted":"agotado","advice":"consejo(s)","one-on-ones":"reuniones uno a uno","so far":"hasta ahora","stuck":"atascado","deployment":"despliegue (de software)","unlocks":"desbloquea"},
+ comp:[
+  {q:"What did Martín believe his job was?",a:["To ask questions","To give answers","To hire talent","To write reports"],c:1,ev:"believed his job",e:"He thought leading meant answering."},
+  {q:"What was the director’s challenge?",a:["Give more detailed advice","Only ask questions in one-on-ones for a month","Work longer hours","Change teams"],c:1,ev:"His director gave him a challenge",e:"One month, no advice — only questions."},
+  {q:"Which question measures how long a problem has lasted?",a:["What have you tried so far?","How long have you been stuck on this?","What do you need from me?","What could go wrong?"],c:1,ev:"How long have you been stuck",e:"How long + have/has been + -ing = duration up to now."},
+  {q:"What did two developers do by the end of the month?",a:["They left the company","They proposed a new deployment process","They solved a reporting problem","They complained to the director"],c:1,ev:"deployment process",e:"They proposed a new deployment process — ownership returned to the team."}
+ ],
+ forge:[
+  {ans:"His director",hint:"Target: the person who did the action (SUBJECT) → Who + past verb",wh:"Who",aux:null,start:["who gave","who challenged"],keys:[],model:"Who gave Martín a challenge?"},
+  {ans:"a new deployment process",hint:"Target: a thing (OBJECT) · past → What + did + subject + base verb",wh:"What",aux:"did|had",start:["what did","what had"],keys:["propos|suggest|present"],model:"What did the two developers propose?"},
+  {ans:"polite, dependent and exhausted",hint:"Target: a description · past of be → How was… / What was… like?",wh:"How|What",aux:"was",start:["how was","what was"],keys:["team"],model:"How was his team six months later?"}
+ ],
+ speak:[
+  "Turn three pieces of advice you often give into open questions. Example: “Call the client” → “Who could help you move this forward?”",
+  "How long have you been working on your current biggest challenge? What have you tried so far? What do you need, and from whom?"
+ ]
+},
+{
+ id:"net",num:"07",domain:"Networking",skill:"Strategic small talk",level:"B2",min:4,
+ title:"Beyond “What Do You Do?”",
+ focus:"Follow-ups · Whose + noun",
+ lens:"Story-inviting questions plus one precise follow-up (Whose problem…?) turn small talk into opportunity.",
+ paras:[[
+  "At a fintech conference in Mexico City, Valeria noticed something about the most connected people in the room.",
+  "They rarely asked, “What do you do?”",
+  "Instead, they asked questions that invited a story: “What brings you to this conference?” “How did you get into payments?” “What are you most excited about this year?”",
+  "The first question produces a job title.",
+  "The others produce a conversation."
+ ],[
+  "Valeria tried the technique during the coffee break.",
+  "A quiet engineer named Tomás mentioned that he was building a fraud-detection tool.",
+  "Instead of nodding and moving on, she asked a follow-up: “Whose problem does it solve first — banks or small merchants?”",
+  "He smiled, because nobody had asked him that before.",
+  "Twenty minutes later, they were discussing a pilot project.",
+  "Valeria’s conclusion was practical: networking is not about how many cards you collect; it is about how many people remember the question you asked them."
+ ]],
+ gloss:{"fintech":"tecnología financiera","connected":"bien conectadas","job title":"cargo","get into":"entrar a (un sector)","payments":"pagos","coffee break":"pausa para el café","fraud-detection":"detección de fraude","nodding":"asentir con la cabeza","merchants":"comerciantes","pilot project":"proyecto piloto"},
+ comp:[
+  {q:"Where did the conference take place?",a:["Bogotá","Mexico City","Medellín","Miami"],c:1,ev:"Mexico City",e:"Mexico City — a fintech conference."},
+  {q:"According to Valeria, what does “What do you do?” usually produce?",a:["A story","A job title","A business card","A long conversation"],c:1,ev:"produces a job title",e:"A label, not a conversation."},
+  {q:"What was Tomás building?",a:["A payments app","A fraud-detection tool","A conference platform","A small bank"],c:1,ev:"fraud-detection tool",e:"A fraud-detection tool."},
+  {q:"Why did Tomás smile?",a:["He already knew Valeria","Nobody had asked him that question before","The coffee was good","He had just sold his tool"],c:1,ev:"nobody had asked him",e:"A precise follow-up signals real listening."}
+ ],
+ forge:[
+  {ans:"a fraud-detection tool",hint:"Target: a thing · past continuous → What + was + subject + -ing",wh:"What",aux:"was",start:["what was"],keys:["build|develop|work|creat"],model:"What was Tomás building?"},
+  {ans:"during the coffee break",hint:"Target: a moment · past simple → When + did",wh:"When",aux:"did",start:["when did"],keys:["try|use|test|practi"],model:"When did Valeria try the technique?"},
+  {ans:"a pilot project",hint:"Target: a thing · past continuous → What + were + subject + -ing",wh:"What",aux:"were",start:["what were"],keys:["discuss|talk"],model:"What were they discussing twenty minutes later?"}
+ ],
+ speak:[
+  "Replace “What do you do?” with three story-inviting questions for your industry. Ask them as if you were at a conference.",
+  "Practice a follow-up chain: ask a question, imagine the answer, ask a deeper follow-up. Do it three times without stopping."
+ ]
+},
+{
+ id:"ei",num:"08",domain:"Emotional Intelligence",skill:"Active listening & conflict",level:"C1",min:5,
+ title:"What Happened?",
+ focus:"Indirect questions · Why vs What made…",
+ lens:"Indirect frames (Can you walk me through what happened…?) lower defensiveness. Inside the frame, the WH clause keeps statement order.",
+ paras:[[
+  "When a project deadline was missed, Elena, a product director, walked into the meeting with one question in her head: “Why didn’t you finish on time?”",
+  "She stopped herself at the door.",
+  "She knew that “why” questions, when emotions are high, often sound like accusations.",
+  "People hear “Why did you…?” and start defending themselves instead of explaining what happened."
+ ],[
+  "So she changed the language.",
+  "“Can you walk me through what happened last week?” she asked.",
+  "“What made the timeline difficult? Where did things start to slip?”",
+  "The team relaxed.",
+  "One designer admitted that she hadn’t understood which version of the requirements was final.",
+  "A developer explained that he had been waiting three days for approval.",
+  "Nobody was lazy; the process was confusing.",
+  "Elena ended the meeting with a final question: “What do we need to change so this doesn’t happen again?”",
+  "The deadline was still missed, but the trust was not."
+ ]],
+ gloss:{"deadline":"fecha límite","accusations":"acusaciones","defending themselves":"defenderse","walk me through":"explícame paso a paso","timeline":"cronograma","slip":"retrasarse","admitted":"admitió","requirements":"requisitos","approval":"aprobación","trust":"confianza"},
+ comp:[
+  {q:"Which question did Elena almost ask?",a:["What happened last week?","Why didn’t you finish on time?","Who is responsible?","When can you finish?"],c:1,ev:"Why didn’t you finish",e:"The instinctive — and risky — why question."},
+  {q:"Why did she decide not to ask it?",a:["It is grammatically incorrect","When emotions are high, “why” can sound like an accusation","Her director prohibited it","It takes too long to answer"],c:1,ev:"sound like accusations",e:"Why + emotion = perceived accusation."},
+  {q:"What was the developer waiting for?",a:["The designer’s files","Approval","A new deadline","The final requirements"],c:1,ev:"waiting three days",e:"Three days waiting for approval."},
+  {q:"Which one is an indirect question — the softest format?",a:["What made the timeline difficult?","Can you walk me through what happened last week?","Where did things start to slip?","Why didn’t you finish on time?"],c:1,ev:"walk me through",e:"Polite frame + WH clause in statement order."}
+ ],
+ forge:[
+  {ans:"three days",hint:"Target: duration up to a past moment → How long + had + subject + been + -ing",wh:"How long|How many",aux:"had|was",start:["how long had","how long was","how many days had","how many days was"],keys:["wait"],model:"How long had the developer been waiting for approval?"},
+  {ans:"which version of the requirements was final",hint:"Target: a thing · negative past → What + didn’t / hadn’t + subject + understand",wh:"What",aux:"did|had",start:["what did","what had"],keys:["understand|know"],model:"What didn’t the designer understand?"},
+  {ans:"Elena, a product director",hint:"Target: the person who did the action (SUBJECT) → Who + past verb",wh:"Who",aux:null,start:["who walked","who changed","who stopped","who ended"],keys:[],model:"Who walked into the meeting?"}
+ ],
+ speak:[
+  "Rewrite three “Why did you…?” questions from your own work into softer “What…?” or “Can you walk me through…?” questions. Say both versions aloud.",
+  "Describe a real conflict using this sequence: Can you walk me through…? What made…? What do we need to change…?"
+ ]
+}
+];
+
+const PRECISION=[
+ {k:"01",t:"Subject vs object",r:"If Who/What is the subject, the verb follows directly — no auxiliary. If it is the object, use do/does/did.",ok:["Who called the client?","Who did the client call?","What happened in the meeting?"],no:"Who did call the client?"},
+ {k:"02",t:"The time engine",r:"The WH word stays; the auxiliary carries the time: do/does (routine), did (past), have/has (up to now), will/would (future, hypothetical), was/were (past in progress).",ok:["What would you do differently?","How long have you been stuck on this?","What was Tomás building?"],no:"How long you have been stuck on this?"},
+ {k:"03",t:"Compound WH",r:"Precision lives in the compound: How much / How many / How long / How often / What kind of / Which + noun / Whose + noun.",ok:["How many units do I need to buy?","Which conditions could you offer?","Whose problem does it solve first?"],no:"How much units do I need?"},
+ {k:"04",t:"Indirect questions",r:"The executive register. After a polite frame, the WH clause returns to statement order — no inversion, no do/does/did.",ok:["Could you tell me when the delivery will arrive?","Do you know what the client decided?","Can you walk me through what happened?"],no:"Could you tell me when will the delivery arrive?"},
+ {k:"05",t:"Preposition at the end",r:"In natural English, the preposition stays with its verb or adjective — at the end of the question.",ok:["What were the managers worried about?","Who are you working with?","Which client is this proposal for?"],no:"About what were the managers worried?"},
+ {k:"06",t:"Why vs What made…",r:"Under tension, “why” can sound like blame. Same information, lower defensiveness: What made…? What led to…? Walk me through…",ok:["What made the timeline difficult?","What led to that decision?","Can you walk me through your reasoning?"],no:"Why did you do that?!"}
+];
+
+const FLOW=[
+ {c:"We’re looking for an English program for our sales team.",o:[
+  {t:"Do you want a program in English?",ok:0,w:"Closed and redundant — she already told you. It wastes the opening."},
+  {t:"What would your sales team be able to do in English that they can’t do today?",ok:1,w:"Open and outcome-focused: the client defines success in her own words."},
+  {t:"How much is your budget?",ok:0,w:"Too early. Price before value turns you into a vendor, not an advisor."}]},
+ {c:"Close more deals with US clients. Right now they lose momentum when the call switches to English.",o:[
+  {t:"Where are your clients from?",ok:0,w:"Not wrong, but it ignores the thread she just opened."},
+  {t:"Which part of the call is hardest for them — the pitch, the questions or the negotiation?",ok:1,w:"Which + options narrows a vague problem into a specific, diagnosable moment."},
+  {t:"Why do they lose momentum? Aren’t they prepared?",ok:0,w:"A why-question with implied criticism. She will defend her team instead of informing you."}]},
+ {c:"Definitely the questions. When a client asks something unexpected, they freeze.",o:[
+  {t:"Who freezes the most?",ok:0,w:"It drifts into names and blame before you understand the scale."},
+  {t:"Do they freeze?",ok:0,w:"She just said they do. Echo questions signal you weren’t listening."},
+  {t:"How often does that happen in a typical week?",ok:1,w:"How often quantifies the pain. Numbers make the problem real for both of you."}]},
+ {c:"I’d say three or four times per person, every week.",o:[
+  {t:"What does one lost deal cost the company, approximately?",ok:1,w:"It converts a language problem into a financial one — the language of decision-makers."},
+  {t:"When did they start working at the company?",ok:0,w:"Irrelevant to the business case you are building."},
+  {t:"Why don’t they study more?",ok:0,w:"Blame again. It closes the conversation."}]},
+ {c:"Around twelve thousand dollars, depending on the client.",o:[
+  {t:"Whose fault is that?",ok:0,w:"A blame question exactly when she is opening up."},
+  {t:"Who else needs to be involved in deciding on a program like this?",ok:1,w:"Who + else maps the stakeholders before you write a proposal."},
+  {t:"How much does your company earn per year?",ok:0,w:"Intrusive and unnecessary — you already have the number that matters."}]},
+ {c:"Our VP of Sales — and finance, because of the budget.",o:[
+  {t:"Why finance?",ok:0,w:"She already explained it. It sounds like a challenge."},
+  {t:"What is finance?",ok:0,w:"Not a serious question in a business conversation."},
+  {t:"When would be a good moment to show them a proposal together?",ok:1,w:"It turns the conversation into a concrete next step with a time commitment."}]}
+];
+
+const PROMPTS=[
+ "Describe a problem your team solved recently. Include the questions that helped you understand it.",
+ "Write the opening of a client discovery call: what you would ask, in what order, and why.",
+ "Reflect on a decision you made under pressure: what happened, why it happened, and what you would do differently."
+];
+
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const WA='573197894038';
+
+/* ---------- storage ---------- */
+const KEY='pg-wh-premium-v1';
+let ST={};
+try{ST=JSON.parse(localStorage.getItem(KEY))||{}}catch(e){ST={}}
+ST.r=ST.r||{};ST.flow=ST.flow||{best:0};ST.write=ST.write||{sent:0,draft:''};
+function save(){try{localStorage.setItem(KEY,JSON.stringify(ST))}catch(e){}}
+function RS(id){return ST.r[id]=ST.r[id]||{read:0,comp:{},forge:{},speak:{}}}
+function pts(r){const s=RS(r.id);return (s.read?1:0)+Object.values(s.comp).filter(x=>x.ok).length+Object.values(s.forge).filter(x=>x.ok).length+Object.values(s.speak).filter(Boolean).length}
+const MAXP=10;
+function pct(r){return Math.round(pts(r)/MAXP*100)}
+
+function toast(t){const el=$('#toast');el.textContent=t;el.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>el.classList.remove('on'),2200)}
+
+/* ---------- speech ---------- */
+const TTS={voice:null,accent:'en-US',rate:.9,token:0,timer:null};
+const hasTTS='speechSynthesis' in window;
+function pickVoice(){
+ if(!hasTTS)return;
+ const vs=speechSynthesis.getVoices();
+ const pool=vs.filter(v=>v.lang&&v.lang.replace('_','-').toLowerCase().startsWith(TTS.accent.toLowerCase()));
+ const fav=pool.find(v=>/natural|neural|premium|enhanced/i.test(v.name))||pool.find(v=>/google|samantha|aria|jenny|guy|daniel|serena|libby|sonia|ryan/i.test(v.name));
+ TTS.voice=fav||pool[0]||vs.find(v=>/^en/i.test(v.lang))||null;
+}
+if(hasTTS){pickVoice();speechSynthesis.onvoiceschanged=pickVoice}
+function say(text,onend){
+ if(!hasTTS){toast('Audio is not available in this browser');onend&&onend();return}
+ const u=new SpeechSynthesisUtterance(text.replace(/[“”]/g,'"'));
+ u.lang=TTS.accent;if(TTS.voice)u.voice=TTS.voice;u.rate=TTS.rate;
+ if(onend){u.onend=onend;u.onerror=onend}
+ speechSynthesis.speak(u);
+}
+function stopAll(){
+ TTS.token++;if(hasTTS)speechSynthesis.cancel();clearTimeout(TTS.timer);
+ $$('.s.speaking,.s.your-turn').forEach(x=>x.classList.remove('speaking','your-turn'));
+ setPlay(null);
+}
+function speakOne(t){stopAll();say(t)}
+function setPlay(mode){
+ $('#bPlay').classList.toggle('on',mode==='listen');
+ $('#bShadow').classList.toggle('on',mode==='shadow');
+}
+function playSeq(mode){
+ stopAll();const my=TTS.token;const els=$$('#passage .s');let i=0;setPlay(mode);
+ const step=()=>{
+  if(my!==TTS.token)return;
+  els.forEach(e=>e.classList.remove('speaking','your-turn'));
+  if(i>=els.length){setPlay(null);markRead();return}
+  const el=els[i];el.classList.add('speaking');
+  const r=el.getBoundingClientRect();if(r.top<70||r.bottom>innerHeight-20)el.scrollIntoView({block:'center',behavior:'smooth'});
+  say(el.dataset.t,()=>{
+   if(my!==TTS.token)return;i++;
+   if(mode==='shadow'){el.classList.remove('speaking');el.classList.add('your-turn');
+    const wait=Math.min(9000,1100+el.dataset.t.split(/\s+/).length*430/TTS.rate);
+    TTS.timer=setTimeout(step,wait)}
+   else step();
+  });
+ };
+ step();
+}
+
+/* ---------- passage decoration ---------- */
+const WHLIST=['how much','how many','how long','how often','how far','what kind of','whose','whom','what','where','when','which','who','why','how'];
+const reEsc=s=>s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+function whClass(w){w=w.toLowerCase();if(w.startsWith('how'))return'how';if(w.startsWith('what'))return'what';if(w==='whom')return'who';return w}
+function qRanges(t){const out=[],re=/[^.:;!?“”"]*\?/g;let m;while((m=re.exec(t))){if(!m[0].length){re.lastIndex++;continue}out.push([m.index,m.index+m[0].length])}return out}
+function decorate(t,gloss){
+ const keys=Object.keys(gloss||{});
+ const parts=[...keys].sort((a,b)=>b.length-a.length).map(reEsc).concat(WHLIST.map(x=>x.replace(/ /g,'\\s+')));
+ const re=new RegExp('\\b('+parts.join('|')+')\\b','gi');
+ const qr=qRanges(t);let out='',last=0,m;
+ while((m=re.exec(t))){
+  out+=esc(t.slice(last,m.index));
+  const tok=m[0],low=tok.toLowerCase().replace(/\s+/g,' ');
+  const g=keys.find(k=>k.toLowerCase()===low);
+  if(g&&!WHLIST.includes(low)){out+=`<span class="gl" tabindex="0" data-es="${esc(gloss[g])}" data-en="${esc(tok)}">${esc(tok)}</span>`}
+  else{const inQ=qr.some(([a,b])=>m.index>=a&&m.index<b);out+=`<span class="wh wh-${whClass(low)} ${inQ?'q':'emb'}">${esc(tok)}</span>`}
+  last=m.index+tok.length;
+ }
+ return out+esc(t.slice(last));
+}
+
+/* ---------- tooltip ---------- */
+const tip=document.createElement('div');tip.className='tip';document.body.appendChild(tip);
+function showTip(el){
+ tip.innerHTML=`<b>${esc(el.dataset.en)}</b>${esc(el.dataset.es)}`;tip.classList.add('on');
+ const r=el.getBoundingClientRect(),tw=tip.offsetWidth,th=tip.offsetHeight;
+ let x=r.left+r.width/2-tw/2+scrollX;x=Math.max(scrollX+8,Math.min(x,scrollX+document.documentElement.clientWidth-tw-8));
+ let y=r.top+scrollY-th-10;if(r.top-th-10<70)y=r.bottom+scrollY+10;
+ tip.style.left=x+'px';tip.style.top=y+'px';
+}
+document.addEventListener('click',e=>{
+ const g=e.target.closest('.gl');
+ if(g){e.stopPropagation();showTip(g);speakOne(g.dataset.en);return}
+ tip.classList.remove('on');
+},true);
+document.addEventListener('keydown',e=>{const g=e.target.closest&&e.target.closest('.gl');if(g&&(e.key==='Enter'||e.key===' ')){e.preventDefault();showTip(g);speakOne(g.dataset.en)}});
+addEventListener('scroll',()=>tip.classList.remove('on'),{passive:true});
+
+/* ---------- arena index ---------- */
+$('#arenaList').innerHTML=READ.map((r,i)=>`<li><button data-i="${i}"><span class="n">${r.num}</span><span class="d">${esc(r.domain)}<small>${esc(r.skill)}</small></span><span class="lv">${r.level}</span></button></li>`).join('');
+$('#arenaList').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;loadReading(+b.dataset.i);$('#lab').scrollIntoView({behavior:'smooth'})});
+
+/* ---------- precision ---------- */
+$('#precGrid').innerHTML=PRECISION.map(p=>`<article class="pcd reveal"><div class="pk">${p.k}</div><h3>${esc(p.t)}</h3><p>${esc(p.r)}</p>${p.ok.map(x=>`<div class="ex"><span class="mk">✓</span><span>${esc(x)}</span><button class="say" data-say="${esc(x)}" aria-label="Listen">▶</button></div>`).join('')}<div class="ex bad"><span class="mk">✗</span><span>${esc(p.no)}</span></div></article>`).join('');
+document.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b)speakOne(b.dataset.say)});
+
+/* ---------- reading lab ---------- */
+let cur=0,mode='comp';
+function sentences(r){return r.paras.flat()}
+function findIdx(r,frag){const f=frag.toLowerCase();return sentences(r).findIndex(s=>s.toLowerCase().includes(f))}
+function renderTiles(){
+ $('#tiles').innerHTML=READ.map((r,i)=>{const p=pct(r);return `<button class="tile ${i===cur?'on':''}" data-i="${i}"><span class="tn">${r.num}</span><span class="tt"><b>${esc(r.domain)}</b><small>${esc(r.title)}</small></span><span class="tp">${p}%</span><span class="tbar"><i style="width:${p}%"></i></span></button>`}).join('');
+}
+$('#tiles').addEventListener('click',e=>{const b=e.target.closest('.tile');if(b)loadReading(+b.dataset.i)});
+
+function loadReading(i){
+ stopAll();cur=i;const r=READ[i];
+ $('#rKicker').textContent=`Module ${r.num} · ${r.domain}`;
+ $('#rTitle').textContent=r.title;
+ $('#rChips').innerHTML=`<span class="chip n">${r.level}</span><span class="chip g">${esc(r.skill)}</span><span class="chip">${esc(r.focus)}</span><span class="chip">${r.min} min read</span>`;
+ $('#rLens').innerHTML=`<b>WH lens</b><span>${esc(r.lens)}</span>`;
+ let k=0;
+ $('#passage').innerHTML=r.paras.map(p=>`<p>${p.map(s=>`<span class="s" data-i="${k++}" data-t="${esc(s)}">${decorate(s,r.gloss)}</span>`).join(' ')}</p>`).join('');
+ const used=new Set($$('#passage .wh').map(x=>[...x.classList].find(c=>c.startsWith('wh-'))));
+ const names={what:'What',where:'Where',when:'When',who:'Who',why:'Why',how:'How',which:'Which',whose:'Whose'};
+ $('#legend').innerHTML=Object.keys(names).filter(n=>used.has('wh-'+n)).map(n=>`<i style="color:var(--w-${n})">${names[n]}</i>`).join('')+`<span class="key"><span><span class="qk">filled</span> = WH in a direct question</span><span><span class="ek">dotted</span> = WH inside a statement (no inversion)</span></span>`;
+ renderTiles();renderPractice();
+}
+$('#passage').addEventListener('click',e=>{const s=e.target.closest('.s');if(!s)return;speakOne(s.dataset.t);s.classList.add('speaking');setTimeout(()=>s.classList.remove('speaking'),1500)});
+$('#bPlay').onclick=()=>playSeq('listen');
+$('#bShadow').onclick=()=>playSeq('shadow');
+$('#bStop').onclick=stopAll;
+$('#sRate').onchange=e=>{TTS.rate=+e.target.value};
+$('#sAccent').onchange=e=>{TTS.accent=e.target.value;pickVoice();speakOne(TTS.accent==='en-GB'?'British voice selected.':'American voice selected.')};
+$('#bWh').onclick=e=>{const on=$('#passage').classList.toggle('show-wh');e.currentTarget.classList.toggle('on',on);e.currentTarget.setAttribute('aria-pressed',on)};
+$('#bListen').onclick=e=>{const on=$('#passage').classList.toggle('listen');e.currentTarget.classList.toggle('on',on);e.currentTarget.setAttribute('aria-pressed',on);e.currentTarget.textContent=on?'Reveal text':'Listening mode';if(on)toast('Text hidden — listen and answer from audio')};
+
+function markRead(){const r=READ[cur],s=RS(r.id);if(!s.read){s.read=1;save();refresh();toast('Reading logged ✓')}}
+function flashSentence(frag){
+ const i=findIdx(READ[cur],frag);if(i<0)return;
+ const el=$(`#passage .s[data-i="${i}"]`);if(!el)return;
+ $$('#passage .s.evidence').forEach(x=>x.classList.remove('evidence'));
+ if($('#passage').classList.contains('listen'))$('#bListen').click();
+ el.classList.add('evidence');el.scrollIntoView({block:'center',behavior:'smooth'});
+ setTimeout(()=>el.classList.remove('evidence'),3200);
+}
+
+$$('.mode').forEach(b=>b.onclick=()=>{mode=b.dataset.m;$$('.mode').forEach(x=>x.classList.toggle('on',x===b));renderPractice()});
+
+function renderPractice(){
+ const r=READ[cur];
+ const html=mode==='comp'?renderComp(r):mode==='forge'?renderForge(r):renderPerf(r);
+ $('#practice').innerHTML=html;
+ $('#rProg').textContent=`Reading progress · ${pct(r)}%`;
+}
+
+/* --- Understand --- */
+function renderComp(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">Answer from the text — or from audio only, with Listening mode on. Each answer shows its evidence sentence.</p>`+r.comp.map((c,qi)=>{
+  const st=s.comp[qi],done=!!st;
+  return `<div class="qcard ${done?(st.ok?'ok':'no'):''}" data-qi="${qi}"><div class="qn">Check ${qi+1} of ${r.comp.length}</div><p class="qq">${esc(c.q)}</p><div class="opts">${c.a.map((a,ai)=>`<button class="opt ${done&&ai===c.c?'right':''} ${done&&ai===st.pick&&!st.ok?'wrong':''}" data-ai="${ai}" ${done?'disabled':''}>${esc(a)}</button>`).join('')}</div><div class="qfb">${done?compFb(r,c,st.ok):''}</div></div>`}).join('');
+}
+function compFb(r,c,ok){
+ const i=findIdx(r,c.ev),sent=i>=0?sentences(r)[i]:'';
+ return `<b class="${ok?'g':'r'}">${ok?'Correct.':'Not quite.'}</b> ${esc(c.e)}${sent?`<button class="evid" data-ev="${esc(c.ev)}"><small>Evidence · tap to locate</small>${esc(sent)}</button>`:''}`;
+}
+
+/* --- Forge --- */
+function renderForge(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">You get the answer. You produce the exact question — no options. This is retrieval, not recognition.</p>`+r.forge.map((f,fi)=>{
+  const st=s.forge[fi]||{};
+  return `<div class="fcard ${st.ok?'ok':''}" data-fi="${fi}"><div class="fa"><div><small>Answer ${fi+1} · from the text</small><b>“${esc(f.ans)}”</b></div><button class="loc" data-ev="${esc(f.ans)}">Locate</button></div><div class="fh">${esc(f.hint)}</div><div class="frow"><input type="text" autocomplete="off" autocapitalize="sentences" spellcheck="false" enterkeyhint="done" placeholder="Type the question…" value="${esc(st.v||'')}" aria-label="Your question"><button class="bs dark chk">Check</button></div><div class="ffb">${st.ok?`<b class="g">Clean question.</b><span class="model">Model: ${esc(f.model)}</span>`:''}</div><div class="frow2"><button class="bs show">Show model</button><button class="bs hear">▶ Hear model</button></div></div>`}).join('');
+}
+function norm(s){
+ s=s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[’‘`´]/g,"'");
+ s=s.replace(/\bwon't\b/g,'will not').replace(/\bcan't\b/g,'can not').replace(/\bcannot\b/g,'can not').replace(/n't\b/g,' not')
+  .replace(/\b(what|where|who|how|when|why|that|it|there|he|she)'s\b/g,'$1 is').replace(/'re\b/g,' are').replace(/'ve\b/g,' have').replace(/'ll\b/g,' will').replace(/'m\b/g,' am').replace(/'d\b/g,' would').replace(/'s\b/g,'');
+ return s.replace(/[^a-z0-9\s]/g,' ').replace(/\s+/g,' ').trim();
+}
+function checkForge(f,raw){
+ const n=norm(raw);
+ if(n.split(' ').length<2)return{ok:false,msg:'Write a complete question.'};
+ const okStart=f.start.some(p=>n.startsWith(norm(p)));
+ const okKeys=f.keys.every(k=>new RegExp('\\b('+k+')').test(n));
+ if(okStart&&okKeys){
+  if(f.aux&&/\b(did|does|do)\b/.test(f.aux)&&/\b(did|does)\s+(?:\w+\s+){0,3}?(\w{3,}ed)\b/.test(n)&&!/\b(need|feed|proceed|succeed|exceed|speed)\b/.test(n))return{ok:false,msg:'<b class="r">Almost.</b> After <b>did/does</b>, use the base verb (raise, not raised).'};
+  if(!/[?？]\s*$/.test(raw.trim()))return{ok:true,msg:'<b class="g">Correct structure.</b> Add the question mark next time.'};
+  return{ok:true,msg:'<b class="g">Clean question.</b>'};
+ }
+ const whs=f.wh.split('|');
+ if(!whs.some(w=>n.startsWith(norm(w))))return{ok:false,msg:`<b class="r">Check the WH word.</b> ${esc(f.hint.split('→')[0].trim())} → start with <b>${whs.join('</b> or <b>')}</b>.`};
+ const first=norm(whs.find(w=>n.startsWith(norm(w))));
+ const rest=n.slice(first.length).trim();
+ if(!f.aux&&/^(did|does|do)\b/.test(rest))return{ok:false,msg:'<b class="r">Subject question.</b> Who is the subject here, so no auxiliary: <b>Who + past verb</b> (Who asked…?).'};
+ if(f.aux&&!new RegExp('\\b('+f.aux+')\\b').test(n))return{ok:false,msg:`<b class="r">Check the auxiliary.</b> This question needs <b>${f.aux.split('|').join('</b> or <b>')}</b>.`};
+ if(f.aux&&/^(i|you|he|she|it|we|they|the|his|her|their|andrea|daniel|camila|martin|valeria|elena|laura|tomas)\b/.test(rest.replace(/^(units|people|weeks|days|company|kind of company|of his account|money)\s*/,'')))return{ok:false,msg:'<b class="r">Word order.</b> The auxiliary goes <b>before</b> the subject: WH + auxiliary + subject + verb.'};
+ return{ok:false,msg:'<b class="r">Close.</b> Your structure is valid but asks for different information. Re-read the answer and compare with the model.'};
+}
+$('#practice').addEventListener('click',e=>{
+ const r=READ[cur],s=RS(r.id);
+ const ev=e.target.closest('[data-ev]');if(ev){flashSentence(ev.dataset.ev);return}
+ const opt=e.target.closest('.opt');
+ if(opt&&!opt.disabled){
+  const card=opt.closest('.qcard'),qi=+card.dataset.qi,c=r.comp[qi],pick=+opt.dataset.ai,ok=pick===c.c;
+  s.comp[qi]={pick,ok};save();
+  $$('.opt',card).forEach((b,ai)=>{b.disabled=true;if(ai===c.c)b.classList.add('right');if(ai===pick&&!ok)b.classList.add('wrong')});
+  card.classList.add(ok?'ok':'no');$('.qfb',card).innerHTML=compFb(r,c,ok);
+  flashSentence(c.ev);refresh();return;
+ }
+ const fc=e.target.closest('.fcard');if(!fc)return;
+ const fi=+fc.dataset.fi,f=r.forge[fi],inp=$('input',fc),fb=$('.ffb',fc);
+ if(e.target.closest('.chk'))runForge(fc,fi);
+ else if(e.target.closest('.show')){fb.innerHTML=`<span class="model">Model: ${esc(f.model)}</span>Study it, hide it, then type it from memory.`}
+ else if(e.target.closest('.hear'))speakOne(f.model);
+});
+$('#practice').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.matches('.fcard input')){e.preventDefault();const fc=e.target.closest('.fcard');runForge(fc,+fc.dataset.fi)}});
+function runForge(fc,fi){
+ const r=READ[cur],s=RS(r.id),f=r.forge[fi],v=$('input',fc).value;
+ const res=checkForge(f,v),fb=$('.ffb',fc);
+ const prev=s.forge[fi]||{};
+ s.forge[fi]={v,ok:prev.ok||res.ok};save();
+ fb.innerHTML=res.msg+(res.ok?`<span class="model">Model: ${esc(f.model)}</span>`:'');
+ if(res.ok){fc.classList.add('ok');speakOne(f.model)}
+ refresh();
+}
+
+/* --- Perform --- */
+function renderPerf(r){
+ const s=RS(r.id);
+ return `<p class="lead-s">Speak for 60 seconds per mission. Record, listen back and judge yourself like a coach.</p>`+r.speak.map((p,pi)=>`<div class="pcard ${s.speak[pi]?'ok':''}" data-pi="${pi}"><div class="pn">Mission ${pi+1}</div><p>${esc(p)}</p><div class="prow"><button class="bs dark tmr">⏱ Start 60s</button><button class="bs rec">● Record</button><span class="clock">1:00</span></div><audio controls hidden></audio></div>`).join('')+`<div class="rubric"><b>Self-assessment</b><ul><li>Every WH question had the right auxiliary — or none, for subject questions.</li><li>My WH questions fell at the end ↘.</li><li>I used at least one embedded or indirect question.</li><li>I asked a follow-up, not just a first question.</li></ul></div>`;
+}
+let rec=null,recCard=null,recStream=null,clockT=null;
+function fmt(sec){return `${Math.floor(sec/60)}:${String(sec%60).padStart(2,'0')}`}
+function markSpeak(card){const r=READ[cur],s=RS(r.id),pi=+card.dataset.pi;if(!s.speak[pi]){s.speak[pi]=1;save();card.classList.add('ok');refresh();toast('Mission logged ✓')}}
+function runClock(card,secs,onDone){
+ clearInterval(clockT);const c=$('.clock',card);let t=secs;c.textContent=fmt(t);c.classList.add('run');
+ clockT=setInterval(()=>{t--;c.textContent=fmt(Math.max(t,0));if(t<=0){clearInterval(clockT);c.classList.remove('run');onDone&&onDone()}},1000);
+}
+$('#practice').addEventListener('click',async e=>{
+ const card=e.target.closest('.pcard');if(!card)return;
+ if(e.target.closest('.tmr')){stopAll();runClock(card,60,()=>{markSpeak(card);toast('Time — 60 seconds')})}
+ if(e.target.closest('.rec')){
+  const btn=e.target.closest('.rec');
+  if(rec&&rec.state==='recording'){rec.stop();return}
+  if(!navigator.mediaDevices||!window.MediaRecorder){toast('Recording is not supported here — use the timer and speak aloud');return}
+  try{
+   stopAll();recStream=await navigator.mediaDevices.getUserMedia({audio:true});
+   const chunks=[];rec=new MediaRecorder(recStream);recCard=card;
+   rec.ondataavailable=ev=>{if(ev.data.size)chunks.push(ev.data)};
+   rec.onstop=()=>{
+    recStream.getTracks().forEach(t=>t.stop());clearInterval(clockT);
+    const a=$('audio',card);a.src=URL.createObjectURL(new Blob(chunks,{type:rec.mimeType||'audio/webm'}));a.hidden=false;
+    btn.textContent='● Record again';btn.classList.remove('live');$('.clock',card).classList.remove('run');
+    markSpeak(card);
+   };
+   rec.start();btn.textContent='■ Stop';btn.classList.add('live');
+   runClock(card,90,()=>{if(rec&&rec.state==='recording')rec.stop()});
+  }catch(err){toast('Microphone not available — use the timer and speak aloud')}
+ }
+});
+
+$('#bResetR').onclick=()=>{const r=READ[cur];if(!confirm(`Reset your progress on “${r.title}”?`))return;delete ST.r[r.id];save();loadReading(cur);refresh()};
+
+/* ---------- discovery call ---------- */
+let fi=0,fscore=0;
+function renderFlow(){
+ const chat=$('#chat');
+ if(fi===0){chat.innerHTML='';fscore=0}
+ $('#flowScore').textContent=`${fscore}/${FLOW.length}`;$('#flowBest').textContent=ST.flow.best;
+ $$('.choices',chat).forEach(x=>x.remove());
+ if(fi>=FLOW.length){
+  if(fscore>ST.flow.best){ST.flow.best=fscore;save();refresh()}
+  $('#flowBest').textContent=ST.flow.best;
+  chat.insertAdjacentHTML('beforeend',`<div class="msg note ${fscore>=5?'':'x'}"><b>${fscore}/${FLOW.length} strong questions.</b> ${fscore>=5?'Senior-advisor level: you diagnosed, quantified and secured a next step.':'Replay the call and notice the pattern: each strong question builds on the client’s last sentence.'}</div>`);
+  return;
+ }
+ const t=FLOW[fi];
+ chat.insertAdjacentHTML('beforeend',`<div class="msg cl"><small>Mariana · HR Director <button class="say" style="display:inline-grid;width:22px;height:22px;margin-left:4px;vertical-align:middle;color:var(--gold-dk);border-color:var(--line)" data-say="${esc(t.c)}" aria-label="Listen">▶</button></small>${esc(t.c)}</div>`);
+ chat.insertAdjacentHTML('beforeend',`<div class="choices"><span class="cap">Turn ${fi+1} of ${FLOW.length} · Your follow-up</span>${t.o.map((o,i)=>`<button class="choice" data-o="${i}">${esc(o.t)}</button>`).join('')}</div>`);
+}
+$('#chat').addEventListener('click',e=>{
+ const b=e.target.closest('.choice');if(!b)return;
+ const t=FLOW[fi],o=t.o[+b.dataset.o],best=t.o.find(x=>x.ok);
+ $$('.choices',$('#chat')).forEach(x=>x.remove());
+ const chat=$('#chat');
+ if(o.ok){fscore++;chat.insertAdjacentHTML('beforeend',`<div class="msg me"><small>You</small>${esc(o.t)}</div><div class="msg note">✓ ${esc(o.w)}</div>`);speakOne(o.t)}
+ else{chat.insertAdjacentHTML('beforeend',`<div class="msg note x">✗ “${esc(o.t)}” — ${esc(o.w)}</div><div class="msg me"><small>Stronger move</small>${esc(best.t)}</div><div class="msg note">✓ ${esc(best.w)}</div>`)}
+ fi++;setTimeout(renderFlow,350);
+});
+$('#flowRestart').onclick=()=>{fi=0;renderFlow()};
+
+/* ---------- writing studio ---------- */
+$('#wPrompt').innerHTML=PROMPTS.map((p,i)=>`<option value="${i}">${i+1}. ${esc(p)}</option>`).join('');
+const wT=$('#wText');wT.value=ST.write.draft||'';
+function analyze(){
+ const t=wT.value,words=(t.match(/[A-Za-zÀ-ÿ’']+/g)||[]).length;
+ const direct=(t.match(/\?/g)||[]).length;
+ const indirect=(t.match(/\b(tell me|know|wonder(?:ing)?|ask(?:ed)?|explain|understand|sure|idea|remember|find out|walk (?:me|us) through|curious about|clear on)\s+(what|where|when|who|why|how|which|whose|if|whether)\b/gi)||[]).length;
+ const found=[...new Set((t.match(/\b(how much|how many|how long|how often|what kind of|whose|whom|what|where|when|which|who|why|how)\b/gi)||[]).map(x=>x.toLowerCase()))];
+ const core=new Set(found.map(whClass));
+ const crit=[['Length',words,120,'words'],['Direct questions',direct,4,''],['Indirect question',indirect,1,''],['Different WH words',core.size,5,'']];
+ $('#wCrit').innerHTML=crit.map(([l,v,g,u])=>`<div class="crit ${v>=g?'met':''}"><span>${l}</span><b>${v}/${g}${u?' '+u:''}</b><div class="bar"><i style="width:${Math.min(100,v/g*100)}%"></i></div></div>`).join('');
+ $('#wFound').innerHTML=found.length?found.map(w=>`<span>${esc(w)}</span>`).join(''):'';
+ const warns=[];
+ const add=(re,msg)=>{let m;const r=new RegExp(re.source,re.flags.includes('g')?re.flags:re.flags+'g');while((m=r.exec(t))&&warns.length<5){warns.push(`<b>“${esc(m[0].replace(/^[.!?]\s+/,'').trim())}”</b> — ${msg}`)}};
+ add(/\bdoes\s+(?:he|she|it|the \w+|my \w+|your \w+|our \w+|\w+)\s+(?!is\b|was\b|has\b|does\b|focus\b|access\b|process\b|discuss\b|address\b|pass\b|miss\b|stress\b|guess\b)\w{3,}[^s\W]s\b/gi,'after <b>does</b>, the main verb loses the -s.');
+ add(/\bdid\s+(?:i|you|he|she|it|we|they)\s+(?!need\b|feed\b|proceed\b|succeed\b|exceed\b|speed\b)\w+ed\b/gi,'after <b>did</b>, use the base verb.');
+ add(/\b(?:tell me|know|wonder|explain|understand|sure|idea|ask)\s+(?:what|where|when|why|how|which)\s+(?:is|are|was|were|do|does|did|can|will|should|would)\s+(?:i|you|he|she|it|we|they|the|this|that|my|your|our|their)\b/gi,'in an indirect question, use statement order (“…where the office is”, not “…where is the office”).');
+ add(/(?:^|[.!?]\s+)(?:what|where|when|why|how)\s+(?:you|he|she|they|we|i)\s+(?!are\b|were\b|am\b|is\b)\w+[^.?!]*\?/gi,'looks like the auxiliary is missing: WH + <b>do/does/did</b> + subject + verb.');
+ $('#wWarn').innerHTML=warns.length?warns.map(w=>`<div class="warn">${w}</div>`).join(''):(words>=20?`<div class="allgood">No structural alerts detected. Your coach will review meaning, register and flow.</div>`:'');
+ ST.write.draft=t;save();
+ return{words,direct,indirect,core:core.size};
+}
+wT.addEventListener('input',analyze);analyze();
+$('#wCopy').onclick=async()=>{try{await navigator.clipboard.writeText(wT.value);toast('Copied ✓')}catch(e){wT.select();document.execCommand&&document.execCommand('copy');toast('Copied ✓')}};
+$('#wHear').onclick=()=>{if(wT.value.trim())speakOne(wT.value);else toast('Write something first')};
+$('#wSend').onclick=()=>{
+ const a=analyze();if(a.words<20){toast('Write your paragraph first');return}
+ const p=PROMPTS[+$('#wPrompt').value];
+ const msg=`WH Mastery · Writing Studio\nPrompt: ${p}\nWords: ${a.words} · Direct Q: ${a.direct} · Indirect Q: ${a.indirect} · WH variety: ${a.core}\n\n${wT.value.trim()}`.slice(0,3500);
+ ST.write.sent=(ST.write.sent||0)+1;save();refresh();
+ window.open(`https://wa.me/${WA}?text=${encodeURIComponent(msg)}`,'_blank','noopener');
+};
+
+/* ---------- mastery record ---------- */
+function refresh(){
+ renderTiles();
+ const r=READ[cur];if($('#rProg'))$('#rProg').textContent=`Reading progress · ${pct(r)}%`;
+ let total=0,mastered=0,cOk=0,cAns=0,fOk=0,sp=0;
+ READ.forEach(x=>{const s=RS(x.id);total+=pts(x);if(pct(x)>=80)mastered++;Object.values(s.comp).forEach(c=>{cAns++;if(c.ok)cOk++});fOk+=Object.values(s.forge).filter(f=>f.ok).length;sp+=Object.values(s.speak).filter(Boolean).length});
+ const overall=Math.round((total+ST.flow.best)/(READ.length*MAXP+FLOW.length)*100);
+ $('#mPct').textContent=overall+'%';
+ $('#recGrid').innerHTML=`
+  <div class="stat hl"><small>Overall mastery</small><b>${overall}%</b><span>all activities combined</span></div>
+  <div class="stat"><small>Readings mastered</small><b>${mastered}/${READ.length}</b><span>at 80% or more</span></div>
+  <div class="stat"><small>Evidence checks</small><b>${cOk}/${READ.length*4}</b><span>${cAns?Math.round(cOk/cAns*100):0}% first-attempt accuracy</span></div>
+  <div class="stat"><small>Questions forged</small><b>${fOk}/${READ.length*3}</b><span>built from memory</span></div>
+  <div class="stat"><small>Speaking missions</small><b>${sp}/${READ.length*2}</b><span>call best ${ST.flow.best}/6 · ${ST.write.sent||0} sent</span></div>`;
+}
+$('#bResetAll').onclick=()=>{if(!confirm('Reset all progress on this device?'))return;ST={r:{},flow:{best:0},write:{sent:0,draft:wT.value}};save();loadReading(cur);fi=0;renderFlow();refresh()};
+
+/* ---------- boot ---------- */
+loadReading(0);renderFlow();refresh();
+const ro=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('seen');ro.unobserve(e.target)}}),{threshold:.08});
+$$('.reveal').forEach(el=>ro.observe(el));
+const links=$$('.nav a');
+const no=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}),{rootMargin:'-35% 0px -60%'});
+$$('main section[id]').forEach(s=>no.observe(s));
+addEventListener('beforeunload',()=>{if(hasTTS)speechSynthesis.cancel()});
+
+</script>
+</body>
+</html>
