@@ -590,7 +590,9 @@ const unlocked = i => ALL || i===0 || mastered(i-1) || codeOpen(i);
 const CODES = {
   "37a04c101873567b79bf1f13fa464a56bf9cb22364589a9f6f6b20a3b9d0aa24": ["pasado"],
   "12a47bca6caacc1b8336b45276d32d07e2b41e7f729589e909541503cb22cb1f": ["pasado","futuro"],
-  "bf2f67956d1097eb5df1b567e1dc4de82c1bd6c38024d31362b2439328792963": ["pasado","futuro"]
+  "bf2f67956d1097eb5df1b567e1dc4de82c1bd6c38024d31362b2439328792963": ["pasado","futuro"],
+  /* código maestro del profesor */
+  "08ec596c6e057cec503ecfc10c7dbde6456fad84bc0bf1987507f2cdc7b5b2b4": ["pasado","futuro"]
 };
 async function sha(t){
   const b = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(t));
