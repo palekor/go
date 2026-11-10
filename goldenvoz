@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0A0F1E">
+<title>GoldenVoz — The Chunking Master Class · ProfGermandario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,500&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0A0F1E; --navy2:#10172B; --panel:#141C34; --panel2:#1A2442;
+  --gold:#D8B24A; --gold2:#F3DFA0; --gold3:#8F7124;
+  --ivory:#F3EEDF; --mute:#9BA3BD; --dim:#66708F;
+  --ok:#5FD3B3; --err:#F0836B;
+  --hair:rgba(216,178,74,.20); --hair2:rgba(243,238,223,.09);
+  --serif:Fraunces,Georgia,"Times New Roman",serif;
+  --sans:Figtree,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --ipa:"Charis SIL","Doulos SIL","Noto Serif","Times New Roman",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--navy);color:var(--ivory);font-family:var(--sans);font-size:16px;line-height:1.55;
+  min-height:100vh;padding-bottom:calc(86px + env(safe-area-inset-bottom));overscroll-behavior-y:none;
+}
+body::before{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+  background:
+    radial-gradient(80% 42% at 50% -8%,rgba(216,178,74,.17),transparent 68%),
+    radial-gradient(60% 40% at 100% 105%,rgba(48,74,150,.35),transparent 65%),
+    var(--navy);
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+:focus-visible{outline:2px solid var(--gold2);outline-offset:3px;border-radius:8px}
+.wrap{max-width:720px;margin:0 auto;padding:0 18px}
+
+/* top bar */
+.top{display:flex;align-items:center;justify-content:space-between;padding:16px 0 6px}
+.brand{font-family:var(--serif);font-weight:600;font-size:.95rem;letter-spacing:.02em;color:var(--gold2)}
+.brand i{color:var(--mute);font-weight:400}
+.speed{display:inline-flex;border:1px solid var(--hair);border-radius:999px;padding:3px;background:rgba(10,15,30,.6)}
+.speed button{padding:6px 13px;border-radius:999px;font-size:.8rem;font-weight:600;color:var(--mute)}
+.speed button.act{background:var(--gold);color:#1B1403}
+
+/* nav */
+nav{position:fixed;left:0;right:0;bottom:0;z-index:20;background:rgba(10,15,30,.93);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-top:1px solid var(--hair);padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+nav .in{max-width:720px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+nav button{padding:10px 4px 9px;border-radius:12px;font-size:.82rem;font-weight:600;color:var(--mute);display:flex;flex-direction:column;align-items:center;gap:3px}
+nav button small{font-family:var(--serif);font-style:italic;font-weight:400;font-size:.7rem;color:var(--dim)}
+nav button.act{background:var(--panel2);color:var(--gold2)}
+nav button.act small{color:var(--gold)}
+
+/* type */
+h1{font-family:var(--serif);font-weight:800;font-size:clamp(3.1rem,15vw,5.6rem);line-height:.92;letter-spacing:-.035em}
+h2{font-family:var(--serif);font-weight:800;font-size:clamp(1.75rem,7vw,2.4rem);line-height:1.05;letter-spacing:-.02em;margin-bottom:10px}
+h3{font-family:var(--serif);font-weight:600;font-size:1.2rem;line-height:1.2;margin-bottom:6px}
+.gilt{background:linear-gradient(100deg,#B08A2C 0%,#F3DFA0 38%,#D8B24A 62%,#FFF4CF 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lede{color:#D5D2C6;font-size:1.04rem;max-width:58ch}
+.es{color:var(--mute);font-family:var(--serif);font-style:italic;font-size:.95rem}
+.mute{color:var(--mute)}
+section{padding:26px 0}
+.rule{height:1px;background:linear-gradient(90deg,transparent,var(--hair),transparent);margin:8px 0}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 20px;border-radius:999px;font-weight:700;font-size:.95rem;
+  background:linear-gradient(180deg,#E7C766,#C79F36);color:#1B1403;box-shadow:0 8px 24px rgba(216,178,74,.22)}
+.btn:active{transform:translateY(1px)}
+.btn.ghost{background:transparent;color:var(--gold2);border:1px solid var(--hair);box-shadow:none}
+.btn.sm{min-height:38px;padding:7px 14px;font-size:.85rem}
+.btn.on{background:var(--ivory);color:var(--navy)}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.play{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--hair);color:var(--gold2);display:grid;place-items:center;background:rgba(216,178,74,.06)}
+.play.on,.bigplay.on{background:var(--gold);color:#1B1403;border-color:var(--gold)}
+.play svg{margin-left:2px}
+.bigplay{width:84px;height:84px;border-radius:50%;border:1px solid var(--gold);color:var(--gold2);display:grid;place-items:center;margin:6px auto 8px;background:radial-gradient(circle at 50% 35%,rgba(216,178,74,.22),rgba(216,178,74,.04))}
+.bigplay svg{margin-left:4px}
+
+/* hero */
+.hero{padding:34px 0 10px}
+.hero .kicker{font-family:var(--serif);font-style:italic;color:var(--gold);font-size:1.02rem;margin-bottom:12px}
+.hero .sub{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.25rem,5.2vw,1.7rem);line-height:1.2;color:var(--ivory);margin:14px 0 18px}
+.hero .lede{margin-bottom:10px}
+
+/* ladder — the signature element */
+.lad{margin-top:14px}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline;margin-bottom:4px}
+.ipa{font-family:var(--ipa);font-size:1.05rem;color:var(--gold2)}
+.def{color:#CFCBBE;font-size:.95rem;margin-bottom:12px}
+.rungs{border-left:1px solid var(--hair);margin-left:19px}
+.rung{position:relative;display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:11px 0 11px 34px;border-bottom:1px solid var(--hair2)}
+.rung:last-child{border-bottom:0}
+.kt{position:absolute;left:-20px;top:50%;transform:translateY(-50%);width:40px;height:24px;border-radius:6px;display:grid;place-items:center;
+  font-family:var(--serif);font-weight:600;font-size:.72rem;background:var(--navy);border:1px solid var(--hair);color:var(--gold)}
+.rung[data-k="1"] .kt{border-color:rgba(216,178,74,.35)}
+.rung[data-k="2"] .kt{border-color:rgba(216,178,74,.5)}
+.rung[data-k="3"] .kt{border-color:rgba(216,178,74,.75);color:var(--gold2)}
+.rung[data-k="4"] .kt{background:linear-gradient(180deg,#E7C766,#C79F36);color:#1B1403;border-color:transparent}
+.rung small{display:block;font-size:.72rem;color:var(--dim);font-weight:600;margin-bottom:1px}
+.rung p{font-family:var(--serif);font-size:1.08rem;line-height:1.35;color:var(--mute)}
+.rung p b{font-weight:600;color:var(--gold2)}
+.rung[data-k="0"] p{font-size:1.5rem;font-weight:800}
+.rung.live{background:linear-gradient(90deg,rgba(216,178,74,.12),transparent)}
+.rung.live p{color:var(--ivory)}
+.more{margin-top:14px}
+.more small{display:block;color:var(--dim);font-size:.78rem;font-weight:600;margin-bottom:7px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:8px 14px;border-radius:999px;border:1px solid var(--hair2);background:rgba(243,238,223,.04);font-size:.9rem;color:var(--ivory)}
+.chip.on,.chip.sel{border-color:var(--gold);color:var(--gold2);background:rgba(216,178,74,.10)}
+.chip.s{font-size:.82rem;padding:6px 12px;color:var(--mute)}
+
+/* panels */
+.panel{background:linear-gradient(180deg,var(--panel),var(--navy2));border:1px solid var(--hair);border-radius:22px;padding:20px 18px}
+.idea{padding:16px 0;border-bottom:1px solid var(--hair2)}
+.idea:last-child{border-bottom:0}
+.idea p{color:#CFCBBE}
+.steps{counter-reset:s;list-style:none}
+.steps li{counter-increment:s;position:relative;padding:12px 0 12px 46px;border-bottom:1px solid var(--hair2)}
+.steps li:last-child{border-bottom:0}
+.steps li::before{content:counter(s);position:absolute;left:0;top:12px;width:30px;height:30px;border-radius:50%;border:1px solid var(--hair);display:grid;place-items:center;font-family:var(--serif);font-weight:600;color:var(--gold)}
+.steps b{color:var(--gold2)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.stat{border:1px solid var(--hair2);border-radius:16px;padding:14px 10px;text-align:center}
+.stat b{display:block;font-family:var(--serif);font-weight:800;font-size:1.7rem;color:var(--gold2);line-height:1.1}
+.stat span{font-size:.78rem;color:var(--mute)}
+
+/* collection */
+.suites{display:flex;gap:8px;overflow-x:auto;padding:4px 18px 10px;margin:0 -18px;scrollbar-width:none}
+.suites::-webkit-scrollbar{display:none}
+.suites .chip{flex:none}
+.search{width:100%;min-height:46px;border-radius:14px;border:1px solid var(--hair2);background:rgba(243,238,223,.04);padding:10px 14px;margin:6px 0 10px}
+.search::placeholder,textarea::placeholder{color:var(--dim)}
+.wrow{border-bottom:1px solid var(--hair2);display:grid;grid-template-columns:1fr auto;align-items:center;column-gap:10px}
+.whead{text-align:left;padding:14px 0;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;min-width:0}
+.wn{font-family:var(--serif);font-weight:600;font-size:1.3rem;letter-spacing:-.01em}
+.wm{color:var(--mute);font-size:.86rem}
+.pol{color:var(--gold);font-size:.8rem}
+.wrow.open{border:1px solid var(--hair);border-radius:20px;padding:4px 14px 16px;margin:10px -6px;background:linear-gradient(180deg,var(--panel),var(--navy2))}
+.wrow.open .wn{color:var(--gold2);font-size:1.6rem}
+.wrow.open .wm{display:none}
+.wrow .lad{grid-column:1/-1;margin-top:0}
+
+/* drills */
+.dcard{display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center;width:100%;text-align:left;padding:16px 0;border-bottom:1px solid var(--hair2)}
+.dcard .kt{position:static;transform:none;width:48px;height:30px;font-size:.82rem;grid-row:span 2}
+.dcard h3{margin:0}
+.dcard p{grid-column:2;color:var(--mute);font-size:.92rem}
+.dcard .best{color:var(--gold);font-size:.8rem;font-weight:600}
+.dtop{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;font-size:.88rem;color:var(--mute)}
+.bar{height:4px;border-radius:4px;background:var(--hair2);overflow:hidden;margin-bottom:22px}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--gold3),var(--gold2));transition:width .3s}
+.center{text-align:center}
+.prompt{font-family:var(--serif);font-size:1.45rem;line-height:1.35;text-align:center;margin:10px 0}
+.blank{display:inline-block;min-width:110px;border-bottom:2px solid var(--gold);color:var(--gold2);padding:0 6px}
+.opts{display:grid;gap:10px;margin-top:18px}
+.opt{min-height:52px;padding:13px 16px;border-radius:16px;border:1px solid var(--hair2);background:rgba(243,238,223,.04);font-family:var(--serif);font-size:1.1rem;text-align:left}
+.opt.good{border-color:var(--ok);color:var(--ok);background:rgba(95,211,179,.08)}
+.opt.bad{border-color:var(--err);color:var(--err)}
+.opt:disabled{cursor:default}
+.tray{min-height:62px;display:flex;flex-wrap:wrap;gap:8px;padding:12px;border-radius:16px;margin-top:12px;justify-content:center;align-items:center}
+.tray.ans{border:1px dashed var(--hair);background:rgba(10,15,30,.4)}
+.tile{padding:10px 14px;border-radius:12px;border:1px solid var(--hair);background:var(--panel2);font-family:var(--serif);font-size:1.02rem}
+.tile.in{border-color:var(--gold);color:var(--gold2)}
+.fb{min-height:26px;text-align:center;margin-top:16px;font-weight:600}
+.fb.good{color:var(--ok)} .fb.bad{color:var(--err)}
+.shake{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.field{display:flex;gap:8px;margin-top:16px}
+.field input{flex:1;min-width:0;min-height:48px;border-radius:14px;border:1px solid var(--hair);background:rgba(243,238,223,.05);padding:10px 14px;font-family:var(--serif);font-size:1.05rem}
+.result b{display:block;font-family:var(--serif);font-weight:800;font-size:4rem;line-height:1}
+
+/* studio */
+.lab{display:block;font-weight:700;font-size:.9rem;color:var(--gold2);margin:20px 0 9px}
+.lab:first-child{margin-top:0}
+select{min-height:46px;border-radius:14px;border:1px solid var(--hair);background:var(--navy2);padding:8px 12px;flex:1;min-width:0}
+textarea{width:100%;min-height:118px;border-radius:16px;border:1px solid var(--hair);background:rgba(10,15,30,.55);padding:14px;font-family:var(--serif);font-size:1.15rem;line-height:1.4;resize:vertical;margin:10px 0}
+.meter{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:6px}
+.meter span{height:28px;border-radius:7px;border:1px solid var(--hair2);display:grid;place-items:center;font-family:var(--serif);font-size:.74rem;font-weight:600;color:var(--dim)}
+.meter span.lit{background:rgba(216,178,74,.16);border-color:var(--gold);color:var(--gold2)}
+.meter span.lit.full{background:linear-gradient(180deg,#E7C766,#C79F36);color:#1B1403;border-color:transparent}
+#tip{margin:10px 0 16px;color:#CFCBBE;font-size:.95rem;min-height:1.5em}
+.line{display:grid;grid-template-columns:1fr auto auto;gap:8px;align-items:center;padding:13px 0;border-bottom:1px solid var(--hair2)}
+.line p{font-family:var(--serif);font-size:1.05rem;line-height:1.35}
+.line small{color:var(--mute);font-size:.78rem}
+.x{width:36px;height:36px;border-radius:50%;color:var(--dim);font-size:1.1rem}
+.speech{font-family:var(--serif);font-size:1.1rem;line-height:1.5;color:#E6E1D2;margin:10px 0 16px}
+footer{padding:26px 0 10px;text-align:center;color:var(--dim);font-size:.82rem}
+footer a{color:var(--gold)}
+#toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ivory);color:var(--navy);padding:9px 16px;border-radius:999px;font-weight:600;font-size:.88rem;opacity:0;pointer-events:none;transition:opacity .2s;z-index:30}
+#toast.show{opacity:1}
+@media(min-width:760px){
+  body{padding-bottom:40px}
+  nav{position:sticky;top:0;bottom:auto;border-top:0;border-bottom:1px solid var(--hair)}
+  nav button{flex-direction:row;justify-content:center;gap:8px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<nav aria-label="Class sections"><div class="in">
+  <button data-v="method">Method<small>why chunks</small></button>
+  <button data-v="collection">Collection<small>100 words</small></button>
+  <button data-v="atelier">Atelier<small>4 drills</small></button>
+  <button data-v="studio">Studio<small>create</small></button>
+</div></nav>
+<div class="wrap">
+  <div class="top">
+    <div class="brand">ProfGermandario <i>/ GoldenVoz</i></div>
+    <div class="speed" role="group" aria-label="Audio speed">
+      <button data-a="speed" data-s="1">Slow</button><button data-a="speed" data-s="0" class="act">Natural</button>
+    </div>
+  </div>
+  <main id="app"></main>
+  <footer>
+    <p>© 2026 ProfGermandario — GoldenVoz Master Class</p>
+    <p>Train recognition speed with the same 100 words in <a href="10.html">Gold Words</a>.</p>
+  </footer>
+</div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+/* ═════ DATA — 100 words · 10 suites of 10 ═════
+   word | pos | IPA | español | definition | chunk; chunk; chunk | phrase | sentence | expansion
+   Each step contains the previous one: word ⊂ chunk ⊂ phrase ⊂ sentence ⊂ expansion. */
+const SUITES=["Mindset","Wealth","Leadership","Strategy","Communication","Innovation","Growth","Excellence","Influence","Power"];
+const RAW=`
+tenacity|n|/təˈnæsəti/|tenacidad|unyielding persistence toward a goal|sheer tenacity; show real tenacity; tenacity pays off|with sheer tenacity|She kept going with sheer tenacity.|She kept going with sheer tenacity, even when everyone else quit.
+audacity|n|/ɔːˈdæsəti/|audacia|bold confidence to take risks|the audacity to ask; sheer audacity; admire her audacity|had the audacity to ask|He had the audacity to ask for a meeting.|He had the audacity to ask for a meeting, and the investor said yes.
+resilience|n|/rɪˈzɪliəns/|resiliencia|the ability to recover from setbacks fast|build resilience; show resilience; mental resilience|to build resilience|Every setback helps you to build resilience.|Every setback helps you to build resilience, because you learn to bounce back faster.
+conviction|n|/kənˈvɪkʃən/|convicción|unshakeable belief in your vision|deep conviction; a firm conviction; lack conviction|speak with deep conviction|When you speak with deep conviction, people listen.|When you speak with deep conviction, people listen, even if they disagreed a minute ago.
+fortitude|n|/ˈfɔːrtɪtuːd/|fortaleza de espíritu|mental strength under pressure|quiet fortitude; show fortitude; inner fortitude|with quiet fortitude|He faced every loss with quiet fortitude.|He faced every loss with quiet fortitude, so his team never panicked.
+grit|n|/ɡrɪt/|determinación, garra|passion and perseverance for long-term goals|true grit; grit and patience; it takes grit|takes true grit|Building a business takes true grit.|Building a business takes true grit, especially in the first three years.
+equanimity|n|/ˌekwəˈnɪməti/|ecuanimidad|mental calmness in difficult situations|calm equanimity; maintain equanimity; face it with equanimity|with calm equanimity|She handled the crisis with calm equanimity.|She handled the crisis with calm equanimity, while everyone around her lost control.
+acuity|n|/əˈkjuːəti/|agudeza|sharpness of thought and perception|mental acuity; sharp acuity; lose acuity|sharpen your mental acuity|Deep reading will sharpen your mental acuity.|Deep reading will sharpen your mental acuity, which helps you spot what others miss.
+deliberate|adj|/dɪˈlɪbərət/|deliberado, intencional|done with careful, intentional thought|a deliberate choice; deliberate practice; slow and deliberate|make a deliberate choice|Every morning, I make a deliberate choice.|Every morning, I make a deliberate choice to focus on what truly matters.
+unwavering|adj|/ʌnˈweɪvərɪŋ/|inquebrantable|steady and firm in purpose|unwavering focus; unwavering commitment; unwavering support|with unwavering focus|He worked with unwavering focus.|He worked with unwavering focus for twenty years, and that is how he built an empire.
+leverage|n|/ˈlevərɪdʒ/|apalancamiento|using resources to multiply results|use leverage; gain leverage; leverage your network|use leverage wisely|Smart investors use leverage wisely.|Smart investors use leverage wisely, because debt can multiply losses too.
+arbitrage|n|/ˈɑːrbɪtrɑːʒ/|arbitraje|profiting from price differences across markets|an arbitrage opportunity; price arbitrage; exploit arbitrage|spot an arbitrage opportunity|She can spot an arbitrage opportunity in seconds.|She can spot an arbitrage opportunity in seconds, since she watches two markets at once.
+liquidity|n|/lɪˈkwɪdəti/|liquidez|how easily assets become cash|high liquidity; lack of liquidity; a liquidity crisis|keep high liquidity|We keep high liquidity at all times.|We keep high liquidity at all times, so we can act fast when opportunity knocks.
+compounding|n|/kəmˈpaʊndɪŋ/|efecto compuesto|growth built on previous gains|the power of compounding; compounding returns; compounding habits|trust the power of compounding|Patient investors trust the power of compounding.|Patient investors trust the power of compounding, although the first years look slow.
+equity|n|/ˈekwəti/|participación, patrimonio|an ownership stake in an asset|build equity; an equity stake; sweat equity|to build equity|My goal is to build equity.|My goal is to build equity in my own company, rather than depend on a salary.
+diversify|v|/daɪˈvɜːrsɪfaɪ/|diversificar|to spread risk across several investments|diversify your income; diversify your portfolio; diversify risk|to diversify your income|It is wise to diversify your income.|It is wise to diversify your income, so that one bad month never breaks you.
+capital|n|/ˈkæpɪtl/|capital|wealth used to generate more wealth|raise capital; working capital; human capital|to raise capital|The founders need to raise capital.|The founders need to raise capital before they can hire their first team.
+venture|n|/ˈventʃər/|emprendimiento de riesgo|a risky business project with high potential|a bold venture; a joint venture; venture capital|launch a bold venture|They decided to launch a bold venture.|They decided to launch a bold venture, even though the market looked uncertain.
+solvency|n|/ˈsɑːlvənsi/|solvencia|the ability to meet all financial obligations|protect your solvency; long-term solvency; a solvency ratio|protect your solvency first|In business, protect your solvency first.|In business, protect your solvency first, because growth means nothing without survival.
+yield|n|/jiːld/|rendimiento|the income an investment returns|a steady yield; high-yield assets; yield results|produce a steady yield|These bonds produce a steady yield.|These bonds produce a steady yield of eight percent, quietly building wealth every year.
+visionary|adj|/ˈvɪʒəneri/|visionario|able to imagine the future creatively|a visionary leader; visionary thinking; a true visionary|become a visionary leader|You can become a visionary leader.|You can become a visionary leader if you learn to see the future before it arrives.
+catalyst|n|/ˈkætəlɪst/|catalizador|a person or thing that triggers change|a catalyst for change; act as a catalyst; the main catalyst|be a catalyst for change|One person can be a catalyst for change.|One person can be a catalyst for change, provided that she speaks up at the right moment.
+galvanize|v|/ˈɡælvənaɪz/|movilizar, impulsar|to shock or excite people into action|galvanize the team; galvanize support; galvanize into action|to galvanize the team|Her speech managed to galvanize the team.|Her speech managed to galvanize the team, and they started working that same night.
+empower|v|/ɪmˈpaʊər/|empoderar, facultar|to give authority and confidence to others|empower others; empower your team; feel empowered|empower others to lead|Great leaders empower others to lead.|Great leaders empower others to lead, instead of controlling every decision.
+decisive|adj|/dɪˈsaɪsɪv/|resuelto, decisivo|able to make firm decisions quickly|decisive action; a decisive moment; be decisive|take decisive action|In a crisis, you must take decisive action.|In a crisis, you must take decisive action, because waiting is the most expensive choice.
+stewardship|n|/ˈstuːərdʃɪp/|administración responsable|responsible care of what is entrusted to you|good stewardship; stewardship of resources; financial stewardship|practice good stewardship|Lasting companies practice good stewardship.|Lasting companies practice good stewardship of every resource they are trusted with.
+pioneering|adj|/ˌpaɪəˈnɪrɪŋ/|pionero|using new methods before anyone else|pioneering work; a pioneering spirit; pioneering research|do pioneering work|Her lab continues to do pioneering work.|Her lab continues to do pioneering work, although the risks are enormous.
+astute|adj|/əˈstuːt/|perspicaz, astuto|quick to see how to gain an advantage|an astute observation; an astute investor; politically astute|make an astute observation|She paused to make an astute observation.|She paused to make an astute observation, which saved the company millions.
+principled|adj|/ˈprɪnsəpəld/|íntegro, de principios|acting from strong moral rules|a principled leader; a principled stand; principled decisions|follow a principled leader|People gladly follow a principled leader.|People gladly follow a principled leader, since trust outlasts any crisis.
+sovereign|adj|/ˈsɑːvrən/|soberano|holding supreme authority over something|sovereign over your time; a sovereign mind; a sovereign decision|become sovereign over your time|Freedom means you become sovereign over your time.|Freedom means you become sovereign over your time, your choices, and your mindset.
+strategic|adj|/strəˈtiːdʒɪk/|estratégico|carefully designed to achieve a goal|a strategic partnership; strategic thinking; a strategic move|form a strategic partnership|The two firms plan to form a strategic partnership.|The two firms plan to form a strategic partnership, so that both can enter new markets.
+pivotal|adj|/ˈpɪvətl/|crucial, decisivo|central and crucial to an outcome|a pivotal moment; play a pivotal role; a pivotal decision|reach a pivotal moment|Every career will reach a pivotal moment.|Every career will reach a pivotal moment, when one decision changes everything.
+optimize|v|/ˈɑːptɪmaɪz/|optimizar|to make something as effective as possible|optimize the process; optimize your time; optimize for results|to optimize the process|She found a way to optimize the process.|She found a way to optimize the process, which cut our costs in half.
+trajectory|n|/trəˈdʒektəri/|trayectoria|the path of development over time|your long-term trajectory; an upward trajectory; change your trajectory|shape your long-term trajectory|Daily habits shape your long-term trajectory.|Daily habits shape your long-term trajectory far more than any single big decision.
+disruptive|adj|/dɪsˈrʌptɪv/|disruptivo|radically changing an existing industry|a disruptive model; disruptive technology; a disruptive idea|introduce a disruptive model|The startup plans to introduce a disruptive model.|The startup plans to introduce a disruptive model that no competitor expected.
+scalable|adj|/ˈskeɪləbəl/|escalable|able to grow in proportion to demand|a scalable system; a scalable business; highly scalable|build a scalable system|First, build a scalable system.|First, build a scalable system, and only then think about growth.
+synergy|n|/ˈsɪnərdʒi/|sinergia|combined power greater than the sum of the parts|real synergy; create synergy; synergy between teams|create real synergy|The merger can create real synergy.|The merger can create real synergy, as long as both teams share one vision.
+iterate|v|/ˈɪtəreɪt/|iterar|to improve through repeated cycles|iterate fast; iterate on the design; test and iterate|iterate fast and learn|Successful startups iterate fast and learn.|Successful startups iterate fast and learn, because failing cheap beats failing late.
+benchmark|n|/ˈbentʃmɑːrk/|punto de referencia|a standard for measuring performance|an industry benchmark; set the benchmark; benchmark your results|against an industry benchmark|Measure your results against an industry benchmark.|Measure your results against an industry benchmark, so you know exactly where you stand.
+execution|n|/ˌeksɪˈkjuːʃən/|ejecución|the effective carrying out of a plan|flawless execution; poor execution; speed of execution|demand flawless execution|Great strategies demand flawless execution.|Great strategies demand flawless execution, otherwise they remain just a dream.
+articulate|v|/ɑːrˈtɪkjuleɪt/|expresar con claridad|to express thoughts clearly and effectively|articulate your ideas; articulate a vision; highly articulate|to articulate your ideas|Learn to articulate your ideas.|Learn to articulate your ideas in simple, powerful language, and doors will open.
+eloquent|adj|/ˈeləkwənt/|elocuente|fluent and persuasive in speech|an eloquent speech; an eloquent speaker; an eloquent silence|give an eloquent speech|He stood up to give an eloquent speech.|He stood up to give an eloquent speech, and it moved the entire audience to action.
+succinct|adj|/səkˈsɪŋkt/|conciso|expressed briefly and clearly|a succinct pitch; a succinct answer; clear and succinct|deliver a succinct pitch|Founders must deliver a succinct pitch.|Founders must deliver a succinct pitch, since investors decide in sixty seconds.
+persuasive|adj|/pərˈsweɪsɪv/|persuasivo|able to convince others to act|a persuasive message; a persuasive argument; highly persuasive|craft a persuasive message|To sell well, craft a persuasive message.|To sell well, craft a persuasive message that focuses on the listener's interest.
+compelling|adj|/kəmˈpelɪŋ/|convincente, cautivador|powerfully holding interest or attention|a compelling story; a compelling reason; compelling evidence|tell a compelling story|The data can tell a compelling story.|The data can tell a compelling story, if you present it with a clear message.
+negotiate|v|/nɪˈɡoʊʃieɪt/|negociar|to reach an agreement through discussion|negotiate a deal; negotiate better terms; negotiate with confidence|to negotiate a deal|She knows how to negotiate a deal.|She knows how to negotiate a deal, because she always studies the other side first.
+candid|adj|/ˈkændɪd/|franco, sincero|truthful and direct, even when it is hard|a candid conversation; candid feedback; be candid with me|have a candid conversation|We need to have a candid conversation.|We need to have a candid conversation about the real challenges the company faces.
+discernment|n|/dɪˈsɜːrnmənt/|discernimiento|the ability to judge well|sound discernment; exercise discernment; lack discernment|use sound discernment|Wise people use sound discernment.|Wise people use sound discernment to tell good advice from noise.
+brevity|n|/ˈbrevəti/|brevedad|concise and exact use of words|the power of brevity; for the sake of brevity; brevity and clarity|respect the power of brevity|Good speakers respect the power of brevity.|Good speakers respect the power of brevity, so they cut every extra word.
+credibility|n|/ˌkredəˈbɪləti/|credibilidad|the quality of being trusted and believed|build credibility; lose credibility; instant credibility|to build credibility|It takes years to build credibility.|It takes years to build credibility, yet you can lose it in a single day.
+innovate|v|/ˈɪnəveɪt/|innovar|to introduce new ideas or methods|innovate consistently; innovate or die; freedom to innovate|to innovate consistently|Companies need to innovate consistently.|Companies need to innovate consistently, or they will be replaced by those that do.
+prototype|n|/ˈproʊtətaɪp/|prototipo|a first model built to test a concept|a quick prototype; a working prototype; test the prototype|build a quick prototype|Always build a quick prototype.|Always build a quick prototype before you invest in the full product.
+paradigm|n|/ˈpærədaɪm/|paradigma|a model or pattern of how things are done|a new paradigm; a paradigm shift; challenge the paradigm|introduce a new paradigm|Blockchain helped introduce a new paradigm.|Blockchain helped introduce a new paradigm for digital trust.
+nascent|adj|/ˈneɪsənt/|naciente, incipiente|just beginning to develop|a nascent industry; a nascent market; still nascent|enter a nascent industry|Bold founders enter a nascent industry.|Bold founders enter a nascent industry while it is still forming its own rules.
+disrupt|v|/dɪsˈrʌpt/|revolucionar, trastocar|to radically transform an industry|disrupt an industry; disrupt the market; disrupt the status quo|will disrupt an industry|New technology will disrupt an industry.|New technology will disrupt an industry whenever the old players stop listening.
+exponential|adj|/ˌekspəˈnenʃəl/|exponencial|growing faster and faster over time|exponential growth; an exponential curve; exponential returns|achieve exponential growth|Few companies achieve exponential growth.|Few companies achieve exponential growth, because it requires patience at the beginning.
+agile|adj|/ˈædʒəl/|ágil|able to move quickly and adapt easily|an agile team; an agile mind; stay agile|lead an agile team|I want to lead an agile team.|I want to lead an agile team that adapts to change instead of resisting it.
+incubate|v|/ˈɪŋkjubeɪt/|incubar|to develop an idea slowly and carefully|incubate an idea; incubate a startup; time to incubate|to incubate an idea|Give yourself time to incubate an idea.|Give yourself time to incubate an idea before you try to scale it.
+cultivate|v|/ˈkʌltɪveɪt/|cultivar|to develop a skill or quality over time|cultivate deep expertise; cultivate relationships; cultivate a habit|to cultivate deep expertise|It pays to cultivate deep expertise.|It pays to cultivate deep expertise in one area before you diversify.
+ingenuity|n|/ˌɪndʒəˈnuːəti/|ingenio|the skill of solving problems in clever, original ways|human ingenuity; sheer ingenuity; technical ingenuity|rely on human ingenuity|Hard problems rely on human ingenuity.|Hard problems rely on human ingenuity, not only on bigger budgets.
+metamorphose|v|/ˌmetəˈmɔːrfoʊz/|transformarse por completo|to undergo a complete transformation|metamorphose into a leader; metamorphose completely; slowly metamorphose|can metamorphose into a leader|With discipline, you can metamorphose into a leader.|With discipline, you can metamorphose into a leader, not just improve a little.
+transcend|v|/trænˈsend/|trascender|to go beyond the limits of something|transcend fear; transcend your limits; transcend borders|learn to transcend fear|She had to learn to transcend fear.|She had to learn to transcend fear, so that she could act from pure purpose.
+flourish|v|/ˈflɜːrɪʃ/|florecer, prosperar|to grow and develop in a healthy way|begin to flourish; flourish under pressure; flourish in freedom|will begin to flourish|Your creativity will begin to flourish.|Your creativity will begin to flourish once the pressure to be perfect disappears.
+augment|v|/ɔːɡˈment/|potenciar, aumentar|to make something greater or stronger|augment your skills; augment your income; augment human judgment|to augment your skills|Use technology to augment your skills.|Use technology to augment your skills, never to replace your judgment.
+propel|v|/prəˈpel/|impulsar|to drive forward with force|propel you forward; propel growth; propel your career|will propel you forward|Clarity will propel you forward.|Clarity will propel you forward much further than motivation alone.
+accelerate|v|/əkˈseləreɪt/|acelerar|to increase the speed of change|accelerate your progress; accelerate growth; accelerate the process|can accelerate your progress|The right mentor can accelerate your progress.|The right mentor can accelerate your progress by years, if you are willing to listen.
+amplify|v|/ˈæmplɪfaɪ/|amplificar|to make something larger or stronger|amplify your impact; amplify your voice; amplify the message|will amplify your impact|A strong network will amplify your impact.|A strong network will amplify your impact tenfold, because ideas travel through people.
+harness|v|/ˈhɑːrnɪs/|aprovechar, canalizar|to control and use a resource effectively|harness your energy; harness the power of; harness technology|learn to harness your energy|You must learn to harness your energy.|You must learn to harness your energy, instead of wasting it on small worries.
+ascend|v|/əˈsend/|ascender|to rise to a higher level|ascend to the top; ascend steadily; ascend the ranks|will ascend to the top|Those who keep learning will ascend to the top.|Those who keep learning will ascend to the top, while others stay comfortable.
+evolve|v|/ɪˈvɑːlv/|evolucionar|to develop gradually over time|evolve with the market; evolve over time; evolve or fade|must evolve with the market|Every brand must evolve with the market.|Every brand must evolve with the market, or risk becoming irrelevant.
+mastery|n|/ˈmæstəri/|maestría, dominio|complete command of a skill|achieve mastery; the path to mastery; mastery of a skill|to achieve mastery|It takes daily practice to achieve mastery.|It takes daily practice to achieve mastery, because it is a path, not a destination.
+virtuoso|n|/ˌvɜːrtʃuˈoʊsoʊ/|virtuoso|a person with exceptional skill|a true virtuoso; a virtuoso performance; a piano virtuoso|like a true virtuoso|She negotiates like a true virtuoso.|She negotiates like a true virtuoso, effortless and precise at every step.
+meticulous|adj|/məˈtɪkjələs/|meticuloso|showing great attention to detail|meticulous planning; meticulous attention to detail; a meticulous worker|through meticulous planning|They won the contract through meticulous planning.|They won the contract through meticulous planning, down to the very last detail.
+diligent|adj|/ˈdɪlɪdʒənt/|diligente, aplicado|careful and persistent in work|a diligent worker; diligent effort; diligent about details|hire a diligent worker|I would rather hire a diligent worker.|I would rather hire a diligent worker than a talented but careless one.
+proficient|adj|/prəˈfɪʃənt/|competente, hábil|skilled and competent in a field|proficient in English; highly proficient; become proficient|become proficient in English|You will become proficient in English.|You will become proficient in English through focused, daily repetition.
+assiduous|adj|/əˈsɪdʒuəs/|constante, asiduo|showing constant dedication and effort|assiduous effort; an assiduous student; assiduous attention|through assiduous effort|Results come through assiduous effort.|Results come through assiduous effort over years, not through short bursts of inspiration.
+consummate|adj|/ˈkɑːnsəmət/|consumado|showing a very high degree of skill|a consummate professional; consummate skill; with consummate ease|remain a consummate professional|She will remain a consummate professional.|She will remain a consummate professional, even when the client is difficult.
+exemplary|adj|/ɪɡˈzempləri/|ejemplar|representing the best possible quality|an exemplary work ethic; exemplary service; exemplary conduct|show an exemplary work ethic|New leaders must show an exemplary work ethic.|New leaders must show an exemplary work ethic, since others will model themselves after them.
+impeccable|adj|/ɪmˈpekəbəl/|impecable|meeting the highest standards|impeccable timing; impeccable taste; an impeccable presentation|with impeccable timing|She entered the market with impeccable timing.|She entered the market with impeccable timing, just before demand exploded.
+indefatigable|adj|/ˌɪndɪˈfætɪɡəbəl/|incansable|persisting without ever tiring|an indefatigable spirit; an indefatigable worker; indefatigable energy|with an indefatigable spirit|He led the team with an indefatigable spirit.|He led the team with an indefatigable spirit through every single setback.
+influential|adj|/ˌɪnfluˈenʃəl/|influyente|having great power to affect others|an influential voice; highly influential; influential people|become an influential voice|You can become an influential voice.|You can become an influential voice if you add value before asking for anything.
+rapport|n|/ræˈpɔːr/|sintonía, buena relación|a close and harmonious relationship|build rapport; instant rapport; a good rapport|build rapport quickly|Top closers build rapport quickly.|Top closers build rapport quickly, because trust comes before any sale.
+reciprocal|adj|/rɪˈsɪprəkəl/|recíproco|given and received in mutual exchange|a reciprocal relationship; reciprocal trust; reciprocal benefits|create a reciprocal relationship|The best partners create a reciprocal relationship.|The best partners create a reciprocal relationship, where both sides truly win.
+alliance|n|/əˈlaɪəns/|alianza|a union formed for mutual benefit|a strategic alliance; form an alliance; a powerful alliance|form a strategic alliance|The two brands chose to form a strategic alliance.|The two brands chose to form a strategic alliance that doubled their market reach.
+ecosystem|n|/ˈiːkoʊsɪstəm/|ecosistema|a network of interconnected parts|a thriving ecosystem; a business ecosystem; build an ecosystem|build a thriving ecosystem|Smart founders build a thriving ecosystem.|Smart founders build a thriving ecosystem around their brand, not just a product.
+endorse|v|/ɪnˈdɔːrs/|respaldar, avalar|to declare public support for something|endorse your work; publicly endorse; endorse a product|to endorse your work|Ask a respected expert to endorse your work.|Ask a respected expert to endorse your work, and many doors will open.
+reputation|n|/ˌrepjuˈteɪʃən/|reputación|what people believe about your character|a solid reputation; protect your reputation; earn a reputation|earn a solid reputation|It takes time to earn a solid reputation.|It takes time to earn a solid reputation, but it arrives in the room before you do.
+magnify|v|/ˈmæɡnɪfaɪ/|engrandecer, magnificar|to make greater in significance or effect|magnify the strengths; magnify your results; magnify the problem|magnify the strengths of others|Great mentors magnify the strengths of others.|Great mentors magnify the strengths of others, rather than point out every weakness.
+propagate|v|/ˈprɑːpəɡeɪt/|difundir, propagar|to spread an idea widely|propagate an idea; propagate naturally; propagate a message|to propagate an idea|You don't need a big budget to propagate an idea.|You don't need a big budget to propagate an idea, as long as it solves a real problem.
+gravitas|n|/ˈɡrævɪtɑːs/|peso, presencia seria|a serious presence that commands respect|speak with gravitas; natural gravitas; lend gravitas|learn to speak with gravitas|Executives must learn to speak with gravitas.|Executives must learn to speak with gravitas, so that the room listens the moment they begin.
+perspicacity|n|/ˌpɜːrspɪˈkæsəti/|perspicacia|quick, deep insight into things|rare perspicacity; great perspicacity; business perspicacity|with rare perspicacity|She reads every contract with rare perspicacity.|She reads every contract with rare perspicacity, so nothing hides between the lines.
+acumen|n|/ˈækjəmən/|olfato, agudeza de negocios|the ability to make good judgments quickly|business acumen; financial acumen; sharp acumen|develop business acumen|Every professional should develop business acumen.|Every professional should develop business acumen, because it is an underrated survival skill.
+intrepid|adj|/ɪnˈtrepɪd/|intrépido|fearless and adventurous in action|an intrepid entrepreneur; an intrepid explorer; an intrepid spirit|think like an intrepid entrepreneur|To win big, think like an intrepid entrepreneur.|To win big, think like an intrepid entrepreneur and enter markets others are afraid to touch.
+formidable|adj|/ˈfɔːrmɪdəbəl/|imponente, formidable|inspiring respect through strength|a formidable reputation; a formidable opponent; a formidable challenge|build a formidable reputation|Consistent results build a formidable reputation.|Consistent results build a formidable reputation, one delivered promise at a time.
+prolific|adj|/prəˈlɪfɪk/|prolífico|producing a great amount of work|a prolific creator; a prolific writer; a prolific period|become a prolific creator|Decide to become a prolific creator.|Decide to become a prolific creator who ships work consistently, not only when inspired.
+sagacious|adj|/səˈɡeɪʃəs/|sagaz, sabio|showing keen judgment and wisdom|sagacious advice; a sagacious mentor; a sagacious decision|seek sagacious advice|Before a big move, seek sagacious advice.|Before a big move, seek sagacious advice, since it can save you from a costly mistake.
+voracious|adj|/vəˈreɪʃəs/|voraz|having an endless appetite for something|a voracious reader; a voracious appetite; a voracious learner|become a voracious reader|The fastest shortcut is to become a voracious reader.|The fastest shortcut is to become a voracious reader, because books hold centuries of wisdom.
+zenith|n|/ˈziːnɪθ/|cénit, apogeo|the highest point of success or power|reach the zenith; at its zenith; the zenith of her career|reach the zenith of your field|You can reach the zenith of your field.|You can reach the zenith of your field before forty, provided that you start today.
+paramount|adj|/ˈpærəmaʊnt/|primordial|more important than anything else|paramount importance; a paramount concern; trust is paramount|of paramount importance|Customer trust is of paramount importance.|Customer trust is of paramount importance, because without it nothing else matters.
+prowess|n|/ˈpraʊəs/|destreza, pericia|great skill or expertise|technical prowess; business prowess; show your prowess|admire her technical prowess|Investors admire her technical prowess.|Investors admire her technical prowess, yet her real power is how she leads people.
+`;
+const W=RAW.trim().split("\n").map((ln,i)=>{const p=ln.split("|");
+  return{i,w:p[0],pos:p[1],ipa:p[2],es:p[3],def:p[4],cols:p[5].split("; "),ph:p[6],s:p[7],x:p[8],cat:SUITES[Math.floor(i/10)]}});
+const KT=["10K","14K","18K","22K","24K"];
+const RN=["Word","Chunk","Phrase","Sentence","Expansion"];
+const rungs=w=>[w.w,w.cols[0],w.ph,w.s,w.x];
+
+/* ═════ helpers ═════ */
+const $=(s,r=document)=>r.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const norm=s=>s.toLowerCase().replace(/[’]/g,"'").replace(/[^a-z0-9' ]+/g," ").replace(/\s+/g," ").trim();
+const ICON=n=>`<svg viewBox="0 0 24 24" width="${n}" height="${n}" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>`;
+let toastT;function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove("show"),1900)}
+/* the new part of each step is marked; what was already there stays quiet */
+function grow(cur,prev){if(!prev)return`<b>${esc(cur)}</b>`;const core=prev.replace(/[.!?]$/,"");const i=cur.toLowerCase().indexOf(core.toLowerCase());
+  if(i<0)return`<b>${esc(cur)}</b>`;const tail=cur.slice(i+core.length),mark=t=>/[a-z]/i.test(t)?`<b>${esc(t)}</b>`:esc(t);
+  return mark(cur.slice(0,i))+esc(cur.slice(i,i+core.length))+mark(tail)}
+
+/* ═════ progress (this device only) ═════ */
+const KEY="goldenvoz.v1";let P={heard:{},best:{},lines:[],k:0};
+try{Object.assign(P,JSON.parse(localStorage.getItem(KEY)||"{}"))}catch(e){}
+const save=()=>{try{localStorage.setItem(KEY,JSON.stringify(P))}catch(e){}};
+
+/* ═════ audio ═════ */
+const A={tok:0,voice:null,slow:false,btn:null,
+  ok(){if("speechSynthesis" in window)return true;toast("This browser has no speech audio");return false},
+  pick(){const all=speechSynthesis.getVoices()||[];const en=all.filter(v=>/^en[-_]/i.test(v.lang));const us=en.filter(v=>/US/i.test(v.lang));const pool=us.length?us:en;
+    for(const r of[/natural/i,/Google US English/i,/Samantha/i,/Ava|Allison|Aria|Jenny|Zira/i]){const f=pool.find(v=>r.test(v.name));if(f){A.voice=f;return}}A.voice=pool[0]||null},
+  rate(){return A.slow?0.68:0.96},
+  clear(){if(A.btn){A.btn.classList.remove("on");A.btn=null}},
+  stop(){A.tok++;try{speechSynthesis.cancel()}catch(e){}A.clear();document.querySelectorAll(".rung.live").forEach(e=>e.classList.remove("live"))},
+  _u(text,end){const my=A.tok;const u=new SpeechSynthesisUtterance(text);u.lang="en-US";if(A.voice)u.voice=A.voice;u.rate=A.rate();
+    let done=false;const fin=()=>{if(done)return;done=true;if(my===A.tok&&end)end()};u.onend=fin;u.onerror=fin;speechSynthesis.speak(u)},
+  say(text,btn,end){if(!A.ok())return;const busy=speechSynthesis.speaking||speechSynthesis.pending;A.stop();A.btn=btn||null;if(btn)btn.classList.add("on");
+    const run=()=>A._u(text,()=>{A.clear();if(end)end()});if(busy){const my=A.tok;setTimeout(()=>{if(my===A.tok)run()},70)}else run()},
+  seq(list,btn,step,end){if(!A.ok())return;A.stop();A.btn=btn||null;if(btn)btn.classList.add("on");const my=A.tok;
+    const go=k=>{if(my!==A.tok)return;if(k>=list.length){A.clear();step(-1);if(end)end();return}step(k);A._u(list[k],()=>setTimeout(()=>go(k+1),480))};go(0)}
+};
+if("speechSynthesis" in window){A.pick();speechSynthesis.onvoiceschanged=A.pick}
+
+/* ═════ state ═════ */
+const S={view:"method",suite:"All",q:"",open:-1};
+let DR={id:null};
+const ST={i:0,c:0,text:""};
+const DRILLS=[
+ {id:"ear",  kt:"10K",pts:1,name:"Golden Ear",   d:"Hear a chunk. Choose the one you heard.",es:"Escucha el bloque y reconoce cuál fue."},
+ {id:"match",kt:"14K",pts:2,name:"Perfect Match",d:"Complete the chunk with its exact word.",es:"Completa el bloque con la palabra precisa."},
+ {id:"build",kt:"18K",pts:3,name:"Chunk Builder",d:"Assemble a full sentence chunk by chunk, never word by word.",es:"Arma la oración bloque por bloque."},
+ {id:"dict", kt:"22K",pts:4,name:"Dictation",    d:"Hear the sentence. Write the missing phrase.",es:"Escucha la oración y escribe la frase que falta."}];
+
+/* ═════ ladder ═════ */
+function ladderHTML(w){const r=rungs(w);
+  return`<div class="lad" data-lad="${w.i}">
+    <div class="meta"><span class="ipa">${esc(w.ipa)}</span><span class="es">${esc(w.es)}</span><span class="mute">${w.pos}.</span></div>
+    <p class="def">${esc(w.def)}</p>
+    <div class="rungs">${r.map((t,k)=>`<div class="rung" data-k="${k}"><span class="kt">${KT[k]}</span><div><small>${RN[k]}</small><p>${grow(t,k?r[k-1]:"")}</p></div>
+      <button class="play" data-a="say" data-t="${esc(t)}" aria-label="Hear the ${RN[k].toLowerCase()}">${ICON(16)}</button></div>`).join("")}</div>
+    <div class="row" style="margin-top:16px"><button class="btn" data-a="buildup" data-i="${w.i}">${ICON(15)} Play the build-up</button>
+      <button class="btn ghost" data-a="tostudio" data-i="${w.i}">Create with this word</button></div>
+    <div class="more"><small>Two more chunks worth owning</small><div class="chips">${w.cols.slice(1).map(c=>`<button class="chip" data-a="say" data-t="${esc(c)}">${esc(c)}</button>`).join("")}</div></div>
+  </div>`}
+
+/* ═════ views ═════ */
+function vMethod(){const heard=Object.keys(P.heard).length;
+  return`<header class="hero">
+    <p class="kicker">A master class on the Gold Words collection</p>
+    <h1 class="gilt">Golden<wbr>Voz</h1>
+    <p class="sub">Fluent speakers do not build sentences word by word. They speak in chunks.</p>
+    <p class="lede">A rare word, alone, is decoration. Set inside a chunk it becomes something you can say under pressure. Here you take 100 first-class words and grow each one, a single step at a time, from a word into a sentence worth saying aloud.</p>
+    <p class="es">Una palabra suelta adorna. Un bloque de lenguaje se puede usar en una reunión.</p>
+  </header>
+
+  <section>
+    <h2>Watch one word become a voice</h2>
+    <p class="lede">Five steps, like gold rising in purity. Each step keeps everything from the step before and adds one new piece, shown in gold. Play each step, then play the whole build-up and say it with the audio.</p>
+    <div class="panel" style="margin-top:16px"><h3 style="font-size:1.7rem" class="gilt">${W[0].w}</h3>${ladderHTML(W[0])}</div>
+  </section>
+
+  <section>
+    <h2>Why chunks work</h2>
+    <div class="idea"><h3>Your working memory counts pieces, not words</h3><p>It holds only a few items at once. “Take decisive action” is three words but one item, so your attention stays on the idea and off the grammar.</p></div>
+    <div class="idea"><h3>The chunk carries the grammar for you</h3><p>Learn “to build credibility” as one piece and the verb, the article and the word order arrive already correct. Nothing left to translate.</p></div>
+    <div class="idea"><h3>Retrieval gets faster with every step up</h3><p>Each step asks you to recall the previous one and add a little. That repeated recall is what makes the word available when the stakes are real.</p></div>
+  </section>
+
+  <section>
+    <h2>The 15-minute ritual</h2>
+    <ol class="steps">
+      <li><b>Collection.</b> Open one suite. For five words, play the build-up twice and say every step aloud.</li>
+      <li><b>Atelier.</b> Four drills, from 10K to 22K: recognise the chunk, match it, assemble it, write it from audio.</li>
+      <li><b>Studio.</b> Create one 24K line of your own, about your real work. Hear it. Say it twice.</li>
+      <li><b>Deliver.</b> Send your saved lines to your coach before your next session.</li>
+    </ol>
+    <div class="row" style="margin-top:18px"><button class="btn" data-a="go" data-v="collection">Open the collection</button></div>
+  </section>
+
+  <section>
+    <h2>Your record</h2>
+    <div class="stats">
+      <div class="stat"><b>${heard}</b><span>of 100 words polished</span></div>
+      <div class="stat"><b>${P.lines.length}</b><span>lines created</span></div>
+      <div class="stat"><b>${P.k}</b><span>karats earned</span></div>
+    </div>
+    <p class="es" style="margin-top:10px">Tu registro se guarda solo en este dispositivo.</p>
+  </section>`}
+
+function listHTML(){const q=norm(S.q);
+  const ws=W.filter(w=>(S.suite==="All"||w.cat===S.suite)&&(!q||norm(w.w+" "+w.es+" "+w.cols.join(" ")).includes(q)));
+  if(!ws.length)return`<p class="mute" style="padding:20px 0">No word matches “${esc(S.q)}”. Try part of the word, or its Spanish meaning.</p>`;
+  return ws.map(w=>{const o=S.open===w.i;return`<div class="wrow${o?" open":""}" id="w${w.i}">
+    <button class="whead" data-a="open" data-i="${w.i}" aria-expanded="${o}"><span class="wn">${w.w}</span><span class="wm">${esc(w.es)}</span>${P.heard[w.w]?'<span class="pol">polished</span>':""}</button>
+    <button class="play" data-a="say" data-t="${esc(w.w)}" aria-label="Hear ${w.w}">${ICON(16)}</button>${o?ladderHTML(w):""}</div>`}).join("")}
+
+function vCollection(){return`<section>
+    <h2>The collection</h2>
+    <p class="lede">One hundred words in ten suites. Open a word to hear it grow from 10K to 24K.</p>
+    <p class="es">Abre una palabra y escucha cómo crece, paso a paso.</p>
+    <div class="suites" style="margin-top:14px">${["All",...SUITES].map(s=>`<button class="chip${S.suite===s?" sel":""}" data-a="suite" data-s="${s}">${s}</button>`).join("")}</div>
+    <input class="search" id="q" type="search" placeholder="Search a word or its Spanish meaning" value="${esc(S.q)}" aria-label="Search the collection" autocomplete="off">
+    <div id="list">${listHTML()}</div>
+  </section>`}
+
+function suitePicker(){return`<div class="row" style="margin:14px 0 4px"><label for="ds" class="mute" style="font-size:.9rem">Practise with</label>
+  <select id="ds" data-c="dsuite">${["All",...SUITES].map(s=>`<option${S.suite===s?" selected":""} value="${s}">${s==="All"?"All 100 words":s+" suite"}</option>`).join("")}</select></div>`}
+
+function vAtelier(){if(DR.id)return vDrill();
+  return`<section>
+    <h2>The atelier</h2>
+    <p class="lede">Four drills that climb in purity. Eight items each. Start at 10K even if it feels easy: speed of recognition is the point.</p>
+    <p class="es">Cuatro ejercicios, de lo simple a lo complejo. El quinto nivel, 24K, es tu propia creación.</p>
+    ${suitePicker()}
+    <div>${DRILLS.map(d=>`<button class="dcard" data-a="drill" data-id="${d.id}"><span class="kt">${d.kt}</span><h3>${d.name}${P.best[d.id]!=null?` <span class="best">best ${P.best[d.id]}/8</span>`:""}</h3><p>${d.d}<br><span class="es">${d.es}</span></p></button>`).join("")}
+    <button class="dcard" data-a="go" data-v="studio"><span class="kt" style="background:linear-gradient(180deg,#E7C766,#C79F36);color:#1B1403;border-color:transparent">24K</span><h3>The Studio</h3><p>Create your own line and hear it spoken.<br><span class="es">Crea tu propia oración y escúchala.</span></p></button></div>
+  </section>`}
+
+/* ─── drills ─── */
+function segs(w){const x=w.x,lx=x.toLowerCase(),core=w.s.replace(/[.!?]$/,"");const j=lx.indexOf(core.toLowerCase()),i=lx.indexOf(w.ph.toLowerCase());
+  let cuts=[0,x.length];if(j>0)cuts.push(j);if(i>=0)cuts.push(i,i+w.ph.length);if(j>=0)cuts.push(j+core.length);
+  cuts=[...new Set(cuts)].sort((a,b)=>a-b);let parts=[];
+  for(let n=0;n<cuts.length-1;n++){let p=x.slice(cuts[n],cuts[n+1]).trim();if(!p)continue;const m=p.match(/^[,.;!?]+/);
+    if(m&&parts.length){parts[parts.length-1]+=m[0];p=p.slice(m[0].length).trim()}if(p)parts.push(p)}
+  const out=[];parts.forEach(p=>{const ws=p.split(" ");if(ws.length>6){const c=p.indexOf(", ");
+    if(c>6&&c<p.length-8)out.push(p.slice(0,c+1),p.slice(c+2));else{const h=Math.ceil(ws.length/2);out.push(ws.slice(0,h).join(" "),ws.slice(h).join(" "))}}else out.push(p)});
+  return out}
+function startDrill(id){const pool=S.suite==="All"?W:W.filter(w=>w.cat===S.suite);DR={id,items:shuffle(pool).slice(0,8),k:0,ok:0,done:false};setItem()}
+function setItem(){const w=DR.items[DR.k];Object.assign(DR,{ans:false,miss:0,fb:"",fbc:"",chosen:-1,shake:false});
+  if(DR.id==="ear")DR.opts=shuffle([w,...shuffle(W.filter(o=>o!==w)).slice(0,3)]);
+  if(DR.id==="match"){let pool=W.filter(o=>o!==w&&o.pos===w.pos);DR.opts=shuffle([w,...shuffle(pool).slice(0,3)])}
+  if(DR.id==="build"){const t=segs(w).map((t,n)=>({t,n}));let sh=shuffle(t);if(t.length>1&&sh.every((o,n)=>o.n===n))sh.push(sh.shift());DR.tiles=sh;DR.pick=[]}}
+function vDrill(){const d=DRILLS.find(x=>x.id===DR.id),n=DR.items.length;
+  if(DR.done){const pct=DR.ok/n;const msg=pct===1?"Flawless. This level is yours.":pct>=.75?"Solid. One more round makes it automatic.":"Keep refining. Replay the build-ups for this suite, then return.";
+    const nx=DRILLS[DRILLS.indexOf(d)+1];
+    return`<section class="center result"><p class="mute">${d.kt} ${d.name}</p><b class="gilt">${DR.ok}/${n}</b><p class="lede" style="margin:12px auto 6px">${msg}</p><p class="es">+${DR.ok*d.pts} karats</p>
+      <div class="row" style="justify-content:center;margin-top:20px"><button class="btn ghost" data-a="drill" data-id="${d.id}">Again</button>
+      ${nx?`<button class="btn" data-a="drill" data-id="${nx.id}">Go to ${nx.kt} ${nx.name}</button>`:`<button class="btn" data-a="go" data-v="studio">Go to the 24K Studio</button>`}</div>
+      <p style="margin-top:18px"><button class="chip s" data-a="quit">Back to the atelier</button></p></section>`}
+  const w=DR.items[DR.k];let body="";
+  const optBtn=(o,label)=>{let c="";if(DR.ans){if(o.i===w.i)c=" good";else if(o.i===DR.chosen)c=" bad"}return`<button class="opt${c}" data-a="pick" data-i="${o.i}"${DR.ans?" disabled":""}>${esc(label)}</button>`};
+  if(DR.id==="ear")body=`<div class="center"><button class="bigplay" id="auto" data-a="say" data-t="${esc(w.cols[0])}" aria-label="Hear the chunk">${ICON(30)}</button><p class="mute">Tap to hear it again</p></div>
+    <div class="opts">${DR.opts.map(o=>optBtn(o,o.cols[0])).join("")}</div>`;
+  if(DR.id==="match"){const blank=esc(w.cols[0]).replace(new RegExp(w.w,"i"),'<span class="blank">&nbsp;</span>');
+    body=`<p class="prompt">${DR.ans?esc(w.cols[0]):blank}</p><p class="center" style="color:#CFCBBE">${esc(w.def)}</p><p class="center es">${esc(w.es)}</p>
+    <div class="opts">${DR.opts.map(o=>optBtn(o,o.w)).join("")}</div>`}
+  if(DR.id==="build"){const left=DR.tiles.filter(t=>!DR.pick.includes(t));
+    body=`<p class="center mute">Build the sentence around <b style="color:var(--gold2)">${esc(w.cols[0])}</b></p>
+    <div class="center" style="margin-top:10px"><button class="chip s" data-a="say" data-t="${esc(w.x)}">${ICON(12)} Hear the model</button></div>
+    <div class="tray ans${DR.shake?" shake":""}">${DR.pick.length?DR.pick.map(t=>`<button class="tile in" data-a="unpick" data-n="${t.n}"${DR.ans?" disabled":""}>${esc(t.t)}</button>`).join(""):'<span class="mute">Tap the chunks in order</span>'}</div>
+    <div class="tray">${left.map(t=>`<button class="tile" data-a="tile" data-n="${t.n}">${esc(t.t)}</button>`).join("")}</div>`}
+  if(DR.id==="dict"){const i=w.s.toLowerCase().indexOf(w.ph.toLowerCase());const pre=w.s.slice(0,i),post=w.s.slice(i+w.ph.length);
+    body=`<div class="center"><button class="bigplay" id="auto" data-a="say" data-t="${esc(w.s)}" aria-label="Hear the sentence">${ICON(30)}</button><p class="mute">Listen as many times as you need</p></div>
+    <p class="prompt">${esc(pre)}${DR.ans?`<span style="color:var(--gold2)">${esc(w.s.slice(i,i+w.ph.length))}</span>`:'<span class="blank">&nbsp;</span>'}${esc(post)}</p>
+    ${DR.ans?"":`<form class="field" data-f="dict"><input id="din" type="text" placeholder="Write the missing phrase" autocomplete="off" autocapitalize="off" autocorrect="off" spellcheck="false" aria-label="Missing phrase"><button class="btn">Check</button></form>`}`}
+  return`<section>
+    <div class="dtop"><button class="chip s" data-a="quit">Leave</button><span>${d.kt} ${d.name}</span><span>${DR.k+1} of ${n}</span></div>
+    <div class="bar"><i style="width:${(DR.k+(DR.ans?1:0))/n*100}%"></i></div>
+    ${body}
+    <p class="fb ${DR.fbc}" aria-live="polite">${esc(DR.fb)}</p>
+    ${DR.ans?`<div class="center" style="margin-top:14px"><button class="btn" data-a="next">${DR.k+1<n?"Next":"See my result"}</button></div>`:""}
+  </section>`}
+function autoplay(){const b=$("#auto");if(b&&!DR.ans)A.say(b.dataset.t,b);const i=$("#din");if(i&&window.innerWidth>=760)i.focus()}
+
+/* ─── studio ─── */
+const FRAMES=["My goal is to ","In my business, ","This year, I will ","I admire people who ","What I have learned is that ","My clients trust me because "];
+const CONNS=["because","so that","even though","which means","as long as","instead of"];
+const CONN_RE=/\b(because|so that|so|although|even though|even when|even if|which|while|since|as long as|instead of|rather than|unless|if|when|whenever|before|after|but|yet|provided that|otherwise|once)\b/;
+const stem=t=>{t=t.toLowerCase().replace(/[^a-z]/g,"");return t.length>5?t.slice(0,Math.max(4,t.length-3)):t.slice(0,Math.max(3,t.length-1))};
+const STOP=["your","with","into","over","the","for","and","her","his","its","than"];
+function karat(text,w,chunk){const n=norm(text);if(!n||!n.includes(stem(w.w)))return 0;let k=1;const words=n.split(" ").length;
+  const keys=chunk.split(" ").filter(t=>t.length>2&&!STOP.includes(t.toLowerCase()));
+  if(keys.every(t=>n.includes(stem(t))))k=2;else return k;
+  if(words>=4)k=3;else return k;
+  if(words>=7&&/[.!?]$/.test(text.trim()))k=4;else return k;
+  if(words>=12&&CONN_RE.test(n))k=5;return k}
+function tipFor(k,w,chunk){return[
+  `Begin with your word: ${w.w}.`,
+  `10K. Now set the word inside its chunk: “${chunk}”.`,
+  "14K. Add a few words before or after the chunk to make a phrase.",
+  "18K. Finish the thought: seven words or more, closed with a period.",
+  "22K. Expand it with a connector, twelve words or more.",
+  "24K. Hear it, then say it aloud twice without looking."][k]}
+function updMeter(){const ta=$("#line");if(!ta)return;const w=W[ST.i],c=w.cols[ST.c],k=karat(ta.value,w,c);
+  document.querySelectorAll("#meter span").forEach((s,n)=>{s.classList.toggle("lit",n<k);s.classList.toggle("full",n===4&&k===5)});
+  $("#tip").textContent=tipFor(k,w,c)}
+function speechText(){const l=P.lines.slice(0,3).reverse();return`Let me share three ideas. First: ${l[0].t} What is more: ${l[1].t} And above all: ${l[2].t} That is my golden voice.`}
+function linesHTML(){if(!P.lines.length)return`<p class="mute">Your saved lines appear here. Create your first one above.</p>`;
+  let h=P.lines.map((l,n)=>`<div class="line"><div><p>${esc(l.t)}</p><small>${esc(l.w)} · ${KT[l.k-1]||"draft"}</small></div>
+    <button class="play" data-a="say" data-t="${esc(l.t)}" aria-label="Hear this line">${ICON(16)}</button><button class="x" data-a="del" data-n="${n}" aria-label="Delete this line">×</button></div>`).join("");
+  h+=`<div class="row" style="margin-top:16px"><button class="btn ghost sm" data-a="copyall">Copy for my coach</button>${navigator.share?'<button class="btn ghost sm" data-a="share">Share</button>':""}</div>`;
+  return h}
+function vStudio(){const w=W[ST.i];
+  return`<section>
+    <h2>The studio</h2>
+    <p class="lede">Now the gold is yours. Take one word, set it in a chunk, and grow a line about your own work until it reaches 24K.</p>
+    <p class="es">Escribe sobre tu trabajo real: lo que es tuyo se recuerda.</p>
+    <div class="panel" style="margin-top:16px">
+      <label class="lab" for="sw">Choose your word</label>
+      <div class="row"><select id="sw" data-c="sword">${SUITES.map(s=>`<optgroup label="${s}">${W.filter(x=>x.cat===s).map(x=>`<option value="${x.i}"${x.i===ST.i?" selected":""}>${x.w}</option>`).join("")}</optgroup>`).join("")}</select>
+        <button class="btn ghost sm" data-a="rand">Surprise me</button></div>
+      <p style="margin-top:10px"><span class="ipa">${esc(w.ipa)}</span> <span class="es">${esc(w.es)}</span><br><span style="color:#CFCBBE;font-size:.95rem">${esc(w.def)}</span></p>
+      <span class="lab">Choose your chunk</span>
+      <div class="chips">${w.cols.map((c,n)=>`<button class="chip${n===ST.c?" sel":""}" data-a="chunk" data-n="${n}">${esc(c)}</button>`).join("")}</div>
+      <label class="lab" for="line">Grow your line</label>
+      <div class="chips">${FRAMES.map((f,n)=>`<button class="chip s" data-a="frame" data-n="${n}">${esc(f.trim())}…</button>`).join("")}</div>
+      <textarea id="line" placeholder="Write here. Start with the chunk, then keep adding." autocapitalize="sentences">${esc(ST.text)}</textarea>
+      <div class="chips">${CONNS.map(c=>`<button class="chip s" data-a="conn" data-t="${c}">+ ${c}</button>`).join("")}</div>
+      <div class="meter" id="meter" style="margin-top:14px">${KT.map(k=>`<span>${k}</span>`).join("")}</div>
+      <p id="tip" aria-live="polite"></p>
+      <div class="row"><button class="btn" data-a="hear">${ICON(15)} Hear my line</button><button class="btn ghost" data-a="saveline">Save this line</button></div>
+    </div>
+  </section>
+  <section>
+    <h2>My golden lines</h2>
+    <div id="lines">${linesHTML()}</div>
+  </section>
+  ${P.lines.length>=3?`<section><div class="panel"><h3>Signature speech</h3><p class="mute" style="font-size:.92rem">Your three most recent lines, joined into thirty seconds of speech. Play it, then deliver it yourself.</p>
+    <p class="speech">${esc(speechText())}</p><div class="row"><button class="btn" data-a="say" data-t="${esc(speechText())}">${ICON(15)} Hear my speech</button><button class="btn ghost" data-a="copyspeech">Copy</button></div></div></section>`:
+    `<section><p class="es">Guarda tres líneas y aquí aparecerá tu “signature speech”: treinta segundos de inglés que es tuyo.</p></section>`}`}
+
+/* ═════ render + events ═════ */
+function render(){$("#app").innerHTML={method:vMethod,collection:vCollection,atelier:vAtelier,studio:vStudio}[S.view]();
+  document.querySelectorAll("nav [data-v]").forEach(b=>{const on=b.dataset.v===S.view;b.classList.toggle("act",on);if(on)b.setAttribute("aria-current","page");else b.removeAttribute("aria-current")});
+  if(S.view==="studio")updMeter()}
+function go(v){A.stop();if(v!=="atelier")DR={id:null};S.view=v;render();window.scrollTo(0,0)}
+async function copy(t){try{await navigator.clipboard.writeText(t);toast("Copied")}catch(e){const ta=document.createElement("textarea");ta.value=t;document.body.appendChild(ta);ta.select();
+  try{document.execCommand("copy");toast("Copied")}catch(_){toast("Copy is blocked here: select the text by hand")}ta.remove()}}
+const allLines=()=>"My GoldenVoz lines\n\n"+P.lines.map((l,n)=>`${n+1}. ${l.t}  (${l.w})`).join("\n");
+
+const ACT={
+  go:b=>go(b.dataset.v),
+  speed:b=>{A.slow=b.dataset.s==="1";document.querySelectorAll(".speed button").forEach(x=>x.classList.toggle("act",x===b));toast(A.slow?"Audio: slow":"Audio: natural")},
+  say:b=>{if(b.classList.contains("on")){A.stop();return}A.say(b.dataset.t,b)},
+  buildup:b=>{if(b.classList.contains("on")){A.stop();return}const w=W[+b.dataset.i],lad=b.closest(".lad");
+    A.seq(rungs(w),b,k=>lad.querySelectorAll(".rung").forEach((r,n)=>r.classList.toggle("live",n===k)),()=>{if(!P.heard[w.w]){P.heard[w.w]=1;P.k+=1;save();toast(w.w+": polished")}})},
+  tostudio:b=>{ST.i=+b.dataset.i;ST.c=0;ST.text="";go("studio")},
+  suite:b=>{A.stop();S.suite=b.dataset.s;S.open=-1;render()},
+  open:b=>{A.stop();const i=+b.dataset.i;S.open=S.open===i?-1:i;$("#list").innerHTML=listHTML();const el=$("#w"+i);if(el&&S.open===i)el.scrollIntoView({block:"start",behavior:"smooth"})},
+  drill:b=>{startDrill(b.dataset.id);S.view="atelier";render();window.scrollTo(0,0);autoplay()},
+  quit:()=>{A.stop();DR={id:null};render();window.scrollTo(0,0)},
+  pick:b=>{if(DR.ans)return;const w=DR.items[DR.k];DR.chosen=+b.dataset.i;DR.ans=true;const ok=DR.chosen===w.i;if(ok)DR.ok++;
+    DR.fb=ok?"Exactly.":`It was “${w.cols[0]}”.`;DR.fbc=ok?"good":"bad";render();A.say(w.cols[0])},
+  tile:b=>{if(DR.ans)return;const w=DR.items[DR.k];DR.pick.push(DR.tiles.find(t=>t.n===+b.dataset.n));DR.shake=false;DR.fb="";
+    if(DR.pick.length===DR.tiles.length){if(norm(DR.pick.map(t=>t.t).join(" "))===norm(w.x)){DR.ans=true;if(!DR.miss)DR.ok++;DR.fb=DR.miss?"There it is.":"Exactly.";DR.fbc="good";render();A.say(w.x);return}
+      DR.miss++;DR.pick=[];DR.shake=true;DR.fb="Not yet. Hear the model, then rebuild it.";DR.fbc="bad"}render()},
+  unpick:b=>{if(DR.ans)return;DR.pick=DR.pick.filter(t=>t.n!==+b.dataset.n);DR.shake=false;render()},
+  next:()=>{A.stop();DR.k++;if(DR.k>=DR.items.length){DR.done=true;const d=DRILLS.find(x=>x.id===DR.id);P.best[d.id]=Math.max(P.best[d.id]||0,DR.ok);P.k+=DR.ok*d.pts;save();render()}
+    else{setItem();render();autoplay()}window.scrollTo(0,0)},
+  rand:()=>{ST.i=Math.floor(Math.random()*W.length);ST.c=0;render()},
+  chunk:b=>{ST.c=+b.dataset.n;render();A.say(W[ST.i].cols[ST.c])},
+  frame:b=>{const ta=$("#line"),f=FRAMES[+b.dataset.n];let v=ta.value.trim();if(v)v=v[0].toLowerCase()+v.slice(1);ta.value=f+v;ST.text=ta.value;updMeter();ta.focus()},
+  conn:b=>{const ta=$("#line");ta.value=ta.value.trim().replace(/[.!?]+$/,"")+(/,$/.test(ta.value.trim())?" ":", ")+b.dataset.t+" ";ST.text=ta.value;updMeter();ta.focus()},
+  hear:b=>{if(b.classList.contains("on")){A.stop();return}const t=$("#line").value.trim();if(!t){toast("Write your line first");return}A.say(t,b)},
+  saveline:()=>{const t=$("#line").value.trim(),w=W[ST.i];const k=karat(t,w,w.cols[ST.c]);if(k<2){toast("Use your chunk first, then save");return}
+    P.lines.unshift({t,w:w.w,k});P.lines=P.lines.slice(0,60);P.k+=k;save();ST.text="";render();toast("Saved at "+KT[k-1]);A.say(t)},
+  del:b=>{P.lines.splice(+b.dataset.n,1);save();render()},
+  copyall:()=>copy(allLines()),
+  share:()=>{navigator.share({text:allLines()}).catch(()=>{})},
+  copyspeech:()=>copy(speechText())
+};
+document.addEventListener("click",e=>{const nv=e.target.closest("nav [data-v]");if(nv){go(nv.dataset.v);return}
+  const b=e.target.closest("[data-a]");if(b&&ACT[b.dataset.a])ACT[b.dataset.a](b)});
+document.addEventListener("input",e=>{if(e.target.id==="q"){S.q=e.target.value;S.open=-1;$("#list").innerHTML=listHTML()}
+  if(e.target.id==="line"){ST.text=e.target.value;updMeter()}});
+document.addEventListener("change",e=>{const c=e.target.dataset.c;if(c==="dsuite")S.suite=e.target.value;if(c==="sword"){ST.i=+e.target.value;ST.c=0;render()}});
+document.addEventListener("submit",e=>{if(e.target.dataset.f!=="dict")return;e.preventDefault();const w=DR.items[DR.k],v=norm($("#din").value);if(!v)return;
+  if(v===norm(w.ph)){DR.ans=true;if(!DR.miss)DR.ok++;DR.fb=DR.miss?"There it is.":"Exactly.";DR.fbc="good";render();A.say(w.s)}
+  else{DR.miss++;if(DR.miss>=2){DR.ans=true;DR.fb="Read it, hear it once more, and say it aloud.";DR.fbc="bad";render();A.say(w.s)}
+    else{DR.fb="Close. Listen again and check every word.";DR.fbc="bad";$(".fb").textContent=DR.fb;$(".fb").className="fb bad";A.say(w.s,$("#auto"))}}});
+render();
+</script>
+</body>
+</html>
