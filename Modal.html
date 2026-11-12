@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Modal Verbs Master Class</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Figtree:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+/* Layout idea: one dark stage. Grammar roles keep one color everywhere:
+   modal = gold, base verb = coral, WH word = violet, subject = white. */
+:root{
+  color-scheme:dark;
+  --bg:#0b0616; --bg2:#130b25; --panel:#1a1132; --panel2:#231741;
+  --line:rgba(190,160,255,.17); --line2:rgba(246,185,59,.35);
+  --text:#f4eefc; --muted:#b5a8cf;
+  --gold:#f6b93b; --fire:#ff7b47; --violet:#ab7bff; --mint:#43d6a3; --rose:#ff5c7c;
+  --f-display:'Cinzel','Trajan Pro',Georgia,serif;
+  --f-accent:'Fraunces',Georgia,'Times New Roman',serif;
+  --f-body:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --r:16px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:120px}
+body{margin:0;background:var(--bg);color:var(--text);font:400 17px/1.6 var(--f-body);
+  background-image:radial-gradient(900px 520px at 85% -8%,rgba(171,123,255,.28),transparent 60%),
+  radial-gradient(700px 480px at 0% 4%,rgba(255,123,71,.16),transparent 60%);background-repeat:no-repeat}
+h1,h2,h3{margin:0;text-wrap:balance}
+p{margin:0}
+button,select,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+b.m{color:var(--gold);font-weight:700} b.v{color:var(--fire);font-weight:600}
+b.w{color:var(--violet);font-weight:700} b.s{color:#fff;font-weight:600}
+.bad{color:var(--rose);text-decoration:line-through;text-decoration-thickness:1.5px}
+.good{color:var(--mint)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(11,6,22,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;padding-top:10px;padding-bottom:10px}
+.brand{font:700 14px/1 var(--f-display);letter-spacing:.14em;color:var(--gold);white-space:nowrap}
+.brand span{color:var(--violet)}
+.nav{display:flex;gap:4px;overflow-x:auto;flex:1 1 320px;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:600;padding:6px 10px;border-radius:99px;white-space:nowrap}
+.nav a:hover{color:var(--text);background:var(--panel)}
+.ctl{display:flex;gap:8px;align-items:center}
+.pill{border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:600}
+.pill:hover{border-color:var(--line2)}
+.pill[aria-pressed="true"]{background:var(--gold);color:#1a1005;border-color:var(--gold)}
+select.pill{max-width:150px;appearance:none;padding-right:12px}
+.noaudio{display:none;background:#3a1420;color:#ffd6de;padding:10px 20px;font-size:14px;text-align:center}
+
+/* hero */
+.hero{padding:56px 0 40px}
+.eyebrow{font:600 12px/1.2 var(--f-body);letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+.hero h1{font:700 clamp(40px,7.4vw,84px)/1 var(--f-display);letter-spacing:.02em;margin:14px 0 6px;
+  background:linear-gradient(180deg,#fff 20%,#f6b93b 120%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{font:italic 400 clamp(22px,3.4vw,34px)/1.2 var(--f-accent);color:var(--violet)}
+.hero .lead{max-width:58ch;color:var(--muted);margin-top:18px;font-size:18px}
+.dial{margin-top:34px;border:1px solid var(--line);border-radius:22px;padding:26px;
+  background:linear-gradient(160deg,rgba(35,23,65,.9),rgba(19,11,37,.9))}
+.dial .line{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.dial .sent{font:400 clamp(24px,4.4vw,44px)/1.25 var(--f-accent);flex:1 1 300px}
+.slot{display:inline-block;color:var(--gold);font-style:italic;font-weight:600;border-bottom:2px solid var(--gold);padding:0 6px;
+  text-shadow:0 0 26px rgba(246,185,59,.55)}
+.slot.pop{animation:pop .35s ease}
+@keyframes pop{from{transform:translateY(-8px);opacity:.3}to{transform:none;opacity:1}}
+.dial .mean{margin-top:12px;color:var(--text);font-size:18px;min-height:1.6em}
+.dial .mean small{color:var(--muted);font-size:15px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{border:1px solid var(--line);background:var(--bg2);border-radius:99px;padding:8px 16px;font-weight:600;font-size:15px}
+.chip:hover{border-color:var(--line2)}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#1a1005}
+
+/* listen button */
+.say{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--line2);background:rgba(246,185,59,.1);color:var(--gold);
+  display:inline-grid;place-items:center;padding:0;transition:transform .15s,background .15s}
+.say svg{width:19px;height:19px}
+.say:hover{background:rgba(246,185,59,.22);transform:scale(1.06)}
+.say.speaking{background:var(--gold);color:#1a1005;animation:pulse 1s infinite}
+.say.big{width:74px;height:74px}.say.big svg{width:34px;height:34px}
+.say.mini{width:32px;height:32px}.say.mini svg{width:16px;height:16px}
+@keyframes pulse{50%{box-shadow:0 0 0 10px rgba(246,185,59,0)}0%{box-shadow:0 0 0 0 rgba(246,185,59,.5)}}
+
+/* sections */
+section{padding:54px 0;border-top:1px solid var(--line)}
+.sh{display:flex;gap:16px;align-items:center;margin-bottom:10px}
+.hex{flex:none;width:54px;height:58px;display:grid;place-items:center;font:700 24px/1 var(--f-display);color:#1a1005;
+  background:linear-gradient(160deg,#ffd978,#f08a2b);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.sh h2{font:700 clamp(24px,3.6vw,36px)/1.15 var(--f-display);letter-spacing:.02em;margin-top:4px}
+.intro{color:var(--muted);max-width:64ch;margin:10px 0 26px}
+h3{font:600 22px/1.25 var(--f-accent);margin:34px 0 14px}
+h3 em{color:var(--violet)}
+.grid{display:grid;gap:16px}
+.g3{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:20px;display:flex;flex-direction:column;gap:10px}
+.card h4{margin:0;font:600 20px/1.2 var(--f-accent)}
+.card .k{font:600 12px/1 var(--f-body);letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.card p{color:var(--muted);font-size:16px}
+.ex{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--bg2);border-radius:12px;font-size:16.5px}
+.ex span{flex:1}
+.ex.no{background:rgba(255,92,124,.07);color:var(--muted);font-size:15px}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:3px 9px;border-radius:99px;background:rgba(171,123,255,.16);color:#cdb4ff;letter-spacing:.03em}
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:8px 0 6px}
+.formula i{font-style:normal;font-weight:700;padding:8px 14px;border-radius:10px;border:1px solid currentColor;font-size:15px;background:rgba(255,255,255,.03)}
+.formula .fw{color:var(--violet)}.formula .fm{color:var(--gold)}.formula .fs{color:#fff}.formula .fv{color:var(--fire)}
+.formula u{text-decoration:none;color:var(--muted);font-weight:700}
+
+/* flipper */
+.flip{background:var(--panel2);border:1px solid var(--line2);border-radius:20px;padding:24px;margin-top:8px}
+.flip .tok{display:flex;flex-wrap:wrap;gap:10px;align-items:center;min-height:64px;font:400 clamp(22px,3.6vw,34px)/1.2 var(--f-accent)}
+.flip .tok span{padding:4px 10px;border-radius:10px;background:rgba(255,255,255,.04);animation:pop .35s ease}
+.flip .tok .tm{color:var(--gold);font-weight:600;background:rgba(246,185,59,.12)}
+.flip .tok .tv{color:var(--fire)}
+.flip .note{color:var(--muted);font-size:15px;margin-top:10px;min-height:1.6em}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.btn{border:1px solid var(--gold);background:var(--gold);color:#1a1005;font-weight:700;border-radius:12px;padding:10px 18px}
+.btn:hover{filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--gold)}
+.btn[disabled]{opacity:.4;cursor:not-allowed}
+.negs{display:flex;flex-wrap:wrap;gap:8px}
+.neg{display:flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--panel);border-radius:99px;padding:5px 6px 5px 14px;font-size:15px}
+.neg em{font-style:normal;color:var(--muted)}
+
+/* atlas */
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.mcard .top{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.mcard .word{font:700 30px/1 var(--f-display);color:var(--gold);letter-spacing:.03em}
+.mcard .ipa{color:var(--muted);font-size:15px}
+.mcard .es{margin-left:auto;font:italic 400 16px/1 var(--f-accent);color:var(--violet)}
+.mcard .tags{display:flex;flex-wrap:wrap;gap:6px}
+.mcard .note{font-size:14.5px;border-left:2px solid var(--violet);padding-left:10px}
+.mcard.hide{display:none}
+
+/* ladders */
+.ladder{display:flex;flex-direction:column;gap:8px}
+.rung{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--bg2);position:relative;overflow:hidden}
+.rung::before{content:"";position:absolute;inset:0 auto 0 0;width:var(--w,50%);background:linear-gradient(90deg,rgba(246,185,59,.2),rgba(255,123,71,.07));pointer-events:none}
+.rung>*{position:relative}
+.rung .t{flex:1;font-size:15.5px;line-height:1.35}
+.rung .t small{display:block;color:var(--muted);font-size:13.5px}
+.rung .pc{font:700 13px/1 var(--f-body);color:var(--gold);font-variant-numeric:tabular-nums;white-space:nowrap}
+
+/* tables */
+.tbl{overflow-x:auto}
+table{border-collapse:collapse;width:100%;min-width:520px;font-size:16px}
+th{font:600 12px/1 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:left;padding:10px 12px}
+td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:middle}
+td .ex{background:transparent;padding:0}
+.callout{border:1px solid var(--line2);background:rgba(246,185,59,.07);border-radius:var(--r);padding:16px 18px;font-size:16px;margin-top:16px}
+.callout strong{color:var(--gold)}
+.phr{display:flex;flex-direction:column;gap:6px}
+.phr .ex{padding:6px 10px;font-size:15.5px}
+
+/* sound */
+.pairs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.snd{display:flex;flex-wrap:wrap;gap:8px}
+.snd .neg b{font-weight:700}
+
+/* practice */
+.levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-bottom:8px}
+.lv{text-align:left;border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-height:92px}
+.lv .n{font:700 12px/1 var(--f-body);letter-spacing:.16em;color:var(--gold)}
+.lv .nm{font:600 16.5px/1.2 var(--f-accent)}
+.lv .bs{font-size:13px;color:var(--muted);margin-top:auto;font-variant-numeric:tabular-nums}
+.lv.on{border-color:var(--gold);background:var(--panel2)}
+.lv.pass .bs{color:var(--mint)}
+.lv.lock{opacity:.5}
+.lv.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.tools{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;font-size:13.5px;color:var(--muted);margin-bottom:16px}
+.link{background:none;border:0;color:var(--violet);text-decoration:underline;padding:0;font-size:13.5px}
+.stage{background:linear-gradient(160deg,var(--panel2),var(--panel));border:1px solid var(--line2);border-radius:22px;padding:26px;min-height:340px}
+.stage h4{font:600 24px/1.2 var(--f-accent);margin:0 0 6px}
+.stage .how{color:var(--muted);max-width:60ch}
+.meter{height:6px;border-radius:9px;background:var(--bg2);overflow:hidden;margin:6px 0 20px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--violet),var(--gold));transition:width .3s}
+.count{display:flex;justify-content:space-between;font-size:13.5px;color:var(--muted);font-variant-numeric:tabular-nums}
+.q{font:400 clamp(20px,3vw,27px)/1.3 var(--f-accent);margin:6px 0 16px}
+.listen{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:8px 0 18px}
+.listen .hint{color:var(--muted);font-size:15px}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+.opts.col{grid-template-columns:1fr}
+.optrow{display:flex;gap:8px;align-items:center}
+.opt{flex:1;text-align:left;border:1px solid var(--line);background:var(--bg2);border-radius:12px;padding:12px 16px;font-weight:600;font-size:16.5px}
+.opt:hover:not([disabled]){border-color:var(--gold)}
+.opt.right{border-color:var(--mint);background:rgba(67,214,163,.14);color:#c9ffe9}
+.opt.wrong{border-color:var(--rose);background:rgba(255,92,124,.12);color:#ffd0d9}
+.opt[disabled]{cursor:default}
+.tray{min-height:58px;border:1.5px dashed var(--line2);border-radius:14px;padding:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.tray:empty::before{content:attr(data-ph);color:var(--muted);font-size:15px;padding:0 8px}
+.pool{display:flex;flex-wrap:wrap;gap:8px;min-height:48px}
+.tile{border:1px solid var(--line2);background:var(--panel);border-radius:10px;padding:8px 14px;font:600 18px/1.2 var(--f-accent)}
+.tile:hover:not([disabled]){background:rgba(246,185,59,.16)}
+.dict{width:100%;background:var(--bg2);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;font-size:19px}
+.dict:focus{outline:none;border-color:var(--gold)}
+.fb{margin-top:16px;border-radius:14px;padding:14px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.fb.ok{background:rgba(67,214,163,.12);border:1px solid rgba(67,214,163,.5)}
+.fb.no{background:rgba(255,92,124,.1);border:1px solid rgba(255,92,124,.5)}
+.fb .tx{flex:1 1 240px}
+.fb .tx strong{display:block}
+.fb .tx span{color:var(--muted);font-size:15px}
+.fb .ans{font:600 18px/1.3 var(--f-accent);color:var(--text);display:block;margin:2px 0}
+.wd{display:inline-block;margin-right:6px}.wd.o{color:var(--mint)}.wd.x{color:var(--rose);text-decoration:underline wavy}
+.result{text-align:center;padding:18px 0}
+.result .big{font:700 68px/1 var(--f-display);color:var(--gold);font-variant-numeric:tabular-nums}
+.result .big small{font-size:28px;color:var(--muted)}
+.result p{color:var(--muted);max-width:46ch;margin:12px auto 0}
+.result .row{justify-content:center}
+
+/* scene */
+.scene{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:4px}
+.ln{display:grid;grid-template-columns:74px 1fr;gap:12px;padding:8px 10px;border-radius:12px;cursor:pointer;font-size:17.5px}
+.ln:hover{background:rgba(255,255,255,.03)}
+.ln.now{background:rgba(246,185,59,.11)}
+.ln .who{font:700 12px/1.9 var(--f-body);letter-spacing:.14em;text-transform:uppercase;color:var(--violet)}
+.mk{border:0;background:none;padding:0 2px;color:var(--gold);font-weight:700;border-bottom:1.5px dotted var(--gold);font-size:inherit}
+.mk:hover,.mk.on{background:rgba(246,185,59,.18);border-radius:4px}
+.lens{margin-top:12px;border-radius:12px;background:var(--bg2);padding:12px 16px;font-size:16px;min-height:50px;color:var(--muted)}
+.lens b{color:var(--gold)}
+.cq{display:flex;flex-direction:column;gap:18px;margin-top:8px}
+.cq .item p{font-weight:600;margin-bottom:8px}
+.cqscore{margin-top:18px;font:600 20px/1.2 var(--f-accent);color:var(--gold)}
+footer{padding:44px 0 60px;border-top:1px solid var(--line);text-align:center}
+footer .sig{font:italic 400 clamp(22px,3.6vw,32px)/1.2 var(--f-accent);color:var(--gold)}
+footer p+p{color:var(--muted);font-size:14px;margin-top:10px;letter-spacing:.12em;text-transform:uppercase}
+@media (max-width:560px){
+  body{font-size:16px}.dial,.flip,.stage{padding:18px}.pairs{grid-template-columns:1fr}
+  .ln{grid-template-columns:1fr;gap:0}.hex{width:44px;height:48px;font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="bar"><div class="wrap">
+  <div class="brand">PROF <span>GERMANDARIO</span></div>
+  <nav class="nav" aria-label="Class sections">
+    <a href="#rules" data-es="Reglas">Rules</a>
+    <a href="#atlas" data-es="Atlas">Atlas</a>
+    <a href="#questions" data-es="Preguntas">Questions</a>
+    <a href="#suggestions" data-es="Sugerencias">Suggestions</a>
+    <a href="#sound" data-es="Sonido">Sound</a>
+    <a href="#practice" data-es="Práctica">Practice</a>
+    <a href="#scene" data-es="Escena final">Final scene</a>
+  </nav>
+  <div class="ctl">
+    <select class="pill" id="voice" aria-label="Voice"></select>
+    <button class="pill" id="spd" type="button" aria-pressed="false" data-es="Lento">Slow</button>
+    <button class="pill" id="lang" type="button" aria-label="Switch explanations to Spanish">ES</button>
+  </div>
+</div></div>
+<div class="noaudio" id="noaudio" data-es="El audio no está disponible en este navegador. Abre la clase en Chrome, Edge o Safari.">Audio is not available in this browser. Open the class in Chrome, Edge or Safari.</div>
+
+<main>
+<div class="wrap hero">
+  <p class="eyebrow">Fluency for Assertive Communication</p>
+  <h1>Modal Verbs</h1>
+  <p class="sub" data-es="La Clase Magistral">The Master Class</p>
+  <p class="lead" data-es="Una palabra pequeña cambia todo el mensaje. Con los modales pides permiso, das un consejo, haces una pregunta cortés o propones una idea. Toca un modal y escucha cómo cambia la frase.">One small word changes the whole message. With modals you ask for permission, give advice, make a polite question or suggest an idea. Tap a modal and hear the sentence change.</p>
+  <div class="dial">
+    <div class="line">
+      <p class="sent">You <span class="slot" id="hslot">can</span> speak in the meeting.</p>
+      <button class="say" id="hsay" type="button" aria-label="Listen"></button>
+    </div>
+    <p class="mean" id="hmean"></p>
+    <div class="chips" id="hchips" role="group" aria-label="Choose a modal"></div>
+  </div>
+</div>
+
+<!-- 1 RULES -->
+<section id="rules"><div class="wrap">
+  <header class="sh"><span class="hex">1</span><div><p class="eyebrow" data-es="El motor">The engine</p><h2 data-es="Tres reglas que nunca cambian">Three rules that never change</h2></div></header>
+  <p class="intro" data-es="Los modales son los verbos más fáciles del inglés: no se conjugan. Tienen una sola forma para todas las personas. Aprende estas tres reglas y todas las frases de la clase funcionan igual.">Modals are the easiest verbs in English: they never change form. One form works for every person. Learn these three rules and every sentence in this class works the same way.</p>
+  <div class="grid g3">
+    <div class="card">
+      <span class="k" data-es="Regla 1">Rule 1</span>
+      <h4 data-es="Modal + verbo base">Modal + base verb</h4>
+      <p data-es="Después del modal, el verbo va en su forma base. Sin <i>to</i>, sin <i>-s</i>, sin <i>-ing</i>.">After a modal, the verb stays in its base form. No <i>to</i>, no <i>-s</i>, no <i>-ing</i>.</p>
+      <div class="ex"><span>She <b class="m">can</b> <b class="v">speak</b> English.</span><button class="say" data-say="She can speak English."></button></div>
+      <div class="ex no"><span><span class="bad">She cans speak</span> · <span class="bad">She can to speak</span></span></div>
+    </div>
+    <div class="card">
+      <span class="k" data-es="Regla 2">Rule 2</span>
+      <h4 data-es="Pregunta: el modal salta">Question: the modal jumps</h4>
+      <p data-es="Pon el modal antes del sujeto. Nunca uses <i>do</i> ni <i>does</i> con un modal.">Move the modal before the subject. Never use <i>do</i> or <i>does</i> with a modal.</p>
+      <div class="ex"><span><b class="m">Can</b> <b class="s">she</b> <b class="v">speak</b> English?</span><button class="say" data-say="Can she speak English?"></button></div>
+      <div class="ex no"><span><span class="bad">Does she can speak English?</span></span></div>
+    </div>
+    <div class="card">
+      <span class="k" data-es="Regla 3">Rule 3</span>
+      <h4 data-es="Negativo: modal + not">Negative: modal + not</h4>
+      <p data-es="Agrega <i>not</i> después del modal. Casi todas las formas se contraen.">Add <i>not</i> after the modal. Most forms contract.</p>
+      <div class="ex"><span>She <b class="m">can't</b> <b class="v">speak</b> French.</span><button class="say" data-say="She can't speak French."></button></div>
+      <div class="ex no"><span><span class="bad">She doesn't can speak French.</span></span></div>
+    </div>
+  </div>
+
+  <h3 data-es="Mira saltar al modal: <em>de afirmación a pregunta</em>">Watch the modal jump: <em>statement to question</em></h3>
+  <div class="flip">
+    <div class="tok" id="ftok" aria-live="polite"></div>
+    <p class="note" id="fnote"></p>
+    <div class="row">
+      <button class="btn" id="fflip" type="button"></button>
+      <button class="btn ghost" id="fnext" type="button" data-es="Otra frase">Another sentence</button>
+      <button class="say" id="fsay" type="button" aria-label="Listen"></button>
+    </div>
+  </div>
+
+  <h3 data-es="Las formas negativas, <em>con su sonido</em>">The negative forms, <em>with their sound</em></h3>
+  <div class="negs" id="negs"></div>
+</div></section>
+
+<!-- 2 ATLAS -->
+<section id="atlas"><div class="wrap">
+  <header class="sh"><span class="hex">2</span><div><p class="eyebrow" data-es="El mapa">The map</p><h2 data-es="Atlas de los modales">The Modal Atlas</h2></div></header>
+  <p class="intro" data-es="Cada modal tiene un trabajo. Filtra por función para ver cuáles modales hacen el mismo trabajo, y escucha cada ejemplo.">Every modal has a job. Filter by function to see which modals do the same job, and listen to each example.</p>
+  <div class="filters" id="filters" role="group" aria-label="Filter by function"></div>
+  <div class="grid g3" id="atlasgrid"></div>
+
+  <h3 data-es="¿Qué tan fuerte es tu modal? <em>Tres escalas</em>">How strong is your modal? <em>Three scales</em></h3>
+  <div class="grid g3" id="scales"></div>
+  <div class="callout" data-es="<strong>Cuidado con este par.</strong> <b class='m'>You mustn't</b> smoke here = está prohibido. <b class='m'>You don't have to</b> pay = no es necesario, pero puedes. En español ambos suenan a “no debes”, pero en inglés son opuestos."><strong>Watch this pair.</strong> <b class="m">You mustn't</b> smoke here = it is prohibited. <b class="m">You don't have to</b> pay = it is not necessary, but you can. They look similar, and they mean opposite things.</div>
+</div></section>
+
+<!-- 3 QUESTIONS -->
+<section id="questions"><div class="wrap">
+  <header class="sh"><span class="hex">3</span><div><p class="eyebrow" data-es="Preguntar con autoridad">Ask with authority</p><h2 data-es="Preguntas con modales">Questions with modals</h2></div></header>
+  <p class="intro" data-es="Solo hay dos fórmulas. La primera pide un sí o un no. La segunda agrega una palabra WH al inicio para pedir información.">There are only two formulas. The first one asks for a yes or a no. The second one adds a WH word at the start to ask for information.</p>
+  <div class="grid g2">
+    <div class="card">
+      <span class="k" data-es="Fórmula A · Sí / No">Formula A · Yes / No</span>
+      <div class="formula"><i class="fm">Modal</i><u>+</u><i class="fs" data-es="Sujeto">Subject</i><u>+</u><i class="fv" data-es="Verbo base">Base verb</i><u>?</u></div>
+      <div class="ex"><span><b class="m">Could</b> <b class="s">you</b> <b class="v">send</b> me the report?</span><button class="say" data-say="Could you send me the report?"></button></div>
+      <div class="ex"><span><b class="m">Should</b> <b class="s">we</b> <b class="v">wait</b> for Maria?</span><button class="say" data-say="Should we wait for Maria?"></button></div>
+      <div class="ex"><span><b class="m">Will</b> <b class="s">they</b> <b class="v">arrive</b> on time?</span><button class="say" data-say="Will they arrive on time?"></button></div>
+    </div>
+    <div class="card">
+      <span class="k" data-es="Fórmula B · Información">Formula B · Information</span>
+      <div class="formula"><i class="fw">WH</i><u>+</u><i class="fm">Modal</i><u>+</u><i class="fs" data-es="Sujeto">Subject</i><u>+</u><i class="fv" data-es="Verbo base">Base verb</i><u>?</u></div>
+      <div id="whlist" class="phr"></div>
+    </div>
+  </div>
+
+  <h3 data-es="Respuestas cortas: <em>repite el modal</em>">Short answers: <em>repeat the modal</em></h3>
+  <div class="tbl"><table>
+    <thead><tr><th data-es="Pregunta">Question</th><th data-es="Sí">Yes</th><th>No</th></tr></thead>
+    <tbody id="shortans"></tbody>
+  </table></div>
+  <div class="callout" data-es="<strong>Sin contracción en el sí.</strong> Di <b class='m'>Yes, I will.</b> Nunca <span class='bad'>Yes, I'll.</span> En el no, la contracción es normal: <b class='m'>No, I won't.</b>"><strong>No contraction in a yes.</strong> Say <b class="m">Yes, I will.</b> Never <span class="bad">Yes, I'll.</span> In a no, the contraction is normal: <b class="m">No, I won't.</b></div>
+
+  <h3 data-es="Pedir permiso: <em>pedir, dar y negar</em>">Permission: <em>ask, give and refuse</em></h3>
+  <div class="grid g3">
+    <div class="card"><span class="k" data-es="Pedir · de informal a formal">Ask · informal to formal</span><div class="phr" id="perm-ask"></div></div>
+    <div class="card"><span class="k" data-es="Dar permiso">Give permission</span><div class="phr" id="perm-yes"></div></div>
+    <div class="card"><span class="k" data-es="Negar con cortesía">Refuse politely</span><div class="phr" id="perm-no"></div></div>
+  </div>
+  <div class="callout" data-es="<strong>La trampa de “Do you mind…?”</strong> La pregunta significa “¿te molesta si…?”. Para decir que sí puede, respondes con un no: <b class='m'>Not at all. Go ahead.</b> Si respondes <i>Yes</i>, estás diciendo que sí te molesta."><strong>The “Do you mind…?” trap.</strong> The question means “is it a problem for you if…?”. To say yes to the person, you answer with a no: <b class="m">Not at all. Go ahead.</b> If you answer <i>Yes</i>, you are saying it is a problem.</div>
+</div></section>
+
+<!-- 4 SUGGESTIONS -->
+<section id="suggestions"><div class="wrap">
+  <header class="sh"><span class="hex">4</span><div><p class="eyebrow" data-es="Proponer sin imponer">Lead without pushing</p><h2 data-es="Cómo hacer sugerencias">How to make suggestions</h2></div></header>
+  <p class="intro" data-es="Una sugerencia propone una idea y deja la decisión abierta. Estas ocho fórmulas van de la más suave a la más fuerte. Fíjate en qué forma del verbo sigue a cada una.">A suggestion offers an idea and leaves the decision open. These eight formulas go from the softest to the strongest. Notice which verb form follows each one.</p>
+  <div class="grid g2" id="suggrid"></div>
+  <h3 data-es="Cómo responder: <em>aceptar o declinar</em>">How to answer: <em>accept or decline</em></h3>
+  <div class="grid g2">
+    <div class="card"><span class="k" data-es="Aceptar">Accept</span><div class="phr" id="sug-yes"></div></div>
+    <div class="card"><span class="k" data-es="Declinar con cortesía">Decline politely</span><div class="phr" id="sug-no"></div></div>
+  </div>
+</div></section>
+
+<!-- 5 SOUND -->
+<section id="sound"><div class="wrap">
+  <header class="sh"><span class="hex">5</span><div><p class="eyebrow" data-es="Entrena el oído">Train your ear</p><h2 data-es="Laboratorio de sonido">The Sound Lab</h2></div></header>
+  <p class="intro" data-es="Los modales casi nunca se pronuncian completos. Si esperas oír la palabra del diccionario, no la vas a reconocer. Escucha cómo suenan en una conversación real.">Modals are almost never pronounced in full. If you wait for the dictionary word, you will miss it. Listen to how they sound in real conversation.</p>
+  <div class="grid g2">
+    <div class="card">
+      <span class="k">Can · Can't</span>
+      <p data-es="<b class='m'>Can</b> es débil y rápido: /kən/. <b class='m'>Can't</b> es fuerte y largo: /kænt/. Escucha el acento, no la T.">Positive <b class="m">can</b> is weak and fast: /kən/. Negative <b class="m">can't</b> is strong and long: /kænt/. Listen for the stress, not the T.</p>
+      <div class="pairs" id="canpairs"></div>
+    </div>
+    <div class="card">
+      <span class="k" data-es="La L muda">The silent L</span>
+      <p data-es="<b class='m'>Could</b>, <b class='m'>should</b> y <b class='m'>would</b> riman con <i>good</i>. La L no suena nunca.">Could, should and would rhyme with <i>good</i>. The L is never pronounced.</p>
+      <div class="snd" id="silentl"></div>
+      <span class="k" style="margin-top:8px" data-es="Contracciones">Contractions</span>
+      <div class="snd" id="contr"></div>
+    </div>
+    <div class="card" style="grid-column:1/-1">
+      <span class="k" data-es="Palabras que se unen">Words that link together</span>
+      <p data-es="En las preguntas, el modal se pega al sujeto y suena como una sola palabra.">In questions, the modal joins the subject and sounds like one word.</p>
+      <div class="grid g3" id="links"></div>
+    </div>
+  </div>
+</div></section>
+
+<!-- 6 PRACTICE -->
+<section id="practice"><div class="wrap">
+  <header class="sh"><span class="hex">6</span><div><p class="eyebrow" data-es="Del oído a la boca">From ear to mouth</p><h2 data-es="Práctica: seis niveles con audio">Practice: six levels with audio</h2></div></header>
+  <p class="intro" data-es="Cada nivel tiene 10 ejercicios al azar, así que cada intento es distinto. Con 8 de 10 desbloqueas el siguiente nivel. Escucha todas las veces que necesites.">Each level gives you 10 random exercises, so every attempt is different. Score 8 out of 10 to unlock the next level. Listen as many times as you need.</p>
+  <div class="levels" id="levels"></div>
+  <div class="tools"><span id="lockmsg" aria-live="polite"></span><button class="link" id="unlock" type="button"></button></div>
+  <div class="stage" id="stage" aria-live="polite"></div>
+</div></section>
+
+<!-- 7 SCENE -->
+<section id="scene"><div class="wrap">
+  <header class="sh"><span class="hex">7</span><div><p class="eyebrow" data-es="Todo junto">Everything together</p><h2 data-es="Escena final: la reunión del lunes">Final scene: the Monday meeting</h2></div></header>
+  <p class="intro" data-es="Una reunión real usa todos los modales de la clase. Escucha la escena completa, toca una línea para repetirla y toca cada palabra dorada para ver qué trabajo hace.">One real meeting uses every modal in this class. Listen to the whole scene, tap a line to repeat it, and tap each gold word to see the job it does.</p>
+  <div class="row" style="margin:0 0 14px">
+    <button class="btn" id="splay" type="button" data-es="Escuchar la escena">Play the scene</button>
+    <button class="btn ghost" id="sstop" type="button" data-es="Detener">Stop</button>
+  </div>
+  <div class="scene" id="scenebox"></div>
+  <p class="lens" id="lens"></p>
+  <h3 data-es="¿Entendiste la reunión? <em>Seis preguntas</em>">Did you follow the meeting? <em>Six questions</em></h3>
+  <div class="cq" id="cq"></div>
+  <p class="cqscore" id="cqscore"></p>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <p class="sig">Small phrases, big opportunities.</p>
+  <p>ProfGermandario · English · Fluency · Mindset</p>
+</div></footer>
+
+<script>
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const strip=h=>h.replace(/<[^>]+>/g,'');
+const esc=s=>String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+const fmt=h=>h.replace(/<(\/?)(m|v|w|s)>/g,(_,c,t)=>c?'</b>':'<b class="'+t+'">');
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+const store={get(k){try{return JSON.parse(localStorage.getItem('modalsMC.'+k))}catch(e){return null}},
+             set(k,v){try{localStorage.setItem('modalsMC.'+k,JSON.stringify(v))}catch(e){}}};
+let LANG=store.get('lang')==='es'?'es':'en';
+let sceneRun=0;
+const T=(en,es)=>LANG==='es'?es:en;
+const ICON='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9H4z" fill="currentColor"/><path d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>';
+const sayBtn=(text,cls)=>'<button type="button" class="say '+(cls||'')+'" data-say="'+esc(text)+'" aria-label="Listen: '+esc(text)+'">'+ICON+'</button>';
+const exRow=(html,cls)=>'<div class="ex '+(cls||'')+'"><span>'+fmt(html)+'</span>'+sayBtn(strip(html),'mini')+'</div>';
+
+/* ---------- voice ---------- */
+const TTS={ok:('speechSynthesis' in window)&&('SpeechSynthesisUtterance' in window),voices:[],voice:null,slow:false,
+  load(){ if(!this.ok)return; let v=[];try{v=speechSynthesis.getVoices().filter(x=>/^en[-_]/i.test(x.lang))}catch(e){}
+    if(!v.length)return; this.voices=v; const saved=store.get('voice');
+    const pref=[/Google US English/i,/Samantha/i,/Aria|Jenny|Ava|Emma|Zira/i];
+    this.voice=v.find(x=>x.name===saved)||pref.map(p=>v.find(x=>p.test(x.name))).find(Boolean)||v.find(x=>/en[-_]US/i.test(x.lang))||v[0];
+    const sel=$('#voice'); sel.innerHTML=v.map((x,i)=>'<option value="'+i+'"'+(x===this.voice?' selected':'')+'>'+esc(x.name.replace(/Microsoft |Google /,''))+'</option>').join('');
+  },
+  say(text,el,o){ o=o||{}; if(!this.ok)return Promise.resolve();
+    if(!o.scene){sceneRun++;$$('#scenebox .ln.now').forEach(l=>l.classList.remove('now'))}
+    const id=this.n=(this.n||0)+1;
+    return new Promise(res=>{ try{ speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text);
+      if(this.voice){u.voice=this.voice;u.lang=this.voice.lang}else u.lang='en-US';
+      u.rate=(o.slow||this.slow)?0.68:0.95; u.pitch=o.pitch||1;
+      const done=()=>{if(el&&this.n===id)el.classList.remove('speaking');res()}; u.onend=done;u.onerror=done;
+      $$('.say.speaking').forEach(b=>b.classList.remove('speaking')); el&&el.classList.add('speaking');
+      speechSynthesis.speak(u);}catch(e){el&&el.classList.remove('speaking');res()} }); },
+  stop(){ if(this.ok)try{speechSynthesis.cancel()}catch(e){} }
+};
+if(TTS.ok){TTS.load();try{speechSynthesis.onvoiceschanged=()=>TTS.load()}catch(e){}}
+else{$('#noaudio').style.display='block';$('#voice').style.display='none'}
+if(!TTS.voices.length)$('#voice').innerHTML='<option>Voice</option>';
+$('#voice').addEventListener('change',e=>{const v=TTS.voices[+e.target.value];if(v){TTS.voice=v;store.set('voice',v.name);TTS.say('This is my voice.')}});
+$('#spd').addEventListener('click',e=>{TTS.slow=!TTS.slow;e.currentTarget.setAttribute('aria-pressed',TTS.slow)});
+document.addEventListener('click',e=>{const b=e.target.closest('[data-say]');if(b){TTS.say(b.dataset.say,b.classList.contains('say')?b:null,{slow:b.hasAttribute('data-slow')})}});
+
+/* ---------- data ---------- */
+const FN={ability:['Ability','Habilidad'],permission:['Permission','Permiso'],request:['Request','Petición'],possibility:['Possibility','Posibilidad'],
+  advice:['Advice','Consejo'],obligation:['Obligation','Obligación'],offer:['Offer','Ofrecimiento'],suggestion:['Suggestion','Sugerencia'],
+  prohibition:['Prohibition','Prohibición'],noneed:['No obligation','Sin obligación'],polite:['Polite, hypothetical','Cortesía, hipotético']};
+const fn=k=>T(FN[k][0],FN[k][1]);
+
+const HERO=[
+ ['can','You have the ability or the permission.','Tienes la habilidad o el permiso.'],
+ ['could','It is one option. Nothing is decided.','Es una opción. Nada está decidido.'],
+ ['may','You have formal permission.','Tienes permiso formal.'],
+ ['might','Maybe you will. Maybe you will not.','Quizá sí. Quizá no.'],
+ ['should','It is my advice. It is the right thing to do.','Es mi consejo. Es lo correcto.'],
+ ['must','It is an obligation. You have no choice.','Es una obligación. No hay opción.'],
+ ['will','It is certain. It is going to happen.','Es seguro. Va a pasar.']];
+
+const FLIP=[
+ {s:'She',m:'can',r:'speak three languages'},{s:'We',m:'should',r:'start now'},{s:'They',m:'will',r:'arrive at six'},
+ {s:'You',m:'would',r:'like some tea'},{s:'I',m:'could',r:'borrow your charger'},{s:'He',m:'might',r:'join the call'},
+ {s:'She',m:'has to',r:'work on Saturday',aux:'Does',q:'have to'}];
+
+const NEGS=[['can','can\'t'],['could','couldn\'t'],['will','won\'t'],['would','wouldn\'t'],['should','shouldn\'t'],['must','mustn\'t'],['may','may not'],['might','might not']];
+
+const ATLAS=[
+ {w:'can',ipa:'/kæn/ → /kən/',es:'poder',f:['ability','permission','request','possibility'],
+  c:['Ability, informal permission and informal requests.','Habilidad, permiso informal y peticiones informales.'],
+  ex:['I <m>can</m> lead the meeting.','<m>Can</m> I borrow your pen?'],
+  n:['Negative: can\'t, or cannot as one word.','Negativo: can\'t, o cannot en una sola palabra.']},
+ {w:'could',ipa:'/kʊd/',es:'podía · podría',f:['ability','permission','request','possibility','suggestion'],
+  c:['Past ability, polite requests and soft suggestions.','Habilidad en pasado, peticiones corteses y sugerencias suaves.'],
+  ex:['<m>Could</m> you send me the report?','We <m>could</m> meet on Friday.'],
+  n:['More polite than can. The L is silent.','Más cortés que can. La L es muda.']},
+ {w:'may',ipa:'/meɪ/',es:'poder · puede que',f:['permission','possibility'],
+  c:['Formal permission and real possibility.','Permiso formal y posibilidad real.'],
+  ex:['<m>May</m> I come in?','It <m>may</m> rain tonight.'],
+  n:['No contraction. Say may not.','No tiene contracción. Di may not.']},
+ {w:'might',ipa:'/maɪt/',es:'podría · quizá',f:['possibility'],
+  c:['Weak possibility. Maybe yes, maybe no.','Posibilidad débil. Quizá sí, quizá no.'],
+  ex:['She <m>might</m> be late.','I <m>might</m> join you later.'],
+  n:['The GH is silent. It rhymes with night.','La GH es muda. Rima con night.']},
+ {w:'will',ipa:'/wɪl/ → /əl/',es:'futuro: -ré',f:['request','offer'],
+  c:['Decisions, promises, offers and direct requests.','Decisiones, promesas, ofrecimientos y peticiones directas.'],
+  ex:['I<m>\'ll</m> call you tomorrow.','<m>Will</m> you help me with this?'],
+  n:['Contractions: I\'ll, you\'ll, won\'t.','Contracciones: I\'ll, you\'ll, won\'t.']},
+ {w:'would',ipa:'/wʊd/',es:'-ría',f:['request','offer'],
+  c:['Polite requests, offers and invitations.','Peticiones corteses, ofrecimientos e invitaciones.'],
+  ex:['<m>Would</m> you like some coffee?','I<m>\'d</m> like to ask a question.'],
+  n:['Contraction: I\'d. The L is silent.','Contracción: I\'d. La L es muda.']},
+ {w:'shall',ipa:'/ʃæl/',es:'¿…mos?',f:['offer','suggestion'],
+  c:['Offers and suggestions, in questions with I and we.','Ofrecimientos y sugerencias, en preguntas con I y we.'],
+  ex:['<m>Shall</m> we begin?','<m>Shall</m> I open the window?'],
+  n:['Shall we…? is the elegant way to say Let\'s.','Shall we…? es la forma elegante de decir Let\'s.']},
+ {w:'should',ipa:'/ʃʊd/',es:'debería',f:['advice','suggestion'],
+  c:['Advice and recommendations.','Consejos y recomendaciones.'],
+  ex:['You <m>should</m> rest.','<m>Should</m> I call him now?'],
+  n:['The L is silent. It rhymes with good.','La L es muda. Rima con good.']},
+ {w:'must',ipa:'/mʌst/',es:'deber',f:['obligation'],
+  c:['Strong obligation, and logical certainty.','Obligación fuerte y certeza lógica.'],
+  ex:['You <m>must</m> wear a seatbelt.','You <m>must</m> be tired.'],
+  n:['mustn\'t means prohibited. The first T is silent: /ˈmʌsnt/.','mustn\'t significa prohibido. La primera T es muda: /ˈmʌsnt/.']},
+ {w:'have to',ipa:'/ˈhæftə/',es:'tener que',f:['obligation'],
+  c:['Obligation that comes from a rule or a situation.','Obligación que viene de una regla o una situación.'],
+  ex:['She <m>has to</m> work on Saturday.','<m>Do</m> I <m>have to</m> sign here?'],
+  n:['Not a true modal. It changes to has and it needs do or does.','No es un modal puro. Cambia a has y necesita do o does.']}];
+
+const SCALES=[
+ {k:['Certainty','Certeza'],h:['He ___ be at the office.','He ___ be at the office.'],r:[
+  ['will','He will be at the office.',['I am sure.','Estoy seguro.'],'100%',100],
+  ['must','He must be at the office.',['I am almost sure.','Estoy casi seguro.'],'95%',92],
+  ['should','He should be at the office.',['I expect it.','Es lo esperado.'],'80%',78],
+  ['may · could','He may be at the office.',['It is possible.','Es posible.'],'50%',52],
+  ['might','He might be at the office.',['Possible, but I doubt it.','Posible, pero lo dudo.'],'30%',32],
+  ['can\'t','He can\'t be at the office.',['It is impossible.','Es imposible.'],'0%',6]]},
+ {k:['Politeness','Cortesía'],h:['Asking someone to do something','Pedirle algo a alguien'],r:[
+  ['Would you mind…?','Would you mind opening the window?',['Very polite. Use verb + ing.','Muy cortés. Usa verbo + ing.'],'',100],
+  ['Could you…?','Could you open the window, please?',['Polite. Safe everywhere.','Cortés. Seguro en todo lugar.'],'',76],
+  ['Can you…?','Can you open the window?',['Friendly and informal.','Amistoso e informal.'],'',50],
+  ['Open…','Open the window.',['An order. No modal, no choice.','Una orden. Sin modal, sin opción.'],'',20]]},
+ {k:['Pressure','Presión'],h:['From an idea to an obligation','De una idea a una obligación'],r:[
+  ['must','You must see a doctor.',['Obligation. I insist.','Obligación. Insisto.'],'',100],
+  ['have to','You have to see a doctor.',['Necessary. The situation demands it.','Necesario. La situación lo exige.'],'',84],
+  ['\'d better','You\'d better see a doctor.',['A warning. Something bad can happen.','Advertencia. Algo malo puede pasar.'],'',66],
+  ['should','You should see a doctor.',['Advice. It is a good idea.','Consejo. Es buena idea.'],'',46],
+  ['could','You could see a doctor.',['One option. You decide.','Una opción. Tú decides.'],'',24]]}];
+
+const WH=['<w>What</w> <m>should</m> <s>I</s> <v>do</v>?','<w>Where</w> <m>can</m> <s>we</s> <v>park</v>?','<w>When</w> <m>will</m> <s>you</s> <v>arrive</v>?',
+ '<w>How</w> <m>could</m> <s>we</s> <v>improve</v> this?','<w>Who</w> <m>should</m> <s>I</s> <v>call</v>?','<w>Why</w> <m>would</m> <s>he</s> <v>say</v> that?',
+ '<w>What time</w> <m>shall</m> <s>we</s> <v>meet</v>?','<w>How long</w> <m>must</m> <s>we</s> <v>wait</v>?'];
+const SHORT=[['Can you swim?','Yes, I can.','No, I can\'t.'],['Should we wait?','Yes, we should.','No, we shouldn\'t.'],
+ ['Will she come?','Yes, she will.','No, she won\'t.'],['Could he help us?','Yes, he could.','No, he couldn\'t.'],['Would you like some tea?','Yes, please.','No, thank you.']];
+const PERM={ask:['<m>Can</m> I borrow your pen?','<m>Could</m> I leave early today?','Is it okay if I ask a question?','Do you mind if I sit here?','<m>May</m> I come in?','<m>Would</m> it be alright if I joined your group?'],
+ yes:['Sure.','Of course.','Certainly.','Go ahead.','No problem.','Yes, you <m>may</m>.'],
+ no:['I\'m afraid not.','Sorry, you <m>can\'t</m>.','I\'d rather you didn\'t.','Not at the moment.']};
+
+const SUG=[
+ {p:'<m>We could</m> + <v>base verb</v>',t:['Softest. Just an option.','La más suave. Solo una opción.'],ex:['We <m>could</m> <v>try</v> a different plan.','You <m>could</m> <v>ask</v> your manager.']},
+ {p:'<m>Shall we</m> + <v>base verb</v>?',t:['Elegant. Asks for agreement.','Elegante. Busca acuerdo.'],ex:['<m>Shall we</m> <v>start</v>?','<m>Shall I</m> <v>send</v> the invitation?']},
+ {p:'<m>How about</m> + <v>verb-ing</v>?',t:['Friendly idea. Also: What about…?','Idea amistosa. También: What about…?'],ex:['<m>How about</m> <v>meeting</v> on Monday?','<m>What about</m> <v>ordering</v> pizza?']},
+ {p:'<m>Why don\'t we</m> + <v>base verb</v>?',t:['A clear proposal. Not a real why.','Propuesta clara. No es un porqué real.'],ex:['<m>Why don\'t we</m> <v>ask</v> the client?','<m>Why don\'t you</m> <v>take</v> a day off?']},
+ {p:'<m>Would you like to</m> + <v>base verb</v>?',t:['An invitation.','Una invitación.'],ex:['<m>Would you like to</m> <v>join</v> us?','<m>Would you like to</m> <v>see</v> the plan?']},
+ {p:'<m>Let\'s</m> + <v>base verb</v>',t:['Direct and positive. Negative: Let\'s not.','Directa y positiva. Negativo: Let\'s not.'],ex:['<m>Let\'s</m> <v>take</v> a break.','<m>Let\'s not</m> <v>argue</v> about it.']},
+ {p:'<m>You should</m> + <v>base verb</v>',t:['Advice. Stronger than a suggestion.','Consejo. Más fuerte que una sugerencia.'],ex:['You <m>should</m> <v>talk</v> to your manager.','We <m>should</m> <v>leave</v> early.']},
+ {p:'<m>You\'d better</m> + <v>base verb</v>',t:['Strongest. A warning.','La más fuerte. Una advertencia.'],ex:['You<m>\'d better</m> <v>leave</v> now.','We<m>\'d better</m> <v>check</v> the numbers.']}];
+const SUGR={yes:['Good idea.','Sure, why not?','That sounds great.','Yes, let\'s do it.'],no:['I\'d rather not.','Maybe another time.','I\'m not sure about that.','I\'d love to, but I can\'t.']};
+
+const CANPAIRS=[['I can do it.','I can\'t do it.'],['She can come.','She can\'t come.'],['We can see you.','We can\'t see you.']];
+const SILENT=[['could','/kʊd/'],['should','/ʃʊd/'],['would','/wʊd/'],['good','/gʊd/']];
+const CONTR=[['I\'ll','/aɪl/'],['I\'d','/aɪd/'],['won\'t','/woʊnt/'],['shouldn\'t','/ˈʃʊdnt/'],['couldn\'t','/ˈkʊdnt/'],['wouldn\'t','/ˈwʊdnt/'],['mustn\'t','/ˈmʌsnt/']];
+const LINKS=[['Could you help me?','could you → /ˈkʊdʒə/'],['Would you like to come?','would you → /ˈwʊdʒə/'],['Should I wait?','should I → /ʃʊ-ˈdaɪ/'],
+ ['Can I ask you something?','can I → /kə-ˈnaɪ/'],['I have to go.','have to → /ˈhæftə/'],['Why don\'t you call her?','don\'t you → /ˈdoʊntʃə/']];
+
+/* ---------- practice banks ---------- */
+const LEVELS=[
+ {type:'hear',name:['Hear the Modal','Oye el modal'],how:['Listen. Which word did you hear? The sentence stays hidden until you answer.','Escucha. ¿Qué palabra oíste? La frase queda oculta hasta que respondas.'],bank:[
+  {t:"I can't hear you very well.",a:"can't",o:["can","can't"]},{t:"She can speak three languages.",a:"can",o:["can","can't"]},
+  {t:"We can meet after lunch.",a:"can",o:["can","can't"]},{t:"They can't come to the party.",a:"can't",o:["can","can't"]},
+  {t:"You should drink more water.",a:"should",o:["should","could","would","shall"]},{t:"Could you repeat that, please?",a:"Could",o:["Could","Should","Would","Can"]},
+  {t:"Would you like some coffee?",a:"Would",o:["Would","Could","Should","Will"]},{t:"It might rain this afternoon.",a:"might",o:["might","must","may","will"]},
+  {t:"You must wear a helmet here.",a:"must",o:["must","might","may","should"]},{t:"May I ask you a question?",a:"May",o:["May","Might","Must","Can"]},
+  {t:"I'll send you the file tonight.",a:"I'll",o:["I'll","I'd","I","I can"]},{t:"I'd like a glass of water.",a:"I'd",o:["I'll","I'd","I","I could"]},
+  {t:"We won't be late.",a:"won't",o:["won't","want","can't","would"]},{t:"Shall we order some food?",a:"Shall",o:["Shall","Should","Will","Can"]},
+  {t:"He couldn't find his keys.",a:"couldn't",o:["couldn't","could","shouldn't","wouldn't"]},{t:"You shouldn't worry so much.",a:"shouldn't",o:["shouldn't","should","couldn't","wouldn't"]}]},
+ {type:'func',name:['What Is the Message?','¿Cuál es el mensaje?'],how:['Listen. What is the speaker doing with this sentence?','Escucha. ¿Qué está haciendo la persona con esta frase?'],bank:[
+  {t:"May I use your phone?",a:'permission',o:['permission','ability','advice','obligation']},{t:"She can play the piano.",a:'ability',o:['ability','permission','advice','offer']},
+  {t:"You should see a doctor.",a:'advice',o:['advice','permission','ability','offer']},{t:"You must show your passport.",a:'obligation',o:['obligation','suggestion','offer','ability']},
+  {t:"It might snow tomorrow.",a:'possibility',o:['possibility','obligation','advice','permission']},{t:"Could you open the door, please?",a:'request',o:['request','advice','possibility','obligation']},
+  {t:"Shall I carry your bag?",a:'offer',o:['offer','obligation','ability','possibility']},{t:"Why don't we take a taxi?",a:'suggestion',o:['suggestion','obligation','ability','permission']},
+  {t:"Let's have lunch together.",a:'suggestion',o:['suggestion','permission','obligation','possibility']},{t:"Would you like some help?",a:'offer',o:['offer','advice','obligation','ability']},
+  {t:"Do you mind if I sit here?",a:'permission',o:['permission','advice','offer','ability']},{t:"We have to finish this today.",a:'obligation',o:['obligation','possibility','offer','permission']},
+  {t:"He may be in a meeting.",a:'possibility',o:['possibility','advice','offer','request']},{t:"How about going to the beach?",a:'suggestion',o:['suggestion','ability','obligation','permission']},
+  {t:"Would you send me the address, please?",a:'request',o:['request','advice','possibility','ability']},{t:"I could swim when I was five.",a:'ability',o:['ability','permission','suggestion','obligation']}]},
+ {type:'build',name:['Build the Question','Arma la pregunta'],how:['Listen and tap the words in the correct order.','Escucha y toca las palabras en el orden correcto.'],bank:[
+  {t:"Can you help me?"},{t:"Could I leave early today?"},{t:"Should we call the client?"},{t:"Where can I park my car?"},{t:"What should I say?"},
+  {t:"Would you like some tea?"},{t:"May I come in?"},{t:"Shall we start the meeting?"},{t:"When will they arrive?"},{t:"How could we improve this?"},
+  {t:"Why don't we take a break?"},{t:"Do I have to sign here?"},{t:"Who should I talk to?"},{t:"Would you mind closing the door?"}]},
+ {type:'fix',name:['Fix the Mistake','Corrige el error'],how:['This sentence has a typical mistake. Choose the correct version. You can listen to each option first.','Esta frase tiene un error típico. Elige la versión correcta. Puedes escuchar cada opción antes.'],bank:[
+  {x:"She cans swim.",a:"She can swim.",o:["She can swims.","She can to swim."],y:['Modals never take -s.','Los modales nunca llevan -s.']},
+  {x:"Do you can help me?",a:"Can you help me?",o:["Do you can to help me?","Can you to help me?"],y:['No do or does with a modal. The modal jumps.','Sin do ni does con un modal. El modal salta.']},
+  {x:"I must to go now.",a:"I must go now.",o:["I must going now.","I must to going now."],y:['Modal + base verb, without to.','Modal + verbo base, sin to.']},
+  {x:"Let's to start.",a:"Let's start.",o:["Let's starting.","Let's we start."],y:['Let\'s + base verb.','Let\'s + verbo base.']},
+  {x:"How about go to the park?",a:"How about going to the park?",o:["How about to go to the park?","How about we going to the park?"],y:['How about + verb-ing.','How about + verbo-ing.']},
+  {x:"You should to rest.",a:"You should rest.",o:["You should resting.","You shoulds rest."],y:['Modal + base verb, without to.','Modal + verbo base, sin to.']},
+  {x:"Why don't we going out?",a:"Why don't we go out?",o:["Why don't we to go out?","Why not we go out?"],y:['Why don\'t we + base verb.','Why don\'t we + verbo base.']},
+  {x:"He don't can come.",a:"He can't come.",o:["He doesn't can come.","He not can come."],y:['Negative = modal + not.','Negativo = modal + not.']},
+  {x:"Where I can buy a ticket?",a:"Where can I buy a ticket?",o:["Where do I can buy a ticket?","Where can buy I a ticket?"],y:['WH + modal + subject + base verb.','WH + modal + sujeto + verbo base.']},
+  {x:"Would you like go with us?",a:"Would you like to go with us?",o:["Would you like going with us?","Would you to like go with us?"],y:['Would you like + to + base verb.','Would you like + to + verbo base.']},
+  {x:"Can she speaks English?",a:"Can she speak English?",o:["Does she can speak English?","Can she to speak English?"],y:['After a modal, the verb has no -s.','Después del modal, el verbo no lleva -s.']},
+  {x:"You mustn't to smoke here.",a:"You mustn't smoke here.",o:["You don't must smoke here.","You mustn't smoking here."],y:['Modal + base verb, without to.','Modal + verbo base, sin to.']},
+  {x:"What we should do?",a:"What should we do?",o:["What do we should do?","What should do we?"],y:['WH + modal + subject + base verb.','WH + modal + sujeto + verbo base.']},
+  {x:"Will you come? Yes, I'll.",a:"Will you come? Yes, I will.",o:["Will you come? Yes, I'll do.","Will you come? Yes, will."],y:['No contraction in a positive short answer.','Sin contracción en una respuesta corta positiva.']}]},
+ {type:'dict',name:['Dictation','Dictado'],how:['Listen and write the complete sentence. You have two attempts.','Escucha y escribe la frase completa. Tienes dos intentos.'],bank:[
+  {t:"Can I ask a question?"},{t:"You should call her."},{t:"We could meet tomorrow."},{t:"May I come in?"},{t:"She can't drive."},
+  {t:"Would you like some water?"},{t:"Let's take a break."},{t:"I might be late."},{t:"You must be careful."},{t:"Shall we go?"},
+  {t:"Could you help me, please?"},{t:"Where should I sit?"},{t:"Why don't we try again?"},{t:"I'll see you later."},{t:"You don't have to pay."}]},
+ {type:'sit',name:['Real Situations','Situaciones reales'],how:['Read or listen to the situation. Choose the best thing to say. You can listen to each option first.','Lee o escucha la situación. Elige lo mejor que puedes decir. Puedes escuchar cada opción antes.'],bank:[
+  {q:"You are in a meeting. The room is hot. Ask politely to open the window.",a:"Would it be alright if I opened the window?",o:["I open the window.","You must open the window."],y:['A formal permission question fits a meeting.','Una pregunta formal de permiso es lo adecuado en una reunión.']},
+  {q:"Your friend looks very tired. Give advice.",a:"You should get some rest.",o:["You can't rest.","May you rest?"],y:['Should gives advice.','Should da un consejo.']},
+  {q:"You want to invite a colleague to lunch.",a:"Would you like to have lunch with me?",o:["You must have lunch with me.","Do you can lunch?"],y:['Would you like to…? is an invitation.','Would you like to…? es una invitación.']},
+  {q:"Your boss asks: Could you send me the report today? You agree.",a:"Sure, no problem.",o:["Yes, I could.","No, you may not."],y:['Agree to a request with Sure or Of course.','Acepta una petición con Sure o Of course.']},
+  {q:"Someone asks: Do you mind if I sit here? The seat is free.",a:"Not at all. Go ahead.",o:["Yes, I mind.","Yes, you do."],y:['With Do you mind, a no means go ahead.','Con Do you mind, un no significa adelante.']},
+  {q:"The team is tired after three hours of work. Suggest a break.",a:"Why don't we take a short break?",o:["We must not take a break.","How about to take a break?"],y:['Why don\'t we + base verb makes a suggestion.','Why don\'t we + verbo base hace una sugerencia.']},
+  {q:"A classmate asks: May I use your bike? You need it today. Refuse politely.",a:"I'm afraid not. I need it today.",o:["No. Never.","You mustn't."],y:['I\'m afraid not is a polite no. Add a reason.','I\'m afraid not es un no cortés. Agrega una razón.']},
+  {q:"You see a woman with heavy bags. Offer to help.",a:"Shall I carry those for you?",o:["You should carry those.","Can you carry my bags?"],y:['Shall I…? offers help.','Shall I…? ofrece ayuda.']},
+  {q:"You don't know where the bank is. Ask a stranger politely.",a:"Excuse me, could you tell me where the bank is?",o:["Where is the bank? Tell me.","You must tell me where the bank is."],y:['Could you…? is polite with strangers.','Could you…? es cortés con desconocidos.']},
+  {q:"Your friend says: Let's go to the movies tonight. You are busy. Decline politely.",a:"I'd love to, but I can't tonight.",o:["No, we mustn't.","I don't can."],y:['Decline with warmth, then give the reason.','Declina con calidez y luego da la razón.']},
+  {q:"A sign says NO PHONES. Tell the new student the rule.",a:"You mustn't use your phone here.",o:["You don't have to use your phone here.","You might use your phone here."],y:['mustn\'t = prohibited.','mustn\'t = prohibido.']},
+  {q:"Tomorrow is a holiday. There is no work. Tell your friend.",a:"We don't have to work tomorrow.",o:["We mustn't work tomorrow.","We can't to work tomorrow."],y:['don\'t have to = it is not necessary.','don\'t have to = no es necesario.']}]}];
+
+const SCENE=[
+ ['Ana','Good morning, everyone. {Shall we|suggestion} begin?',1.1],
+ ['Ana','First, {could you|request} close the door, please, Daniel?',1.1],
+ ['Ana','Thank you. We {must|obligation} finish this project by Friday, so we {have to|obligation} work as a team.',1.1],
+ ['Ana','Laura, {can you|request} present the numbers today?',1.1],
+ ['Laura','I {can|ability}, but I {might|possibility} need ten more minutes to prepare.',1.35],
+ ['Ana','No problem. You {should|advice} take your time.',1.1],
+ ['Daniel','{May I|permission} make a suggestion? {Why don\'t we|suggestion} call the client this afternoon?',0.75],
+ ['Ana','Good idea. We {could|suggestion} also send them a short report.',1.1],
+ ['Daniel','{Would you like me to|offer} write it?',0.75],
+ ['Ana','Yes, please. That {would|polite} be great.',1.1],
+ ['Ana','One more thing. You {don\'t have to|noneed} stay late tonight, but you {mustn\'t|prohibition} forget the deadline.',1.1],
+ ['Ana','Perfect. {Let\'s|suggestion} get to work!',1.1]];
+const CQ=[
+ {q:['What must the team finish by Friday?','¿Qué debe terminar el equipo antes del viernes?'],a:'The project',o:['The project','The numbers','The meeting']},
+ {q:['Who might need ten more minutes?','¿Quién podría necesitar diez minutos más?'],a:'Laura',o:['Laura','Daniel','The client']},
+ {q:['What does Daniel suggest?','¿Qué sugiere Daniel?'],a:'Calling the client this afternoon',o:['Calling the client this afternoon','Closing the door','Staying late tonight']},
+ {q:['Which sentence is an offer?','¿Cuál frase es un ofrecimiento?'],a:'Would you like me to write it?',o:['Would you like me to write it?','Could you close the door?','You should take your time.']},
+ {q:['"You don\'t have to stay late" means…','"You don\'t have to stay late" significa…'],a:'Staying late is not necessary.',o:['Staying late is not necessary.','Staying late is prohibited.','Staying late is an obligation.']},
+ {q:['"You mustn\'t forget the deadline" means…','"You mustn\'t forget the deadline" significa…'],a:'Do not forget it. It is essential.',o:['Do not forget it. It is essential.','You can forget it if you want.','You will probably forget it.']}];
+
+/* ---------- static language swap ---------- */
+$$('[data-es]').forEach(el=>el.dataset.en=el.innerHTML);
+function applyLang(){
+  $$('[data-es]').forEach(el=>el.innerHTML=LANG==='es'?el.dataset.es:el.dataset.en);
+  $('#lang').textContent=LANG==='es'?'EN':'ES';
+  $('#lang').setAttribute('aria-label',LANG==='es'?'Switch explanations to English':'Cambiar las explicaciones a español');
+  $$('.say:empty').forEach(b=>b.innerHTML=ICON);
+  renderHero();renderFlip();renderAtlas();renderScales();renderSug();renderLevels();renderStage();renderScene(false);renderCQ();
+}
+$('#lang').addEventListener('click',()=>{LANG=LANG==='es'?'en':'es';store.set('lang',LANG);applyLang()});
+
+/* ---------- hero ---------- */
+let hi=0;
+function renderHero(pop){
+  const h=HERO[hi]; const slot=$('#hslot'); slot.textContent=h[0];
+  if(pop){slot.classList.remove('pop');void slot.offsetWidth;slot.classList.add('pop')}
+  $('#hmean').innerHTML=LANG==='es'?esc(h[1])+' <small>· '+esc(h[2])+'</small>':esc(h[1]);
+  $('#hsay').dataset.say='You '+h[0]+' speak in the meeting.';
+  $('#hchips').innerHTML=HERO.map((x,i)=>'<button type="button" class="chip'+(i===hi?' on':'')+'" data-h="'+i+'">'+x[0]+'</button>').join('');
+}
+$('#hchips').addEventListener('click',e=>{const b=e.target.closest('[data-h]');if(!b)return;hi=+b.dataset.h;renderHero(true);TTS.say($('#hsay').dataset.say,$('#hsay'))});
+
+/* ---------- flipper ---------- */
+let fi=0,fq=false;
+function renderFlip(){
+  const f=FLIP[fi], low=f.s==='I'?'I':f.s.toLowerCase(), cap=s=>s[0].toUpperCase()+s.slice(1);
+  let parts,text;
+  if(!fq){parts=[['',f.s],['tm',f.m],['tv',f.r+'.']];text=f.s+' '+f.m+' '+f.r+'.'}
+  else if(f.aux){parts=[['tm',f.aux],['',low],['tm',f.q],['tv',f.r+'?']];text=f.aux+' '+low+' '+f.q+' '+f.r+'?'}
+  else{parts=[['tm',cap(f.m)],['',low],['tv',f.r+'?']];text=cap(f.m)+' '+low+' '+f.r+'?'}
+  $('#ftok').innerHTML=parts.map(p=>'<span class="'+p[0]+'">'+esc(p[1])+'</span>').join('');
+  $('#fsay').dataset.say=text;
+  $('#fflip').textContent=fq?T('Back to statement','Volver a afirmación'):T('Make it a question','Hazla pregunta');
+  $('#fnote').textContent=f.aux?T('Have to is not a true modal. It needs do or does, and has goes back to have.','Have to no es un modal puro. Necesita do o does, y has vuelve a have.')
+    :(fq?T('The modal jumped before the subject. Nothing else changed.','El modal saltó antes del sujeto. Nada más cambió.'):T('Subject + modal + base verb.','Sujeto + modal + verbo base.'));
+}
+$('#fflip').addEventListener('click',()=>{fq=!fq;renderFlip();TTS.say($('#fsay').dataset.say,$('#fsay'))});
+$('#fnext').addEventListener('click',()=>{fi=(fi+1)%FLIP.length;fq=false;renderFlip();TTS.say($('#fsay').dataset.say,$('#fsay'))});
+
+/* ---------- static lists ---------- */
+const chipSay=(a,b,say)=>'<span class="neg"><span><b class="m">'+esc(a)+'</b> <em>'+esc(b)+'</em></span>'+sayBtn(say||a,'mini')+'</span>';
+$('#negs').innerHTML=NEGS.map(n=>'<span class="neg"><span>'+n[0]+' <em>→</em> <b class="m">'+esc(n[1])+'</b></span>'+sayBtn(n[0]+'. '+n[1]+'.','mini')+'</span>').join('');
+$('#whlist').innerHTML=WH.map(x=>exRow(x)).join('');
+$('#shortans').innerHTML=SHORT.map(r=>'<tr>'+r.map(c=>'<td><div class="ex"><span>'+esc(c)+'</span>'+sayBtn(c,'mini')+'</div></td>').join('')+'</tr>').join('');
+$('#perm-ask').innerHTML=PERM.ask.map(x=>exRow(x)).join('');
+$('#perm-yes').innerHTML=PERM.yes.map(x=>exRow(x)).join('');
+$('#perm-no').innerHTML=PERM.no.map(x=>exRow(x)).join('');
+$('#sug-yes').innerHTML=SUGR.yes.map(x=>exRow(x)).join('');
+$('#sug-no').innerHTML=SUGR.no.map(x=>exRow(x)).join('');
+$('#canpairs').innerHTML=CANPAIRS.map(p=>exRow(p[0].replace('can','<m>can</m>'))+exRow(p[1].replace("can't","<m>can't</m>"))).join('');
+$('#silentl').innerHTML=SILENT.map(x=>chipSay(x[0],x[1])).join('');
+$('#contr').innerHTML=CONTR.map(x=>chipSay(x[0],x[1])).join('');
+$('#links').innerHTML=LINKS.map(x=>'<div class="ex"><span>'+esc(x[0])+'<br><small style="color:var(--muted)">'+esc(x[1])+'</small></span>'+sayBtn(x[0],'mini')+'<button type="button" class="pill" data-say="'+esc(x[0])+'" data-slow>Slow</button></div>').join('');
+
+/* ---------- atlas ---------- */
+let filt='all';
+const FKEYS=['ability','permission','request','possibility','advice','obligation','offer','suggestion'];
+function renderAtlas(){
+  $('#filters').innerHTML=['all'].concat(FKEYS).map(k=>'<button type="button" class="chip'+(k===filt?' on':'')+'" data-f="'+k+'">'+(k==='all'?T('All','Todos'):fn(k))+'</button>').join('');
+  $('#atlasgrid').innerHTML=ATLAS.map(m=>'<article class="card mcard'+(filt!=='all'&&!m.f.includes(filt)?' hide':'')+'">'+
+    '<div class="top"><span class="word">'+m.w+'</span><span class="ipa">'+m.ipa+'</span><span class="es">'+m.es+'</span></div>'+
+    '<p>'+T(m.c[0],m.c[1])+'</p><div class="tags">'+m.f.map(k=>'<span class="tag">'+fn(k)+'</span>').join('')+'</div>'+
+    m.ex.map(x=>exRow(x)).join('')+'<p class="note">'+esc(T(m.n[0],m.n[1]))+'</p></article>').join('');
+}
+$('#filters').addEventListener('click',e=>{const b=e.target.closest('[data-f]');if(b){filt=b.dataset.f;renderAtlas()}});
+function renderScales(){
+  $('#scales').innerHTML=SCALES.map(s=>'<div class="card"><span class="k">'+T(s.k[0],s.k[1])+'</span><p>'+T(s.h[0],s.h[1])+'</p><div class="ladder">'+
+    s.r.map(r=>'<div class="rung" style="--w:'+r[4]+'%"><div class="t"><b class="m">'+esc(r[0])+'</b><small>'+esc(T(r[2][0],r[2][1]))+'</small></div>'+
+      (r[3]?'<span class="pc">'+r[3]+'</span>':'')+sayBtn(r[1],'mini')+'</div>').join('')+'</div></div>').join('');
+}
+function renderSug(){
+  $('#suggrid').innerHTML=SUG.map((s,i)=>'<div class="card"><span class="k">'+(i+1)+' · '+esc(T(s.t[0],s.t[1]))+'</span><h4>'+fmt(s.p)+'</h4>'+s.ex.map(x=>exRow(x)).join('')+'</div>').join('');
+}
+
+/* ---------- practice ---------- */
+const NEED=8, ROUND=10;
+let prog=store.get('prog'); if(!prog||!Array.isArray(prog.best))prog={unlocked:1,best:[0,0,0,0,0,0],all:false};
+const P={lvl:0,view:'intro',items:[],i:0,score:0,done:false,ok:null,opts:[],pool:[],built:[],tries:0,typed:'',pick:null};
+const isOpen=n=>prog.all||n<prog.unlocked;
+function renderLevels(){
+  $('#levels').innerHTML=LEVELS.map((L,n)=>'<button type="button" class="lv'+(n===P.lvl?' on':'')+(isOpen(n)?'':' lock')+(prog.best[n]>=NEED?' pass':'')+'" data-lv="'+n+'">'+
+    '<span class="n">'+T('LEVEL','NIVEL')+' '+(n+1)+'</span><span class="nm">'+T(L.name[0],L.name[1])+'</span><span class="bs">'+
+    (isOpen(n)?T('Best','Mejor')+': '+prog.best[n]+' / '+ROUND:T('Locked','Bloqueado'))+'</span></button>').join('');
+  $('#unlock').textContent=prog.all?T('Lock levels again','Volver a bloquear niveles'):T('Teacher: unlock all levels','Docente: desbloquear todos los niveles');
+}
+$('#unlock').addEventListener('click',()=>{prog.all=!prog.all;store.set('prog',prog);if(!isOpen(P.lvl)){P.lvl=0;P.view='intro'}renderLevels();renderStage()});
+$('#levels').addEventListener('click',e=>{const b=e.target.closest('[data-lv]');if(!b)return;const n=+b.dataset.lv;
+  if(!isOpen(n)){b.classList.add('shake');setTimeout(()=>b.classList.remove('shake'),400);
+    $('#lockmsg').textContent=T('Score 8 out of 10 on Level '+n+' to unlock this one.','Logra 8 de 10 en el Nivel '+n+' para desbloquear este.');return}
+  $('#lockmsg').textContent='';TTS.stop();P.lvl=n;P.view='intro';renderLevels();renderStage()});
+
+function setup(){const it=P.items[P.i],ty=LEVELS[P.lvl].type;P.done=false;P.ok=null;P.tries=0;P.typed='';P.pick=null;P.built=[];
+  if(ty==='hear'||ty==='func')P.opts=shuffle(it.o);
+  if(ty==='fix'||ty==='sit')P.opts=shuffle([it.a].concat(it.o));
+  if(ty==='build'){const w=it.t.split(' ').map((t,i)=>({t,i}));let p=shuffle(w),g=0;while(p.map(x=>x.t).join(' ')===it.t&&g++<8)p=shuffle(w);P.pool=p}}
+function begin(){P.items=shuffle(LEVELS[P.lvl].bank).slice(0,ROUND);P.i=0;P.score=0;P.view='item';setup();renderStage();auto()}
+function auto(){const ty=LEVELS[P.lvl].type,it=P.items[P.i];if(ty!=='fix'&&ty!=='sit')TTS.say(it.t,$('#stage .say.big'))}
+function finish(ok){P.done=true;P.ok=ok;if(ok)P.score++}
+function norm(s){return s.toLowerCase().replace(/[’‘`´]/g,"'").replace(/\bcan't\b/g,'can not').replace(/\bcannot\b/g,'can not').replace(/\bwon't\b/g,'will not')
+  .replace(/n't\b/g,' not').replace(/'ll\b/g,' will').replace(/[^a-z0-9' ]/g,' ').replace(/\s+/g,' ').trim()}
+
+function renderStage(){
+  const L=LEVELS[P.lvl],ty=L.type,S=$('#stage');
+  if(P.view==='intro'){S.innerHTML='<h4>'+T('Level','Nivel')+' '+(P.lvl+1)+' · '+T(L.name[0],L.name[1])+'</h4><p class="how">'+T(L.how[0],L.how[1])+'</p>'+
+    '<div class="row"><button class="btn" data-act="begin" type="button">'+T('Start 10 exercises','Empezar 10 ejercicios')+'</button></div>';return}
+  if(P.view==='result'){const pass=P.score>=NEED,last=P.lvl===LEVELS.length-1;
+    S.innerHTML='<div class="result"><div class="big">'+P.score+'<small> / '+ROUND+'</small></div><h4 style="margin-top:10px">'+
+      (pass?T('Level passed','Nivel superado'):T('Almost there','Ya casi'))+'</h4><p>'+
+      (pass?(last?T('You completed all six levels. Go to the final scene and hear everything working together.','Completaste los seis niveles. Ve a la escena final y escucha todo funcionando junto.')
+                 :T('The next level is open. Keep the momentum.','El siguiente nivel está abierto. Mantén el impulso.'))
+           :T('You need 8 correct answers. The exercises change every time, so try again.','Necesitas 8 respuestas correctas. Los ejercicios cambian cada vez, así que inténtalo otra vez.'))+'</p>'+
+      '<div class="row"><button class="btn ghost" data-act="begin" type="button">'+T('Try this level again','Repetir este nivel')+'</button>'+
+      (pass&&!last?'<button class="btn" data-act="nextlvl" type="button">'+T('Go to Level','Ir al Nivel')+' '+(P.lvl+2)+'</button>':'')+
+      (pass&&last?'<a class="btn" href="#scene" style="text-decoration:none">'+T('Go to the final scene','Ir a la escena final')+'</a>':'')+'</div></div>';return}
+  const it=P.items[P.i]; let h='<div class="count"><span>'+T(L.name[0],L.name[1])+'</span><span>'+(P.i+1)+' / '+ROUND+' · '+T('Score','Puntos')+' '+P.score+'</span></div>'+
+    '<div class="meter"><i style="width:'+((P.i+(P.done?1:0))/ROUND*100)+'%"></i></div>';
+  const bigListen=txt=>'<div class="listen">'+sayBtn(txt,'big')+'<button type="button" class="pill" data-say="'+esc(txt)+'" data-slow>'+T('Slow','Lento')+'</button><span class="hint">'+T('Tap to listen again','Toca para escuchar otra vez')+'</span></div>';
+  const optBtn=(o,label)=>{let c='opt';if(P.done){if(o===it.a)c+=' right';else if(o===P.pick)c+=' wrong'}
+    return '<button type="button" class="'+c+'" data-opt="'+esc(o)+'"'+(P.done?' disabled':'')+'>'+esc(label||o)+'</button>'};
+  if(ty==='hear'){h+='<p class="q">'+T('Which word did you hear?','¿Qué palabra oíste?')+'</p>'+bigListen(it.t)+'<div class="opts">'+P.opts.map(o=>optBtn(o)).join('')+'</div>'}
+  if(ty==='func'){h+='<p class="q">'+T('What is the speaker doing?','¿Qué está haciendo quien habla?')+'</p>'+bigListen(it.t)+'<div class="opts">'+P.opts.map(o=>optBtn(o,fn(o))).join('')+'</div>'}
+  if(ty==='build'){h+='<p class="q">'+T('Listen and build the question.','Escucha y arma la pregunta.')+'</p>'+bigListen(it.t)+
+    '<div class="tray" data-ph="'+T('Your question appears here','Tu pregunta aparece aquí')+'">'+P.built.map((w,k)=>'<button type="button" class="tile" data-back="'+k+'"'+(P.done?' disabled':'')+'>'+esc(w.t)+'</button>').join('')+'</div>'+
+    '<div class="pool">'+P.pool.map((w,k)=>'<button type="button" class="tile" data-take="'+k+'">'+esc(w.t)+'</button>').join('')+'</div>'+
+    (P.done?'':'<div class="row"><button class="btn" data-act="checkbuild" type="button"'+(P.pool.length?' disabled':'')+'>'+T('Check','Revisar')+'</button></div>')}
+  if(ty==='fix'){h+='<p class="q"><span class="bad">'+esc(it.x)+'</span></p><div class="opts col">'+P.opts.map(o=>'<div class="optrow">'+sayBtn(o,'mini')+optBtn(o)+'</div>').join('')+'</div>'}
+  if(ty==='sit'){h+='<div class="listen" style="align-items:flex-start">'+sayBtn(it.q,'')+'<p class="q" style="margin:0;flex:1 1 260px">'+esc(it.q)+'</p></div><div class="opts col">'+P.opts.map(o=>'<div class="optrow">'+sayBtn(o,'mini')+optBtn(o)+'</div>').join('')+'</div>'}
+  if(ty==='dict'){h+='<p class="q">'+T('Write what you hear.','Escribe lo que oyes.')+'</p>'+bigListen(it.t)+
+    '<input class="dict" id="dict-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="'+T('Your sentence','Tu frase')+'" value="'+esc(P.typed)+'"'+(P.done?' disabled':'')+'>'+
+    (P.done?'':'<div class="row"><button class="btn" data-act="checkdict" type="button">'+T('Check','Revisar')+'</button>'+(P.tries?'<span style="color:var(--rose)">'+T('Not yet. Listen again. One more attempt.','Todavía no. Escucha otra vez. Un intento más.')+'</span>':'')+'</div>')}
+  if(P.done){
+    const correct=it.t||it.a; let extra='';
+    if(ty==='func')extra=fn(it.a)+' · ';
+    if(ty==='dict'&&!P.ok){const want=norm(it.t).split(' '),got=norm(P.typed).split(' ');
+      extra='<span>'+T('You wrote','Escribiste')+': '+(P.typed?got.map((w,k)=>'<span class="wd '+(w===want[k]?'o':'x')+'">'+esc(w)+'</span>').join(''):'—')+'</span><br>'}
+    h+='<div class="fb '+(P.ok?'ok':'no')+'"><div class="tx"><strong>'+(P.ok?T('Correct.','Correcto.'):T('Not this time.','Esta vez no.'))+'</strong>'+
+      (ty==='dict'?extra:'')+'<span class="ans">'+(ty==='func'?esc(extra):'')+esc(correct)+'</span>'+(it.y?'<span>'+esc(T(it.y[0],it.y[1]))+'</span>':'')+'</div>'+sayBtn(correct,'')+
+      '<button class="btn" data-act="next" type="button">'+(P.i===ROUND-1?T('See my result','Ver mi resultado'):T('Next','Siguiente'))+'</button></div>';
+  }
+  S.innerHTML=h;
+  if(ty==='dict'&&!P.done){const inp=$('#dict-in');inp.addEventListener('input',()=>P.typed=inp.value);inp.addEventListener('keydown',e=>{if(e.key==='Enter')checkDict()})}
+}
+function checkDict(){const it=P.items[P.i];if(!P.typed.trim())return;
+  if(norm(P.typed)===norm(it.t)){finish(true);renderStage();return}
+  P.tries++; if(P.tries>=2){finish(false);renderStage();TTS.say(it.t,$('#stage .fb .say'))}else{renderStage();const i=$('#dict-in');i&&i.focus();TTS.say(it.t,$('#stage .say.big'),{slow:true})}}
+$('#stage').addEventListener('click',e=>{
+  const act=e.target.closest('[data-act]'),opt=e.target.closest('[data-opt]'),take=e.target.closest('[data-take]'),back=e.target.closest('[data-back]');
+  const it=P.items[P.i],ty=LEVELS[P.lvl].type;
+  if(act){const a=act.dataset.act;
+    if(a==='begin')begin();
+    if(a==='nextlvl'){P.lvl++;P.view='intro';renderLevels();renderStage()}
+    if(a==='next'){TTS.stop();if(P.i===ROUND-1){P.view='result';if(P.score>prog.best[P.lvl])prog.best[P.lvl]=P.score;
+        if(P.score>=NEED)prog.unlocked=Math.max(prog.unlocked,Math.min(LEVELS.length,P.lvl+2));store.set('prog',prog);renderLevels();renderStage()}
+      else{P.i++;setup();renderStage();auto()}}
+    if(a==='checkbuild'){const ok=P.built.map(w=>w.t).join(' ')===it.t;finish(ok);renderStage();if(!ok)TTS.say(it.t,$('#stage .fb .say'))}
+    if(a==='checkdict')checkDict();
+    return}
+  if(opt&&!P.done){P.pick=opt.dataset.opt;const ok=P.pick===it.a;finish(ok);renderStage();
+    if(ty==='fix'||ty==='sit')TTS.say(it.a,$('#stage .fb .say'));else if(!ok)TTS.say(it.t,$('#stage .fb .say'));return}
+  if(take&&!P.done){P.built.push(P.pool.splice(+take.dataset.take,1)[0]);renderStage();return}
+  if(back&&!P.done){P.pool.push(P.built.splice(+back.dataset.back,1)[0]);renderStage();return}
+});
+
+/* ---------- scene ---------- */
+const plain=s=>s.replace(/\{([^|}]+)\|[^}]+\}/g,'$1');
+function renderScene(){
+  $('#scenebox').innerHTML=SCENE.map((l,i)=>'<div class="ln" data-ln="'+i+'"><span class="who">'+l[0]+'</span><span>'+
+    esc(l[1]).replace(/\{([^|}]+)\|([^}]+)\}/g,(_,w,f)=>'<button type="button" class="mk" data-fn="'+f+'" data-w="'+w+'">'+w+'</button>')+'</span></div>').join('');
+  $('#lens').textContent=T('Tap a gold word to see its job.','Toca una palabra dorada para ver su trabajo.');
+}
+function mark(i){$$('#scenebox .ln').forEach((el,k)=>el.classList.toggle('now',k===i))}
+async function playScene(from){const run=++sceneRun;
+  for(let i=from||0;i<SCENE.length;i++){if(run!==sceneRun)return;mark(i);await new Promise(r=>{TTS.say(plain(SCENE[i][1]),null,{pitch:SCENE[i][2],scene:true}).then(r)});
+    if(run!==sceneRun)return;await new Promise(r=>setTimeout(r,280))}
+  if(run===sceneRun)mark(-1)}
+$('#splay').addEventListener('click',()=>playScene(0));
+$('#sstop').addEventListener('click',()=>{sceneRun++;TTS.stop();mark(-1)});
+$('#scenebox').addEventListener('click',e=>{
+  const mk=e.target.closest('.mk'),ln=e.target.closest('.ln');
+  if(mk){$$('#scenebox .mk').forEach(b=>b.classList.remove('on'));mk.classList.add('on');
+    $('#lens').innerHTML='<b>'+esc(mk.dataset.w)+'</b> → '+fn(mk.dataset.fn);return}
+  if(ln){const i=+ln.dataset.ln;const run=++sceneRun;mark(i);TTS.say(plain(SCENE[i][1]),null,{pitch:SCENE[i][2],scene:true}).then(()=>{if(run===sceneRun)mark(-1)})}
+});
+const cqState=CQ.map(()=>null), cqOpts=CQ.map(c=>shuffle(c.o));
+function renderCQ(){
+  $('#cq').innerHTML=CQ.map((c,i)=>'<div class="item"><p>'+(i+1)+'. '+esc(T(c.q[0],c.q[1]))+'</p><div class="opts">'+cqOpts[i].map(o=>{
+    let cl='opt';if(cqState[i]!==null){if(o===c.a)cl+=' right';else if(o===cqState[i])cl+=' wrong'}
+    return '<button type="button" class="'+cl+'" data-cq="'+i+'" data-o="'+esc(o)+'"'+(cqState[i]!==null?' disabled':'')+'>'+esc(o)+'</button>'}).join('')+'</div></div>').join('');
+  const done=cqState.filter(x=>x!==null).length,ok=cqState.filter((x,i)=>x===CQ[i].a).length;
+  $('#cqscore').textContent=done===CQ.length?T('Your score: ','Tu resultado: ')+ok+' / '+CQ.length:'';
+}
+$('#cq').addEventListener('click',e=>{const b=e.target.closest('[data-cq]');if(!b)return;cqState[+b.dataset.cq]=b.dataset.o;renderCQ()});
+
+applyLang();
+})();
+</script>
+</body>
+</html>
