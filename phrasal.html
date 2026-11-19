@@ -764,18 +764,35 @@ function voice(){
   for(const p of pref){ const v = en.find(x => x.name.includes(p)); if(v) return v; }
   return en.find(v => /en[-_]US/i.test(v.lang)) || en[0] || null;
 }
-function stop(){ if(synth) synth.cancel(); if(active){ active.classList.remove("playing"); active = null; } }
+let lastU = null, startTimer = null, muteHint = false;
+const IOS = /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+function stop(){ if(synth && (synth.speaking || synth.pending)) synth.cancel(); clearTimeout(startTimer); if(active){ active.classList.remove("playing"); active = null; } }
+/* Mobile: speak() must run synchronously inside the tap (no setTimeout),
+   otherwise iOS Safari / Android Chrome drop it silently. */
 function speak(text, btn){
   if(!synth || typeof SpeechSynthesisUtterance === "undefined"){ toast("Tu navegador no tiene voz integrada. Prueba Chrome o Safari."); return; }
+  if(!text) return;
   const same = active && active === btn && synth.speaking;
   stop(); if(same) return;
+  if(!voices.length) loadVoices();
   active = btn || null; if(btn) btn.classList.add("playing");
-  setTimeout(() => {
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "en-US"; const v = voice(); if(v) u.voice = v; u.rate = rate;
-    u.onend = u.onerror = () => { if(btn && active === btn){ btn.classList.remove("playing"); active = null; } };
-    synth.speak(u);
-  }, 40);
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = "en-US"; const v = voice(); if(v){ u.voice = v; u.lang = v.lang; } u.rate = rate; u.volume = 1;
+  const done = () => { clearTimeout(startTimer); if(btn && active === btn){ btn.classList.remove("playing"); active = null; } };
+  u.onstart = () => clearTimeout(startTimer);
+  u.onend = done;
+  u.onerror = e => { done(); if(e && e.error === "not-allowed") toast("Toca de nuevo para escuchar."); };
+  lastU = u;                      /* keep a reference: Chrome garbage-collects it otherwise */
+  if(synth.paused) synth.resume(); /* Android Chrome can get stuck paused */
+  synth.speak(u);
+  startTimer = setTimeout(() => {
+    if(!synth.speaking){ done(); if(IOS && !muteHint){ muteHint = true; toast("¿Sin sonido? Quita el modo silencio del iPhone y sube el volumen."); } }
+  }, 1800);
+}
+/* Unlock speech on the first touch (iOS needs a speak() inside a user gesture) */
+if(synth){
+  const unlock = () => { try{ const z = new SpeechSynthesisUtterance(" "); z.volume = 0; synth.speak(z); }catch(_){} loadVoices(); };
+  document.addEventListener("touchend", unlock, {once:true, passive:true});
 }
 const rateBtn = $("#rate");
 function paintRate(){ rateBtn.textContent = rate < .9 ? "0.75×" : "1×"; rateBtn.classList.toggle("slow", rate < .9); }
