@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Devices of Eloquence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE everyday learning, hushed luxury: a collector's lexicon for ambitious professionals
+   IDEA a bound, gold-foiled folio of 50 devices; each page is a plate you can hear and repeat
+   PICTURE the open plate: a gilded illuminated initial, the device, and a fluency passage that lights up sentence by sentence as it is read aloud
+   COLOUR ProfGermandario brand: deep navy ground, ivory ink, warm gold foil as the single accent
+   TYPE Cormorant Garamond display + Manrope text
+   LAYOUT laptop: title row with progress, then the plate in two columns (device | passage); phone: title, plate stacked, controls under passage */
+:root{color-scheme:dark;--bg:#081325;--bg2:#0b1a33;--panel:#0f2242;--panel2:#13294e;--ink:#f4eee2;--mute:#b2bbcd;--gold:#d6b46e;--gold2:#f3dca4;--gold3:#9c7a3c;--line:rgba(214,180,110,.28);--soft:rgba(214,180,110,.12)}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:24px}
+body{margin:0;background:radial-gradient(1100px 620px at 85% -8%,#173361 0,transparent 62%),radial-gradient(900px 500px at -10% 40%,#10264a 0,transparent 60%),var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif;overflow-x:clip;min-height:100vh}
+.band{padding-block:clamp(24px,3.4vw,52px);padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+.wrap{max-width:1240px;margin:0 auto}
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:600;letter-spacing:-.01em;margin:0;line-height:1.05;text-wrap:balance}
+h1{font-size:clamp(34px,5vw,52px)}
+h2{font-size:clamp(34px,4.6vw,50px);color:var(--gold2)}
+h3{font-size:28px}
+p{margin:0}
+button,select,input{font:inherit;color:inherit}
+.top{display:flex;flex-wrap:wrap;gap:18px 40px;align-items:flex-end;justify-content:space-between;padding-bottom:22px;border-bottom:1px solid var(--line)}
+.sub{color:var(--mute);max-width:60ch;margin-top:10px}
+.prog{min-width:220px;flex:0 1 300px}
+.prog b{font-weight:600;font-size:14px;color:var(--gold2)}
+.meter{height:6px;background:var(--soft);border-radius:9px;margin-top:8px;overflow:hidden}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold3),var(--gold2));transition:width .4s}
+.plate{margin-top:26px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);background:linear-gradient(160deg,var(--panel2),var(--panel) 55%,var(--bg2));border:1px solid var(--line);border-radius:6px;box-shadow:inset 0 0 0 6px var(--bg2),inset 0 0 0 7px var(--line),0 30px 60px -30px #000}
+.left{padding:clamp(22px,3vw,40px);border-right:1px solid var(--line);display:flex;flex-direction:column;gap:16px}
+.right{padding:clamp(22px,3vw,40px);display:flex;flex-direction:column;gap:18px}
+.head{display:flex;gap:20px;align-items:center}
+.ini{flex:none;width:118px;height:118px}
+.num{color:var(--gold);font-size:14px;font-weight:600}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.badge{font-size:13px;padding:3px 10px;border:1px solid var(--line);border-radius:99px;color:var(--mute)}
+.badge.ess{color:#1a1206;background:var(--gold);border-color:var(--gold)}
+.lbl{font-size:13px;color:var(--gold);font-weight:600;margin-bottom:4px}
+.def{font-size:18px}
+.es{color:var(--mute);font-size:15px;margin-top:6px}
+.es[hidden]{display:none}
+.ex{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:23px;line-height:1.3;padding:14px 18px;border-left:2px solid var(--gold);background:var(--soft);border-radius:0 6px 6px 0}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.btn{min-height:44px;padding:0 18px;border:1px solid var(--line);background:transparent;border-radius:99px;font-weight:600;font-size:14px;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:background .2s,border-color .2s}
+.btn:hover{background:var(--soft);border-color:var(--gold)}
+.btn:focus-visible,.card:focus-visible,.opt:focus-visible,.tag:focus-visible,.chip:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+.btn.gold{background:linear-gradient(180deg,var(--gold2),var(--gold));color:#1a1206;border-color:transparent}
+.btn.gold:hover{filter:brightness(1.06)}
+.btn[aria-pressed=true]{background:var(--gold);color:#1a1206}
+.btn svg{width:14px;height:14px;fill:currentColor}
+.pass{font-family:"Cormorant Garamond",serif;font-size:clamp(21px,2.1vw,25px);line-height:1.5;font-weight:500}
+.s{border-radius:4px;transition:background .25s,box-shadow .25s}
+.on{background:rgba(214,180,110,.2);box-shadow:0 0 0 4px rgba(214,180,110,.2)}
+.hit{font-style:italic;color:var(--gold2);border-bottom:1px solid var(--gold3)}
+.task{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;border:1px dashed var(--line);border-radius:6px}
+.task b{color:var(--gold2);font-weight:600;white-space:nowrap}
+.settings{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center;padding:16px clamp(22px,3vw,40px);border-top:1px solid var(--line);grid-column:1/-1;font-size:14px;color:var(--mute)}
+.settings label{display:inline-flex;gap:8px;align-items:center;min-height:44px;cursor:pointer}
+select{background:var(--bg2);border:1px solid var(--line);border-radius:6px;min-height:40px;padding:0 10px;font-size:16px;max-width:260px}
+input[type=range]{accent-color:var(--gold);width:120px}
+input[type=checkbox]{accent-color:var(--gold);width:18px;height:18px}
+.cue{margin-left:auto;display:none;align-items:center;gap:10px;color:var(--gold2);font-weight:600}
+.cue.on{display:inline-flex;background:none;box-shadow:none}
+.cue i{width:14px;height:14px;border-radius:50%;background:var(--gold);animation:pulse 1.1s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(214,180,110,.6)}50%{box-shadow:0 0 0 9px rgba(214,180,110,0)}}
+.nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;margin-top:auto}
+.method{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.method div{background:var(--bg2);padding:20px 22px}
+.method h3{font-size:24px;color:var(--gold2);margin-bottom:6px}
+.method p{color:var(--mute);font-size:15px}
+.idxhead{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;justify-content:space-between;margin-bottom:18px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{min-height:40px;padding:0 14px;border-radius:99px;border:1px solid var(--line);background:transparent;cursor:pointer;font-size:14px;color:var(--mute)}
+.chip[aria-pressed=true]{background:var(--gold);color:#1a1206;border-color:var(--gold);font-weight:600}
+#q{min-height:44px;width:min(320px,100%);background:var(--bg2);border:1px solid var(--line);border-radius:99px;padding:0 18px;font-size:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.card{position:relative;text-align:left;background:var(--bg2);border:1px solid var(--line);border-radius:6px;padding:16px 16px 14px;cursor:pointer;display:flex;flex-direction:column;gap:4px;transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.card.cur{border-color:var(--gold2);background:var(--panel)}
+.cn{color:var(--gold);font-size:13px;font-weight:600}
+.ct{font-family:"Cormorant Garamond",serif;font-size:24px;font-weight:600;line-height:1.1}
+.cd{color:var(--mute);font-size:14px;line-height:1.45}
+.cf{font-size:13px;color:var(--gold3);margin-top:4px}
+.card.done::after{content:"✓";position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;color:#1a1206;background:radial-gradient(circle at 35% 30%,var(--gold2),var(--gold3))}
+.empty{color:var(--mute)}
+.story{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:clamp(20px,4vw,56px);align-items:start}
+.story .pass p+p{margin-top:14px}
+.tag{display:inline;background:none;border:0;padding:0;font:inherit;color:var(--gold2);font-style:italic;border-bottom:1px solid var(--gold3);cursor:pointer;text-align:inherit}
+.lab{display:none;font-family:Manrope,sans-serif;font-style:normal;font-size:13px;font-weight:600;color:#1a1206;background:var(--gold);border-radius:99px;padding:1px 8px;margin-left:6px;vertical-align:3px}
+.tag.open .lab,.reveal .lab{display:inline}
+.aside{border:1px solid var(--line);border-radius:6px;padding:20px 22px;background:var(--bg2)}
+.aside ol{margin:10px 0 0;padding-left:20px;color:var(--mute);columns:2;column-gap:20px;font-size:15px}
+.quiz{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(20px,4vw,56px);align-items:center}
+.qcard{background:linear-gradient(160deg,var(--panel2),var(--bg2));border:1px solid var(--line);border-radius:6px;padding:clamp(22px,3vw,36px);min-height:200px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+#qex{font-family:"Cormorant Garamond",serif;font-style:italic;font-size:clamp(24px,2.6vw,30px);line-height:1.3}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.opt{min-height:52px;border:1px solid var(--line);background:var(--bg2);border-radius:6px;cursor:pointer;font-family:"Cormorant Garamond",serif;font-size:21px;font-weight:600;padding:6px 12px}
+.opt:hover{border-color:var(--gold)}
+.opt.ok{background:var(--gold);color:#1a1206;border-color:var(--gold)}
+.opt.no{border-color:#c46b5a;color:#e9a596}
+#qfb{min-height:48px;color:var(--mute);font-size:15px;margin-top:12px}
+.score{font-family:"Cormorant Garamond",serif;font-size:40px;color:var(--gold2)}
+footer{border-top:1px solid var(--line);color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
+footer em{font-family:"Cormorant Garamond",serif;font-size:20px;color:var(--gold2)}
+@media(max-width:860px){.plate,.story,.quiz{grid-template-columns:minmax(0,1fr)}.left{border-right:0;border-bottom:1px solid var(--line)}}
+@media(max-width:600px){.method{grid-template-columns:minmax(0,1fr)}.ini{width:88px;height:88px}.opts{grid-template-columns:minmax(0,1fr)}.aside ol{columns:1}.cue{margin-left:0}.task{flex-direction:column;gap:4px}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<header class="band" style="padding-bottom:0">
+ <div class="wrap">
+  <div class="top">
+   <div>
+    <h1>The Devices of Eloquence</h1>
+    <p class="sub">Fifty literary and rhetorical devices, each with a fluency passage to hear, shadow and perform. Build the concept, then own the sound of it.</p>
+   </div>
+   <div class="prog"><b id="count">0 of 50 mastered</b><div class="meter"><i id="bar"></i></div></div>
+  </div>
+
+  <section class="plate" id="stage" aria-live="polite">
+   <div class="left">
+    <div class="head">
+     <svg class="ini" viewBox="0 0 160 160" aria-hidden="true">
+      <defs>
+       <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f7e3b0"/><stop offset=".45" stop-color="#d6b46e"/><stop offset=".7" stop-color="#f3dca4"/><stop offset="1" stop-color="#8e6c32"/></linearGradient>
+       <radialGradient id="well" cx=".35" cy=".3" r=".9"><stop offset="0" stop-color="#1b3766"/><stop offset="1" stop-color="#081325"/></radialGradient>
+       <g id="orn"><path d="M0 22V0h22" fill="none" stroke="url(#foil)" stroke-width="2"/><path d="M8 8l6 0 0 6-6 0z" fill="url(#foil)" transform="rotate(45 11 11)"/></g>
+      </defs>
+      <rect x="4" y="4" width="152" height="152" rx="4" fill="url(#well)" stroke="url(#foil)" stroke-width="2.5"/>
+      <rect x="12" y="12" width="136" height="136" rx="2" fill="none" stroke="#d6b46e" stroke-opacity=".45" stroke-width="1"/>
+      <use href="#orn" x="18" y="18"/><use href="#orn" transform="translate(142 18) scale(-1 1)"/><use href="#orn" transform="translate(18 142) scale(1 -1)"/><use href="#orn" transform="translate(142 142) scale(-1 -1)"/>
+      <text id="ini" x="80" y="114" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-weight="700" font-size="108" fill="url(#foil)">S</text>
+     </svg>
+     <div>
+      <div class="num" id="num">No. 1 of 50</div>
+      <h2 id="name">Simile</h2>
+      <div class="badges" id="badges"></div>
+     </div>
+    </div>
+    <div id="defBox"><div class="lbl">Definition</div><p class="def" id="def"></p><p class="es" id="es"></p></div>
+    <div><div class="lbl">Example</div><p class="ex" id="ex"></p></div>
+    <div class="row">
+     <button class="btn" id="pDef"><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>Definition</button>
+     <button class="btn" id="pEx"><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>Example</button>
+     <button class="btn" id="esBtn" aria-pressed="true">Español</button>
+    </div>
+   </div>
+   <div class="right">
+    <div class="lbl" style="margin:0">Fluency passage</div>
+    <p class="pass" id="pass"></p>
+    <div class="row">
+     <button class="btn gold" id="pAll"><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>Full lesson</button>
+     <button class="btn" id="pPass"><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>Passage</button>
+     <button class="btn" id="stop"><svg viewBox="0 0 10 10"><path d="M1 1h8v8H1z"/></svg>Stop</button>
+    </div>
+    <div class="task"><b>Your turn</b><span id="task"></span></div>
+    <div class="nav">
+     <button class="btn" id="prev">← Previous</button>
+     <button class="btn" id="master" aria-pressed="false">Mark as mastered</button>
+     <button class="btn" id="next">Next →</button>
+    </div>
+   </div>
+   <div class="settings">
+    <label for="voice">Voice <select id="voice"><option>Default voice</option></select></label>
+    <label for="rate">Speed <input type="range" id="rate" min="0.6" max="1.2" step="0.05" value="0.9"> <span id="rateV">0.90×</span></label>
+    <label for="shadow"><input type="checkbox" id="shadow"> Shadowing pauses</label>
+    <label for="auto"><input type="checkbox" id="auto"> Continue to next device</label>
+    <span class="cue" id="cue"><i></i>Repeat it now</span>
+   </div>
+  </section>
+ </div>
+</header>
+
+<section class="band">
+ <div class="wrap method">
+  <div><h3>Exposure</h3><p>Press Full lesson. Hear the name, the definition, the example and the passage at a calm executive pace. Read along as each sentence lights up.</p></div>
+  <div><h3>Integration</h3><p>Turn on shadowing pauses. After every sentence the audio waits for you: repeat it aloud, matching rhythm, stress and the pause before key words.</p></div>
+  <div><h3>Performance</h3><p>Answer Your turn out loud, in your own words, without reading. When you can use the device naturally, mark it as mastered.</p></div>
+ </div>
+</section>
+
+<section class="band" id="index" style="padding-top:0">
+ <div class="wrap">
+  <div class="idxhead">
+   <h2 style="color:var(--ink)">The complete lexicon</h2>
+   <input id="q" type="search" placeholder="Search devices or definitions" aria-label="Search devices">
+  </div>
+  <div class="chips" id="chips"></div>
+  <div class="grid" id="grid"></div>
+ </div>
+</section>
+
+<section class="band" style="background:var(--bg2);border-block:1px solid var(--line)">
+ <div class="wrap story">
+  <div>
+   <h2>The pitch: ten devices in one story</h2>
+   <p class="sub" style="margin-bottom:20px">Every gold phrase is a device. Tap one to reveal its name, or listen to the whole scene and shadow it.</p>
+   <div class="pass" id="story"></div>
+   <div class="row" style="margin-top:20px">
+    <button class="btn gold" id="pStory"><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>Listen to the scene</button>
+    <button class="btn" id="reveal" aria-pressed="false">Reveal all devices</button>
+   </div>
+  </div>
+  <aside class="aside">
+   <h3 style="color:var(--gold2)">The essential ten</h3>
+   <p class="sub" style="margin-top:6px;font-size:15px">For C1–C2 speaking and persuasive writing, master these first.</p>
+   <ol id="ten"></ol>
+  </aside>
+ </div>
+</section>
+
+<section class="band">
+ <div class="wrap quiz">
+  <div class="qcard">
+   <div class="lbl" style="margin:0">Name the device</div>
+   <p id="qex"></p>
+   <div class="row"><button class="btn" id="qPlay"><svg viewBox="0 0 10 10"><path d="M1 0l9 5-9 5z"/></svg>Hear it</button><button class="btn" id="qNext">New question</button></div>
+  </div>
+  <div>
+   <div class="opts" id="qopts"></div>
+   <p id="qfb" aria-live="polite"></p>
+   <div class="score" id="score">0 / 0</div>
+  </div>
+ </div>
+</section>
+
+<footer class="band">
+ <div class="wrap">
+  <em>Think in English. Not about English.</em>
+  <span>ProfGermandario · profgermandario.com. The source list stopped at 49; No. 50, Zeugma, completes the set.</span>
+ </div>
+</footer>
+
+<script>
+{
+const FAM={img:"Image & comparison",sound:"Sound & rhythm",story:"Story & structure",rhet:"Rhetoric & persuasion",wit:"Wit & contrast"};
+const TOP=[1,2,3,4,7,9,11,12,23,27];
+const D=[
+[1,"Simile","img","A comparison using like or as.","Símil: compara usando «like» o «as».","Her smile was like sunshine on a rainy day.","On Monday morning, the negotiation felt [[like a chess match played in fog]]. Every offer arrived slowly, as if each word had a price. By Friday, however, our team moved [[as smoothly as a well-rehearsed orchestra]], and the client finally signed.","Describe your current job with one simile using like and one using as."],
+[2,"Metaphor","img","A direct comparison without like or as.","Metáfora: identifica una cosa con otra, sin «like».","Time is a thief.","In this company, [[information is oxygen]]. When it stops flowing, people panic and make poor decisions. A good manager is not a gatekeeper but [[a bridge]], connecting those who know with those who need to know.","Complete the sentence aloud: “My English is a … because …”"],
+[3,"Symbolism","img","Using an object, person, or action to represent a deeper meaning.","Simbolismo: un objeto representa una idea mayor.","The dove symbolized peace.","When the founder retired, she left her old desk lamp in the lobby. Nobody moved it. Over the years, [[that small lamp]] came to represent the long nights, the risk, and the stubborn optimism that built the business. New employees hear its story on their first day.","Name an object in your home that symbolizes an achievement, and explain why."],
+[4,"Imagery","img","Language that appeals to the senses.","Imaginería: lenguaje que activa los sentidos.","The warm cinnamon scent drifted through the kitchen.","The café in Medellín opened at six. [[Steam curled from copper kettles, the grinder hummed, and the bitter perfume of fresh coffee drifted into the cool street.]] It was the perfect place to rehearse my presentation before the city woke up.","Describe your favourite place using sight, sound and smell."],
+[5,"Alliteration","sound","Repetition of beginning consonant sounds.","Aliteración: repite el sonido consonante inicial.","Peter Piper picked a peck of pickled peppers.","Great brands understand the music of language. Our new campaign promises [[bold, brilliant, beautifully built]] products. Customers may not notice the pattern consciously, but their memory does. Sound is a shortcut to recall, and [[clever copy creates customers]].","Invent a three-word slogan where every word starts with the same sound."],
+[6,"Rhyme","sound","Similar ending sounds in words.","Rima: sonidos finales que coinciden.","The cat sat on the mat.","Some of the most persuasive phrases in business rhyme, because rhyme feels true. Lawyers, advertisers and teachers all know it. A rule such as [[“If in doubt, leave it out”]] stays in the mind far longer than a paragraph of policy.","Create a short rhyming rule for your team or your study routine."],
+[7,"Irony","wit","An outcome opposite to what is expected.","Ironía: el resultado es lo contrario de lo esperado.","The fire station burned down.","The consultant was hired to improve communication across the company. [[Ironically, he sent his final report to the wrong department]], and nobody read it for three months. The lesson was clear: expertise on paper means little without attention in practice.","Tell a short true story where the result was the opposite of the plan."],
+[8,"Onomatopoeia","sound","A word that imitates a sound.","Onomatopeya: palabra que imita un sonido.","The bees buzzed around the flowers.","The open-plan office never rests. Keyboards [[click]] and [[clatter]], phones [[buzz]] on every desk, and the coffee machine [[hisses]] like an impatient guest. At four o’clock, a printer [[whirs]] to life, and the whole floor sighs.","Name five sounds from your morning routine in English."],
+[9,"Personification","img","Giving human traits to nonhuman things.","Personificación: dar rasgos humanos a las cosas.","The wind whispered through the trees.","By midnight, the deadline [[was staring at me from the calendar]]. My laptop [[groaned]] under twelve open tabs, and the coffee [[had long since given up]]. Still, the city outside [[kept its promise]]: it waited quietly until the final slide was done.","Make your phone or your car the main character of two sentences."],
+[10,"Flashback","story","A scene that returns to an earlier time.","Flashback (analepsis): escena que vuelve al pasado.","As she opened the letter, she remembered her childhood home.","As the CEO stepped onto the stage, applause filled the hall. [[Suddenly she was twenty-three again, standing in a tiny rented room in Bogotá, practising English vowels in front of a cracked mirror.]] Then the microphone crackled, and the present returned.","Start a story in the present, then jump to a memory with “Suddenly, I was …”"],
+[11,"Foreshadowing","story","Hints about future events.","Presagio: pistas de lo que va a ocurrir.","The dark clouds suggested trouble ahead.","The merger looked perfect on paper. Yet [[during the signing ceremony, the two CEOs never once looked at each other]], and the champagne went untouched. Eighteen months later, the partnership collapsed in court.","Write one sentence that hints at a problem without naming it."],
+[12,"Hyperbole","wit","Deliberate exaggeration.","Hipérbole: exageración intencional.","I’ve told you a million times.","My inbox this morning was [[the size of a small country]]. I answered emails until [[my fingers turned to dust]], and the meeting lasted [[roughly a century]]. None of this is literally true, but it tells my colleagues exactly how I feel.","Exaggerate how busy your week was, in three sentences."],
+[13,"Juxtaposition","wit","Placing contrasting things side by side.","Yuxtaposición: poner contrastes uno junto al otro.","The luxurious mansion stood beside a crumbling shack.","The annual report opened with two photographs: [[a gleaming glass headquarters, and right beside it, the dusty garage where the company was born]]. No caption was needed. The contrast told the whole story of ambition, risk and growth.","Describe your city by placing two opposite images side by side."],
+[14,"Motif","img","A recurring image, idea, or symbol.","Motivo: imagen o idea que se repite en la obra.","The recurring image of water represented change throughout the novel.","Throughout her keynote, the speaker returned to [[the image of a bridge]]: the bridge between languages, the bridge between generations, the bridge between who we are and who we could be. By the end, the audience heard the word bridge and thought of possibility.","Choose one image and repeat it three times in a short talk about your goals."],
+[15,"Paradox","wit","A statement that seems contradictory but contains truth.","Paradoja: parece contradictoria, pero encierra una verdad.","Less is more.","Our best negotiator has a strange rule: [[“To win, be ready to walk away.”]] It sounds contradictory, yet it works. The moment you stop needing the deal, you start controlling it. In the same way, [[the slower you speak, the faster people understand you]].","Explain a paradox you have lived: “The more I …, the less I …”"],
+[16,"Assonance","sound","Repetition of vowel sounds.","Asonancia: repetición de sonidos vocálicos.","Go slow over the road.","Listen to the long vowels in a well-delivered line: [[“We rose slowly, owning every moment.”]] The repeated O sound creates calm and authority. Practising assonance trains your mouth to hold vowels with confidence, which is exactly what educated speech sounds like.","Say five words with the same long vowel, then build one sentence with them."],
+[17,"Euphemism","wit","A mild expression replacing a harsh one.","Eufemismo: expresión suave en lugar de una dura.","He passed away. (= died)","Corporate English is full of soft language. Nobody is fired; they are [[“let go.”]] Prices never rise; they are [[“adjusted.”]] And a disaster becomes [[“a learning opportunity.”]] Recognising euphemisms helps you read between the lines, and decide when honesty is more powerful.","Find a kinder way to say: “Your proposal is bad.”"],
+[18,"Cliffhanger","story","An unresolved ending that creates suspense.","Final en suspenso: termina sin resolver.","The chapter ended just as the door slowly opened.","The board meeting had gone smoothly until the final minute. The chairman closed his folder, looked around the table and said, [[“Before we leave, there is one more thing you all need to know about the future of this company.”]] Then the screen went black.","End a short story about your week with an unanswered question."],
+[19,"Pun","wit","Wordplay based on multiple meanings.","Juego de palabras: aprovecha un doble sentido.","I used to be a banker, but I lost interest.","Our finance director rarely jokes, but at the holiday party he raised his glass: [[“I’m reading a book about anti-gravity. It’s impossible to put down.”]] Even the auditors laughed. Understanding a pun proves you hear both meanings at once, a true sign of advanced fluency.","Explain the double meaning in the joke above, in your own words."],
+[20,"Oxymoron","wit","Two contradictory words together.","Oxímoron: dos palabras opuestas juntas.","Deafening silence.","After the CEO announced the restructuring, there was a [[deafening silence]]. Then someone asked a [[cautiously optimistic]] question, and the room relaxed into an [[organised chaos]] of conversation. Oxymorons capture moments that ordinary words cannot.","Use two oxymorons to describe your first day at a new job."],
+[21,"Analogy","img","A comparison used to explain something.","Analogía: comparación que sirve para explicar.","Learning a language is like building a house brick by brick.","[[Compound interest works like a snowball rolling downhill: small at first, almost invisible, then suddenly enormous.]] The earlier it starts rolling, the larger it becomes. Analogies turn abstract ideas into pictures that clients remember long after the meeting.","Explain your profession to a child using one analogy."],
+[22,"Rhetorical Question","rhet","A question asked for effect, not for an answer.","Pregunta retórica: se hace por efecto, no para responder.","Who doesn’t want to be successful?","The investor leaned forward. [[“Would you put your own savings into this plan? Would you bet your house on these numbers?”]] Nobody answered, and nobody needed to. The questions had already made the argument for him.","Open a short pitch with two rhetorical questions."],
+[23,"Allusion","img","An indirect reference to a famous person, event, or work.","Alusión: referencia indirecta a algo célebre.","He met his Waterloo in the championship game.","When the startup refused a billion-dollar offer, analysts called it [[a David and Goliath moment]]. Others warned that the founder was [[flying too close to the sun]]. Allusions let you say a lot in very few words, as long as your listener shares the reference.","Use an allusion to describe a big challenge you have faced."],
+[24,"Allegory","img","A story whose characters and events represent deeper meanings.","Alegoría: relato cuyos elementos esconden otro significado.","Animal Farm is an allegory of political revolution.","Our trainer told a simple tale about [[a farmer who planted a different seed every week and wondered why nothing ever grew]]. Everyone laughed, then went quiet. The farmer was every professional who changes strategy before any strategy has time to work.","Invent a two-sentence fable that hides a lesson about discipline."],
+[25,"Satire","wit","Using humour or exaggeration to criticise.","Sátira: humor o exageración para criticar.","The comedy show mocked corrupt politicians.","The company newsletter published a mock memo: [[“To improve productivity, every meeting about meetings will now require a pre-meeting.”]] Everyone laughed, but the message landed. Within a month, the calendar was lighter. Satire can change behaviour where direct criticism fails.","Write a satirical rule about something inefficient at work."],
+[26,"Soliloquy","story","A speech revealing a character’s thoughts while alone.","Soliloquio: pensar en voz alta, a solas.","Hamlet’s “To be or not to be” speech.","Alone in the elevator, the manager spoke quietly to herself. [[“Do I tell them the truth today, or wait until the numbers improve? If I wait, I protect them for a week. If I speak, I protect their trust forever.”]] The doors opened, and she had decided.","Record a thirty-second soliloquy about a decision you are facing."],
+[27,"Anaphora","rhet","Repetition at the beginning of consecutive clauses.","Anáfora: repetir el comienzo de frases seguidas.","We will fight on the beaches. We will fight on the landing grounds.","The coach finished her talk with rising energy. [[“We will prepare when others relax. We will practise when others complain. We will speak when others stay silent.”]] Anaphora builds rhythm, and rhythm builds conviction in every listener.","Say three sentences that all begin with “I will …”"],
+[28,"Apostrophe","rhet","Addressing an absent person, thing, or idea.","Apóstrofe: hablarle a alguien o algo ausente.","O Death, where is thy sting?","At his retirement dinner, the old engineer raised his glass toward the window. [[“Old factory, you took my youth and gave me a life. Thank you.”]] The room fell silent. Speaking to something that cannot answer often reveals what we truly feel.","Address your younger self in two sentences."],
+[29,"Caesura","sound","A deliberate pause within a line.","Cesura: pausa deliberada dentro del verso.","To err is human; to forgive, divine.","Great speakers master the pause. [[“We came to build, … not to blame.”]] That small silence in the middle gives the listener time to feel the contrast. In your own presentations, a two-second pause carries more authority than ten extra words.","Read one sentence aloud with a deliberate pause in the middle."],
+[30,"Enjambment","sound","A sentence that continues beyond a line break.","Encabalgamiento: la frase continúa en el verso siguiente.","I think that I shall never see / A poem lovely as a tree.","Read these lines without stopping at the end of the first: [[“The meeting ended, but the idea / kept walking with me down the street.”]] The thought flows across the break and pulls the reader forward. Poets use enjambment to create momentum and surprise.","Write two lines where one sentence crosses the line break."],
+[31,"Unreliable Narrator","story","A narrator whose account cannot be fully trusted.","Narrador no confiable: su versión no es del todo creíble.","The narrator insists he’s innocent despite evidence suggesting otherwise.","In his self-evaluation he wrote, [[“I am the most organised person in this office, and I never miss a deadline, except when other people make me late, which is always.”]] By the end of the page, his manager understood the real story, one he could not see himself.","Tell a short story as a narrator who is clearly wrong about himself."],
+[32,"Archetype","img","A universal character, symbol, or pattern.","Arquetipo: personaje o patrón universal.","The wise mentor guides the young hero.","Every great brand story uses archetypes. The customer is [[the hero]] facing a challenge, and the company is [[the wise mentor]] offering a tool. When you present your services, cast your client as the hero, never yourself.","Identify the hero, the mentor and the villain in your favourite film."],
+[33,"Synecdoche","img","A part represents the whole.","Sinécdoque: una parte representa el todo.","All hands on deck. (“hands” = sailors)","The new project needs [[fresh eyes]] and [[more hands]]. We have the [[brains]] in the strategy team, but we need [[boots on the ground]] in every region by March. When a part stands in for a whole person, you are hearing synecdoche.","Use “hands”, “heads” or “faces” to describe a team you know."],
+[34,"Pathetic Fallacy","img","Nature reflects human emotions.","Falacia patética: la naturaleza refleja las emociones.","Rain poured down as she walked away heartbroken.","The morning he lost the account, [[the sky over the city was a heavy, sullen grey, and the rain seemed to fall only on him]]. A week later, when the client called back, [[the sun broke through as if it had been waiting]].","Describe today’s weather so that it reflects your mood."],
+[35,"Understatement","wit","Deliberately making something seem less important.","Atenuación: restarle importancia a propósito.","After breaking his leg, he said, “It’s just a scratch.”","The quarterly loss was the largest in the company’s history. The CFO adjusted his glasses and said, [[“Well, it hasn’t been our finest quarter.”]] The understatement broke the tension. British English, in particular, loves this calm, dry style.","Describe a disaster in one calm, understated sentence."],
+[36,"Deus Ex Machina","story","An unlikely intervention suddenly solves a problem.","Deus ex machina: una solución inesperada y forzada.","A mysterious stranger arrives and rescues everyone.","The film was going well until the end. The heroes were trapped, the money was gone, and then [[a long-lost uncle appeared with a winning lottery ticket]]. The audience groaned. Investors react the same way to any business plan that depends on a miracle.","Spot a deus ex machina in a film or series you have seen."],
+[37,"Metonymy","img","Replacing something with a closely associated term.","Metonimia: nombrar algo por lo que está asociado a ello.","The White House announced new policies.","This morning [[Wall Street]] reacted nervously, [[Downing Street]] issued a brief statement, and [[Silicon Valley]] stayed silent. None of these places can speak, of course; each name stands for the people and institutions closely connected to it.","Find one example of metonymy in today’s headlines."],
+[38,"In Medias Res","story","Beginning a story in the middle of the action.","In medias res: empezar en plena acción.","The novel opens with the hero already fleeing from enemies.","[[“The projector died just as I said the word revolutionary.”]] That was how she opened her talk: no greeting, no agenda, only action. Later she explained how the evening began. Starting in the middle grabs attention in the first five seconds.","Begin a story about your week at its most dramatic moment."],
+[39,"Consonance","sound","Repetition of consonant sounds, especially at the end of words.","Consonancia: repite sonidos consonantes, sobre todo al final.","He struck a streak of bad luck.","Notice the final sounds in the closing line of our product launch: [[“Think quick, act smart, stay sharp.”]] The crisp K, T and P endings give the phrase a decisive rhythm, exactly the energy you want in the last ten seconds of a presentation.","Write a three-part slogan in which the words end in hard consonants."],
+[40,"Chekhov’s Gun","story","A detail introduced early must become important later.","El arma de Chéjov: todo detalle presentado debe importar.","A pistol shown in Chapter 1 is fired in Chapter 10.","In the first minute of his pitch, the founder held up [[a broken umbrella]] without explaining why. Twenty minutes later, he revealed the product: a smart umbrella that never breaks. The early detail paid off. In storytelling, nothing on stage should be wasted.","Plan a talk that opens with an object you explain only at the end."],
+[41,"Polyptoton","rhet","Repetition of words derived from the same root.","Políptoton: repetir palabras de la misma raíz.","Love is not always lovable.","The leadership seminar had one central idea: [[“Lead the leaders, and leadership will follow.”]] Repeating a root in different forms creates elegance and helps your audience remember. It also trains you to command whole word families, a key skill at advanced levels.","Build one sentence with trust, trusted and trustworthy."],
+[42,"Litotes","wit","Affirming something by negating its opposite.","Lítote: afirmar algo negando lo contrario.","That’s not bad at all. (= it’s quite good)","When the client tried the prototype, she smiled and said, [[“Well, this is not unimpressive.”]] Coming from her, it was high praise. Professional English uses litotes constantly: [[not a small achievement]], [[not uncommon]], [[not the worst idea]].","Praise a colleague using litotes."],
+[43,"Chiasmus","rhet","A reversal of grammatical structure.","Quiasmo: estructura que se invierte (AB, BA).","Ask not what your country can do for you; ask what you can do for your country.","Our mentor repeated one sentence until we believed it: [[“Don’t work for your money; make your money work for you.”]] The reversed structure makes the idea feel complete, balanced and memorable, which is why so many famous speeches rely on it.","Create a chiasmus about learning: “Don’t think about English …”"],
+[44,"Asyndeton","rhet","Omitting conjunctions in a series.","Asíndeton: omitir las conjunciones en una serie.","I came, I saw, I conquered.","Her results speak for themselves: [[“We listened, we adapted, we delivered.”]] Without and or but, the sentence moves faster and sounds more decisive. Use asyndeton when you want your achievements to land like a drumbeat.","Summarise your career in three clauses, without “and”."],
+[45,"Aposiopesis","rhet","Breaking off a sentence before finishing it.","Aposiopesis: dejar la frase sin terminar.","If you do that again, I swear I’ll…","The director looked at the late report, then at the team. [[“If this happens one more time, I will …”]] He did not finish. He did not need to. The silence carried the warning more powerfully than any words could.","Say an emotional sentence that stops before the end."],
+[46,"Paralipsis","rhet","Emphasising something by pretending not to mention it.","Paralipsis: destacar algo fingiendo que no se menciona.","I’m not even going to mention his repeated mistakes.","During the debate, the candidate smiled. [[“I won’t mention my opponent’s three failed companies, or the lawsuits, or the missing funds. Let’s focus on the future.”]] Of course, he had just mentioned everything. That is the quiet power of paralipsis.","Use “I won’t even mention …” to highlight a point."],
+[47,"Adynaton","rhet","Extreme impossibility used for emphasis.","Adínaton: una imposibilidad extrema para enfatizar.","When pigs fly.","Asked whether the competitor would ever lower its prices, the analyst laughed: [[“That will happen when pigs fly and the sun rises in the west.”]] Adynaton is hyperbole pushed to the impossible, perfect for showing absolute certainty with humour.","Say “never” in the most impossible way you can imagine."],
+[48,"Bdelygmia","rhet","A long string of insults or expressions of disgust.","Bdelygmia: una retahíla de insultos o desprecio.","You cowardly, deceitful, selfish, rotten scoundrel!","In the novel, the ruined investor finally exploded at his former partner: [[“You lying, scheming, cold-hearted, spreadsheet-hiding snake!”]] Writers use bdelygmia for comic or dramatic release. Admire it on the page, and keep it out of your email.","Write a playful bdelygmia against your alarm clock."],
+[49,"Paraprosdokian","wit","A sentence ending unexpectedly, changing its meaning.","Paraprosdokian: un final inesperado que cambia el sentido.","I want to die peacefully in my sleep like my grandfather, not screaming like the passengers in his car.","The keynote speaker began seriously: [[“I have spent twenty years studying successful leaders, and I can tell you their greatest secret: they also have no idea what they’re doing.”]] The audience burst out laughing and finally relaxed.","Start a serious sentence and give it a surprising ending."],
+[50,"Zeugma","wit","One word governs two others in different senses.","Zeugma: una palabra rige dos términos con sentidos distintos.","She broke his car and his heart.","After the failed launch, the founder [[lost his investors, his temper and, briefly, his sense of humour]]. One verb, three very different objects. Zeugma creates surprise and wit, and it shows a sophisticated feel for how English verbs stretch.","Use the verb “took” with two different meanings in one sentence."]
+];
+const STORY=[
+"[[The boardroom smelled of polished cedar and fresh espresso|Imagery]], and forty floors below, [[the city lights glittered like scattered gold|Simile]].",
+"Valeria set [[her grandfather’s old pocket watch|Symbolism]] on the table, a quiet reminder of where she came from.",
+"[[The clock on the wall seemed to hold its breath|Personification]].",
+"She had rehearsed this pitch [[a thousand times|Hyperbole]].",
+"“[[Capital is a seed|Metaphor]],” she began. “Plant it in the wrong soil, and nothing grows.”",
+"“[[We listened to our customers. We listened to our critics. We listened to the market when it whispered|Anaphora]].”",
+"Across the table, [[the chairman glanced twice at his phone and quietly turned it face down|Foreshadowing]].",
+"“Some will call this [[a David and Goliath fight|Allusion]],” she continued, “but giants are slow.”",
+"When the applause ended, the chairman read the message aloud: the largest company in the sector wanted to buy her firm, [[the same company that had rejected her job application five years earlier|Irony]].",
+"Valeria picked up the watch. For once, time was on her side."
+];
+const $=q=>document.querySelector(q);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const slug=s=>s.toLowerCase().replace(/’/g,"").replace(/[^a-z]+/g,"-").replace(/^-|-$/g,"");
+const strip=s=>s.replace(/\[\[|\]\]/g,"");
+const clean=s=>s.replace(/\s*\(.*?\)/g,"").replace(/\s\/\s/g,", ");
+const sents=p=>p.match(/[^.!?]+(?:[.!?]+[”’]?|$)\s*/g)||[p];
+let cur=0,filter="all",query="",done=new Set(),score=[0,0],qAns=null;
+try{done=new Set(JSON.parse(localStorage.getItem("eloq-done")||"[]"))}catch(e){}
+const save=()=>{try{localStorage.setItem("eloq-done",JSON.stringify([...done]))}catch(e){}};
+
+function passHTML(p){let open=false;return sents(p).map((s,i)=>{let o=open?"<em class=hit>":"";o+=esc(s.trim()).replace(/\[\[|\]\]/g,m=>{if(m==="[["){open=true;return"<em class=hit>"}open=false;return"</em>"});if(open)o+="</em>";return`<span class=s data-i="${i}">${o}</span>`}).join(" ")}
+
+function show(i,keepAudio){if(!keepAudio)stop();cur=(i+D.length)%D.length;const [n,name,f,def,es,ex,p,task]=D[cur];
+ $("#ini").textContent=name[0];$("#num").textContent=`No. ${n} of 50`;$("#name").textContent=name;
+ $("#badges").innerHTML=`<span class=badge>${FAM[f]}</span>`+(TOP.includes(n)?`<span class="badge ess">Essential ten</span>`:"");
+ $("#def").textContent=def;$("#es").textContent=es;$("#ex").textContent=ex;$("#pass").innerHTML=passHTML(p);$("#task").textContent=task;
+ const m=done.has(n);$("#master").setAttribute("aria-pressed",m);$("#master").textContent=m?"Mastered ✓":"Mark as mastered";
+ try{history.replaceState(null,"","#"+slug(name))}catch(e){}
+ renderGrid();}
+
+function renderGrid(){const q=query.toLowerCase();
+ const list=D.map((d,i)=>[d,i]).filter(([d])=>(filter==="all"||(filter==="top"?TOP.includes(d[0]):d[2]===filter))&&(!q||(d[1]+" "+d[3]+" "+d[4]).toLowerCase().includes(q)));
+ $("#grid").innerHTML=list.map(([d,i])=>`<button class="card${i===cur?" cur":""}${done.has(d[0])?" done":""}" data-i="${i}"><span class=cn>No. ${d[0]}</span><span class=ct>${esc(d[1])}</span><span class=cd>${esc(d[3])}</span><span class=cf>${FAM[d[2]]}</span></button>`).join("")||"<p class=empty>No device matches that search.</p>";
+ $("#count").textContent=`${done.size} of 50 mastered`;$("#bar").style.width=done.size*2+"%";}
+
+function renderChips(){const opts=[["all","All 50"],["top","Essential ten"],...Object.entries(FAM)];
+ $("#chips").innerHTML=opts.map(([k,l])=>`<button class=chip data-f="${k}" aria-pressed="${k===filter}">${l}</button>`).join("");}
+
+/* speech */
+const synth=window.speechSynthesis||null;let voices=[],timer=0,run=0;
+function loadVoices(){if(!synth)return;voices=synth.getVoices().filter(v=>/^en([-_]|$)/i.test(v.lang));if(!voices.length)return;
+ const sel=$("#voice");let saved=null;try{saved=localStorage.getItem("eloq-voice")}catch(e){}
+ sel.innerHTML=voices.map((v,i)=>`<option value="${i}">${esc(v.name.replace(/^(Microsoft|Google)\s/,""))} · ${v.lang}</option>`).join("");
+ let k=voices.findIndex(v=>v.name===saved);
+ if(k<0)k=voices.findIndex(v=>/en-GB/i.test(v.lang)&&/natural|google|daniel|serena|sonia|libby|arthur/i.test(v.name));
+ if(k<0)k=voices.findIndex(v=>/en-GB/i.test(v.lang));if(k<0)k=voices.findIndex(v=>/en-US/i.test(v.lang));sel.value=Math.max(k,0);}
+if(synth){loadVoices();synth.onvoiceschanged=loadVoices}
+const clearMarks=()=>document.querySelectorAll(".on:not(.cue)").forEach(e=>e.classList.remove("on"));
+function stop(){run++;clearTimeout(timer);try{synth&&synth.cancel()}catch(e){}clearMarks();$("#cue").classList.remove("on")}
+function play(items,onDone){stop();if(!synth){$("#cue").textContent="Audio is not available in this browser";$("#cue").classList.add("on");return}
+ const id=run;let k=0;
+ const next=()=>{if(id!==run)return;clearMarks();if(k>=items.length){onDone&&onDone();return}
+  const it=items[k++];if(it.el)it.el.classList.add("on");
+  const u=new SpeechSynthesisUtterance(it.t);const v=voices[$("#voice").value];if(v){u.voice=v;u.lang=v.lang}else u.lang="en-GB";u.rate=+$("#rate").value;
+  let ended=false;u.onend=u.onerror=()=>{if(ended||id!==run)return;ended=true;
+   if($("#shadow").checked&&it.sh!==false){$("#cue").classList.add("on");const w=it.t.split(/\s+/).length;timer=setTimeout(()=>{$("#cue").classList.remove("on");next()},w*480/u.rate+1100)}
+   else timer=setTimeout(next,280)};
+  synth.speak(u)};
+ next();}
+const passItems=()=>[...document.querySelectorAll("#pass .s")].map(el=>({t:el.textContent,el}));
+function lesson(){const d=D[cur];
+ play([{t:d[1]+".",el:$("#name"),sh:false},{t:d[3],el:$("#defBox")},{t:"For example: "+clean(d[5]),el:$("#ex")},...passItems(),{t:"Your turn. "+d[7],el:$(".task"),sh:false}],
+  ()=>{if($("#auto").checked){show(cur+1,true);timer=setTimeout(lesson,900)}});}
+
+/* story */
+$("#story").innerHTML="<p>"+STORY.map((s,i)=>`<span class=s data-i="${i}">${esc(s).replace(/\[\[(.+?)\|(.+?)\]\]/g,(m,t,d)=>`<button class=tag type=button>${t}<span class=lab>${d}</span></button>`)}</span>`).join(" ")+"</p>";
+$("#ten").innerHTML=TOP.map(n=>`<li>${D[n-1][1]}</li>`).join("");
+
+/* quiz */
+function newQ(){const a=D[Math.floor(Math.random()*D.length)];const o=new Set([a[1]]);while(o.size<4)o.add(D[Math.floor(Math.random()*D.length)][1]);
+ const key=a[1].split(" ")[0].toLowerCase();const hit=(a[6].match(/\[\[(.+?)\]\]/)||[])[1];
+ qAns=a;$("#qex").textContent=a[5].toLowerCase().includes(key)||a[5].toLowerCase().includes("hamlet")?hit:a[5];
+ $("#qopts").innerHTML=[...o].sort(()=>Math.random()-.5).map(x=>`<button class=opt data-v="${esc(x)}">${esc(x)}</button>`).join("");$("#qfb").textContent="";}
+$("#qopts").addEventListener("click",e=>{const b=e.target.closest(".opt");if(!b||$("#qopts").dataset.locked==="1")return;$("#qopts").dataset.locked="1";
+ const ok=b.dataset.v===qAns[1];score[1]++;if(ok)score[0]++;
+ document.querySelectorAll(".opt").forEach(x=>{if(x.dataset.v===qAns[1])x.classList.add("ok")});if(!ok)b.classList.add("no");
+ $("#qfb").textContent=(ok?"Correct. ":"It is "+qAns[1]+". ")+qAns[3];$("#score").textContent=`${score[0]} / ${score[1]}`;});
+$("#qNext").onclick=()=>{$("#qopts").dataset.locked="0";newQ()};
+$("#qPlay").onclick=()=>play([{t:clean($("#qex").textContent),sh:false}]);
+
+/* events */
+$("#pAll").onclick=lesson;$("#pPass").onclick=()=>play(passItems());$("#stop").onclick=stop;
+$("#pDef").onclick=()=>play([{t:D[cur][1]+".",el:$("#name"),sh:false},{t:D[cur][3],el:$("#defBox")}]);
+$("#pEx").onclick=()=>play([{t:clean(D[cur][5]),el:$("#ex")}]);
+$("#prev").onclick=()=>show(cur-1);$("#next").onclick=()=>show(cur+1);
+$("#master").onclick=()=>{const n=D[cur][0];done.has(n)?done.delete(n):done.add(n);save();show(cur,true)};
+$("#esBtn").onclick=e=>{const on=e.currentTarget.getAttribute("aria-pressed")!=="true";e.currentTarget.setAttribute("aria-pressed",on);$("#es").hidden=!on};
+$("#rate").oninput=e=>$("#rateV").textContent=(+e.target.value).toFixed(2)+"×";
+$("#voice").onchange=e=>{try{localStorage.setItem("eloq-voice",voices[e.target.value].name)}catch(x){}};
+$("#grid").addEventListener("click",e=>{const c=e.target.closest(".card");if(!c)return;show(+c.dataset.i);$("#stage").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth"})});
+$("#chips").addEventListener("click",e=>{const c=e.target.closest(".chip");if(!c)return;filter=c.dataset.f;renderChips();renderGrid()});
+$("#q").oninput=e=>{query=e.target.value;renderGrid()};
+$("#story").addEventListener("click",e=>{const t=e.target.closest(".tag");if(t)t.classList.toggle("open")});
+$("#reveal").onclick=e=>{const on=$("#story").classList.toggle("reveal");e.currentTarget.setAttribute("aria-pressed",on);e.currentTarget.textContent=on?"Hide device names":"Reveal all devices"};
+$("#pStory").onclick=()=>play([...document.querySelectorAll("#story .s")].map(el=>{const c=el.cloneNode(true);c.querySelectorAll(".lab").forEach(l=>l.remove());return{t:c.textContent,el}}));
+document.addEventListener("keydown",e=>{if(/INPUT|SELECT|TEXTAREA/.test(document.activeElement.tagName))return;if(e.key==="ArrowRight")show(cur+1);if(e.key==="ArrowLeft")show(cur-1)});
+
+const h=location.hash.slice(1);const start=Math.max(0,D.findIndex(d=>slug(d[1])===h));
+renderChips();show(start);newQ();
+}
+</script>
+</body>
+</html>
